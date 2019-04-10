@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
  - [LikeCLSchema](LikeCLSchema.md)
  - [LtCLSchema](LtCLSchema.md)
  - [NestedConditionCLSchema](NestedConditionCLSchema.md)
+ - [NotCLSchema](NotCLSchema.md)
  - [OrCLSchema](OrCLSchema.md)
  - [OrderElement](OrderElement.md)
  - [Partner](Partner.md)

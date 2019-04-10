@@ -16,7 +16,6 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class EqCLSchema (
-  eq: Option[LeftRightCLSchema] = None
 ) extends ApiModel
 
 

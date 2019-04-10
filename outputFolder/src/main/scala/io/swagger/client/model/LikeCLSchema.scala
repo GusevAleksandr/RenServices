@@ -16,7 +16,6 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class LikeCLSchema (
-  like: Option[LeftRightCLSchema] = None
 ) extends ApiModel
 
 
