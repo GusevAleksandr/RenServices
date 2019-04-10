@@ -18,16 +18,16 @@ import java.util.UUID
 case class CommonLogic (
   /* условие равенства (==) */
   eq: Option[LeftRightCLSchema] = None,
-  ge: Option[GeCLSchema] = None,
-  gt: Option[GtCLSchema] = None,
-  le: Option[LeCLSchema] = None,
-  lt: Option[LtCLSchema] = None,
-  between: Option[BetweenCLSchema] = None,
-  like: Option[LikeCLSchema] = None,
-  ilike: Option[ILikeCLSchema] = None,
-  and: Option[AndCLSchema] = None,
-  or: Option[OrCLSchema] = None,
-  not: Option[NotCLSchema] = None
+  /* условие больше или равно (>=) */
+  ge: Option[LeftRightCLSchema] = None,
+  /* условие строго больше (>) */
+  gt: Option[LeftRightCLSchema] = None,
+  /* условие меньше или равно (<=) */
+  le: Option[LeftRightCLSchema] = None,
+  /* условие строго меньше (<) */
+  lt: Option[LeftRightCLSchema] = None,
+  between: Option[CommonLogicBetween] = None,
+  example: Option[ERRORUNKNOWN] = None
 ) extends ApiModel
 
 
