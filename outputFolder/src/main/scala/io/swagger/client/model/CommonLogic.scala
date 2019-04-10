@@ -15,8 +15,18 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class NestedConditionCLSchema (
-  conditions: Option[Seq[CommonLogic]] = None
+case class CommonLogic (
+  eq: Option[EqCLSchema] = None,
+  ge: Option[GeCLSchema] = None,
+  gt: Option[GtCLSchema] = None,
+  le: Option[LeCLSchema] = None,
+  lt: Option[LtCLSchema] = None,
+  between: Option[BetweenCLSchema] = None,
+  like: Option[LikeCLSchema] = None,
+  ilike: Option[ILikeCLSchema] = None,
+  and: Option[AndCLSchema] = None,
+  or: Option[OrCLSchema] = None,
+  not: Option[NotCLSchema] = None
 ) extends ApiModel
 
 

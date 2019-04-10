@@ -16,7 +16,7 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class DocListRequest (
-  filter: Option[CommonLogicSchema] = None,
+  filter: Option[CommonLogic] = None,
   fields: Option[Seq[String]] = None,
   orders: Option[Seq[OrderElement]] = None,
   /* флаг, указывающий необходимость загрузки только заголовочных полей документа. Под заголовочными понимаются поля первого уровня, не являющиеся таблицами (множественные элементы). Является необязательным, значение по умолчанию - true. */

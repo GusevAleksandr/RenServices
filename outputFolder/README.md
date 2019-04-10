@@ -84,7 +84,7 @@ Class | Method | HTTP request | Description
  - [Agent](Agent.md)
  - [AndCLSchema](AndCLSchema.md)
  - [BetweenCLSchema](BetweenCLSchema.md)
- - [CommonLogicSchema](CommonLogicSchema.md)
+ - [CommonLogic](CommonLogic.md)
  - [DocListRequest](DocListRequest.md)
  - [EqCLSchema](EqCLSchema.md)
  - [FieldCLSchema](FieldCLSchema.md)
