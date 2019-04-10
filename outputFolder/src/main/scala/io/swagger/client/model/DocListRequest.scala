@@ -16,7 +16,6 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class DocListRequest (
-  /* расширенный фильтр в формате common-logic */
   filter: Option[CommonLogicSchema] = None,
   fields: Option[Seq[String]] = None,
   orders: Option[Seq[OrderElement]] = None,

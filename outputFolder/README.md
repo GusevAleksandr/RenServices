@@ -107,7 +107,6 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategories](PartnerTtCategories.md)
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
- - [TypesCLSchema](TypesCLSchema.md)
 
 
 ## Documentation for Authorization
