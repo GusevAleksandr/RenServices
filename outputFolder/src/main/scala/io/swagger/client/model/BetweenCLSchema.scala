@@ -15,21 +15,13 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class CommonLogicSchema (
-  ge: Option[LeftRightCLSchema] = None,
-  gt: Option[LeftRightCLSchema] = None,
-  le: Option[LeftRightCLSchema] = None,
-  lt: Option[LeftRightCLSchema] = None,
+case class BetweenCLSchema (
   /* поле для выборки */
   `object`: Option[FieldCLSchema] = None,
   /* левая граница выборки */
   left: Option[ValueCLSchema] = None,
   /* правая граница выборки */
-  right: Option[ValueCLSchema] = None,
-  like: Option[LeftRightCLSchema] = None,
-  ilike: Option[LeftRightCLSchema] = None,
-  conditions: Option[Seq[CommonLogicSchema]] = None,
-  eq: Option[LeftRightCLSchema] = None
+  right: Option[ValueCLSchema] = None
 ) extends ApiModel
 
 

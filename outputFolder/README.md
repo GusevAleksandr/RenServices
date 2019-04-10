@@ -82,8 +82,21 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Agent](Agent.md)
+ - [AndCLSchema](AndCLSchema.md)
+ - [BetweenCLSchema](BetweenCLSchema.md)
  - [CommonLogicSchema](CommonLogicSchema.md)
  - [DocListRequest](DocListRequest.md)
+ - [EqCLSchema](EqCLSchema.md)
+ - [FieldCLSchema](FieldCLSchema.md)
+ - [GeCLSchema](GeCLSchema.md)
+ - [GtCLSchema](GtCLSchema.md)
+ - [ILikeCLSchema](ILikeCLSchema.md)
+ - [LeCLSchema](LeCLSchema.md)
+ - [LeftRightCLSchema](LeftRightCLSchema.md)
+ - [LikeCLSchema](LikeCLSchema.md)
+ - [LtCLSchema](LtCLSchema.md)
+ - [NestedConditionCLSchema](NestedConditionCLSchema.md)
+ - [OrCLSchema](OrCLSchema.md)
  - [OrderElement](OrderElement.md)
  - [Partner](Partner.md)
  - [PartnerAdditionalRewardScope](PartnerAdditionalRewardScope.md)
@@ -107,6 +120,11 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategories](PartnerTtCategories.md)
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
+ - [SecurityPropertiesCLSchema](SecurityPropertiesCLSchema.md)
+ - [TypesCLSchema](TypesCLSchema.md)
+ - [ValueCLSchema](ValueCLSchema.md)
+ - [ValueCLSchemaConstant](ValueCLSchemaConstant.md)
+ - [ValueCLSchemaSecuritycontext](ValueCLSchemaSecuritycontext.md)
 
 
 ## Documentation for Authorization
