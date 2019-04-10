@@ -1,6 +1,6 @@
 /**
  * rest сервисы ренессанс
- * rest сервисы ренессанс
+ * rest сервисы ренессансsdsdd
  *
  * OpenAPI spec version: 1.0.0
  * 
