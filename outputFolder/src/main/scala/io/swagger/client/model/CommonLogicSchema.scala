@@ -20,11 +20,8 @@ case class CommonLogicSchema (
   gt: Option[LeftRightCLSchema] = None,
   le: Option[LeftRightCLSchema] = None,
   lt: Option[LeftRightCLSchema] = None,
-  /* поле для выборки */
   `object`: Option[FieldCLSchema] = None,
-  /* левая граница выборки */
   left: Option[ValueCLSchema] = None,
-  /* правая граница выборки */
   right: Option[ValueCLSchema] = None,
   like: Option[LeftRightCLSchema] = None,
   ilike: Option[LeftRightCLSchema] = None,

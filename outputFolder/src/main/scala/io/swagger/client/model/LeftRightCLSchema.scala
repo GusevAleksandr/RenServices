@@ -16,9 +16,7 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class LeftRightCLSchema (
-  /* поле для выборки */
   left: Option[FieldCLSchema] = None,
-  /* значение для выборки */
   right: Option[ValueCLSchema] = None
 ) extends ApiModel
 

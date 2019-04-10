@@ -16,7 +16,6 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ValueCLSchemaSecuritycontext (
-  /* тип поля безопасности */
   property: Option[SecurityPropertiesCLSchema] = None
 ) extends ApiModel
 

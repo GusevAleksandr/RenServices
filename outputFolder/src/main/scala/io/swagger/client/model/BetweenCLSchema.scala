@@ -16,11 +16,8 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class BetweenCLSchema (
-  /* поле для выборки */
   `object`: Option[FieldCLSchema] = None,
-  /* левая граница выборки */
   left: Option[ValueCLSchema] = None,
-  /* правая граница выборки */
   right: Option[ValueCLSchema] = None
 ) extends ApiModel
 
