@@ -1,0 +1,468 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "rest сервисы для работы с сотрудниками банка",
+    "version": "1.0.0",
+    "title": "rest сервисы для работы с сотрудниками банка"
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "передается JWT-токен. Содержимое хидера начинается с 'Bearer ' + JWT-токек, полученный от сервиса 'авторизация пользователя в системе'"
+    }
+  },
+  "paths": {
+    "/rest-api/simple/list/partnerEmployee": {
+      "get": {
+        "tags": [
+          "partnerEmployeeListSimple"
+        ],
+        "summary": "получение списка сотрудников партнера",
+        "operationId": "simple_partnerEmployees_list",
+        "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "дополнельные условия фильтрации в виде (поле=значение & поле2=значение2)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "description": "список возвращаемых полей. Если параметр не задан, и установлен флаг onlyHeaderFields, выгружаются только заголовочные поля, без вложенных таблиц.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "onlyHeaderFields",
+            "description": "флаг, указывающий необходимость загрузки только заголовочных полей документа. Под заголовочными понимаются поля первого уровня, не являющиеся таблицами (множественные элементы). Является необязательным, значение по умолчанию - true.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "ordersAsc",
+            "description": "список полей для сортировки по возрастанию",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordersDesc",
+            "description": "список полей для сортировки по убыванию",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/partnerEmployee"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/list/partnerEmployee": {
+      "post": {
+        "tags": [
+          "partnerEmployeeList"
+        ],
+        "summary": "сохранение параметров фильтрации",
+        "operationId": "post_partnerEmployees_list",
+        "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "параметры запроса",
+            "required": true,
+            "schema": {
+              "$ref": "./definitions.json#/definitions/DocListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "в качестве ответа возвращается уникальный идентификатор запроса по переданным параметрам, который в последствии должен быть передан через запрос get",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/list/partnerEmployee/{queryId}": {
+      "get": {
+        "tags": [
+          "partnerEmployeeList"
+        ],
+        "summary": "получение списка документов",
+        "operationId": "get_partnerEmployee_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/partnerEmployee",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "queryId",
+            "description": "идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post на урл /rest-api/list/partnerEmployee",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "количество элементов на странице. Если не задан - используется параметр из post запроса, иначе используется значиние по умолчанию, равное 20.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/partnerEmployee"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "запрос с переданным идентификатором не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/partnerEmployees/{id}": {
+      "get": {
+        "tags": [
+          "partnerEmployee"
+        ],
+        "summary": "получение документа по гуиду",
+        "operationId": "partnerEmployee_get",
+        "description": "получение одного Представителя/Сотрудника заданного Партнера",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "гуид представителя/сотрудника",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/partnerEmployee"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "представитель/сотрудник не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "partnerEmployee": {
+      "type": "object",
+      "properties": {
+        "guidDoc": {
+          "comment": "ГУИД документа",
+          "type": "string"
+        },
+        "state": {
+          "comment": "Статус",
+          "type": "string"
+        },
+        "stateDate": {
+          "comment": "Дата назначения статуса",
+          "type": "number"
+        },
+        "partnerGUID": {
+          "comment": "Гуид партнера",
+          "type": "string"
+        },
+        "partnerName": {
+          "comment": "Название партнера",
+          "type": "string"
+        },
+        "partnerINN": {
+          "comment": "Партнер ИНН",
+          "type": "string"
+        },
+        "partnerRegion": {
+          "comment": "Регион закрепления партнера",
+          "type": "string"
+        },
+        "boss": {
+          "comment": "Руководитель",
+          "type": "boolean"
+        },
+        "surname": {
+          "comment": "Фамилия",
+          "type": "string"
+        },
+        "name": {
+          "comment": "Имя",
+          "type": "string"
+        },
+        "middleName": {
+          "comment": "Отчество",
+          "type": "string"
+        },
+        "fiorp": {
+          "comment": "ФИО в р.п.",
+          "type": "string"
+        },
+        "post": {
+          "comment": "Должность",
+          "type": "string"
+        },
+        "postRP": {
+          "comment": "Должность в р.п.",
+          "type": "string"
+        },
+        "phone": {
+          "comment": "Телефон",
+          "type": "string"
+        },
+        "passSeries": {
+          "comment": "Серия паспорта",
+          "type": "string"
+        },
+        "passNumber": {
+          "comment": "Номер паспорта",
+          "type": "string"
+        },
+        "issuedBy": {
+          "comment": "Кем выдан",
+          "type": "string"
+        },
+        "issuedDate": {
+          "comment": "Дата выдачи",
+          "type": "number"
+        },
+        "codeSubdivision": {
+          "comment": "Код подразделения",
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "comment": "Дата рождения",
+          "type": "number"
+        },
+        "login": {
+          "comment": "Логин подписанта",
+          "type": "string"
+        },
+        "userGUID": {
+          "comment": "Гуид пользователя",
+          "type": "string"
+        },
+        "blockReason": {
+          "comment": "Причина блокировки",
+          "type": "string"
+        },
+        "blockDescription": {
+          "comment": "Описание причины блокировки",
+          "type": "string"
+        },
+        "blockExecutor": {
+          "comment": "Исполнитель",
+          "type": "string"
+        },
+        "blockDate": {
+          "comment": "Дата блокировки",
+          "type": "number"
+        },
+        "isEnablePEP": {
+          "comment": "Доступ на ПЭП",
+          "type": "boolean"
+        },
+        "isEnableView": {
+          "comment": "Доступ на просмотр",
+          "type": "boolean"
+        },
+        "fiofull": {
+          "comment": "ФИОип",
+          "type": "string"
+        },
+        "address": {
+          "comment": "Адрес регистрации",
+          "type": "string"
+        },
+        "surnameUpper": {
+          "comment": "Фамилия. Верхий Регистр",
+          "type": "string"
+        },
+        "nameUpper": {
+          "comment": "Имя. Верхий Регистр",
+          "type": "string"
+        },
+        "middleNameUpper": {
+          "comment": "Отчество. Верхий Регистр",
+          "type": "string"
+        },
+        "tradeEnterpriseSignerIsPartner": {
+          "comment": "Подписант совпадает с партнером",
+          "type": "string"
+        },
+        "signerPEPDocs": {
+          "comment": "Файлы документов",
+          "items": {
+            "type": "object",
+            "properties": {
+              "docType": {
+                "comment": "Тип документа",
+                "type": "string"
+              },
+              "descript": {
+                "comment": "Описание",
+                "type": "string"
+              },
+              "attachment": {
+                "comment": "Файл",
+                "type": "string"
+              },
+              "uploadDate": {
+                "comment": "Дата представления",
+                "type": "number"
+              },
+              "attachlink": {
+                "comment": "ссылка на вложение",
+                "type": "string"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "signerPEPHistoryState": {
+          "comment": "История статусов",
+          "items": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "comment": "Статус",
+                "type": "string"
+              },
+              "stateDate": {
+                "comment": "Дата назначения статуса",
+                "type": "number"
+              },
+              "duration": {
+                "comment": "Продолжительность работ, дн.",
+                "type": "integer"
+              },
+              "executorFIO": {
+                "comment": "Исполнитель",
+                "type": "string"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "eMail": {
+          "comment": "ЭлПочта",
+          "type": "string"
+        },
+        "eMailUpper": {
+          "comment": "ЭлПочтаВерхийРегистр",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

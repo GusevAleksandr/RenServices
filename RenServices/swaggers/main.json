@@ -1,0 +1,96 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "rest сервисы ренессанс",
+    "version": "1.0.0",
+    "title": "rest сервисы ренессанс"
+  },
+  "tags": [
+    {
+      "name": "partnerListSimple",
+      "description": "Получение списка Партнеров (ИП/ЮЛ) Банка. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "partnerList",
+      "description": "Получение списка Партнеров (ИП/ЮЛ) Банка. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "partner",
+      "description": "Получение одного Партнера (ИП/ЮЛ) Банка по гуиду"
+    },
+
+    {
+      "name": "agentListSimple",
+      "description": "Получение списка Агентов Банка. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "agentList",
+      "description": "Получение списка Агентов Банка. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "agent",
+      "description": "Получение одного Агентов Банка по гуиду"
+    },
+
+    {
+      "name": "partnerEmployeeListSimple",
+      "description": "Получение списка Представителей/Сотрудников заданного Партнера. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "partnerEmployeeList",
+      "description": "Получение списка Представителей/Сотрудников заданного Партнера. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "partnerEmployee",
+      "description": "Получение одного Представителей/Сотрудников заданного Партнера по гуиду"
+    }
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "передается JWT-токен. Содержимое хидера начинается с 'Bearer ' + JWT-токек, полученный от сервиса 'авторизация пользователя в системе'"
+    }
+  },
+  "paths": {
+    "/rest-api/simple/list/partner": {
+      "$ref": "./Partner.json#/paths/~1rest-api~1simple~1list~1partner"
+    },
+    "/rest-api/list/partner": {
+      "$ref": "./Partner.json#/paths/~1rest-api~1list~1partner"
+    },
+    "/rest-api/list/partner/{queryId}": {
+      "$ref": "./Partner.json#/paths/~1rest-api~1list~1partner~1{queryId}"
+    },
+    "/rest-api/partners/{id}": {
+      "$ref": "./Partner.json#/paths/~1rest-api~1partners~1{id}"
+    },
+
+    "/rest-api/simple/list/agent": {
+      "$ref": "./Agent.json#/paths/~1rest-api~1simple~1list~1agent"
+    },
+    "/rest-api/list/agent": {
+      "$ref": "./Agent.json#/paths/~1rest-api~1list~1agent"
+    },
+    "/rest-api/list/agent/{queryId}": {
+      "$ref": "./Agent.json#/paths/~1rest-api~1list~1agent~1{queryId}"
+    },
+    "/rest-api/agents/{id}": {
+      "$ref": "./Agent.json#/paths/~1rest-api~1agents~1{id}"
+    },
+
+    "/rest-api/simple/list/partnerEmployee": {
+      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1simple~1list~1partnerEmployee"
+    },
+    "/rest-api/list/partnerEmployee": {
+      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1list~1partnerEmployee"
+    },
+    "/rest-api/list/partnerEmployee/{queryId}": {
+      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1list~1partnerEmployee~1{queryId}"
+    },
+    "/rest-api/partnerEmployees/{id}": {
+      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1partnerEmployees~1{id}"
+    }
+  }
+}

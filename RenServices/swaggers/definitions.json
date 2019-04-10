@@ -1,0 +1,128 @@
+{
+  "definitions": {
+    "OrderElement": {
+      "type": "object",
+      "required": [
+        "fieldName"
+      ],
+      "properties": {
+        "fieldName": {
+          "type": "string",
+          "description": "наименование поля для сортировки. Обязательный параметр"
+        },
+        "ascending": {
+          "type": "boolean",
+          "description": "направление сортировки по возрастанию. По умолчанию true",
+          "default": true
+        }
+      }
+    },
+    "DocListRequest": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "object",
+          "description": "расширенный фильтр в формате common-logic",
+          "example": {
+            "not": {
+              "and": [
+                {
+                  "eq": {
+                    "left": {
+                      "field": {
+                        "name": "testField"
+                      }
+                    },
+                    "right": {
+                      "constant": {
+                        "value": "10",
+                        "type": "LONG"
+                      }
+                    }
+                  }
+                },
+                {
+                  "eq": {
+                    "left": {
+                      "field": {
+                        "name": "fieldFirst"
+                      }
+                    },
+                    "right": {
+                      "field": {
+                        "name": "fieldSecond"
+                      }
+                    }
+                  }
+                },
+                {
+                  "and": [
+                    {
+                      "not": {
+                        "eq": {
+                          "left": {
+                            "field": {
+                              "name": "fieldFirst"
+                            }
+                          },
+                          "right": {
+                            "field": {
+                              "name": "fieldSecond"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "in": {
+                        "left": {
+                          "field": {
+                            "name": "inFieldName"
+                          }
+                        },
+                        "right": [
+                          {
+                            "constant": {
+                              "value": "inStringName"
+                            }
+                          },
+                          {
+                            "security-context": {
+                              "property": "login"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderElement"
+          }
+        },
+        "onlyHeaderFields": {
+          "type": "boolean",
+          "description": "флаг, указывающий необходимость загрузки только заголовочных полей документа. Под заголовочными понимаются поля первого уровня, не являющиеся таблицами (множественные элементы). Является необязательным, значение по умолчанию - true.",
+          "default": true
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
+          "default": 20
+        }
+      }
+    }
+  }
+}
