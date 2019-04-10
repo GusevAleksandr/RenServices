@@ -1,0 +1,758 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "rest сервисы ядра УФОС",
+    "version": "1.0.0",
+    "title": "rest сервисы УФОС"
+  },
+  "tags": [
+    {
+      "name": "docList",
+      "description": "получение списка документов"
+    },
+    {
+      "name": "document",
+      "description": "получение одного документа по гуиду"
+    },
+    {
+      "name": "authorization",
+      "description": "сервис аутентификации и работы с пользовательскими настройками"
+    }
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "передается JWT-токен. Содержимое хидера начинается с 'Bearer ' + JWT-токек, полученный от сервиса 'авторизация пользователя в системе'"
+    }
+  },
+  "paths": {
+    "/rest-api/core/v1/docs/simple/list/{typeId}": {
+      "get": {
+        "tags": [
+          "docList"
+        ],
+        "summary": "получение списка докумнетов",
+        "operationId": "simple_doc_list",
+        "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки. Все наименования полей документа имеют идентификаторы в соответсвтвии с дескриптором mapping.",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "typeId",
+            "description": "идентификатор типа документа, который является уникальным идентификатором (nodeId) из навигации",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "navigationId",
+            "description": "идентификатор файла навигации. Используется в случае наличия нескольких навигаций",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter",
+            "description": "дополнельные условия фильтрации в виде (поле=значение & поле2=значение2)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filterId",
+            "description": "идентификатор именованного фильтра. Возможна передача значений для параметров фильтрации. Значения передаются в строке запроса в виде ключ=значение.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "description": "список возвращаемых полей. Если параметр не задан, и установлен флаг onlyHeaderFields, выгружаются только заголовочные поля, без вложенных таблиц.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "onlyHeaderFields",
+            "description": "флаг, указывающий необходимость загрузки только заголовочных полей документа. Является необязательным, значение по умолчанию - true.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "ordersAsc",
+            "description": "список полей для сортировки по возрастанию",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordersDesc",
+            "description": "список полей для сортировки по убыванию",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа на основе дескриптора mapping.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/core/v1/docs/list/{id}": {
+      "post": {
+        "tags": [
+          "docList"
+        ],
+        "summary": "получение списка докумнетов",
+        "operationId": "post_doc_list",
+        "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе. Все наименования полей документа имеют идентификаторы в соответсвтвии с дескриптором mapping.",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "параметры запроса",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DocListRequest"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "description": "идентификатор типа документа, который является уникальным идентификатором (nodeId) из навигации",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "в качестве ответа возвращается уникальный идентификатор запроса по переданным параметрам, который в последствии должен быть передан через запрос get",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "docList"
+        ],
+        "summary": "получение списка докумнетов",
+        "operationId": "get_doc_list",
+        "description": "получение списка документов переданного типа с ранее переданными параметрами фильтрации",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "description": "количество элементов на странице. Если не задан - используется параметр из post запроса, иначе используется значиние по умолчанию, равное 20.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа на основе дескриптора mapping.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "запрос с переданным идентификатором не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/core/v1/document/get/{docType}/{guid}": {
+      "get": {
+        "tags": [
+          "document"
+        ],
+        "summary": "получение одного документа",
+        "operationId": "get_document",
+        "description": "получение полей документа по гуид. Все наименования полей документа имеют идентификаторы в соответсвтвии с дескриптором mapping.",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "docType",
+            "description": "тип документа для загрузки",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "guid",
+            "description": "гуид загружаемого документа",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "полученный документ. Все наименования полей документа имеют идентификаторы в соответсвтвии с дескриптором mapping.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "запрос с переданным идентификатором не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/auth/authorization": {
+      "post": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "авторизация пользователя в системе",
+        "operationId": "user_authorization",
+        "description": "авторизация зарегистрированного ранее пользователя в системе",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "логин пользователя",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AuthenticationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если авторизация прошла успешно, возвращается сформированый токен JWT",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/auth/user/password/new": {
+      "post": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "смена пароля",
+        "operationId": "password_new",
+        "description": "смена пароля авторизованного в системе пользователя",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "логин пользователя",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangePasswordRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если смена пароля прошла успешно, возвращается ответ с 200м кодом"
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/auth/user/authorization/password/new": {
+      "post": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "авторизация и смена пароля",
+        "operationId": "authorization_password_new",
+        "description": "авторизация пользователя в системе и смена пароля",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "логин пользователя",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangePasswordAndAuthorizationRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если смена пароля прошла успешно, возвращается ответ с 200м кодом"
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/auth/user/password": {
+      "delete": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "сброс пароля авторизованного пользователя",
+        "operationId": "authorization_password_delete",
+        "description": "сброс пароля авторизованного в системе пользователя",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "логин пользователя",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResetPasswordRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом"
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/auth/user/details": {
+      "get": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "получение информации о текущем пользователе",
+        "operationId": "authorization_password_details",
+        "description": "получение информации о текущем пользователе",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом",
+            "schema": {
+              "$ref": "#/definitions/UserDetails"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "OrderElement": {
+      "type": "object",
+      "required": [
+        "fieldName"
+      ],
+      "properties": {
+        "fieldName": {
+          "type": "string",
+          "description": "наименование поля для сортировки. Обязательный параметр"
+        },
+        "ascending": {
+          "type": "boolean",
+          "description": "направление сортировки по возрастанию. По умолчанию true",
+          "default": true
+        }
+      }
+    },
+    "DocListRequest": {
+      "type": "object",
+      "properties": {
+        "navigationId": {
+          "type": "string",
+          "description": "идентификатор файла навигации. Используется в случае наличия нескольких навигаций"
+        },
+        "filter": {
+          "type": "object",
+          "description": "расширенный фильтр в формате common-logic",
+          "example": {
+            "not": {
+              "and": [
+                {
+                  "eq": {
+                    "left": {
+                      "field": {
+                        "name": "testField"
+                      }
+                    },
+                    "right": {
+                      "constant": {
+                        "value": "10",
+                        "type": "LONG"
+                      }
+                    }
+                  }
+                },
+                {
+                  "eq": {
+                    "left": {
+                      "field": {
+                        "name": "fieldFirst"
+                      }
+                    },
+                    "right": {
+                      "field": {
+                        "name": "fieldSecond"
+                      }
+                    }
+                  }
+                },
+                {
+                  "and": [
+                    {
+                      "not": {
+                        "eq": {
+                          "left": {
+                            "field": {
+                              "name": "fieldFirst"
+                            }
+                          },
+                          "right": {
+                            "field": {
+                              "name": "fieldSecond"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "in": {
+                        "left": {
+                          "field": {
+                            "name": "inFieldName"
+                          }
+                        },
+                        "right": [
+                          {
+                            "constant": {
+                              "value": "inStringName"
+                            }
+                          },
+                          {
+                            "security-context": {
+                              "property": "login"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "additionalFilter": {
+          "type": "object",
+          "description": "предопределенный прикладной фильтр",
+          "properties": {
+            "filterId": {
+              "type": "string",
+              "description": "идентификатор предопределенного прикладной фильтра"
+            },
+            "params": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderElement"
+          }
+        },
+        "onlyHeaderFields": {
+          "type": "boolean",
+          "description": "флаг, указывающий необходимость загрузки только заголовочных полей документа. Является необязательным, значение по умолчанию - true.",
+          "default": true
+        },
+        "pageSize": {
+          "type": "integer",
+          "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
+          "default": 20
+        }
+      }
+    },
+    "AuthenticationRequest": {
+      "type": "object",
+      "required": [
+        "login",
+        "password"
+      ],
+      "properties": {
+        "login": {
+          "type": "string",
+          "description": "логин пользователя"
+        },
+        "password": {
+          "type": "string",
+          "description": "пароль пользователя в открытом виде"
+        }
+      }
+    },
+    "ChangePasswordRequest": {
+      "type": "object",
+      "required": [
+        "oldPassword",
+        "newPassword"
+      ],
+      "properties": {
+        "oldPassword": {
+          "type": "string",
+          "description": "старый пароль пользователя в открытом виде"
+        },
+        "newPassword": {
+          "type": "string",
+          "description": "новый пароль пользователя в открытом виде"
+        }
+      }
+    },
+    "ChangePasswordAndAuthorizationRequest": {
+      "type": "object",
+      "required": [
+        "login",
+        "oldPassword",
+        "newPassword"
+      ],
+      "properties": {
+        "login": {
+          "type": "string",
+          "description": "логин пользователя"
+        },
+        "oldPassword": {
+          "type": "string",
+          "description": "старый пароль пользователя в открытом виде"
+        },
+        "newPassword": {
+          "type": "string",
+          "description": "новый пароль пользователя в открытом виде"
+        }
+      }
+    },
+    "ResetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string",
+          "description": "ткущий пароль пользвоателя в открытом виде"
+        }
+      }
+    },
+    "UserDetails": {
+      "type": "object",
+      "required": [
+        "userName",
+        "fullUserName",
+        "roles",
+        "email"
+      ],
+      "properties": {
+        "userName": {
+          "type": "string",
+          "description": "логин текущего пользователя"
+        },
+        "fullUserName": {
+          "type": "string",
+          "description": "фио текущего пользователя"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "роли пользователя"
+        },
+        "email": {
+          "type": "string",
+          "description": "адрес электронной почты текущего пользователя"
+        }
+      }
+    }
+  }
+}

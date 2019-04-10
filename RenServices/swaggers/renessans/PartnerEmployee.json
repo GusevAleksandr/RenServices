@@ -126,7 +126,7 @@
             "description": "параметры запроса",
             "required": true,
             "schema": {
-              "$ref": "./definitions.json#/definitions/DocListRequest"
+              "$ref": "../core/definitions.json#/definitions/DocListRequest"
             }
           }
         ],

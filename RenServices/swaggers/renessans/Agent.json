@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "rest сервисы для работы с партнером банка",
+    "description": "rest сервисы для работы с агентом банка",
     "version": "1.0.0",
-    "title": "rest сервисы для работы с партнером банка"
+    "title": "rest сервисы для работы с агентом банка"
   },
   "securityDefinitions": {
     "Bearer": {
@@ -14,13 +14,13 @@
     }
   },
   "paths": {
-    "/rest-api/simple/list/partner": {
+    "/rest-api/simple/list/agent": {
       "get": {
         "tags": [
-          "partnerListSimple"
+          "agentListSimple"
         ],
-        "summary": "получение списка партнеров",
-        "operationId": "simple_partners_list",
+        "summary": "получение списка агентов",
+        "operationId": "simple_agents_list",
         "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
         "security": [
           {
@@ -90,7 +90,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Partner"
+                "$ref": "#/definitions/Agent"
               }
             }
           },
@@ -106,13 +106,13 @@
         }
       }
     },
-    "/rest-api/list/partner": {
+    "/rest-api/list/agent": {
       "post": {
         "tags": [
-          "partnerList"
+          "agentList"
         ],
         "summary": "сохранение параметров фильтрации",
-        "operationId": "post_partners_list",
+        "operationId": "post_agents_list",
         "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
         "security": [
           {
@@ -126,7 +126,7 @@
             "description": "параметры запроса",
             "required": true,
             "schema": {
-              "$ref": "./definitions.json#/definitions/DocListRequest"
+              "$ref": "../core/definitions.json#/definitions/DocListRequest"
             }
           }
         ],
@@ -149,14 +149,14 @@
         }
       }
     },
-    "/rest-api/list/partner/{queryId}": {
+    "/rest-api/list/agent/{queryId}": {
       "get": {
         "tags": [
-          "partnerList"
+          "agentList"
         ],
         "summary": "получение списка документов",
-        "operationId": "get_partner_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/partner",
+        "operationId": "get_agent_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/agent",
         "security": [
           {
             "Bearer": []
@@ -166,7 +166,7 @@
           {
             "in": "path",
             "name": "queryId",
-            "description": "идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post на урл /rest-api/list/partner",
+            "description": "идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post на урл /rest-api/list/agent",
             "required": true,
             "type": "string"
           },
@@ -191,7 +191,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Partner"
+                "$ref": "#/definitions/Agent"
               }
             }
           },
@@ -210,13 +210,13 @@
         }
       }
     },
-    "/rest-api/partners/{id}": {
+    "/rest-api/agents/{id}": {
       "get": {
         "tags": [
-          "partner"
+          "agent"
         ],
         "summary": "получение документа по гуиду",
-        "operationId": "partner_get",
+        "operationId": "agent_get",
         "description": "получение одного Партнера (ИП/ЮЛ) Банка по гуиду",
         "security": [
           {
@@ -237,7 +237,7 @@
             "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
             "schema": {
               "type": "object",
-              "$ref": "#/definitions/Partner"
+              "$ref": "#/definitions/Agent"
             }
           },
           "400": {
@@ -257,7 +257,7 @@
     }
   },
   "definitions": {
-    "Partner": {
+    "Agent": {
       "type": "object",
       "properties": {
         "guidDoc": {
@@ -288,7 +288,7 @@
           "description": "Признак нетиповых условий вознаграждения",
           "type": "string"
         },
-        "partnerType": {
+        "agentType": {
           "description": "Тип Партнера",
           "type": "object",
           "properties": {
@@ -900,7 +900,7 @@
           },
           "type": "array"
         },
-        "partnerkamhistory": {
+        "agentkamhistory": {
           "description": "История закрепления КАМ",
           "items": {
             "type": "object",

@@ -33,7 +33,7 @@ dependencies {
 
 swaggerSources {
     petstore {
-        inputFile = file('./swaggers/main.json')
+        inputFile = file('./swaggers/renessans/main.json')
         code {
             language = 'swagger'
         }

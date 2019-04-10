@@ -43,6 +43,12 @@
     {
       "name": "partnerEmployee",
       "description": "Получение одного Представителей/Сотрудников заданного Партнера по гуиду"
+    },
+
+
+    {
+      "name": "authorization",
+      "description": "сервис аутентификации и работы с пользовательскими настройками"
     }
   ],
   "securityDefinitions": {
@@ -91,6 +97,21 @@
     },
     "/rest-api/partnerEmployees/{id}": {
       "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1partnerEmployees~1{id}"
+    },
+    "/rest-api/auth/authorization": {
+      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1authorization"
+    },
+    "/rest-api/auth/user/password/new": {
+      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1password~1new"
+    },
+    "/rest-api/auth/user/authorization/password/new": {
+      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1authorization~1password~1new"
+    },
+    "/rest-api/auth/user/password": {
+      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1password"
+    },
+    "/rest-api/auth/user/details": {
+      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1details"
     }
   }
 }
