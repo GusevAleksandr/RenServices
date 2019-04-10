@@ -25,8 +25,9 @@ case class CommonLogicSchema (
   right: Option[ValueCLSchema] = None,
   like: Option[LeftRightCLSchema] = None,
   ilike: Option[LeftRightCLSchema] = None,
-  conditions: Option[Seq[CommonLogicSchema]] = None,
-  eq: Option[LeftRightCLSchema] = None
+  and: Option[NestedConditionCLSchema] = None,
+  eq: Option[LeftRightCLSchema] = None,
+  or: Option[NestedConditionCLSchema] = None
 ) extends ApiModel
 
 

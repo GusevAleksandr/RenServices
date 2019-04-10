@@ -16,6 +16,7 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class OrCLSchema (
+  or: Option[NestedConditionCLSchema] = None
 ) extends ApiModel
 
 
