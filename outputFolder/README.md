@@ -82,6 +82,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Agent](Agent.md)
+ - [CommonLogicSchema](CommonLogicSchema.md)
  - [DocListRequest](DocListRequest.md)
  - [OrderElement](OrderElement.md)
  - [Partner](Partner.md)
@@ -106,6 +107,7 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategories](PartnerTtCategories.md)
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
+ - [TypesCLSchema](TypesCLSchema.md)
 
 
 ## Documentation for Authorization
