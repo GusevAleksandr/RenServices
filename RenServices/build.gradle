@@ -1,8 +1,23 @@
 
 
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.io.swagger:swaggerhub:1.0.1"
+    }
+}
+
+
 plugins {
     id 'org.hidetake.swagger.generator' version '2.18.1'
 }
+
+
+apply plugin: "io.swagger.swaggerhub"
 
 group 'RenServices'
 version '1.0-SNAPSHOT'
@@ -20,7 +35,15 @@ swaggerSources {
     petstore {
         inputFile = file('./swaggers/main.json')
         code {
-            language = 'swagger-yaml'
+            language = 'swagger'
         }
     }
+}
+
+swaggerhubUpload {
+    api 'restServices'
+    owner 'renessansBankService'
+    version '1.0.0'
+    inputFile 'build/swagger-code-petstore/swagger.json'
+    token 'c35b1e61-8373-4ed0-802f-edb4c6ae87e9'
 }
