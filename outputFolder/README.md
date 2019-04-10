@@ -94,7 +94,6 @@ Class | Method | HTTP request | Description
  - [ChangePasswordRequest](ChangePasswordRequest.md)
  - [CommonLogic](CommonLogic.md)
  - [DocListRequest](DocListRequest.md)
- - [EqCLSchema](EqCLSchema.md)
  - [FieldCLSchema](FieldCLSchema.md)
  - [GeCLSchema](GeCLSchema.md)
  - [GtCLSchema](GtCLSchema.md)

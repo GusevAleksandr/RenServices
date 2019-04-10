@@ -16,7 +16,8 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class CommonLogic (
-  eq: Option[EqCLSchema] = None,
+  /* условие равенства (==) */
+  eq: Option[LeftRightCLSchema] = None,
   ge: Option[GeCLSchema] = None,
   gt: Option[GtCLSchema] = None,
   le: Option[LeCLSchema] = None,
