@@ -15,8 +15,9 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class FieldCLSchema (
-  field: Option[FieldCLSchemaField] = None
+case class FieldCLSchemaField (
+  name: Option[String] = None,
+  `type`: Option[TypesCLSchema] = None
 ) extends ApiModel
 
 
