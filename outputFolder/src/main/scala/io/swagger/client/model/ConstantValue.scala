@@ -15,9 +15,7 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class ValueCLSchemaConstant (
-  value: Option[Any] = None,
-  `type`: Option[ConstantValue] = None
+case class ConstantValue (
 ) extends ApiModel
 
 
