@@ -17,7 +17,7 @@ import java.util.UUID
 
 case class ValueCLSchemaConstant (
   value: Option[Any] = None,
-  `type`: Option[ConstantValue] = None
+  `type`: Option[TypesCLSchema] = None
 ) extends ApiModel
 
 

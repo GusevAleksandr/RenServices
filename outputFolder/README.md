@@ -88,13 +88,10 @@ Class | Method | HTTP request | Description
 
  - [Agent](Agent.md)
  - [AuthenticationRequest](AuthenticationRequest.md)
- - [BaseValue](BaseValue.md)
  - [ChangePasswordAndAuthorizationRequest](ChangePasswordAndAuthorizationRequest.md)
  - [ChangePasswordRequest](ChangePasswordRequest.md)
  - [CommonLogic](CommonLogic.md)
  - [CommonLogicBetween](CommonLogicBetween.md)
- - [ConstantValue](ConstantValue.md)
- - [ConstantValueConstant](ConstantValueConstant.md)
  - [DocListRequest](DocListRequest.md)
  - [FieldCLSchema](FieldCLSchema.md)
  - [FieldCLSchemaField](FieldCLSchemaField.md)
