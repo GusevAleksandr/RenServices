@@ -92,8 +92,6 @@ Class | Method | HTTP request | Description
  - [ChangePasswordRequest](ChangePasswordRequest.md)
  - [CommonLogic](CommonLogic.md)
  - [DocListRequest](DocListRequest.md)
- - [FieldCLSchema](FieldCLSchema.md)
- - [LeftRightCLSchema](LeftRightCLSchema.md)
  - [OrderElement](OrderElement.md)
  - [Partner](Partner.md)
  - [PartnerAdditionalRewardScope](PartnerAdditionalRewardScope.md)
@@ -118,12 +116,7 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
  - [ResetPasswordRequest](ResetPasswordRequest.md)
- - [SecurityPropertiesCLSchema](SecurityPropertiesCLSchema.md)
- - [TypesCLSchema](TypesCLSchema.md)
  - [UserDetails](UserDetails.md)
- - [ValueCLSchema](ValueCLSchema.md)
- - [ValueCLSchemaConstant](ValueCLSchemaConstant.md)
- - [ValueCLSchemaSecuritycontext](ValueCLSchemaSecuritycontext.md)
 
 
 ## Documentation for Authorization

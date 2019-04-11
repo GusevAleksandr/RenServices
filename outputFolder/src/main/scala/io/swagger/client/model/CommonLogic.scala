@@ -16,8 +16,6 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class CommonLogic (
-  /* условие больше или равно (>=) */
-  ge: Option[LeftRightCLSchema] = None
 ) extends ApiModel
 
 
