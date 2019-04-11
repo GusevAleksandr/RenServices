@@ -36,7 +36,8 @@ case class CommonLogic (
   /* объединение условий (ИЛИ) */
   or: Option[NestedConditionCLSchema] = None,
   /* отрицание */
-  not: Option[CommonLogic] = None
+  not: Option[CommonLogic] = None,
+  in: Option[CommonLogicIn] = None
 ) extends ApiModel
 
 

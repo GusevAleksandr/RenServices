@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
  - [ChangePasswordRequest](ChangePasswordRequest.md)
  - [CommonLogic](CommonLogic.md)
  - [CommonLogicBetween](CommonLogicBetween.md)
+ - [CommonLogicIn](CommonLogicIn.md)
  - [DocListRequest](DocListRequest.md)
  - [FieldCLSchema](FieldCLSchema.md)
  - [FieldCLSchemaField](FieldCLSchemaField.md)
