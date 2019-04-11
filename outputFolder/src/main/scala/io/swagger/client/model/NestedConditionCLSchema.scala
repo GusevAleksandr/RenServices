@@ -16,7 +16,6 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class NestedConditionCLSchema (
-  conditions: Option[Seq[CommonLogic]] = None
 ) extends ApiModel
 
 
