@@ -91,7 +91,11 @@ Class | Method | HTTP request | Description
  - [ChangePasswordAndAuthorizationRequest](ChangePasswordAndAuthorizationRequest.md)
  - [ChangePasswordRequest](ChangePasswordRequest.md)
  - [CommonLogic](CommonLogic.md)
+ - [CommonLogicBetween](CommonLogicBetween.md)
  - [DocListRequest](DocListRequest.md)
+ - [FieldCLSchema](FieldCLSchema.md)
+ - [LeftRightCLSchema](LeftRightCLSchema.md)
+ - [NestedConditionCLSchema](NestedConditionCLSchema.md)
  - [OrderElement](OrderElement.md)
  - [Partner](Partner.md)
  - [PartnerAdditionalRewardScope](PartnerAdditionalRewardScope.md)
@@ -116,7 +120,12 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
  - [ResetPasswordRequest](ResetPasswordRequest.md)
+ - [SecurityPropertiesCLSchema](SecurityPropertiesCLSchema.md)
+ - [TypesCLSchema](TypesCLSchema.md)
  - [UserDetails](UserDetails.md)
+ - [ValueCLSchema](ValueCLSchema.md)
+ - [ValueCLSchemaConstant](ValueCLSchemaConstant.md)
+ - [ValueCLSchemaSecuritycontext](ValueCLSchemaSecuritycontext.md)
 
 
 ## Documentation for Authorization
