@@ -17,7 +17,7 @@ import java.util.UUID
 
 case class CommonLogic (
   /* условие равенства (==) */
-  eq: LeftRightCLSchema,
+  eq: Option[LeftRightCLSchema] = None,
   /* условие больше или равно (>=) */
   ge: Option[LeftRightCLSchema] = None,
   /* условие строго больше (>) */
