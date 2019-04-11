@@ -11,6 +11,7 @@
  */
 package io.swagger.client.api
 
+import io.swagger.client.model.ERRORUNKNOWN
 import io.swagger.client.model.Partner
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
@@ -38,7 +39,7 @@ object PartnerListSimpleApi {
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
    * @param pageSize количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.
    */
-  def simplePartnersList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Partner]] =
+  def simplePartnersList(filter: Option[ERRORUNKNOWN] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Partner]] =
     ApiRequest[Seq[Partner]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/simple/list/partner", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter", filter)
