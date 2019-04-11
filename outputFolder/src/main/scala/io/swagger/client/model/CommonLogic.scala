@@ -26,8 +26,7 @@ case class CommonLogic (
   le: Option[LeftRightCLSchema] = None,
   /* условие строго меньше (<) */
   lt: Option[LeftRightCLSchema] = None,
-  between: Option[CommonLogicBetween] = None,
-  example: Option[ERRORUNKNOWN] = None
+  between: Option[CommonLogicBetween] = None
 ) extends ApiModel
 
 
