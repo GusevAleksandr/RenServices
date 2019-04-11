@@ -16,17 +16,8 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class CommonLogic (
-  /* условие равенства (==) */
-  eq: Option[LeftRightCLSchema] = None,
   /* условие больше или равно (>=) */
-  ge: Option[LeftRightCLSchema] = None,
-  /* условие строго больше (>) */
-  gt: Option[LeftRightCLSchema] = None,
-  /* условие меньше или равно (<=) */
-  le: Option[LeftRightCLSchema] = None,
-  /* условие строго меньше (<) */
-  lt: Option[LeftRightCLSchema] = None,
-  between: Option[CommonLogicBetween] = None
+  ge: Option[LeftRightCLSchema] = None
 ) extends ApiModel
 
 

@@ -91,7 +91,6 @@ Class | Method | HTTP request | Description
  - [ChangePasswordAndAuthorizationRequest](ChangePasswordAndAuthorizationRequest.md)
  - [ChangePasswordRequest](ChangePasswordRequest.md)
  - [CommonLogic](CommonLogic.md)
- - [CommonLogicBetween](CommonLogicBetween.md)
  - [DocListRequest](DocListRequest.md)
  - [FieldCLSchema](FieldCLSchema.md)
  - [LeftRightCLSchema](LeftRightCLSchema.md)
