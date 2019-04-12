@@ -87,6 +87,8 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Agent](Agent.md)
+ - [AgentSignerPEPDocs](AgentSignerPEPDocs.md)
+ - [AgentSignerPEPHistoryState](AgentSignerPEPHistoryState.md)
  - [AuthenticationRequest](AuthenticationRequest.md)
  - [ChangePasswordAndAuthorizationRequest](ChangePasswordAndAuthorizationRequest.md)
  - [ChangePasswordRequest](ChangePasswordRequest.md)
@@ -104,8 +106,6 @@ Class | Method | HTTP request | Description
  - [PartnerAdditionalRewardScope](PartnerAdditionalRewardScope.md)
  - [PartnerAdditionalServices](PartnerAdditionalServices.md)
  - [PartnerEmployee](PartnerEmployee.md)
- - [PartnerEmployeeSignerPEPDocs](PartnerEmployeeSignerPEPDocs.md)
- - [PartnerEmployeeSignerPEPHistoryState](PartnerEmployeeSignerPEPHistoryState.md)
  - [PartnerListAttachedAggents](PartnerListAttachedAggents.md)
  - [PartnerListErrors](PartnerListErrors.md)
  - [PartnerListFiles](PartnerListFiles.md)

@@ -16,201 +16,45 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class Agent (
-  /* ГУИД документа */
   guidDoc: Option[String] = None,
-  /* Вышестоящий партнер */
-  parentPartner: Option[String] = None,
-  /* Вышестоящий партнер ГУИД документа */
-  parentPartnerGuid: Option[String] = None,
-  /* ТМ Закрепленный */
-  tm: Option[String] = None,
-  /* Дата открепления ТМ */
-  tmdateoff: Option[Double] = None,
-  /* Предельное время обработки  */
-  kpi: Option[Int] = None,
-  /* Признак нетиповых условий вознаграждения */
-  flagAtypicalConditions: Option[String] = None,
-  agentType: Option[PartnerPartnerType] = None,
-  /* Дата расторжения */
-  dateTermination: Option[Double] = None,
-  /* Разрешена ПЭП */
+  state: Option[String] = None,
+  stateDate: Option[Double] = None,
+  partnerGUID: Option[String] = None,
+  partnerName: Option[String] = None,
+  partnerINN: Option[String] = None,
+  partnerRegion: Option[String] = None,
+  boss: Option[Boolean] = None,
+  surname: Option[String] = None,
+  name: Option[String] = None,
+  middleName: Option[String] = None,
+  fiorp: Option[String] = None,
+  post: Option[String] = None,
+  postRP: Option[String] = None,
+  phone: Option[String] = None,
+  passSeries: Option[String] = None,
+  passNumber: Option[String] = None,
+  issuedBy: Option[String] = None,
+  issuedDate: Option[Double] = None,
+  codeSubdivision: Option[String] = None,
+  dateOfBirth: Option[Double] = None,
+  login: Option[String] = None,
+  userGUID: Option[String] = None,
+  blockReason: Option[String] = None,
+  blockDescription: Option[String] = None,
+  blockExecutor: Option[String] = None,
+  blockDate: Option[Double] = None,
   isEnablePEP: Option[Boolean] = None,
-  /* Запретить работу с подписантами других партнеров */
-  disableWorkSigner: Option[Boolean] = None,
-  /* ИНН */
-  forminfoinn: Option[String] = None,
-  /* КПП */
-  forminfokpp: Option[String] = None,
-  /* ОГРН */
-  forminfoogrn: Option[String] = None,
-  /* ОКПО */
-  bankdetailsokpo: Option[String] = None,
-  /* Участвует в выплате КВ */
-  techPaymentKV: Option[Boolean] = None,
-  /* ФИО КАМ */
-  kamfio: Option[String] = None,
-  /* Дата открепления КАМ */
-  kamdateoff: Option[Double] = None,
-  /* История статусов */
-  listHistoryState: Option[Seq[PartnerListHistoryState]] = None,
-  /* История закрепления ТМ */
-  listHistoryTM: Option[Seq[PartnerListHistoryTM]] = None,
-  /* Документы (вложенные файлы) */
-  listFiles: Option[Seq[PartnerListFiles]] = None,
-  /* Прикрепленные агенты */
-  listAttachedAggents: Option[Seq[PartnerListAttachedAggents]] = None,
-  /* Сведения по ошибкам */
-  listErrors: Option[Seq[PartnerListErrors]] = None,
-  /* Сведения по отказам в согласовании */
-  listRejects: Option[Seq[PartnerListRejects]] = None,
-  /* Схемы вознаграждения */
-  listRewardSchemes: Option[Seq[PartnerListRewardSchemes]] = None,
-  /* История закрепления КАМ */
-  agentkamhistory: Option[Seq[PartnerPartnerkamhistory]] = None,
-  /* ТМ Дата закрепления */
-  tmDate: Option[Double] = None,
-  /* Статус */
-  cState: Option[String] = None,
-  /* Дата назначения статуса */
-  cStateDate: Option[Double] = None,
-  /* Предельная дата обработки */
-  cLimitDate: Option[Double] = None,
-  /* ТМ ГУИД документа */
-  tmGuidDoc: Option[String] = None,
-  /* Дата Закрепления КАМ */
-  kamDateKAM: Option[Double] = None,
-  /* Фамилия КАМ */
-  kamLastname: Option[String] = None,
-  /* Имя КАМ */
-  kamFirstname: Option[String] = None,
-  /* Отчество КАМ */
-  kamMiddleName: Option[String] = None,
-  /* ГУИД КАМ */
-  kamGuidDoc: Option[String] = None,
-  /* Наименование банка */
-  bankdetailsBankName: Option[String] = None,
-  /* БИК */
-  bankdetailsBankBIK: Option[String] = None,
-  /* Расчетный счет */
-  bankdetailsAccount: Option[String] = None,
-  /* Корреспондентский счет */
-  bankdetailsCorrAccount: Option[String] = None,
-  /* ТМ Фамилия */
-  tmSurname: Option[String] = None,
-  /* ТМ Имя */
-  tmName: Option[String] = None,
-  /* ТМ Отчество */
-  tmMiddle: Option[String] = None,
-  /* ФИО руководителя в рп */
-  fioBossRP: Option[String] = None,
-  /* Форма регистрации */
-  forminfoRegForm: Option[String] = None,
-  /* Наименование ЮЛ ИП */
-  forminfoPartnerName: Option[String] = None,
-  /* Дата регистрации */
-  forminfoRegDate: Option[Double] = None,
-  /* Телефон */
-  forminfoPhoneHome: Option[String] = None,
-  /* ЭлПочта */
-  forminfoeMail: Option[String] = None,
-  /* Сайт */
-  forminfoSite: Option[String] = None,
-  /* Фамилия */
-  forminfoipSurname: Option[String] = None,
-  /* Имя */
-  forminfoipName: Option[String] = None,
-  /* Отчество */
-  forminfoipMiddleName: Option[String] = None,
-  /* Страна гражданства */
-  forminfoipCountry: Option[String] = None,
-  /* Дата рождения */
-  forminfoipDateOfBirth: Option[Double] = None,
-  /* Место рождения */
-  forminfoipTownOfBirth: Option[String] = None,
-  /* Серия паспорта */
-  forminfoipPassSeria: Option[String] = None,
-  /* Номер паспорта */
-  forminfoipRassNum: Option[String] = None,
-  /* Дата выдачи */
-  forminfoipDatePassDeliv: Option[Double] = None,
-  /* Кем выдан */
-  forminfoipOrgPassDeliv: Option[String] = None,
-  /* ФИО руководителя */
-  forminfoulChiefFIO: Option[String] = None,
-  /* Факс */
-  forminfoFax: Option[String] = None,
-  /* Код подразделения */
-  forminfoCodeSubdivision: Option[String] = None,
-  /* ЮА Индекс */
-  legeladdressipRegIndex: Option[String] = None,
-  /* ЮА Регион */
-  legeladdressipRegRegion: Option[String] = None,
-  /* ЮА Населенный пункт */
-  legeladdressipRegTown: Option[String] = None,
-  /* ЮА Улица */
-  legeladdressipRegStreet: Option[String] = None,
-  /* ЮА Дом */
-  legeladdressipRegDom: Option[String] = None,
-  /* ЮА Корпус */
-  legeladdressipRegKorpus: Option[String] = None,
-  /* ЮА Строение */
-  legeladdressipRegStroenie: Option[String] = None,
-  /* ЮА Офис (кв.) */
-  legeladdressipRegFlat: Option[String] = None,
-  /* ЮА Полный Юридический адрес Адрес регистрации */
-  legeladdressipRegAddress: Option[String] = None,
-  /* ПА Индекс */
-  postaddressipHebIndex: Option[String] = None,
-  /* ПА Регион */
-  postaddressipHebRegion: Option[String] = None,
-  /* ПА Населенный пункт */
-  postaddressipHebTown: Option[String] = None,
-  /* ПА Улица */
-  postaddressipHebStreet: Option[String] = None,
-  /* ПА Дом */
-  postaddressipHebDom: Option[String] = None,
-  /* ПА Корпус */
-  postaddressipHebKorpus: Option[String] = None,
-  /* ПА Строение */
-  postaddressipHebStroenie: Option[String] = None,
-  /* ПА Офис (кв.) */
-  postaddressipHebOffice: Option[String] = None,
-  /* ПА Полный Почтовый адрес Адрес проживания */
-  postaddressipHebAddress: Option[String] = None,
-  /* Флаг почтового адресса */
-  postaddressipHebAdressFlag: Option[Boolean] = None,
-  /* Дивизион закрепления */
-  schemeinteractionDivision: Option[String] = None,
-  /* Регион закрепления */
-  schemeinteractionRegion: Option[String] = None,
-  /* Схема работы с ТТ */
-  schemeinteractionttScheme: Option[String] = None,
-  /* Ключевой партнер */
-  schemeinteractionIsKey: Option[Boolean] = None,
-  /* Код сети */
-  schemeinteractionNetwork: Option[String] = None,
-  /* Название сети */
-  schemeinteractionNetName: Option[String] = None,
-  /* Сегмент торговли */
-  schemeinteractionTradeSegment: Option[String] = None,
-  /* Представитель партнера (подписант) */
-  schemeinteractionPartnerRepresent: Option[String] = None,
-  /* Представитель партнера (подписант) р.п. */
-  schemeinteractionPartnerRepresentRP: Option[String] = None,
-  /* Основание полномочий (родительный падеж) */
-  schemeinteractionActBase: Option[String] = None,
-  /* Представитель партнера. Должность и.п. */
-  schemeinteractionPartnerRepresentPost: Option[String] = None,
-  /* Представитель партнера. Должность р.п. */
-  schemeinteractionPartnerRepresentPostRP: Option[String] = None,
-  /* Представитель партнера (подписант) Имя */
-  schemeinteractionPartnerReprName: Option[String] = None,
-  /* Представитель партнера (подписант) Фамилия */
-  schemeinteractionPartnerReprFamily: Option[String] = None,
-  /* Представитель партнера (подписант) Отчество */
-  schemeinteractionPartnerReprMName: Option[String] = None,
-  /* Подписант совпадает с партнером */
-  schemeinteractionSignerIsPartner: Option[String] = None
+  isEnableView: Option[Boolean] = None,
+  fiofull: Option[String] = None,
+  address: Option[String] = None,
+  surnameUpper: Option[String] = None,
+  nameUpper: Option[String] = None,
+  middleNameUpper: Option[String] = None,
+  tradeEnterpriseSignerIsPartner: Option[String] = None,
+  signerPEPDocs: Option[Seq[AgentSignerPEPDocs]] = None,
+  signerPEPHistoryState: Option[Seq[AgentSignerPEPHistoryState]] = None,
+  eMail: Option[String] = None,
+  eMailUpper: Option[String] = None
 ) extends ApiModel
 
 

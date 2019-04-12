@@ -51,8 +51,8 @@ case class PartnerEmployee (
   nameUpper: Option[String] = None,
   middleNameUpper: Option[String] = None,
   tradeEnterpriseSignerIsPartner: Option[String] = None,
-  signerPEPDocs: Option[Seq[PartnerEmployeeSignerPEPDocs]] = None,
-  signerPEPHistoryState: Option[Seq[PartnerEmployeeSignerPEPHistoryState]] = None,
+  signerPEPDocs: Option[Seq[AgentSignerPEPDocs]] = None,
+  signerPEPHistoryState: Option[Seq[AgentSignerPEPHistoryState]] = None,
   eMail: Option[String] = None,
   eMailUpper: Option[String] = None
 ) extends ApiModel
