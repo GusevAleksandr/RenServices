@@ -66,7 +66,7 @@ All URIs are relative to *https://virtserver.swaggerhub.com/renessansBankService
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AgentApi* | **agentGet** | **GET** /rest-api/agents/{id} | получение документа по гуиду
-*AgentListApi* | **getAgentList** | **GET** /rest-api/list/agent/{queryId} | получение списка документов
+*AgentListApi* | **getAgentList** | **GET** /rest-api/list/agent/{id} | получение списка документов
 *AgentListApi* | **postAgentsList** | **POST** /rest-api/list/agent | сохранение параметров фильтрации
 *AgentListSimpleApi* | **simpleAgentsList** | **GET** /rest-api/simple/list/agent | получение списка агентов
 *AuthorizationApi* | **authorizationPasswordDelete** | **DELETE** /rest-api/auth/user/password | сброс пароля авторизованного пользователя
@@ -76,7 +76,7 @@ Class | Method | HTTP request | Description
 *AuthorizationApi* | **userAuthorization** | **POST** /rest-api/auth/authorization | авторизация пользователя в системе
 *PartnerApi* | **partnerGet** | **GET** /rest-api/partners/{id} | получение документа по гуиду
 *PartnerEmployeeApi* | **partnerEmployeeGet** | **GET** /rest-api/partnerEmployees/{id} | получение документа по гуиду
-*PartnerEmployeeListApi* | **getPartnerEmployeeList** | **GET** /rest-api/list/partnerEmployee/{queryId} | получение списка документов
+*PartnerEmployeeListApi* | **getPartnerEmployeeList** | **GET** /rest-api/list/partnerEmployee/{id} | получение списка документов
 *PartnerEmployeeListApi* | **postPartnerEmployeesList** | **POST** /rest-api/list/partnerEmployee | сохранение параметров фильтрации
 *PartnerEmployeeListSimpleApi* | **simplePartnerEmployeesList** | **GET** /rest-api/simple/list/partnerEmployee | получение списка сотрудников партнера
 *PartnerListApi* | **getPartnerList** | **GET** /rest-api/list/partner/{id} | получение списка документов
@@ -90,15 +90,6 @@ Class | Method | HTTP request | Description
  - [AuthenticationRequest](AuthenticationRequest.md)
  - [ChangePasswordAndAuthorizationRequest](ChangePasswordAndAuthorizationRequest.md)
  - [ChangePasswordRequest](ChangePasswordRequest.md)
- - [CommonLogic](CommonLogic.md)
- - [CommonLogicBetween](CommonLogicBetween.md)
- - [CommonLogicIn](CommonLogicIn.md)
- - [DocListRequest](DocListRequest.md)
- - [FieldCLSchema](FieldCLSchema.md)
- - [FieldCLSchemaField](FieldCLSchemaField.md)
- - [LeftRightCLSchema](LeftRightCLSchema.md)
- - [NestedConditionCLSchema](NestedConditionCLSchema.md)
- - [OrderElement](OrderElement.md)
  - [Partner](Partner.md)
  - [PartnerAdditionalRewardScope](PartnerAdditionalRewardScope.md)
  - [PartnerAdditionalServices](PartnerAdditionalServices.md)
@@ -122,12 +113,7 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
  - [ResetPasswordRequest](ResetPasswordRequest.md)
- - [SecurityPropertiesCLSchema](SecurityPropertiesCLSchema.md)
- - [TypesCLSchema](TypesCLSchema.md)
  - [UserDetails](UserDetails.md)
- - [ValueCLSchema](ValueCLSchema.md)
- - [ValueCLSchemaConstant](ValueCLSchemaConstant.md)
- - [ValueCLSchemaSecuritycontext](ValueCLSchemaSecuritycontext.md)
 
 
 ## Documentation for Authorization

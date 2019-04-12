@@ -32,16 +32,16 @@ object AgentListApi {
    * Available security schemes:
    *   Bearer (apiKey)
    * 
-   * @param queryId идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post на урл /rest-api/list/agent
+   * @param id идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
-   * @param pageSize количество элементов на странице. Если не задан - используется параметр из post запроса, иначе используется значиние по умолчанию, равное 20.
+   * @param pageSize количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.
    */
-  def getAgentList(queryId: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Agent]] =
-    ApiRequest[Seq[Agent]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/agent/{queryId}", "application/json")
+  def getAgentList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Agent]] =
+    ApiRequest[Seq[Agent]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/agent/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
-      .withPathParam("queryId", queryId)
+      .withPathParam("id", id)
       .withSuccessResponse[Seq[Agent]](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
@@ -59,12 +59,12 @@ object AgentListApi {
    * Available security schemes:
    *   Bearer (apiKey)
    * 
-   * @param body параметры запроса
+   * @param postBody параметры запроса
    */
-  def postAgentsList(body: DocListRequest)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+  def postAgentsList(postBody: DocListRequest)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
     ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/agent", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withBody(body)
+      .withBody(postBody)
       .withSuccessResponse[String](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
