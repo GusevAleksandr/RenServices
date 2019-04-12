@@ -32,16 +32,16 @@ object PartnerListApi {
    * Available security schemes:
    *   Bearer (apiKey)
    * 
-   * @param queryId идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post на урл /rest-api/list/partner
+   * @param id идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
-   * @param pageSize количество элементов на странице. Если не задан - используется параметр из post запроса, иначе используется значиние по умолчанию, равное 20.
+   * @param pageSize количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.
    */
-  def getPartnerList(queryId: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Partner]] =
+  def getPartnerList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Partner]] =
     ApiRequest[Seq[Partner]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/partner/{queryId}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
-      .withPathParam("queryId", queryId)
+      .withPathParam("id", id)
       .withSuccessResponse[Seq[Partner]](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
@@ -59,12 +59,12 @@ object PartnerListApi {
    * Available security schemes:
    *   Bearer (apiKey)
    * 
-   * @param body параметры запроса
+   * @param postBody параметры запроса
    */
-  def postPartnersList(body: DocListRequest)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+  def postPartnersList(postBody: DocListRequest)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
     ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/partner", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withBody(body)
+      .withBody(postBody)
       .withSuccessResponse[String](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
