@@ -79,7 +79,7 @@ Class | Method | HTTP request | Description
 *PartnerEmployeeListApi* | **getPartnerEmployeeList** | **GET** /rest-api/list/partnerEmployee/{queryId} | получение списка документов
 *PartnerEmployeeListApi* | **postPartnerEmployeesList** | **POST** /rest-api/list/partnerEmployee | сохранение параметров фильтрации
 *PartnerEmployeeListSimpleApi* | **simplePartnerEmployeesList** | **GET** /rest-api/simple/list/partnerEmployee | получение списка сотрудников партнера
-*PartnerListApi* | **getPartnerList** | **GET** /rest-api/list/partner/{queryId} | получение списка документов
+*PartnerListApi* | **getPartnerList** | **GET** /rest-api/list/partner/{id} | получение списка документов
 *PartnerListApi* | **postPartnersList** | **POST** /rest-api/list/partner | сохранение параметров фильтрации
 *PartnerListSimpleApi* | **simplePartnersList** | **GET** /rest-api/simple/list/partner | получение списка партнеров
 
