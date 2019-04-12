@@ -11,7 +11,6 @@
  */
 package io.swagger.client.api
 
-import io.swagger.client.model.ERRORUNKNOWN
 import io.swagger.client.model.Partner
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
@@ -31,7 +30,7 @@ object PartnerListSimpleApi {
    * Available security schemes:
    *   Bearer (apiKey)
    * 
-   * @param filter дополнельные условия фильтрации в виде (поле&#x3D;значение &amp; поле2&#x3D;значение2)
+   * @param filter дополнительные условия фильтрации в формате простых запросов. Используются логические выражения (&#x3D;, !&#x3D;, &gt;, &gt;&#x3D;, &lt;, &lt;&#x3D;), операции коньюнкции (AND), коньюнкции (OR), отрицания (NOT) ключевые слова like
    * @param fields список возвращаемых полей. Если параметр не задан, и установлен флаг onlyHeaderFields, выгружаются только заголовочные поля, без вложенных таблиц.
    * @param onlyHeaderFields флаг, указывающий необходимость загрузки только заголовочных полей документа. Под заголовочными понимаются поля первого уровня, не являющиеся таблицами (множественные элементы). Является необязательным, значение по умолчанию - true.
    * @param ordersAsc список полей для сортировки по возрастанию
@@ -39,7 +38,7 @@ object PartnerListSimpleApi {
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
    * @param pageSize количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.
    */
-  def simplePartnersList(filter: Option[ERRORUNKNOWN] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Partner]] =
+  def simplePartnersList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Partner]] =
     ApiRequest[Seq[Partner]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/simple/list/partner", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter", filter)
