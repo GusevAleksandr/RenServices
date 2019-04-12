@@ -16,44 +16,83 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class PartnerEmployee (
+  /* ГУИД документа */
   guidDoc: Option[String] = None,
+  /* Статус */
   state: Option[String] = None,
+  /* Дата назначения статуса */
   stateDate: Option[Double] = None,
+  /* Гуид партнера */
   partnerGUID: Option[String] = None,
+  /* Название партнера */
   partnerName: Option[String] = None,
+  /* Партнер ИНН */
   partnerINN: Option[String] = None,
+  /* Регион закрепления партнера */
   partnerRegion: Option[String] = None,
+  /* Руководитель */
   boss: Option[Boolean] = None,
+  /* Фамилия */
   surname: Option[String] = None,
+  /* Имя */
   name: Option[String] = None,
+  /* Отчество */
   middleName: Option[String] = None,
+  /* ФИО в р.п. */
   fiorp: Option[String] = None,
+  /* Должность */
   post: Option[String] = None,
+  /* Должность в р.п. */
   postRP: Option[String] = None,
+  /* Телефон */
   phone: Option[String] = None,
+  /* Серия паспорта */
   passSeries: Option[String] = None,
+  /* Номер паспорта */
   passNumber: Option[String] = None,
+  /* Кем выдан */
   issuedBy: Option[String] = None,
+  /* Дата выдачи */
   issuedDate: Option[Double] = None,
+  /* Код подразделения */
   codeSubdivision: Option[String] = None,
+  /* Дата рождения */
   dateOfBirth: Option[Double] = None,
+  /* Логин подписанта */
   login: Option[String] = None,
+  /* Гуид пользователя */
   userGUID: Option[String] = None,
+  /* Причина блокировки */
   blockReason: Option[String] = None,
+  /* Описание причины блокировки */
   blockDescription: Option[String] = None,
+  /* Исполнитель */
   blockExecutor: Option[String] = None,
+  /* Дата блокировки */
   blockDate: Option[Double] = None,
+  /* Доступ на ПЭП */
   isEnablePEP: Option[Boolean] = None,
+  /* Доступ на просмотр */
   isEnableView: Option[Boolean] = None,
+  /* ФИОип */
   fiofull: Option[String] = None,
+  /* Адрес регистрации */
   address: Option[String] = None,
+  /* ФамилияВерхийРегистр */
   surnameUpper: Option[String] = None,
+  /* ИмяВерхийРегистр */
   nameUpper: Option[String] = None,
+  /* ОтчествоВерхийРегистр */
   middleNameUpper: Option[String] = None,
+  /* Подписант совпадает с партнером */
   tradeEnterpriseSignerIsPartner: Option[String] = None,
+  /* Файлы документов */
   signerPEPDocs: Option[Seq[AgentSignerPEPDocs]] = None,
+  /* История статусов */
   signerPEPHistoryState: Option[Seq[AgentSignerPEPHistoryState]] = None,
+  /* ЭлПочта */
   eMail: Option[String] = None,
+  /* ЭлПочтаВерхийРегистр */
   eMailUpper: Option[String] = None
 ) extends ApiModel
 

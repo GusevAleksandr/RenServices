@@ -16,10 +16,15 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class AgentSignerPEPDocs (
+  /* Тип документа */
   docType: Option[String] = None,
+  /* Описание */
   descript: Option[String] = None,
+  /* Файл */
   attachment: Option[String] = None,
+  /* Дата представления */
   uploadDate: Option[Double] = None,
+  /* ссылка на вложение */
   attachlink: Option[String] = None
 ) extends ApiModel
 

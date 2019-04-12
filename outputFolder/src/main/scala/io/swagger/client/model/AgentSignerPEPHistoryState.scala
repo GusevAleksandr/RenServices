@@ -16,9 +16,13 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class AgentSignerPEPHistoryState (
+  /* Статус */
   state: Option[String] = None,
+  /* Дата назначения статуса */
   stateDate: Option[Double] = None,
+  /* Продолжительность работ, дн. */
   duration: Option[Int] = None,
+  /* Исполнитель */
   executorFIO: Option[String] = None
 ) extends ApiModel
 
