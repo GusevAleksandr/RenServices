@@ -82,6 +82,10 @@ Class | Method | HTTP request | Description
 *PartnerListApi* | **getPartnerList** | **GET** /rest-api/list/partner/{id} | получение списка документов
 *PartnerListApi* | **postPartnersList** | **POST** /rest-api/list/partner | сохранение параметров фильтрации
 *PartnerListSimpleApi* | **simplePartnersList** | **GET** /rest-api/simple/list/partner | получение списка партнеров
+*TradingPointApi* | **tradingPointGet** | **GET** /rest-api/tradingPoint/{id} | получение документа по гуиду
+*TradingPointListApi* | **getTradingPointList** | **GET** /rest-api/list/tradingPoint/{id} | получение списка документов
+*TradingPointListApi* | **postTradingPointsList** | **POST** /rest-api/list/tradingPoint | сохранение параметров фильтрации
+*TradingPointListSimpleApi* | **simpleTradingPointsList** | **GET** /rest-api/simple/list/tradingPoint | получение списка торговых точек
 
 
 ## Documentation for Models
@@ -124,6 +128,7 @@ Class | Method | HTTP request | Description
  - [PartnerUnit](PartnerUnit.md)
  - [ResetPasswordRequest](ResetPasswordRequest.md)
  - [SecurityPropertiesCLSchema](SecurityPropertiesCLSchema.md)
+ - [TradingPoint](TradingPoint.md)
  - [TypesCLSchema](TypesCLSchema.md)
  - [UserDetails](UserDetails.md)
  - [ValueCLSchema](ValueCLSchema.md)
