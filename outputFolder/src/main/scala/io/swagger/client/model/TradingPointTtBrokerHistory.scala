@@ -16,14 +16,23 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointTtBrokerHistory (
+  /* Ссылка на брокер */
   guid: Option[String] = None,
+  /* Наименование брокера */
   name: Option[String] = None,
+  /* ИНН брокера */
   inn: Option[String] = None,
+  /* Сотрудник подключивший брокера */
   authorOn: Option[String] = None,
+  /* Дата закрепления КАМ */
   dateOn: Option[Double] = None,
+  /* Сотрудник отключивший брокера */
   authorOff: Option[String] = None,
+  /* Дата открепленияКАМ */
   dateOff: Option[Double] = None,
+  /* Дата подключения ТТ к брокеру */
   ttDateOn: Option[Double] = None,
+  /* Дата отключения ТТ от брокера */
   ttDateOff: Option[Double] = None
 ) extends ApiModel
 

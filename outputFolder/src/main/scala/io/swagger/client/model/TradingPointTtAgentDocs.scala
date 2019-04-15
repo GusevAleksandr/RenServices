@@ -16,10 +16,15 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointTtAgentDocs (
+  /* Тип документа */
   docType: Option[String] = None,
+  /* Описание */
   descript: Option[String] = None,
+  /* Файл */
   attachment: Option[String] = None,
+  /* Признак актуальности */
   isActive: Option[Boolean] = None,
+  /* Дата представления */
   uploadDate: Option[Double] = None
 ) extends ApiModel
 

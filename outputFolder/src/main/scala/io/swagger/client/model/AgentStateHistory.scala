@@ -16,10 +16,15 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class AgentStateHistory (
+  /* Статус */
   state: Option[String] = None,
+  /* Дата назначения статуса */
   stateDate: Option[Double] = None,
+  /* Продолжительность работ, дн. */
   duration: Option[Int] = None,
+  /* Исполнитель */
   executorFIO: Option[String] = None,
+  /* Роль исполнителя */
   executorRole: Option[String] = None
 ) extends ApiModel
 

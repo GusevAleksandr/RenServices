@@ -15,14 +15,14 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class TradingPointAddInfoReceiveCanal (
+case class TradingPointAddInfoSendCanal (
   content: Option[String] = None,
   code: Option[String] = None,
   /* phone - телефон, email - e-mail, courier - курьер */
-  value: Option[TradingPointAddInfoReceiveCanalEnums.Value] = None
+  value: Option[TradingPointAddInfoSendCanalEnums.Value] = None
 ) extends ApiModel
 
-object TradingPointAddInfoReceiveCanalEnums {
+object TradingPointAddInfoSendCanalEnums {
 
   type Value = Value.Value
   object Value extends Enumeration {

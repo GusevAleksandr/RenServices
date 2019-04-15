@@ -16,9 +16,13 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class AgentAgentkamhistory (
+  /* ФИО КАМ */
   kamfio: Option[String] = None,
+  /* Автор изменения */
   authorChanges: Option[String] = None,
+  /* Дата изменения */
   dateChanges: Option[Double] = None,
+  /* Дата закрепления КАМ */
   kamDate: Option[Double] = None
 ) extends ApiModel
 

@@ -16,13 +16,20 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointTtCreditProduct (
+  /* ГУИД документа */
   productGUID: Option[String] = None,
+  /* ФПН */
   fpn: Option[String] = None,
+  /* Кредитные продукты */
   product: Option[String] = None,
+  /* Дата запуска */
   dateOn: Option[Double] = None,
+  /* Дата отключения */
   dateOff: Option[Double] = None,
+  /* Код продукта */
   code: Option[String] = None,
   agreementRole: Option[TradingPointAgreementRole] = None,
+  /* ТТ Скидка */
   ttDiscount: Option[Double] = None
 ) extends ApiModel
 

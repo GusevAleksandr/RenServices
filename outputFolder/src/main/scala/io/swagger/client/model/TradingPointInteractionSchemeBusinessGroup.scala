@@ -18,6 +18,7 @@ import java.util.UUID
 case class TradingPointInteractionSchemeBusinessGroup (
   content: Option[String] = None,
   code: Option[String] = None,
+  /* lit1 - Electronics, lit2 - Non-Electronics, lit3 - Telecom */
   value: Option[TradingPointInteractionSchemeBusinessGroupEnums.Value] = None
 ) extends ApiModel
 

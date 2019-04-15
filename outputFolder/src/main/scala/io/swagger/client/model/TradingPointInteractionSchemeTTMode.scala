@@ -18,6 +18,7 @@ import java.util.UUID
 case class TradingPointInteractionSchemeTTMode (
   content: Option[String] = None,
   code: Option[String] = None,
+  /* Lit1 - online, lit2 - offline */
   value: Option[TradingPointInteractionSchemeTTModeEnums.Value] = None
 ) extends ApiModel
 

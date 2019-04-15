@@ -18,6 +18,7 @@ import java.util.UUID
 case class TradingPointAgreementRole (
   content: Option[String] = None,
   code: Option[String] = None,
+  /* Manager - правляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется */
   value: Option[TradingPointAgreementRoleEnums.Value] = None
 ) extends ApiModel
 

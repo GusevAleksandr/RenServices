@@ -16,14 +16,23 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class AgentAgentPartnerTT (
+  /* Партнер */
   partner: Option[String] = None,
+  /* ГуидПартнер */
   partnerGuid: Option[String] = None,
+  /* Торговая точка */
   tt: Option[String] = None,
+  /* Регион закрепления */
   regionCentr: Option[String] = None,
+  /* Договор */
   num: Option[String] = None,
+  /* Статус */
   state: Option[String] = None,
+  /* Дата договора */
   dateContract: Option[Double] = None,
+  /* Дата окончания действия */
   endDate: Option[Double] = None,
+  /* Гуид ТТ */
   ttGuid: Option[String] = None
 ) extends ApiModel
 

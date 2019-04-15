@@ -18,6 +18,7 @@ import java.util.UUID
 case class TradingPointPurpose (
   content: Option[String] = None,
   code: Option[String] = None,
+  /* pulledFiles - забрал досье, connectedAgent - подключил агента, heldTalks - провел переговоры по подключению новых кредитных продуктов, trainedEmployees - провел обучение сотрудников, postedPOSM - разместил POSM, reanimation - реанимация, specTask - спецзадача */
   value: Option[TradingPointPurposeEnums.Value] = None
 ) extends ApiModel
 

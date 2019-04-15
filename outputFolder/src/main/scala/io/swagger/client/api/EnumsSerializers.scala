@@ -21,6 +21,7 @@ object EnumsSerializers {
     new EnumNameSerializer(PartnerPartnerTypeEnums.Value) :+
     new EnumNameSerializer(PartnerUnitEnums.Value) :+
     new EnumNameSerializer(TradingPointAddInfoReceiveCanalEnums.Value) :+
+    new EnumNameSerializer(TradingPointAddInfoSendCanalEnums.Value) :+
     new EnumNameSerializer(TradingPointAgreementRoleEnums.Value) :+
     new EnumNameSerializer(TradingPointInteractionSchemeBusinessGroupEnums.Value) :+
     new EnumNameSerializer(TradingPointInteractionSchemeTTModeEnums.Value) :+

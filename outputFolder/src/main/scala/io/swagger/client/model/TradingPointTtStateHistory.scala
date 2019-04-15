@@ -15,17 +15,17 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class AgentAgentNonAgree (
+case class TradingPointTtStateHistory (
   /* Статус */
   state: Option[String] = None,
-  /* Описание решения */
-  note: Option[String] = None,
-  /* Автор */
-  author: Option[String] = None,
-  /* Дата */
-  dateT: Option[Double] = None,
-  /* Флаг удаления */
-  applDelFlag: Option[String] = None
+  /* Дата назначения */
+  stateDate: Option[Double] = None,
+  /* Продолжительность работ */
+  duration: Option[Int] = None,
+  /* Исполнитель */
+  executorFIO: Option[String] = None,
+  /* Роль исполнителя */
+  executorRole: Option[String] = None
 ) extends ApiModel
 
 

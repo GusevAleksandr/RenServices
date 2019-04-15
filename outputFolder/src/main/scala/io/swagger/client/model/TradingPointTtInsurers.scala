@@ -16,6 +16,7 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointTtInsurers (
+  /* Страховая компания */
   insurer: Option[String] = None
 ) extends ApiModel
 

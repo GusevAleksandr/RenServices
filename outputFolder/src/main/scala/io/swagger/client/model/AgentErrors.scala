@@ -16,11 +16,17 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class AgentErrors (
+  /* Тип ошибки */
   errorType: Option[String] = None,
+  /* Описание */
   errorDescription: Option[String] = None,
+  /* Автор */
   errorAuthor: Option[String] = None,
+  /* Дата */
   errorDate: Option[Double] = None,
+  /* Флаг удаления */
   errorDelFlag: Option[String] = None,
+  /* СтатусОшибки */
   errorState: Option[String] = None
 ) extends ApiModel
 

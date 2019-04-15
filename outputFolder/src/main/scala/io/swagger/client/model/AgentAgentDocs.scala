@@ -16,13 +16,21 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class AgentAgentDocs (
+  /* Тип документа */
   docType: Option[String] = None,
+  /* Описание */
   descript: Option[String] = None,
+  /* Файл */
   attachment: Option[String] = None,
+  /* Признак актуальности */
   isActive: Option[Boolean] = None,
+  /* Дата представления */
   uploadDate: Option[Double] = None,
+  /* Флаг удаления */
   docsDelFlag: Option[String] = None,
+  /* ссылка на вложение */
   attachlink: Option[String] = None,
+  /* МимеТип */
   mimetype: Option[String] = None
 ) extends ApiModel
 

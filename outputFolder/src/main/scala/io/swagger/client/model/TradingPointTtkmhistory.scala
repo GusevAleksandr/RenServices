@@ -16,12 +16,19 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointTtkmhistory (
+  /* Закрепленный КМ */
   fiofixedkm: Option[String] = None,
+  /* Гуид закрепленного КМ */
   guidfixedkm: Option[String] = None,
+  /* Дата закрепления КМ */
   dateOn: Option[Double] = None,
+  /* Дата открепленияКМ */
   dateOff: Option[Double] = None,
+  /* Дата изменения */
   dateChanges: Option[Double] = None,
+  /* Автор изменения */
   authorChanges: Option[String] = None,
+  /* Тип сотрудника */
   typeempl: Option[String] = None
 ) extends ApiModel
 

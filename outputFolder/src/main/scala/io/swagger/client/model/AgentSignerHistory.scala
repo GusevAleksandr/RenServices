@@ -16,8 +16,11 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class AgentSignerHistory (
+  /* Представитель Банка (подписант) */
   signer: Option[String] = None,
+  /* Дата закрепления подписанта */
   signerDate: Option[Double] = None,
+  /* Основание */
   signerBasis: Option[String] = None
 ) extends ApiModel
 

@@ -16,8 +16,11 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointTtPartnerScheme (
+  /* Гуид схемы КВ */
   partnerSchemeGUID: Option[String] = None,
+  /* Дата подключения схемы КВ */
   dateInclude: Option[Double] = None,
+  /* Дата отключения */
   dateExclude: Option[Double] = None
 ) extends ApiModel
 

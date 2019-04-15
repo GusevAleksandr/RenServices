@@ -16,8 +16,10 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointTtVisitTM (
+  /* Дата посещения */
   dateVisit: Option[Double] = None,
   purpose: Option[TradingPointPurpose] = None,
+  /* Комментарии */
   note: Option[String] = None
 ) extends ApiModel
 

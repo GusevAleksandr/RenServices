@@ -16,101 +16,193 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPoint (
+  /* ГУИД документа */
   guidDoc: Option[String] = None,
+  /* Страховые компании */
   insurerlist: Option[String] = None,
+  /* Статус */
   basicInfoCState: Option[String] = None,
+  /* Дата назначения статуса */
   basicInfoCStateDate: Option[Double] = None,
+  /* Предприятие торговли */
   currentContractPartner: Option[String] = None,
+  /* Гуид Партнера */
   currentContractPartnerGUID: Option[String] = None,
+  /* ИНН Партнера */
   currentContractPartnerINN: Option[String] = None,
+  /* Торговая сеть */
   currentContractRetailer: Option[String] = None,
+  /* Код сети */
   currentContractRetailerCode: Option[String] = None,
+  /* Расчетный счет */
   currentContractAccount: Option[String] = None,
+  /* Наименование банка */
   currentContractBankName: Option[String] = None,
+  /* БИК */
   currentContractBankBIK: Option[String] = None,
+  /* Корреспондентский счет */
   currentContractCorrAccount: Option[String] = None,
+  /* Код */
   registerInfoCode: Option[String] = None,
+  /* Наименование */
   registerInfoName: Option[String] = None,
+  /* Телефон */
   registerInfoPhone: Option[String] = None,
+  /* Адрес электронной почты */
   registerInfoEMail: Option[String] = None,
+  /* Сайт */
   registerInfoSite: Option[String] = None,
+  /* Комментарии */
   registerInfoNote: Option[String] = None,
+  /* Использование собственных реквизитов */
   registerInfoIsOwnAccount: Option[Boolean] = None,
+  /* Банк */
   ownBankAccountBank: Option[String] = None,
+  /* БИК */
   ownBankAccountBIK: Option[String] = None,
+  /* ОКПО */
   ownBankAccountOKPO: Option[String] = None,
+  /* Расчетный счет */
   ownBankAccountCheckAccount: Option[String] = None,
+  /* Корреспондентский счет */
   ownBankAccountCorrAccount: Option[String] = None,
+  /* Индекс */
   addressIndexAdd: Option[String] = None,
+  /* Регион */
   addressRegion: Option[String] = None,
+  /* Населенный пункт */
   addressCity: Option[String] = None,
+  /* Улица */
   addressStreet: Option[String] = None,
+  /* Дом */
   addressHouse: Option[String] = None,
+  /* Корпус */
   addressCorp: Option[String] = None,
+  /* Строение */
   addressBuilding: Option[String] = None,
+  /* Офис */
   addressOffice: Option[String] = None,
+  /* Полный адрес */
   addressFullAddress: Option[String] = None,
   interactionSchemeTTMode: Option[TradingPointInteractionSchemeTTMode] = None,
+  /* Категория */
   interactionSchemeTTCategory: Option[String] = None,
+  /* ТТкатегорияКод */
   interactionSchemeTTCategoryCode: Option[String] = None,
+  /* Дивизион закрепления */
   interactionSchemeDivision: Option[String] = None,
+  /* Регион закрепления */
   interactionSchemeRegionCentr: Option[String] = None,
+  /* Закрепленный ТМ */
   interactionSchemeCurrentTM: Option[String] = None,
+  /* Дата закрепления ТМ */
   interactionSchemeCTMDate: Option[Double] = None,
+  /* ФамилияТМ */
   interactionSchemeLastnameTM: Option[String] = None,
+  /* ИмяТМ */
   interactionSchemeFirstnameTM: Option[String] = None,
+  /* ОтчествоТМ */
   interactionSchemeMiddleNameTM: Option[String] = None,
+  /* Название ПОС в МСО */
   interactionSchemePointOfSale: Option[String] = None,
   interactionSchemeBusinessGroup: Option[TradingPointInteractionSchemeBusinessGroup] = None,
+  /* Список POS */
   interactionSchemePOSList: Option[String] = None,
+  /* Участвует в выплате КВ */
   interactionSchemeIsInvolvedKV: Option[Boolean] = None,
+  /* Дата открепленияТМ */
   interactionSchemeDATEOFF: Option[Double] = None,
+  /* Ассортимент */
   addInfoAssortment: Option[String] = None,
+  /* Контактное лицо */
   addInfoContact: Option[String] = None,
+  /* Телефон в ТТ */
   addInfoPhoneOnTT: Option[String] = None,
+  /* Приоритетный продукт 1 */
   addInfoProduct1: Option[String] = None,
+  /* Приоритетный продукт 2 */
   addInfoProduct2: Option[String] = None,
+  /* Приоритетный продукт 3 */
   addInfoProduct3: Option[String] = None,
+  /* Возможность оформления страховки */
   addInfoHaveInsurance: Option[Boolean] = None,
+  /* Наличие агента в ТТ */
   addInfoHavaAgent: Option[Boolean] = None,
+  /* Авторизация по сканам */
   addInfoScanLogin: Option[Boolean] = None,
+  /* Онлайн ТТ */
   addInfoSendPaymentPlan: Option[Boolean] = None,
+  /* Стратегия */
   addInfoStrategy: Option[String] = None,
   addInfoReceiveCanal: Option[TradingPointAddInfoReceiveCanal] = None,
-  addInfoSendCanal: Option[TradingPointAddInfoReceiveCanal] = None,
+  addInfoSendCanal: Option[TradingPointAddInfoSendCanal] = None,
+  /* ГУИД договора */
   curContractGuid: Option[String] = None,
+  /* Номер */
   curContractNum: Option[String] = None,
+  /* Дата договора */
   curContractDateC: Option[Double] = None,
+  /* Статус */
   curContractStateC: Option[String] = None,
+  /* Дата окончания действия */
   curContractEndDate: Option[Double] = None,
+  /* Ссылка на брокер */
   brokerGuid: Option[String] = None,
+  /* Наименование брокера */
   brokerName: Option[String] = None,
+  /* ИНН брокера */
   brokerINN: Option[String] = None,
+  /* Дата подключения ТТ к брокеру */
   brokerTTDateOn: Option[Double] = None,
+  /* Дата отключения ТТ от брокера */
   brokerTTDateOff: Option[Double] = None,
+  /* Сотрудник подключивший брокера */
   brokerAuthorOn: Option[String] = None,
+  /* Дата и время подключения */
   brokerDateOn: Option[Double] = None,
+  /* Сотрудник отключивший брокера */
   brokerAuthorOff: Option[String] = None,
+  /* Дата и время отключения */
   brokerDateOff: Option[Double] = None,
+  /* Закрепленный КМ */
   kmfiofixed: Option[String] = None,
+  /* Гуид закрепленного КМ */
   kmguidfixed: Option[String] = None,
+  /* Дата закрепления КМ */
   kmdateon: Option[Double] = None,
+  /* Дата открепленияКМ */
   kmdateoff: Option[Double] = None,
+  /* Закрепленный КАМ */
   kamfiofixed: Option[String] = None,
+  /* Гуид закрепленного КАМ */
   kamguidfixed: Option[String] = None,
+  /* Дата закрепления КАМ */
   kamdateon: Option[Double] = None,
+  /* Дата открепленияКАМ */
   kamdateoff: Option[Double] = None,
+  /* История закрепления КМ */
   ttkmhistory: Option[Seq[TradingPointTtkmhistory]] = None,
+  /* История закрепления КАМ Техниническая */
   ttkamhistoryt: Option[Seq[TradingPointTtkamhistoryt]] = None,
+  /* ГУИД ТМ */
   tmGuidDoc: Option[String] = None,
-  ttStateHistory: Option[Seq[AgentStateHistory]] = None,
+  /* История статусов */
+  ttStateHistory: Option[Seq[TradingPointTtStateHistory]] = None,
+  /* Список страховых компаний */
   ttInsurers: Option[Seq[TradingPointTtInsurers]] = None,
+  /* Кредитные продукты */
   ttCreditProduct: Option[Seq[TradingPointTtCreditProduct]] = None,
+  /* Сведения о посещениях */
   ttVisitTM: Option[Seq[TradingPointTtVisitTM]] = None,
+  /* Документы (вложенные файлы) */
   ttAgentDocs: Option[Seq[TradingPointTtAgentDocs]] = None,
+  /* История закрепления ТМ */
   tttmHistory: Option[Seq[TradingPointTttmHistory]] = None,
+  /* Схемы КВ */
   ttPartnerScheme: Option[Seq[TradingPointTtPartnerScheme]] = None,
+  /* История подключения к брокеру */
   ttBrokerHistory: Option[Seq[TradingPointTtBrokerHistory]] = None,
+  /* Кустовые ТТ */
   tTnested: Option[Seq[TradingPointTTnested]] = None
 ) extends ApiModel
 

@@ -16,10 +16,15 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointTTnested (
+  /* Гуид кустовой ТТ */
   guid: Option[String] = None,
+  /* Код кустовой ТТ */
   code: Option[String] = None,
+  /* Наименование кустовой ТТ */
   name: Option[String] = None,
+  /* Дата подключения кустовой ТТ */
   dateOn: Option[Double] = None,
+  /* Дата отключения кустовой ТТ */
   dateOff: Option[Double] = None
 ) extends ApiModel
 
