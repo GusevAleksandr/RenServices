@@ -18,8 +18,19 @@ import scala.reflect.ClassTag
 object EnumsSerializers {
 
   def all: Seq[Serializer[_]] = Seq[Serializer[_]]() :+
+    new EnumNameSerializer(ContractBasicDocDopEnums.Value) :+
+    new EnumNameSerializer(ContractDocTypeEnums.Value) :+
+    new EnumNameSerializer(ContractHowFillDateEnums.Value) :+
+    new EnumNameSerializer(ContractIspepEnums.Value) :+
+    new EnumNameSerializer(ContractPartiesAgreedEnums.Value) :+
+    new EnumNameSerializer(ContractPartnerTypeEnums.Value) :+
+    new EnumNameSerializer(ContractRegInfoTTModeEnums.Value) :+
+    new EnumNameSerializer(ContractSubjectEnums.Value) :+
+    new EnumNameSerializer(ContractTtModeEnums.Value) :+
+    new EnumNameSerializer(ContractUnitEnums.Value) :+
     new EnumNameSerializer(PartnerPartnerTypeEnums.Value) :+
     new EnumNameSerializer(PartnerUnitEnums.Value) :+
+    new EnumNameSerializer(RewardBasicInfoPDSubjectEnums.Value) :+
     new EnumNameSerializer(TradingPointAddInfoReceiveCanalEnums.Value) :+
     new EnumNameSerializer(TradingPointAddInfoSendCanalEnums.Value) :+
     new EnumNameSerializer(TradingPointAgreementRoleEnums.Value) :+

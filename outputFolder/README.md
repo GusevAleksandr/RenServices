@@ -69,11 +69,23 @@ Class | Method | HTTP request | Description
 *AgentListApi* | **getAgentList** | **GET** /rest-api/list/agent/{id} | получение списка документов
 *AgentListApi* | **postAgentsList** | **POST** /rest-api/list/agent | сохранение параметров фильтрации
 *AgentListSimpleApi* | **simpleAgentsList** | **GET** /rest-api/simple/list/agent | получение списка агентов
+*AgentSchemeApi* | **agentSchemeGet** | **GET** /rest-api/agentSchemes/{id} | получение документа по гуиду
+*AgentSchemeListApi* | **getAgentSchemeList** | **GET** /rest-api/list/agentScheme/{id} | получение списка документов
+*AgentSchemeListApi* | **postAgentSchemesList** | **POST** /rest-api/list/agentScheme | сохранение параметров фильтрации
+*AgentSchemeListSimpleApi* | **simpleAgentSchemesList** | **GET** /rest-api/simple/list/agentScheme | получение списка агентских схем
 *AuthorizationApi* | **authorizationPasswordDelete** | **DELETE** /rest-api/auth/user/password | сброс пароля авторизованного пользователя
 *AuthorizationApi* | **authorizationPasswordDetails** | **GET** /rest-api/auth/user/details | получение информации о текущем пользователе
 *AuthorizationApi* | **authorizationPasswordNew** | **POST** /rest-api/auth/user/authorization/password/new | авторизация и смена пароля
 *AuthorizationApi* | **passwordNew** | **POST** /rest-api/auth/user/password/new | смена пароля
 *AuthorizationApi* | **userAuthorization** | **POST** /rest-api/auth/authorization | авторизация пользователя в системе
+*ContractApi* | **contractGet** | **GET** /rest-api/contract/{id} | получение документа по гуиду
+*ContractListApi* | **getContractList** | **GET** /rest-api/list/contract/{id} | получение списка документов
+*ContractListApi* | **postContractsList** | **POST** /rest-api/list/contract | сохранение параметров фильтрации
+*ContractListSimpleApi* | **simpleContractsList** | **GET** /rest-api/simple/list/contract | получение списка договоров
+*EmployeeAuthorityApi* | **employeeAuthorityGet** | **GET** /rest-api/employeeAuthority/{id} | получение документа по гуиду
+*EmployeeAuthorityListApi* | **getEmployeeAuthorityList** | **GET** /rest-api/list/employeeAuthority/{id} | получение списка документов
+*EmployeeAuthorityListApi* | **postEmployeeAuthoritysList** | **POST** /rest-api/list/employeeAuthority | сохранение параметров фильтрации
+*EmployeeAuthorityListSimpleApi* | **simpleEmployeeAuthoritysList** | **GET** /rest-api/simple/list/employeeAuthority | получение списка полномичий сотрудника
 *PartnerApi* | **partnerGet** | **GET** /rest-api/partners/{id} | получение документа по гуиду
 *PartnerEmployeeApi* | **partnerEmployeeGet** | **GET** /rest-api/partnerEmployees/{id} | получение документа по гуиду
 *PartnerEmployeeListApi* | **getPartnerEmployeeList** | **GET** /rest-api/list/partnerEmployee/{id} | получение списка документов
@@ -82,6 +94,10 @@ Class | Method | HTTP request | Description
 *PartnerListApi* | **getPartnerList** | **GET** /rest-api/list/partner/{id} | получение списка документов
 *PartnerListApi* | **postPartnersList** | **POST** /rest-api/list/partner | сохранение параметров фильтрации
 *PartnerListSimpleApi* | **simplePartnersList** | **GET** /rest-api/simple/list/partner | получение списка партнеров
+*RewardApi* | **rewardGet** | **GET** /rest-api/reward/{id} | получение документа по гуиду
+*RewardListApi* | **getRewardList** | **GET** /rest-api/list/reward/{id} | получение списка документов
+*RewardListApi* | **postRewardsList** | **POST** /rest-api/list/reward | сохранение параметров фильтрации
+*RewardListSimpleApi* | **simpleRewardsList** | **GET** /rest-api/simple/list/reward | получение списка схем вознаграждения
 *TradingPointApi* | **tradingPointGet** | **GET** /rest-api/tradingPoint/{id} | получение документа по гуиду
 *TradingPointListApi* | **getTradingPointList** | **GET** /rest-api/list/tradingPoint/{id} | получение списка документов
 *TradingPointListApi* | **postTradingPointsList** | **POST** /rest-api/list/tradingPoint | сохранение параметров фильтрации
@@ -96,6 +112,9 @@ Class | Method | HTTP request | Description
  - [AgentAgentPartnerTT](AgentAgentPartnerTT.md)
  - [AgentAgentkamhistory](AgentAgentkamhistory.md)
  - [AgentErrors](AgentErrors.md)
+ - [AgentScheme](AgentScheme.md)
+ - [AgentSchemeRcrschemearas](AgentSchemeRcrschemearas.md)
+ - [AgentSchemeRewardSheme](AgentSchemeRewardSheme.md)
  - [AgentSignerHistory](AgentSignerHistory.md)
  - [AgentStateHistory](AgentStateHistory.md)
  - [AgentTmHistory](AgentTmHistory.md)
@@ -105,8 +124,34 @@ Class | Method | HTTP request | Description
  - [CommonLogic](CommonLogic.md)
  - [CommonLogicBetween](CommonLogicBetween.md)
  - [CommonLogicIn](CommonLogicIn.md)
+ - [Contract](Contract.md)
+ - [ContractAgentSchemeRCRContractT13](ContractAgentSchemeRCRContractT13.md)
+ - [ContractBasicDoc](ContractBasicDoc.md)
+ - [ContractBasicDocDop](ContractBasicDocDop.md)
+ - [ContractContractErrors](ContractContractErrors.md)
+ - [ContractContractNonAgree](ContractContractNonAgree.md)
+ - [ContractCreditProduct](ContractCreditProduct.md)
+ - [ContractDocType](ContractDocType.md)
+ - [ContractHowFillDate](ContractHowFillDate.md)
+ - [ContractIspep](ContractIspep.md)
+ - [ContractOutlets](ContractOutlets.md)
+ - [ContractPartiesAgreed](ContractPartiesAgreed.md)
+ - [ContractPartnerSchemeRCRContractBR](ContractPartnerSchemeRCRContractBR.md)
+ - [ContractPartnerSchemeRCRContractBRD](ContractPartnerSchemeRCRContractBRD.md)
+ - [ContractPartnerSchemeRCRContractIR](ContractPartnerSchemeRCRContractIR.md)
+ - [ContractPartnerSchemeRCRContractTT](ContractPartnerSchemeRCRContractTT.md)
+ - [ContractPartnerType](ContractPartnerType.md)
+ - [ContractRcrContractAS](ContractRcrContractAS.md)
+ - [ContractRcrContractASP](ContractRcrContractASP.md)
+ - [ContractRcrContractBRL](ContractRcrContractBRL.md)
+ - [ContractRcrContractIR](ContractRcrContractIR.md)
+ - [ContractRegInfoTTMode](ContractRegInfoTTMode.md)
+ - [ContractSubject](ContractSubject.md)
+ - [ContractTtMode](ContractTtMode.md)
+ - [ContractUnit](ContractUnit.md)
  - [DocListRequest](DocListRequest.md)
  - [DocListRequestAdditionalFilter](DocListRequestAdditionalFilter.md)
+ - [EmployeeAuthority](EmployeeAuthority.md)
  - [FieldCLSchema](FieldCLSchema.md)
  - [FieldCLSchemaField](FieldCLSchemaField.md)
  - [LeftRightCLSchema](LeftRightCLSchema.md)
@@ -135,6 +180,18 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
  - [ResetPasswordRequest](ResetPasswordRequest.md)
+ - [Reward](Reward.md)
+ - [RewardBasicInfoPDSubject](RewardBasicInfoPDSubject.md)
+ - [RewardCredits](RewardCredits.md)
+ - [RewardCreditsAggrReq](RewardCreditsAggrReq.md)
+ - [RewardGroupAddService](RewardGroupAddService.md)
+ - [RewardGroupSum](RewardGroupSum.md)
+ - [RewardGroupSumAS](RewardGroupSumAS.md)
+ - [RewardRewADDS](RewardRewADDS.md)
+ - [RewardRewAgentDocs](RewardRewAgentDocs.md)
+ - [RewardRewCategorOutlets](RewardRewCategorOutlets.md)
+ - [RewardRewDocSum](RewardRewDocSum.md)
+ - [RewardRewErrorInfo](RewardRewErrorInfo.md)
  - [SecurityPropertiesCLSchema](SecurityPropertiesCLSchema.md)
  - [TradingPoint](TradingPoint.md)
  - [TradingPointAddInfoReceiveCanal](TradingPointAddInfoReceiveCanal.md)
