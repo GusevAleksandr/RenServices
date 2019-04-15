@@ -215,6 +215,7 @@ Class | Method | HTTP request | Description
  - [UserDetailRoles](UserDetailRoles.md)
  - [UserDetailRoles2](UserDetailRoles2.md)
  - [UserDetails](UserDetails.md)
+ - [UserDetails2](UserDetails2.md)
  - [ValueCLSchema](ValueCLSchema.md)
  - [ValueCLSchemaConstant](ValueCLSchemaConstant.md)
  - [ValueCLSchemaSecuritycontext](ValueCLSchemaSecuritycontext.md)
