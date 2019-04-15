@@ -16,84 +16,83 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class Agent (
-  /* ГУИД документа */
   guidDoc: Option[String] = None,
-  /* Статус */
-  state: Option[String] = None,
-  /* Дата назначения статуса */
-  stateDate: Option[Double] = None,
-  /* Гуид партнера */
-  partnerGUID: Option[String] = None,
-  /* Название партнера */
-  partnerName: Option[String] = None,
-  /* Партнер ИНН */
-  partnerINN: Option[String] = None,
-  /* Регион закрепления партнера */
-  partnerRegion: Option[String] = None,
-  /* Руководитель */
-  boss: Option[Boolean] = None,
-  /* Фамилия */
-  surname: Option[String] = None,
-  /* Имя */
-  name: Option[String] = None,
-  /* Отчество */
-  middleName: Option[String] = None,
-  /* ФИО в р.п. */
-  fiorp: Option[String] = None,
-  /* Должность */
-  post: Option[String] = None,
-  /* Должность в р.п. */
-  postRP: Option[String] = None,
-  /* Телефон */
-  phone: Option[String] = None,
-  /* Серия паспорта */
-  passSeries: Option[String] = None,
-  /* Номер паспорта */
-  passNumber: Option[String] = None,
-  /* Кем выдан */
-  issuedBy: Option[String] = None,
-  /* Дата выдачи */
-  issuedDate: Option[Double] = None,
-  /* Код подразделения */
-  codeSubdivision: Option[String] = None,
-  /* Дата рождения */
-  dateOfBirth: Option[Double] = None,
-  /* Логин подписанта */
-  login: Option[String] = None,
-  /* Гуид пользователя */
-  userGUID: Option[String] = None,
-  /* Причина блокировки */
-  blockReason: Option[String] = None,
-  /* Описание причины блокировки */
-  blockDescription: Option[String] = None,
-  /* Исполнитель */
-  blockExecutor: Option[String] = None,
-  /* Дата блокировки */
-  blockDate: Option[Double] = None,
-  /* Доступ на ПЭП */
-  isEnablePEP: Option[Boolean] = None,
-  /* Доступ на просмотр */
-  isEnableView: Option[Boolean] = None,
-  /* ФИОип */
-  fiofull: Option[String] = None,
-  /* Адрес регистрации */
-  address: Option[String] = None,
-  /* ФамилияВерхийРегистр */
-  surnameUpper: Option[String] = None,
-  /* ИмяВерхийРегистр */
-  nameUpper: Option[String] = None,
-  /* ОтчествоВерхийРегистр */
-  middleNameUpper: Option[String] = None,
-  /* Подписант совпадает с партнером */
-  tradeEnterpriseSignerIsPartner: Option[String] = None,
-  /* Файлы документов */
-  signerPEPDocs: Option[Seq[AgentSignerPEPDocs]] = None,
-  /* История статусов */
-  signerPEPHistoryState: Option[Seq[AgentSignerPEPHistoryState]] = None,
-  /* ЭлПочта */
-  eMail: Option[String] = None,
-  /* ЭлПочтаВерхийРегистр */
-  eMailUpper: Option[String] = None
+  endDate: Option[Int] = None,
+  regInfoAgentID: Option[String] = None,
+  regInfoTabNumber: Option[String] = None,
+  regInfoINN: Option[String] = None,
+  regInfoSNILS: Option[String] = None,
+  regInfoDateOfBirth: Option[Double] = None,
+  regInfoPlaceOfBirth: Option[String] = None,
+  regInfoCitizenship: Option[String] = None,
+  regInfoPassSeria: Option[String] = None,
+  regInfoPassNumber: Option[String] = None,
+  regInfoPassIssueDate: Option[Double] = None,
+  regInfoPassIssuer: Option[String] = None,
+  regInfoPhoneHome: Option[String] = None,
+  regInfoPhoneMob: Option[String] = None,
+  regInfoEMail: Option[String] = None,
+  regInfoFullname: Option[String] = None,
+  regInfoFIOLastname: Option[String] = None,
+  regInfoFIOFirstname: Option[String] = None,
+  regInfoFIOMiddleName: Option[String] = None,
+  regAddressRAIndex: Option[String] = None,
+  regAddressRARegion: Option[String] = None,
+  regAddressRACity: Option[String] = None,
+  regAddressRAStreet: Option[String] = None,
+  regAddressRAHouse: Option[String] = None,
+  regAddressRACorp: Option[String] = None,
+  regAddressRABuilding: Option[String] = None,
+  regAddressRAOffice: Option[String] = None,
+  regAddressRegAddress: Option[String] = None,
+  factAddressFAIndex: Option[String] = None,
+  factAddressFARegion: Option[String] = None,
+  factAddressFACity: Option[String] = None,
+  factAddressFAStreet: Option[String] = None,
+  factAddressFAHouse: Option[String] = None,
+  factAddressFACorp: Option[String] = None,
+  factAddressFABuilding: Option[String] = None,
+  factAddressFAOffice: Option[String] = None,
+  factAddressIsEqualRA: Option[Boolean] = None,
+  factAddressFactAddress: Option[String] = None,
+  interactionSchemeDivision: Option[String] = None,
+  interactionSchemeRegionCentr: Option[String] = None,
+  interactionSchemeManualPayment: Option[Boolean] = None,
+  interactionSchemeMPComment: Option[String] = None,
+  currentSignerCSigner: Option[String] = None,
+  currentSignerCSignerDate: Option[Double] = None,
+  currentSignerCSignerBasis: Option[String] = None,
+  currentSignerLastnameSigner: Option[String] = None,
+  currentSignerFirstnameSigner: Option[String] = None,
+  currentSignerMiddleNameSigner: Option[String] = None,
+  currentSignerGuidSigner: Option[String] = None,
+  currentTMCTM: Option[String] = None,
+  currentTMCTMDate: Option[Double] = None,
+  currentTMLastnameTM: Option[String] = None,
+  currentTMFirstnameTM: Option[String] = None,
+  currentTMMiddleNameTM: Option[String] = None,
+  currentContractCContractNum: Option[String] = None,
+  currentContractCContractDate: Option[Double] = None,
+  currentContractCContractState: Option[String] = None,
+  currentContractCContractEndDate: Option[Double] = None,
+  currentContractCContractGuidDoc: Option[String] = None,
+  kamfio: Option[String] = None,
+  stateHistory: Option[Seq[AgentStateHistory]] = None,
+  signerHistory: Option[Seq[AgentSignerHistory]] = None,
+  agentDocs: Option[Seq[AgentAgentDocs]] = None,
+  errors: Option[Seq[AgentErrors]] = None,
+  agentNonAgree: Option[Seq[AgentAgentNonAgree]] = None,
+  agentPartnerTT: Option[Seq[AgentAgentPartnerTT]] = None,
+  agentkamhistory: Option[Seq[AgentAgentkamhistory]] = None,
+  cState: Option[String] = None,
+  cStateDate: Option[Double] = None,
+  tmGuidDoc: Option[String] = None,
+  kamDateKAM: Option[Double] = None,
+  kamLastname: Option[String] = None,
+  kamFirstname: Option[String] = None,
+  kamMiddleName: Option[String] = None,
+  kamGuidDoc: Option[String] = None,
+  tmHistory: Option[Seq[AgentTmHistory]] = None
 ) extends ApiModel
 
 

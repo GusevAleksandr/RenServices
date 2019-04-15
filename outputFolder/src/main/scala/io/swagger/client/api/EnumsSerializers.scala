@@ -19,7 +19,12 @@ object EnumsSerializers {
 
   def all: Seq[Serializer[_]] = Seq[Serializer[_]]() :+
     new EnumNameSerializer(PartnerPartnerTypeEnums.Value) :+
-    new EnumNameSerializer(PartnerUnitEnums.Value)
+    new EnumNameSerializer(PartnerUnitEnums.Value) :+
+    new EnumNameSerializer(TradingPointAddInfoReceiveCanalEnums.Value) :+
+    new EnumNameSerializer(TradingPointAgreementRoleEnums.Value) :+
+    new EnumNameSerializer(TradingPointInteractionSchemeBusinessGroupEnums.Value) :+
+    new EnumNameSerializer(TradingPointInteractionSchemeTTModeEnums.Value) :+
+    new EnumNameSerializer(TradingPointPurposeEnums.Value)
 
   private class EnumNameSerializer[E <: Enumeration: ClassTag](enum: E)
     extends Serializer[E#Value] {
