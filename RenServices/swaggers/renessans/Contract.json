@@ -1,0 +1,1478 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "rest сервисы для работы с договорами/дс",
+    "version": "1.0.0",
+    "title": "rest сервисы для работы с договорами/дс"
+  },
+  "paths": {
+    "/rest-api/simple/list/contract": {
+      "get": {
+        "tags": [
+          "contractListSimple"
+        ],
+        "summary": "получение списка договоров",
+        "operationId": "simple_contracts_list",
+        "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/filter"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/fields"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/onlyHeaderFields"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/ordersAsc"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/ordersDesc"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/page"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/pageSize"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Contract"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/list/contract": {
+      "post": {
+        "tags": [
+          "contractList"
+        ],
+        "summary": "сохранение параметров фильтрации",
+        "operationId": "post_contracts_list",
+        "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/postBody"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "в качестве ответа возвращается уникальный идентификатор запроса по переданным параметрам, который в последствии должен быть передан через запрос get",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/list/contract/{id}": {
+      "get": {
+        "tags": [
+          "contractList"
+        ],
+        "summary": "получение списка документов",
+        "operationId": "get_contract_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/contract",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/queryId"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/page"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/pageSize"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Contract"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "запрос с переданным идентификатором не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/rest-api/contracts/{id}": {
+      "get": {
+        "tags": [
+          "contract"
+        ],
+        "summary": "получение документа по гуиду",
+        "operationId": "contract_get",
+        "description": "получение одного договора",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "гуид договора",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/Contract"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "договор не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Contract": {
+      "type": "object",
+      "properties": {
+        "basicDocName": {
+          "description": "По форме",
+          "type": "string"
+        },
+        "basicDoc": {
+          "description": "Документ",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "type": "string"
+          },
+          "value": {
+            "type": "string",
+            "description": "actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП",
+            "enum": [
+              "actAward",
+              "contract",
+              "additionalAgreement",
+              "contractPEP"
+            ]
+          }
+        },
+        "subject": {
+          "description": "Тип контрагента",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "enum": [
+                "agents",
+                "partners"
+              ]
+            }
+          }
+        },
+        "guidDoc": {
+          "description": "ГУИД документа",
+          "type": "string"
+        },
+        "basicDocDop": {
+          "description": "Документ Доп",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "description": "actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП",
+              "enum": [
+                "actAward",
+                "contract",
+                "additionalAgreement",
+                "contractPEP"
+              ]
+            }
+          }
+        },
+        "name": {
+          "description": "Наименование",
+          "type": "string"
+        },
+        "docType": {
+          "description": "Форма создания",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "description": "New- Новый, OnReplace - На замену",
+              "enum": [
+                "New",
+                "OnReplace"
+              ]
+            }
+          }
+        },
+        "modifyDoc": {
+          "description": "Исходный документ №",
+          "type": "string"
+        },
+        "guidModifyDoc": {
+          "description": "ГУИД исходного документа",
+          "type": "string"
+        },
+        "docPurpose": {
+          "description": "Назначение документа",
+          "type": "string"
+        },
+        "dateInitialDoc": {
+          "description": "От",
+          "type": "number"
+        },
+        "forCheck": {
+          "type": "string"
+        },
+        "guidAgent": {
+          "description": "Гуид Агента",
+          "type": "string"
+        },
+        "guidDS": {
+          "description": "ГУИД ДС",
+          "type": "string"
+        },
+        "forNk": {
+          "description": "Для НК",
+          "type": "string"
+        },
+        "guidContract": {
+          "description": "ГУИД Договора",
+          "type": "string"
+        },
+        "partiesAgreed": {
+          "description": "Стороны договорились",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "description": "lit1 - дополнить Договор Приложением № 2 и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению, lit2 - изменить Приложение № 2 к Договору и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению",
+              "enum": [
+                "lit1",
+                "lit2"
+              ]
+            }
+          }
+        },
+        "startDate": {
+          "description": "Число месяца начала отчетного периода",
+          "type": "integer"
+        },
+        "period": {
+          "description": "Длительность отчетного периода, мес.",
+          "type": "integer"
+        },
+        "beginDateAndFillField": {
+          "description": "Дата начала последнего отчетного периода",
+          "type": "string"
+        },
+        "phone": {
+          "description": "Телефон",
+          "type": "string"
+        },
+        "partnerType": {
+          "description": "Тип Партнера",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "description": "Standard - Стандарт, Broker - Брокер, Federal - Федерал",
+              "enum": [
+                "Standard",
+                "Broker",
+                "Federal"
+              ]
+            }
+          }
+        },
+        "regionLegalAddress": {
+          "description": "Регион юридического адреса",
+          "type": "string"
+        },
+        "ispep": {
+          "description": "Использовать ПЭП",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "description": "Yes - ПЭП, No - Бумажный, Nothing - Не определено",
+              "enum": [
+                "Yes",
+                "No",
+                "Nothing"
+              ]
+            }
+          }
+        },
+        "isescalate": {
+          "description": "Эскалирование",
+          "type": "boolean"
+        },
+        "guidpdfbankhash": {
+          "description": "ГУИД вложения с пдф-файлом для банка 1 ",
+          "type": "string"
+        },
+        "guidpdfbanksign": {
+          "description": "ГУИД вложения с пдф-файлом для банка 2",
+          "type": "string"
+        },
+        "guidpdfpartnerhash": {
+          "description": "ГУИД вложения с пдф-файлом для партнера 1 ",
+          "type": "string"
+        },
+        "guidpdfpartnersign": {
+          "description": "ГУИД вложения с пдф-файлом для партнера 2",
+          "type": "string"
+        },
+        "hashbank": {
+          "description": "Хэш1",
+          "type": "string"
+        },
+        "hashpartner": {
+          "description": "Хэш2",
+          "type": "string"
+        },
+        "loginbanksign": {
+          "description": "Логин сотрудника банка",
+          "type": "string"
+        },
+        "datebanksign": {
+          "description": "Дата и время подписи банка",
+          "type": "number"
+        },
+        "smsbank": {
+          "description": "СМС код для банка",
+          "type": "string"
+        },
+        "smsbankdate": {
+          "description": "Дата и время доставки смсКода сотруднику банка",
+          "type": "number"
+        },
+        "telefonbank": {
+          "description": "Телефон сотрудника банка",
+          "type": "string"
+        },
+        "loginpartnersign": {
+          "description": "Логин партнера",
+          "type": "string"
+        },
+        "datepartnersign": {
+          "description": "Дата и время подписи партнера",
+          "type": "number"
+        },
+        "smspartner": {
+          "description": "СМС код для партнера",
+          "type": "string"
+        },
+        "smspartnerdate": {
+          "description": "Дата и время доставки смсКода партнеру",
+          "type": "number"
+        },
+        "telefonpartner": {
+          "description": "Телефон партнера",
+          "type": "string"
+        },
+        "isbanksign": {
+          "description": "Документ подписан сотрудником банка",
+          "type": "boolean"
+        },
+        "ispartnersign": {
+          "description": "Документ подписан партнером",
+          "type": "boolean"
+        },
+        "guidpowerattorneybank": {
+          "description": "Гуид доверенности сотрудника банка",
+          "type": "string"
+        },
+        "guidsignerbank": {
+          "description": "ГУИД подписанта сотрудника банка",
+          "type": "string"
+        },
+        "guidpowerattorneypartner": {
+          "description": "Гуид доверенности сотрудника партнера",
+          "type": "string"
+        },
+        "guidsignerpartner": {
+          "description": "Гуид сотрудника партнера подписанта партнера",
+          "type": "string"
+        },
+        "guidreportbank": {
+          "description": "Гуид вложения с отчетом банка",
+          "type": "string"
+        },
+        "guidreportpartner": {
+          "description": "Гуид вложения с отчетом партнера",
+          "type": "string"
+        },
+        "howFillDate": {
+          "description": "Способ заполнения даты",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "code": {
+              "description": "Код",
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "description": "Undefined - Не определено, Fixed - дата введенная пользователем будет использована в качестве даты вступления в силу договора/ДС, DateSign - дата подписи партнера будет использована в качестве даты вступления в силу договора/ДС",
+              "enum": [
+                "Undefined",
+                "Fixed",
+                "DateSign"
+              ]
+            }
+          }
+        },
+        "regInfoNum": {
+          "description": "Номер",
+          "type": "string"
+        },
+        "regInfoDateDoc": {
+          "description": "Дата договора",
+          "type": "number"
+        },
+        "regInfoContractNum": {
+          "description": "Договор",
+          "type": "string"
+        },
+        "regInfoEndDate": {
+          "description": "Дата окончания действия",
+          "type": "number"
+        },
+        "regInfoTTMode": {
+          "description": "Режим работы ТТ",
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "code": {
+              "description": "Код ТТ",
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "description": "Lit1 - online, lit2 - offline",
+              "enum": [
+                "Lit1",
+                "lit2"
+              ]
+            }
+          }
+        },
+        "regInfoAddAgreement": {
+          "description": "Дополнительное соглашение №",
+          "type": "string"
+        },
+        "regInfoForDate": {
+          "description": "На дату Дата доп соглашения",
+          "type": "number"
+        },
+        "regInfoDateCancelCon": {
+          "description": "Дата расторжения договора",
+          "type": "number"
+        },
+        "originalsInfoSentArchive": {
+          "description": "Дата отправки в архив",
+          "type": "number"
+        },
+        "tradeEnterprisePartner": {
+          "description": "Наименование",
+          "type": "string"
+        },
+        "tradeEnterpriseReferenceCard": {
+          "description": "Ссылка на карточку партнера агента",
+          "type": "string"
+        },
+        "tradeEnterpriseParentPartner": {
+          "description": "Вышестоящий партнер",
+          "type": "string"
+        },
+        "tradeEnterpriseParentPartnerGuid": {
+          "description": "Вышестоящий партнер ГУИД документа",
+          "type": "string"
+        },
+        "tradeEnterpriseNameRepresent": {
+          "description": "ФИО представителя",
+          "type": "string"
+        },
+        "tradeEnterpriseNameRepresentRP": {
+          "description": "ФИО представителя р.п.",
+          "type": "string"
+        },
+        "tradeEnterprisePostRepresent": {
+          "description": "Представитель партнера. Должность и.п.",
+          "type": "string"
+        },
+        "tradeEnterprisePostRepresentRP": {
+          "description": "Представитель партнера. Должность р.п.",
+          "type": "string"
+        },
+        "tradeEnterpriseBasisPowers": {
+          "description": "Основание полномочий",
+          "type": "string"
+        },
+        "tradeEnterpriseLegalAddress": {
+          "description": "Юридический адрес",
+          "type": "string"
+        },
+        "tradeEnterpriseActualAddress": {
+          "description": "Фактический адрес",
+          "type": "string"
+        },
+        "tradeEnterprisePhone": {
+          "description": "Телефон",
+          "type": "string"
+        },
+        "tradeEnterpriseFax": {
+          "description": "Факс",
+          "type": "string"
+        },
+        "tradeEnterpriseSettlemAccount": {
+          "description": "Расчетный счет",
+          "type": "string"
+        },
+        "tradeEnterpriseBankName": {
+          "description": "Наименование банка",
+          "type": "string"
+        },
+        "tradeEnterpriseINN": {
+          "description": "ИНН партнера (не банка)",
+          "type": "string"
+        },
+        "tradeEnterpriseKPP": {
+          "description": "КПП партнера",
+          "type": "string"
+        },
+        "tradeEnterpriseBIK": {
+          "description": "БИК банка в котором обслуживается партнер",
+          "type": "string"
+        },
+        "tradeEnterpriseCorrespAccount": {
+          "description": "Корреспондентский счет",
+          "type": "string"
+        },
+        "tradeEnterpriseOKPO": {
+          "description": "ОКПО партнера",
+          "type": "string"
+        },
+        "tradeEnterpriseRegion": {
+          "description": "Регион",
+          "type": "string"
+        },
+        "tradeEnterpriseDivision": {
+          "description": "Дивизион",
+          "type": "string"
+        },
+        "tradeEnterpriseTaxScheme": {
+          "description": "Схема налогообложения",
+          "type": "string"
+        },
+        "tradeEnterpriseULChiefFIO": {
+          "description": "ФИО руководителя",
+          "type": "string"
+        },
+        "tradeEnterpriseEMail": {
+          "description": "ЭлПочта",
+          "type": "string"
+        },
+        "tradeEnterpriseRegForm": {
+          "description": "Форма регистрации",
+          "type": "string"
+        },
+        "tradeEnterpriseOGRN": {
+          "description": "ОГРН",
+          "type": "string"
+        },
+        "tradeEnterprisePassSeria": {
+          "description": "Серия паспорта",
+          "type": "string"
+        },
+        "tradeEnterprisePassNumber": {
+          "description": "Номер паспорта",
+          "type": "string"
+        },
+        "tradeEnterprisePassIssueDate": {
+          "description": "Дата выдачи",
+          "type": "number"
+        },
+        "tradeEnterprisePassIssuer": {
+          "description": "Кем выдан",
+          "type": "string"
+        },
+        "tradeEnterpriseCodeSubdivision": {
+          "description": "Код подразделения",
+          "type": "string"
+        },
+        "tradeEnterpriseSignerIsPartner": {
+          "description": "Подписант совпадает с партнером",
+          "type": "string"
+        },
+        "infoConsultantAgent": {
+          "description": "ФИО Кконсультанта",
+          "type": "string"
+        },
+        "infoConsultantResidentAddress": {
+          "description": "Адрес проживания",
+          "type": "string"
+        },
+        "infoConsultantRegisAddress": {
+          "description": "Адрес регистрации",
+          "type": "string"
+        },
+        "infoConsultantRegion": {
+          "description": "Регион",
+          "type": "string"
+        },
+        "consultRequisitPassSeria": {
+          "description": "Серия паспорта",
+          "type": "string"
+        },
+        "consultRequisitPassNumber": {
+          "description": "Номер паспорта",
+          "type": "string"
+        },
+        "consultRequisitPassIssueDate": {
+          "description": "Дата выдачи",
+          "type": "number"
+        },
+        "consultRequisitPassIssuer": {
+          "description": "Кем выдан",
+          "type": "string"
+        },
+        "consultRequisitGivenOut": {
+          "description": "Когда выдан",
+          "type": "number"
+        },
+        "consultRequisitNumPensionFund": {
+          "description": "СНИЛС №",
+          "type": "string"
+        },
+        "consultRequisitEMail": {
+          "description": "ЭлПочта",
+          "type": "string"
+        },
+        "consultRequisitDateOfBirth": {
+          "description": "Дата рождения",
+          "type": "number"
+        },
+        "dataOnBankBankRepresent": {
+          "description": "Представитель банка",
+          "type": "string"
+        },
+        "dataOnBankNameRepresent": {
+          "description": "ФИО представителя (родительный падеж)",
+          "type": "string"
+        },
+        "dataOnBankPosition": {
+          "description": "Должность (родительный падеж)",
+          "type": "string"
+        },
+        "dataOnBankBasisPowers": {
+          "description": "Основание полномочий (родительный падеж)",
+          "type": "string"
+        },
+        "dataOnBankBankAddress": {
+          "description": "Адрес банка",
+          "type": "string"
+        },
+        "dataOnBankPostInIP": {
+          "description": "Должность",
+          "type": "string"
+        },
+        "dataOnBankBankPhone": {
+          "description": "Телефон",
+          "type": "string"
+        },
+        "dataOnBankGuid": {
+          "description": "ГУИД Представителя банка",
+          "type": "string"
+        },
+        "bankDetailsBankName": {
+          "description": "Наименование банка",
+          "type": "string"
+        },
+        "bankDetailsServed": {
+          "description": "Где обслуживается кс",
+          "type": "string"
+        },
+        "bankDetailsServedShort": {
+          "description": "Где обслуживается к/с (р. п.) - сокращенно",
+          "type": "string"
+        },
+        "bankDetailsCorrespAccount": {
+          "description": "Корреспондентский счет",
+          "type": "string"
+        },
+        "bankDetailsINN": {
+          "description": "ИНН",
+          "type": "string"
+        },
+        "bankDetailsKPP": {
+          "description": "КПП",
+          "type": "string"
+        },
+        "bankDetailsBIK": {
+          "description": "БИК",
+          "type": "string"
+        },
+        "schemesRemunSRPeriodOn": {
+          "description": "СВ Начало отчетного периода",
+          "type": "integer"
+        },
+        "schemesRemunSRPeriodOff": {
+          "description": "СВ Окончание отчетного периода",
+          "type": "integer"
+        },
+        "schemesRemunSRPeriodRange": {
+          "description": "СВ Длительность отчетного периода",
+          "type": "integer"
+        },
+        "schemesRemunSRAmountSP": {
+          "type": "number"
+        },
+        "partnerSchemePSGuid": {
+          "description": "ПС ГУИД схемы",
+          "type": "string"
+        },
+        "partnerSchemePSScheme": {
+          "description": "ПС Наименование схемы",
+          "type": "string"
+        },
+        "partnerSchemePSVersionBO": {
+          "type": "integer"
+        },
+        "partnerSchemePSACName": {
+          "description": "ПС Алгорим расчета Наименование",
+          "type": "string"
+        },
+        "partnerSchemePSACCode": {
+          "description": "ПС Алгорим расчета Код",
+          "type": "integer"
+        },
+        "partnerSchemePSDateOn": {
+          "description": "ПС Дата подключения",
+          "type": "number"
+        },
+        "partnerSchemePSDateOff": {
+          "description": "ПС Дата отключения",
+          "type": "number"
+        },
+        "partnerSchemePSFlagNDS": {
+          "description": "ПС Учитывать НДС",
+          "type": "boolean"
+        },
+        "partnerSchemePSFlagInsurance": {
+          "description": "ПС Учитывать страховку",
+          "type": "boolean"
+        },
+        "partnerSchemePSGuaranAmount": {
+          "description": "ПС Гарантированное вознаграждение",
+          "type": "number"
+        },
+        "partnerSchemePSStateLine": {
+          "type": "string"
+        },
+        "partnerSchemePSGuidDisable": {
+          "description": "Гуид схемы КВ для отключения",
+          "type": "string"
+        },
+        "agentSchemeASNameScheme": {
+          "description": "АС Наименование схемы",
+          "type": "string"
+        },
+        "agentSchemeASReferenAgency": {
+          "description": "АС Ссылка (ГУИД) на агентскую схему вознаграждения",
+          "type": "string"
+        },
+        "contractDocs": {
+          "description": "Документы ",
+          "items": {
+            "type": "object",
+            "properties": {
+              "docType": {
+                "description": "Тип документа",
+                "type": "string"
+              },
+              "descript": {
+                "description": "Описание",
+                "type": "string"
+              },
+              "attachment": {
+                "description": "Файл",
+                "type": "string"
+              },
+              "isActive": {
+                "description": "Признак актуальности",
+                "type": "boolean"
+              },
+              "uploadDate": {
+                "description": "Дата представления",
+                "type": "number"
+              },
+              "docsDelFlag": {
+                "description": "Флаг удаления",
+                "type": "string"
+              },
+              "attachlink": {
+                "description": "ссылка на вложение",
+                "type": "string"
+              },
+              "mimetype": {
+                "description": "МимеТип",
+                "type": "string"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "outlets": {
+          "description": "Торговые точки",
+          "items": {
+            "type": "object",
+            "properties": {
+              "guidTT": {
+                "description": "ГУИД экземпляра формуляра торговой точки",
+                "type": "string"
+              },
+              "name": {
+                "description": "Наименование",
+                "type": "string"
+              },
+              "code": {
+                "description": "Код ТТ",
+                "type": "string"
+              },
+              "address": {
+                "description": "Адрес режим работы",
+                "type": "string"
+              },
+              "email": {
+                "description": "Адрес электронной почты телефон",
+                "type": "string"
+              },
+              "phone": {
+                "description": "Телефон",
+                "type": "string"
+              },
+              "authorPerson": {
+                "description": "Уполномоченное лицо",
+                "type": "string"
+              },
+              "partnerRepresent": {
+                "description": "Представитель партнера (подписант)",
+                "type": "string"
+              },
+              "ttMode": {
+                "description": "Режим работы",
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "description": "Код ТТ",
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "Lit1 - online, lit2 - offline",
+                    "enum": [
+                      "Lit1",
+                      "lit2"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "type": "array"
+        },
+        "creditProduct": {
+          "description": "Кредитные продукты",
+          "items": {
+            "type": "object",
+            "properties": {
+              "guidcp": {
+                "description": "ГУИД записи справочника Кредитные продукты",
+                "type": "string"
+              },
+              "nameCP": {
+                "description": "Название кредитного продукта",
+                "type": "string"
+              },
+              "downPayments": {
+                "description": "Первоначальный взнос, %",
+                "type": "string"
+              },
+              "discount": {
+                "description": "Скидка предприятия торговли  от первоначальной цены",
+                "type": "number"
+              },
+              "loanTermMin": {
+                "description": "Возможный срок, мес.: от",
+                "type": "integer"
+              },
+              "loanTermMax": {
+                "description": "Возможный срок, мес.: до",
+                "type": "integer"
+              },
+              "limitMin": {
+                "description": "Минимальная сумма кредита, руб.",
+                "type": "number"
+              },
+              "limitMax": {
+                "description": "Максимальная сумма кредита, руб.",
+                "type": "number"
+              },
+              "fpn": {
+                "description": "ФПН",
+                "type": "string"
+              },
+              "code": {
+                "description": "Код продукта",
+                "type": "string"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "conStateHistory": {
+          "description": "История статусов",
+          "items": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "description": "Статус",
+                "type": "string"
+              },
+              "stateDate": {
+                "description": "Дата назначения статуса",
+                "type": "number"
+              },
+              "duration": {
+                "description": "Продолжительность работ, дн.",
+                "type": "integer"
+              },
+              "executorFIO": {
+                "description": "Исполнитель",
+                "type": "string"
+              },
+              "executorRole": {
+                "description": "Роль исполнителя",
+                "type": "string"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "contractErrors": {
+          "description": "Сведения по ошибкам",
+          "items": {
+            "type": "object",
+            "properties": {
+              "errorType": {
+                "description": "Тип ошибки",
+                "type": "string"
+              },
+              "errorDescription": {
+                "description": "Описание",
+                "type": "string"
+              },
+              "errorAuthor": {
+                "description": "Автор",
+                "type": "string"
+              },
+              "errorDate": {
+                "description": "Дата",
+                "type": "number"
+              },
+              "errorState": {
+                "description": "СтатусОшибки",
+                "type": "string"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "contractNonAgree": {
+          "description": "Сведения по отказам в согласовании",
+          "items": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "description": "Статус",
+                "type": "string"
+              },
+              "note": {
+                "description": "Описание решения",
+                "type": "string"
+              },
+              "author": {
+                "description": "Автор",
+                "type": "string"
+              },
+              "dateT": {
+                "description": "Дата",
+                "type": "number"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "partnerSchemeRCRContractIR": {
+          "description": "Проценты вознаграждений",
+          "items": {
+            "type": "object",
+            "properties": {
+              "irfpn": {
+                "description": "ФПН",
+                "type": "string"
+              },
+              "irGuidDoc": {
+                "description": "ПВ ГУИД КП",
+                "type": "string"
+              },
+              "irCode": {
+                "description": "ПВ Код продукта",
+                "type": "string"
+              },
+              "irNameKP": {
+                "description": "ПВ Группа продуктов",
+                "type": "string"
+              },
+              "irOutInsurance": {
+                "description": "ПВ Без страховки",
+                "type": "number"
+              },
+              "irInsurance1": {
+                "description": "ПВ Страховка 1",
+                "type": "number"
+              },
+              "irInsurance2": {
+                "description": "ПВ Страховка 2",
+                "type": "number"
+              },
+              "irLoanTermMin": {
+                "description": "ПВ Возможный срок, мес.: от",
+                "type": "integer"
+              },
+              "irLoanTermMax": {
+                "description": "ПВ Возможный срок, мес.: до",
+                "type": "integer"
+              },
+              "irDownPayments": {
+                "description": "ПВ Первоначальный взнос",
+                "type": "string"
+              },
+              "irLimitMin": {
+                "description": "ПВ Минимальная сумма кредита, руб.",
+                "type": "number"
+              },
+              "irLimitMax": {
+                "description": "ПВ Максимальная сумма кредита, руб.",
+                "type": "number"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "partnerSchemeRCRContractBR": {
+          "description": "Границы вознаграждения",
+          "items": {
+            "type": "object",
+            "properties": {
+              "brBorderDown": {
+                "description": "ГВ Нижняя граница",
+                "type": "number"
+              },
+              "brBorderUpper": {
+                "description": "ГВ Верхняя граница",
+                "type": "number"
+              },
+              "brBorderNon": {
+                "description": "ГВ Флаг ограничений",
+                "type": "boolean"
+              },
+              "rcrContractBRL": {
+                "description": "Вознаграждение по продуктам для границ вознаграждений",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "brlfpn": {
+                      "description": "ФПН",
+                      "type": "string"
+                    },
+                    "brlGuidDoc": {
+                      "description": "ПВС ГУИД КП",
+                      "type": "string"
+                    },
+                    "brlCode": {
+                      "description": "ПВС Код продукта",
+                      "type": "string"
+                    },
+                    "brlNameKP": {
+                      "description": "ПВС Наименование КП",
+                      "type": "string"
+                    },
+                    "brlOutInsurance": {
+                      "description": "ПВС Без страховки",
+                      "type": "number"
+                    },
+                    "brlInsurance1": {
+                      "description": "ПВС Страховка 1",
+                      "type": "number"
+                    },
+                    "brlInsurance2": {
+                      "description": "ПВС Страховка 2",
+                      "type": "number"
+                    },
+                    "brlLoanTermMin": {
+                      "description": "ПВС Возможный срок, мес.: от",
+                      "type": "integer"
+                    },
+                    "brlLoanTermMax": {
+                      "description": "ПВС Возможный срок, мес.: до",
+                      "type": "integer"
+                    },
+                    "brlDownPayments": {
+                      "description": "ПВС Первоначальный взнос",
+                      "type": "string"
+                    },
+                    "brlLimitMin": {
+                      "description": "ПВС Минимальная сумма кредита, руб.",
+                      "type": "number"
+                    },
+                    "brlLimitMax": {
+                      "description": "ПВС Максимальная сумма кредита, руб.",
+                      "type": "number"
+                    }
+                  }
+                },
+                "type": "array"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "partnerSchemeRCRContractBRD": {
+          "description": "Границы вознаграждений дополнительное вознаграждение",
+          "items": {
+            "type": "object",
+            "properties": {
+              "brdBorderDown": {
+                "description": "ГВД Нижняя граница",
+                "type": "number"
+              },
+              "brdBorderUpper": {
+                "description": "ГВД Верхняя граница",
+                "type": "number"
+              },
+              "brdBorderNon": {
+                "description": "ГВД Флаг ограничений",
+                "type": "boolean"
+              },
+              "brdPercentRewards": {
+                "description": "ГВД Процент дополнительного вознаграждения",
+                "type": "number"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "partnerSchemeRCRContractTT": {
+          "description": "Категории ТТ",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ttCategoryCode": {
+                "description": "ТТ Код категории",
+                "type": "string"
+              },
+              "ttCategoryName": {
+                "description": "ТТ Наименование категории",
+                "type": "string"
+              },
+              "rcrContractIR": {
+                "description": "Проценты вознаграждений",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ttlfpn": {
+                      "description": "ФПН",
+                      "type": "string"
+                    },
+                    "ttlGuidDoc": {
+                      "description": "ПВТ ГУИД КП",
+                      "type": "string"
+                    },
+                    "ttlCode": {
+                      "description": "ПВТ Код продукта",
+                      "type": "string"
+                    },
+                    "ttlNameKP": {
+                      "description": "ПВТ Наименование КП",
+                      "type": "string"
+                    },
+                    "ttlOutInsurance": {
+                      "description": "ПВТ Без страховки",
+                      "type": "number"
+                    },
+                    "ttlInsurance1": {
+                      "description": "ПВТ Страховка 1",
+                      "type": "number"
+                    },
+                    "ttlInsurance2": {
+                      "description": "ПВТ Страховка 2",
+                      "type": "number"
+                    },
+                    "ttlLoanTermMin": {
+                      "description": "ПВТ Возможный срок, мес.: от",
+                      "type": "integer"
+                    },
+                    "ttlLoanTermMax": {
+                      "description": "ПВТ Возможный срок, мес.: до",
+                      "type": "integer"
+                    },
+                    "ttlDownPayments": {
+                      "description": "ПВТ Первоначальный взнос",
+                      "type": "string"
+                    },
+                    "ttlLimitMin": {
+                      "description": "ПВТ Минимальная сумма кредита, руб.",
+                      "type": "number"
+                    },
+                    "ttlLimitMax": {
+                      "description": "ПВТ Максимальная сумма кредита, руб.",
+                      "type": "number"
+                    }
+                  }
+                },
+                "type": "array"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "agentSchemeRCRContractT13": {
+          "description": "Проценты вознаграждений по агентской схеме",
+          "items": {
+            "type": "object",
+            "properties": {
+              "irNameKP": {
+                "description": "ПВ Группа продуктов",
+                "type": "string"
+              },
+              "irOutInsurance": {
+                "description": "ПВ Без страховки",
+                "type": "number"
+              },
+              "irInsurance1": {
+                "description": "ПВ Страховка 1",
+                "type": "number"
+              },
+              "irInsurance2": {
+                "description": "ПВ Страховка 2",
+                "type": "number"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "cState": {
+          "description": "Статус",
+          "type": "string"
+        },
+        "cStateDate": {
+          "description": "Дата назначения статуса",
+          "type": "number"
+        },
+        "tmguidDoc": {
+          "type": "string"
+        },
+        "innAgent": {
+          "description": "Инн Агента",
+          "type": "string"
+        },
+        "conline": {
+          "type": "boolean"
+        },
+        "coffline": {
+          "type": "boolean"
+        },
+        "rcrContractAS": {
+          "description": "Дополнительные услуги",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "Код услуги",
+                "type": "string"
+              },
+              "name": {
+                "description": "Наименование услуги",
+                "type": "string"
+              },
+              "guidDoc": {
+                "description": "ГУИД документа",
+                "type": "string"
+              },
+              "rcrContractASP": {
+                "description": "Периоды действия услуг",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "rewardOne": {
+                      "description": "Вознаграждение за одну единицу (руб/процент)",
+                      "type": "number"
+                    },
+                    "dateOn": {
+                      "description": "Дата действия с",
+                      "type": "number"
+                    },
+                    "dateOff": {
+                      "description": "Дата действия по",
+                      "type": "number"
+                    },
+                    "unit": {
+                      "description": "Единица измерения",
+                      "type": "object",
+                      "properties": {
+                        "content": {
+                          "type": "string"
+                        },
+                        "code": {
+                          "description": "Код услуги",
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "ruble - рубль, percent - процент",
+                          "enum": [
+                            "ruble",
+                            "percent"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "type": "array"
+              }
+            }
+          },
+          "type": "array"
+        }
+      }
+    }
+  }
+}

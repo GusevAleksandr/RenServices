@@ -1,18 +1,18 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "rest сервисы для работы с сотрудниками банка",
+    "description": "rest сервисы для работы с полномочиями сотрудника",
     "version": "1.0.0",
-    "title": "rest сервисы для работы с сотрудниками банка"
+    "title": "rest сервисы для работы с полномочиями сотрудника"
   },
   "paths": {
-    "/rest-api/simple/list/partnerEmployee": {
+    "/rest-api/simple/list/employeeAuthority": {
       "get": {
         "tags": [
-          "partnerEmployeeListSimple"
+          "employeeAuthorityListSimple"
         ],
-        "summary": "получение списка сотрудников партнера",
-        "operationId": "simple_partnerEmployees_list",
+        "summary": "получение списка полномичий сотрудника",
+        "operationId": "simple_employeeAuthoritys_list",
         "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
         "security": [
           {
@@ -48,7 +48,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/PartnerEmployee"
+                "$ref": "#/definitions/EmployeeAuthority"
               }
             }
           },
@@ -64,13 +64,13 @@
         }
       }
     },
-    "/rest-api/list/partnerEmployee": {
+    "/rest-api/list/employeeAuthority": {
       "post": {
         "tags": [
-          "partnerEmployeeList"
+          "employeeAuthorityList"
         ],
         "summary": "сохранение параметров фильтрации",
-        "operationId": "post_partnerEmployees_list",
+        "operationId": "post_employeeAuthoritys_list",
         "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
         "security": [
           {
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/rest-api/list/partnerEmployee/{id}": {
+    "/rest-api/list/employeeAuthority/{id}": {
       "get": {
         "tags": [
-          "partnerEmployeeList"
+          "employeeAuthorityList"
         ],
         "summary": "получение списка документов",
-        "operationId": "get_partnerEmployee_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/partnerEmployee",
+        "operationId": "get_employeeAuthority_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/employeeAuthority",
         "security": [
           {
             "Bearer": []
@@ -131,7 +131,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/PartnerEmployee"
+                "$ref": "#/definitions/EmployeeAuthority"
               }
             }
           },
@@ -150,14 +150,14 @@
         }
       }
     },
-    "/rest-api/partnerEmployees/{id}": {
+    "/rest-api/employeeAuthoritys/{id}": {
       "get": {
         "tags": [
-          "partnerEmployee"
+          "employeeAuthority"
         ],
         "summary": "получение документа по гуиду",
-        "operationId": "partnerEmployee_get",
-        "description": "получение одного Представителя/Сотрудника заданного Партнера",
+        "operationId": "employeeAuthority_get",
+        "description": "получение полномочия пользователя по гуиду документа",
         "security": [
           {
             "Bearer": []
@@ -167,7 +167,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "гуид представителя/сотрудника",
+            "description": "гуид",
             "required": true,
             "type": "string"
           }
@@ -177,7 +177,7 @@
             "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
             "schema": {
               "type": "object",
-              "$ref": "#/definitions/PartnerEmployee"
+              "$ref": "#/definitions/EmployeeAuthority"
             }
           },
           "400": {
@@ -187,7 +187,7 @@
             "description": "Unauthorized"
           },
           "404": {
-            "description": "представитель/сотрудник не найден"
+            "description": "полномочия не найдены"
           },
           "500": {
             "description": "Internal Server Error"
@@ -197,11 +197,15 @@
     }
   },
   "definitions": {
-    "PartnerEmployee": {
+    "EmployeeAuthority": {
       "type": "object",
       "properties": {
         "guidDoc": {
           "description": "ГУИД документа",
+          "type": "string"
+        },
+        "signerPepGUID": {
+          "description": "ГУИД карточки подписанта",
           "type": "string"
         },
         "state": {
@@ -228,10 +232,6 @@
           "description": "Регион закрепления партнера",
           "type": "string"
         },
-        "boss": {
-          "description": "Руководитель",
-          "type": "boolean"
-        },
         "surname": {
           "description": "Фамилия",
           "type": "string"
@@ -244,162 +244,104 @@
           "description": "Отчество",
           "type": "string"
         },
-        "fiorp": {
-          "description": "ФИО в р.п.",
-          "type": "string"
-        },
         "post": {
           "description": "Должность",
           "type": "string"
         },
-        "postRP": {
-          "description": "Должность в р.п.",
-          "type": "string"
-        },
-        "phone": {
-          "description": "Телефон",
-          "type": "string"
-        },
-        "passSeries": {
-          "description": "Серия паспорта",
-          "type": "string"
-        },
-        "passNumber": {
-          "description": "Номер паспорта",
-          "type": "string"
-        },
-        "issuedBy": {
-          "description": "Кем выдан",
-          "type": "string"
-        },
-        "issuedDate": {
-          "description": "Дата выдачи",
-          "type": "number"
-        },
-        "codeSubdivision": {
-          "description": "Код подразделения",
-          "type": "string"
-        },
-        "dateOfBirth": {
-          "description": "Дата рождения",
-          "type": "number"
-        },
         "login": {
-          "description": "Логин подписанта",
+          "description": "Логин подписанта ПЭП",
           "type": "string"
         },
-        "userGUID": {
-          "description": "Гуид пользователя",
-          "type": "string"
+        "forView": {
+          "description": "Для просмотра",
+          "type": "boolean"
         },
-        "blockReason": {
-          "description": "Причина блокировки",
-          "type": "string"
+        "forSign": {
+          "description": "Для подписи ПЭП",
+          "type": "boolean"
         },
-        "blockDescription": {
-          "description": "Описание причины блокировки",
-          "type": "string"
-        },
-        "blockExecutor": {
-          "description": "Исполнитель",
-          "type": "string"
-        },
-        "blockDate": {
-          "description": "Дата блокировки",
+        "dateOn": {
+          "description": "Дата начала полномочий",
           "type": "number"
         },
-        "isEnablePEP": {
-          "description": "Доступ на ПЭП",
+        "dateOff": {
+          "description": "Дата окончания полномочий",
+          "type": "number"
+        },
+        "boss": {
+          "description": "Руководитель",
           "type": "boolean"
         },
-        "isEnableView": {
-          "description": "Доступ на просмотр",
+        "notLimit": {
+          "description": "Бессрочные полномочия",
           "type": "boolean"
         },
-        "fiofull": {
-          "description": "ФИОип",
+        "reason": {
+          "description": "Причина отзыва",
           "type": "string"
         },
-        "address": {
-          "description": "Адрес регистрации",
+        "basisPowers": {
+          "description": "Основание полномочий (родительный падеж)",
           "type": "string"
         },
-        "surnameUpper": {
-          "description": "ФамилияВерхийРегистр",
+        "postrp": {
+          "description": "ДолжностьВрп",
           "type": "string"
         },
-        "nameUpper": {
-          "description": "ИмяВерхийРегистр",
+        "fiorp": {
+          "description": "ФИО в РП",
           "type": "string"
         },
-        "middleNameUpper": {
-          "description": "ОтчествоВерхийРегистр",
+        "datePowerAsText": {
+          "description": "Дата доверенности прописью",
           "type": "string"
         },
         "tradeEnterpriseSignerIsPartner": {
           "description": "Подписант совпадает с партнером",
           "type": "string"
         },
-        "signerPEPDocs": {
-          "description": "Файлы документов",
-          "items": {
-            "type": "object",
-            "properties": {
-              "docType": {
-                "description": "Тип документа",
-                "type": "string"
-              },
-              "descript": {
-                "description": "Описание",
-                "type": "string"
-              },
-              "attachment": {
-                "description": "Файл",
-                "type": "string"
-              },
-              "uploadDate": {
-                "description": "Дата представления",
-                "type": "number"
-              },
-              "attachlink": {
-                "description": "ссылка на вложение",
-                "type": "string"
-              }
-            }
-          },
-          "type": "array"
-        },
-        "signerPEPHistoryState": {
-          "description": "История статусов",
-          "items": {
-            "type": "object",
-            "properties": {
-              "state": {
-                "description": "Статус",
-                "type": "string"
-              },
-              "stateDate": {
-                "description": "Дата назначения статуса",
-                "type": "number"
-              },
-              "duration": {
-                "description": "Продолжительность работ, дн.",
-                "type": "integer"
-              },
-              "executorFIO": {
-                "description": "Исполнитель",
-                "type": "string"
-              }
-            }
-          },
-          "type": "array"
-        },
-        "eMail": {
-          "description": "ЭлПочта",
+        "passportPASSSERIES": {
+          "description": "Серия паспорта",
           "type": "string"
         },
-        "eMailUpper": {
-          "description": "ЭлПочтаВерхийРегистр",
+        "passportPASSNUMBER": {
+          "description": "Номер паспорта",
+          "type": "string"
+        },
+        "passportISSUEWHOME": {
+          "description": "Кем выдан",
+          "type": "string"
+        },
+        "passportISSUEDATE": {
+          "description": "Дата выдачи",
+          "type": "number"
+        },
+        "passportDIVISIONCODE": {
+          "description": "Код подразделения",
+          "type": "string"
+        },
+        "passportDATEOFBIRTH": {
+          "description": "Дата рождения",
+          "type": "number"
+        },
+        "paNum": {
+          "description": "Номер доверенности",
+          "type": "string"
+        },
+        "paDateOn": {
+          "description": "Дата доверенности",
+          "type": "number"
+        },
+        "paDateOff": {
+          "description": "Дата окончания действия",
+          "type": "number"
+        },
+        "paFile": {
+          "description": "Файл с доверенностью",
+          "type": "string"
+        },
+        "fioFull": {
+          "description": "ФИО полное",
           "type": "string"
         }
       }

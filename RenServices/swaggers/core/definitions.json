@@ -23,6 +23,22 @@
         "filter": {
           "$ref": "./common-logic.json#/definitions/CommonLogic"
         },
+        "additionalFilter": {
+          "type": "object",
+          "description": "предопределенный прикладной фильтр",
+          "properties": {
+            "filterId": {
+              "type": "string",
+              "description": "идентификатор предопределенного прикладной фильтра"
+            },
+            "params": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "fields": {
           "type": "array",
           "items": {

@@ -43,80 +43,34 @@
         ],
         "parameters": [
           {
-            "in": "path",
-            "name": "typeId",
-            "description": "идентификатор типа документа, который является уникальным идентификатором (nodeId) из навигации",
-            "required": true,
-            "type": "string"
+            "$ref": "#/parameters/typeId"
           },
           {
-            "in": "query",
-            "name": "navigationId",
-            "description": "идентификатор файла навигации. Используется в случае наличия нескольких навигаций",
-            "required": false,
-            "type": "string"
+            "$ref": "#/parameters/navigationId"
           },
           {
-            "in": "query",
-            "name": "filter",
-            "description": "дополнельные условия фильтрации в виде (поле=значение & поле2=значение2)",
-            "required": false,
-            "type": "string"
+            "$ref": "#/parameters/filter"
           },
           {
-            "in": "query",
-            "name": "filterId",
-            "description": "идентификатор именованного фильтра. Возможна передача значений для параметров фильтрации. Значения передаются в строке запроса в виде ключ=значение.",
-            "required": false,
-            "type": "string"
+            "$ref": "#/parameters/filterId"
           },
           {
-            "in": "query",
-            "name": "fields",
-            "description": "список возвращаемых полей. Если параметр не задан, и установлен флаг onlyHeaderFields, выгружаются только заголовочные поля, без вложенных таблиц.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/parameters/fields"
           },
           {
-            "in": "query",
-            "name": "onlyHeaderFields",
-            "description": "флаг, указывающий необходимость загрузки только заголовочных полей документа. Является необязательным, значение по умолчанию - true.",
-            "required": false,
-            "type": "boolean"
+            "$ref": "#/parameters/onlyHeaderFields"
           },
           {
-            "in": "query",
-            "name": "ordersAsc",
-            "description": "список полей для сортировки по возрастанию",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/parameters/ordersAsc"
           },
           {
-            "in": "query",
-            "name": "ordersDesc",
-            "description": "список полей для сортировки по убыванию",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/parameters/ordersDesc"
           },
           {
-            "in": "query",
-            "name": "page",
-            "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
-            "required": false,
-            "type": "integer"
+            "$ref": "#/parameters/page"
           },
           {
-            "in": "query",
-            "name": "pageSize",
-            "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
-            "required": false,
-            "type": "integer"
+            "$ref": "#/parameters/pageSize"
           }
         ],
         "responses": {
@@ -156,20 +110,10 @@
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "description": "параметры запроса",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/DocListRequest"
-            }
+            "$ref": "#/parameters/postBody"
           },
           {
-            "in": "path",
-            "name": "id",
-            "description": "идентификатор типа документа, который является уникальным идентификатором (nodeId) из навигации",
-            "required": true,
-            "type": "string"
+            "$ref": "#/parameters/postTypeId"
           }
         ],
         "responses": {
@@ -204,25 +148,13 @@
         ],
         "parameters": [
           {
-            "in": "path",
-            "name": "id",
-            "description": "идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post",
-            "required": true,
-            "type": "string"
+            "$ref": "#/parameters/queryId"
           },
           {
-            "in": "query",
-            "name": "page",
-            "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
-            "required": false,
-            "type": "integer"
+            "$ref": "#/parameters/page"
           },
           {
-            "in": "query",
-            "name": "pageSize",
-            "description": "количество элементов на странице. Если не задан - используется параметр из post запроса, иначе используется значиние по умолчанию, равное 20.",
-            "required": false,
-            "type": "integer"
+            "$ref": "#/parameters/pageSize"
           }
         ],
         "responses": {
@@ -532,133 +464,6 @@
         }
       }
     },
-    "DocListRequest": {
-      "type": "object",
-      "properties": {
-        "navigationId": {
-          "type": "string",
-          "description": "идентификатор файла навигации. Используется в случае наличия нескольких навигаций"
-        },
-        "filter": {
-          "type": "object",
-          "description": "расширенный фильтр в формате common-logic",
-          "example": {
-            "not": {
-              "and": [
-                {
-                  "eq": {
-                    "left": {
-                      "field": {
-                        "name": "testField"
-                      }
-                    },
-                    "right": {
-                      "constant": {
-                        "value": "10",
-                        "type": "LONG"
-                      }
-                    }
-                  }
-                },
-                {
-                  "eq": {
-                    "left": {
-                      "field": {
-                        "name": "fieldFirst"
-                      }
-                    },
-                    "right": {
-                      "field": {
-                        "name": "fieldSecond"
-                      }
-                    }
-                  }
-                },
-                {
-                  "and": [
-                    {
-                      "not": {
-                        "eq": {
-                          "left": {
-                            "field": {
-                              "name": "fieldFirst"
-                            }
-                          },
-                          "right": {
-                            "field": {
-                              "name": "fieldSecond"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "in": {
-                        "left": {
-                          "field": {
-                            "name": "inFieldName"
-                          }
-                        },
-                        "right": [
-                          {
-                            "constant": {
-                              "value": "inStringName"
-                            }
-                          },
-                          {
-                            "security-context": {
-                              "property": "login"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        },
-        "additionalFilter": {
-          "type": "object",
-          "description": "предопределенный прикладной фильтр",
-          "properties": {
-            "filterId": {
-              "type": "string",
-              "description": "идентификатор предопределенного прикладной фильтра"
-            },
-            "params": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "fields": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "orders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrderElement"
-          }
-        },
-        "onlyHeaderFields": {
-          "type": "boolean",
-          "description": "флаг, указывающий необходимость загрузки только заголовочных полей документа. Является необязательным, значение по умолчанию - true.",
-          "default": true
-        },
-        "pageSize": {
-          "type": "integer",
-          "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
-          "default": 20
-        }
-      }
-    },
     "AuthenticationRequest": {
       "type": "object",
       "required": [
@@ -753,6 +558,110 @@
           "description": "адрес электронной почты текущего пользователя"
         }
       }
+    },
+    "DocListRequest": {
+      "$ref":  "./definitions.json#/definitions/DocListRequest"
+    }
+  },
+  "parameters": {
+    "typeId": {
+      "in": "path",
+      "name": "typeId",
+      "description": "идентификатор типа документа, который является уникальным идентификатором (nodeId) из навигации",
+      "required": true,
+      "type": "string"
+    },
+    "postTypeId": {
+      "in": "path",
+      "name": "id",
+      "description": "идентификатор типа документа, который является уникальным идентификатором (nodeId) из навигации",
+      "required": true,
+      "type": "string"
+    },
+    "navigationId": {
+      "in": "query",
+      "name": "navigationId",
+      "description": "идентификатор файла навигации. Используется в случае наличия нескольких навигаций",
+      "required": false,
+      "type": "string"
+    },
+    "filter": {
+      "in": "query",
+      "name": "filter",
+      "description": "дополнительные условия фильтрации в формате простых запросов. Используются логические выражения (=, !=, >, >=, <, <=), операции коньюнкции (AND), коньюнкции (OR), отрицания (NOT) ключевые слова like",
+      "required": false,
+      "type": "string"
+    },
+    "filterId": {
+      "in": "query",
+      "name": "filterId",
+      "description": "идентификатор именованного фильтра. Возможна передача значений для параметров фильтрации. Значения передаются в строке запроса в виде ключ=значение.",
+      "required": false,
+      "type": "string"
+    },
+    "fields": {
+      "in": "query",
+      "name": "fields",
+      "description": "список возвращаемых полей. Если параметр не задан, и установлен флаг onlyHeaderFields, выгружаются только заголовочные поля, без вложенных таблиц.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "onlyHeaderFields": {
+      "in": "query",
+      "name": "onlyHeaderFields",
+      "description": "флаг, указывающий необходимость загрузки только заголовочных полей документа. Является необязательным, значение по умолчанию - true.",
+      "required": false,
+      "type": "boolean"
+    },
+    "ordersAsc": {
+      "in": "query",
+      "name": "ordersAsc",
+      "description": "список полей для сортировки по возрастанию",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ordersDesc": {
+      "in": "query",
+      "name": "ordersDesc",
+      "description": "список полей для сортировки по убыванию",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "page": {
+      "in": "query",
+      "name": "page",
+      "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
+      "required": false,
+      "type": "integer"
+    },
+    "pageSize": {
+      "in": "query",
+      "name": "pageSize",
+      "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
+      "required": false,
+      "type": "integer"
+    },
+    "postBody": {
+      "in": "body",
+      "name": "postBody",
+      "description": "параметры запроса",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/DocListRequest"
+      }
+    },
+    "queryId": {
+      "in": "path",
+      "name": "id",
+      "description": "идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post",
+      "required": true,
+      "type": "string"
     }
   }
 }

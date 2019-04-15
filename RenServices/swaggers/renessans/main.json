@@ -56,7 +56,7 @@
       "type": "apiKey",
       "in": "header",
       "name": "Authorization",
-      "description": "передается JWT-токен. Содержимое хидера начинается с 'Bearer ' + JWT-токек, полученный от сервиса 'авторизация пользователя в системе'"
+      "description": "передается JWT-токен. Содержимое хидера начинается с 'Bearer ' + JWT-токен, полученный от сервиса 'авторизация пользователя в системе'"
     }
   },
   "paths": {
@@ -66,8 +66,8 @@
     "/rest-api/list/partner": {
       "$ref": "./Partner.json#/paths/~1rest-api~1list~1partner"
     },
-    "/rest-api/list/partner/{queryId}": {
-      "$ref": "./Partner.json#/paths/~1rest-api~1list~1partner~1{queryId}"
+    "/rest-api/list/partner/{id}": {
+      "$ref": "./Partner.json#/paths/~1rest-api~1list~1partner~1{id}"
     },
     "/rest-api/partners/{id}": {
       "$ref": "./Partner.json#/paths/~1rest-api~1partners~1{id}"
@@ -79,8 +79,8 @@
     "/rest-api/list/agent": {
       "$ref": "./Agent.json#/paths/~1rest-api~1list~1agent"
     },
-    "/rest-api/list/agent/{queryId}": {
-      "$ref": "./Agent.json#/paths/~1rest-api~1list~1agent~1{queryId}"
+    "/rest-api/list/agent/{id}": {
+      "$ref": "./Agent.json#/paths/~1rest-api~1list~1agent~1{id}"
     },
     "/rest-api/agents/{id}": {
       "$ref": "./Agent.json#/paths/~1rest-api~1agents~1{id}"
@@ -92,12 +92,80 @@
     "/rest-api/list/partnerEmployee": {
       "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1list~1partnerEmployee"
     },
-    "/rest-api/list/partnerEmployee/{queryId}": {
-      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1list~1partnerEmployee~1{queryId}"
+    "/rest-api/list/partnerEmployee/{id}": {
+      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1list~1partnerEmployee~1{id}"
     },
     "/rest-api/partnerEmployees/{id}": {
       "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1partnerEmployees~1{id}"
     },
+
+
+    "/rest-api/simple/list/tradingPoint": {
+      "$ref": "./TradingPoint.json#/paths/~1rest-api~1simple~1list~1tradingPoint"
+    },
+    "/rest-api/list/tradingPoint": {
+      "$ref": "./TradingPoint.json#/paths/~1rest-api~1list~1tradingPoint"
+    },
+    "/rest-api/list/tradingPoint/{id}": {
+      "$ref": "./TradingPoint.json#/paths/~1rest-api~1list~1tradingPoint~1{id}"
+    },
+    "/rest-api/tradingPoint/{id}": {
+      "$ref": "./TradingPoint.json#/paths/~1rest-api~1tradingPoints~1{id}"
+    },
+
+    "/rest-api/simple/list/contract": {
+      "$ref": "./Contract.json#/paths/~1rest-api~1simple~1list~1contract"
+    },
+    "/rest-api/list/contract": {
+      "$ref": "./Contract.json#/paths/~1rest-api~1list~1contract"
+    },
+    "/rest-api/list/contract/{id}": {
+      "$ref": "./Contract.json#/paths/~1rest-api~1list~1contract~1{id}"
+    },
+    "/rest-api/contract/{id}": {
+      "$ref": "./Contract.json#/paths/~1rest-api~1contracts~1{id}"
+    },
+
+    "/rest-api/simple/list/reward": {
+      "$ref": "./Reward.json#/paths/~1rest-api~1simple~1list~1reward"
+    },
+    "/rest-api/list/reward": {
+      "$ref": "./Reward.json#/paths/~1rest-api~1list~1reward"
+    },
+    "/rest-api/list/reward/{id}": {
+      "$ref": "./Reward.json#/paths/~1rest-api~1list~1reward~1{id}"
+    },
+    "/rest-api/reward/{id}": {
+      "$ref": "./Reward.json#/paths/~1rest-api~1rewards~1{id}"
+    },
+
+    "/rest-api/simple/list/employeeAuthority": {
+      "$ref": "./EmployeeAuthority.json#/paths/~1rest-api~1simple~1list~1employeeAuthority"
+    },
+    "/rest-api/list/employeeAuthority": {
+      "$ref": "./EmployeeAuthority.json#/paths/~1rest-api~1list~1employeeAuthority"
+    },
+    "/rest-api/list/employeeAuthority/{id}": {
+      "$ref": "./EmployeeAuthority.json#/paths/~1rest-api~1list~1employeeAuthority~1{id}"
+    },
+    "/rest-api/employeeAuthority/{id}": {
+      "$ref": "./EmployeeAuthority.json#/paths/~1rest-api~1employeeAuthoritys~1{id}"
+    },
+
+    "/rest-api/simple/list/agentScheme": {
+      "$ref": "./AgentSchemes.json#/paths/~1rest-api~1simple~1list~1agentScheme"
+    },
+    "/rest-api/list/agentScheme": {
+      "$ref": "./AgentSchemes.json#/paths/~1rest-api~1list~1agentScheme"
+    },
+    "/rest-api/list/agentScheme/{id}": {
+      "$ref": "./AgentSchemes.json#/paths/~1rest-api~1list~1agentScheme~1{id}"
+    },
+    "/rest-api/agentSchemes/{id}": {
+      "$ref": "./AgentSchemes.json#/paths/~1rest-api~1agentSchemes~1{id}"
+    },
+
+
     "/rest-api/auth/authorization": {
       "$ref": "../core/main.json#/paths/~1rest-api~1auth~1authorization"
     },
@@ -112,6 +180,11 @@
     },
     "/rest-api/auth/user/details": {
       "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1details"
+    }
+  },
+  "definitions": {
+    "DocListRequest": {
+      "$ref": "../core/definitions.json#/definitions/DocListRequest"
     }
   }
 }

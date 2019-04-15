@@ -5,14 +5,6 @@
     "version": "1.0.0",
     "title": "rest сервисы для работы с партнером банка"
   },
-  "securityDefinitions": {
-    "Bearer": {
-      "type": "apiKey",
-      "in": "header",
-      "name": "Authorization",
-      "description": "передается JWT-токен. Содержимое хидера начинается с 'Bearer ' + JWT-токек, полученный от сервиса 'авторизация пользователя в системе'"
-    }
-  },
   "paths": {
     "/rest-api/simple/list/partner": {
       "get": {
@@ -29,59 +21,25 @@
         ],
         "parameters": [
           {
-            "in": "query",
-            "name": "filter",
-            "description": "дополнельные условия фильтрации в виде (поле=значение & поле2=значение2)",
-            "required": false,
-            "type": "string"
+            "$ref": "../core/main.json#/parameters/filter"
           },
           {
-            "in": "query",
-            "name": "fields",
-            "description": "список возвращаемых полей. Если параметр не задан, и установлен флаг onlyHeaderFields, выгружаются только заголовочные поля, без вложенных таблиц.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "../core/main.json#/parameters/fields"
           },
           {
-            "in": "query",
-            "name": "onlyHeaderFields",
-            "description": "флаг, указывающий необходимость загрузки только заголовочных полей документа. Под заголовочными понимаются поля первого уровня, не являющиеся таблицами (множественные элементы). Является необязательным, значение по умолчанию - true.",
-            "required": false,
-            "type": "boolean"
+            "$ref": "../core/main.json#/parameters/onlyHeaderFields"
           },
           {
-            "in": "query",
-            "name": "ordersAsc",
-            "description": "список полей для сортировки по возрастанию",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "../core/main.json#/parameters/ordersAsc"
           },
           {
-            "in": "query",
-            "name": "ordersDesc",
-            "description": "список полей для сортировки по убыванию",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "$ref": "../core/main.json#/parameters/ordersDesc"
           },
           {
-            "in": "query",
-            "name": "page",
-            "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
-            "required": false,
-            "type": "integer"
+            "$ref": "../core/main.json#/parameters/page"
           },
           {
-            "in": "query",
-            "name": "pageSize",
-            "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
-            "required": false,
-            "type": "integer"
+            "$ref": "../core/main.json#/parameters/pageSize"
           }
         ],
         "responses": {
@@ -121,13 +79,7 @@
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "description": "параметры запроса",
-            "required": true,
-            "schema": {
-              "$ref": "../core/definitions.json#/definitions/DocListRequest"
-            }
+            "$ref": "../core/main.json#/parameters/postBody"
           }
         ],
         "responses": {
@@ -149,7 +101,7 @@
         }
       }
     },
-    "/rest-api/list/partner/{queryId}": {
+    "/rest-api/list/partner/{id}": {
       "get": {
         "tags": [
           "partnerList"
@@ -164,25 +116,13 @@
         ],
         "parameters": [
           {
-            "in": "path",
-            "name": "queryId",
-            "description": "идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post на урл /rest-api/list/partner",
-            "required": true,
-            "type": "string"
+            "$ref": "../core/main.json#/parameters/queryId"
           },
           {
-            "in": "query",
-            "name": "page",
-            "description": "номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.",
-            "required": false,
-            "type": "integer"
+            "$ref": "../core/main.json#/parameters/page"
           },
           {
-            "in": "query",
-            "name": "pageSize",
-            "description": "количество элементов на странице. Если не задан - используется параметр из post запроса, иначе используется значиние по умолчанию, равное 20.",
-            "required": false,
-            "type": "integer"
+            "$ref": "../core/main.json#/parameters/pageSize"
           }
         ],
         "responses": {

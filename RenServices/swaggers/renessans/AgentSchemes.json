@@ -1,18 +1,18 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "rest сервисы для работы с сотрудниками банка",
+    "description": "rest сервисы для работы с агентскими схемами",
     "version": "1.0.0",
-    "title": "rest сервисы для работы с сотрудниками банка"
+    "title": "rest сервисы для работы с агентскими схемами"
   },
   "paths": {
-    "/rest-api/simple/list/partnerEmployee": {
+    "/rest-api/simple/list/agentScheme": {
       "get": {
         "tags": [
-          "partnerEmployeeListSimple"
+          "agentSchemeListSimple"
         ],
-        "summary": "получение списка сотрудников партнера",
-        "operationId": "simple_partnerEmployees_list",
+        "summary": "получение списка агентских схем",
+        "operationId": "simple_agentSchemes_list",
         "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
         "security": [
           {
@@ -48,7 +48,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/PartnerEmployee"
+                "$ref": "#/definitions/AgentScheme"
               }
             }
           },
@@ -64,13 +64,13 @@
         }
       }
     },
-    "/rest-api/list/partnerEmployee": {
+    "/rest-api/list/agentScheme": {
       "post": {
         "tags": [
-          "partnerEmployeeList"
+          "agentSchemeList"
         ],
         "summary": "сохранение параметров фильтрации",
-        "operationId": "post_partnerEmployees_list",
+        "operationId": "post_agentSchemes_list",
         "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
         "security": [
           {
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/rest-api/list/partnerEmployee/{id}": {
+    "/rest-api/list/agentScheme/{id}": {
       "get": {
         "tags": [
-          "partnerEmployeeList"
+          "agentSchemeList"
         ],
         "summary": "получение списка документов",
-        "operationId": "get_partnerEmployee_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/partnerEmployee",
+        "operationId": "get_agentScheme_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/agentScheme",
         "security": [
           {
             "Bearer": []
@@ -131,7 +131,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/PartnerEmployee"
+                "$ref": "#/definitions/AgentScheme"
               }
             }
           },
@@ -150,14 +150,14 @@
         }
       }
     },
-    "/rest-api/partnerEmployees/{id}": {
+    "/rest-api/agentSchemes/{id}": {
       "get": {
         "tags": [
-          "partnerEmployee"
+          "agentScheme"
         ],
         "summary": "получение документа по гуиду",
-        "operationId": "partnerEmployee_get",
-        "description": "получение одного Представителя/Сотрудника заданного Партнера",
+        "operationId": "agentScheme_get",
+        "description": "получение одной агентской схемы",
         "security": [
           {
             "Bearer": []
@@ -167,7 +167,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "гуид представителя/сотрудника",
+            "description": "гуид схемы",
             "required": true,
             "type": "string"
           }
@@ -177,7 +177,7 @@
             "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
             "schema": {
               "type": "object",
-              "$ref": "#/definitions/PartnerEmployee"
+              "$ref": "#/definitions/AgentScheme"
             }
           },
           "400": {
@@ -187,7 +187,7 @@
             "description": "Unauthorized"
           },
           "404": {
-            "description": "представитель/сотрудник не найден"
+            "description": "схема не найдена"
           },
           "500": {
             "description": "Internal Server Error"
@@ -197,210 +197,86 @@
     }
   },
   "definitions": {
-    "PartnerEmployee": {
+    "AgentScheme": {
       "type": "object",
       "properties": {
         "guidDoc": {
           "description": "ГУИД документа",
           "type": "string"
         },
+        "code": {
+          "description": "Код услуги",
+          "type": "string"
+        },
+        "name": {
+          "description": "Наименование услуги",
+          "type": "string"
+        },
+        "versionbo": {
+          "description": "null",
+          "type": "integer"
+        },
         "state": {
           "description": "Статус",
           "type": "string"
         },
-        "stateDate": {
-          "description": "Дата назначения статуса",
+        "statusDate": {
+          "description": "null",
           "type": "number"
         },
-        "partnerGUID": {
-          "description": "Гуид партнера",
-          "type": "string"
-        },
-        "partnerName": {
-          "description": "Название партнера",
-          "type": "string"
-        },
-        "partnerINN": {
-          "description": "Партнер ИНН",
-          "type": "string"
-        },
-        "partnerRegion": {
-          "description": "Регион закрепления партнера",
-          "type": "string"
-        },
-        "boss": {
-          "description": "Руководитель",
-          "type": "boolean"
-        },
-        "surname": {
-          "description": "Фамилия",
-          "type": "string"
-        },
-        "name": {
-          "description": "Имя",
-          "type": "string"
-        },
-        "middleName": {
-          "description": "Отчество",
-          "type": "string"
-        },
-        "fiorp": {
-          "description": "ФИО в р.п.",
-          "type": "string"
-        },
-        "post": {
-          "description": "Должность",
-          "type": "string"
-        },
-        "postRP": {
-          "description": "Должность в р.п.",
-          "type": "string"
-        },
-        "phone": {
-          "description": "Телефон",
-          "type": "string"
-        },
-        "passSeries": {
-          "description": "Серия паспорта",
-          "type": "string"
-        },
-        "passNumber": {
-          "description": "Номер паспорта",
-          "type": "string"
-        },
-        "issuedBy": {
-          "description": "Кем выдан",
-          "type": "string"
-        },
-        "issuedDate": {
-          "description": "Дата выдачи",
-          "type": "number"
-        },
-        "codeSubdivision": {
-          "description": "Код подразделения",
-          "type": "string"
-        },
-        "dateOfBirth": {
-          "description": "Дата рождения",
-          "type": "number"
-        },
-        "login": {
-          "description": "Логин подписанта",
-          "type": "string"
-        },
-        "userGUID": {
-          "description": "Гуид пользователя",
-          "type": "string"
-        },
-        "blockReason": {
-          "description": "Причина блокировки",
-          "type": "string"
-        },
-        "blockDescription": {
-          "description": "Описание причины блокировки",
-          "type": "string"
-        },
-        "blockExecutor": {
-          "description": "Исполнитель",
-          "type": "string"
-        },
-        "blockDate": {
-          "description": "Дата блокировки",
-          "type": "number"
-        },
-        "isEnablePEP": {
-          "description": "Доступ на ПЭП",
-          "type": "boolean"
-        },
-        "isEnableView": {
-          "description": "Доступ на просмотр",
-          "type": "boolean"
-        },
-        "fiofull": {
-          "description": "ФИОип",
-          "type": "string"
-        },
-        "address": {
-          "description": "Адрес регистрации",
-          "type": "string"
-        },
-        "surnameUpper": {
-          "description": "ФамилияВерхийРегистр",
-          "type": "string"
-        },
-        "nameUpper": {
-          "description": "ИмяВерхийРегистр",
-          "type": "string"
-        },
-        "middleNameUpper": {
-          "description": "ОтчествоВерхийРегистр",
-          "type": "string"
-        },
-        "tradeEnterpriseSignerIsPartner": {
-          "description": "Подписант совпадает с партнером",
-          "type": "string"
-        },
-        "signerPEPDocs": {
-          "description": "Файлы документов",
+        "rewardSheme": {
+          "description": "Размер вознаграждений",
           "items": {
             "type": "object",
             "properties": {
-              "docType": {
-                "description": "Тип документа",
+              "productGroup": {
+                "description": "Группа продуктов",
                 "type": "string"
               },
-              "descript": {
-                "description": "Описание",
-                "type": "string"
-              },
-              "attachment": {
-                "description": "Файл",
-                "type": "string"
-              },
-              "uploadDate": {
-                "description": "Дата представления",
+              "rewardPerc0": {
+                "description": "Без страховки",
                 "type": "number"
               },
-              "attachlink": {
-                "description": "ссылка на вложение",
+              "rewardPerc1": {
+                "description": "Одна страховка",
+                "type": "number"
+              },
+              "rewardPerc2": {
+                "description": "Две страховки",
+                "type": "number"
+              },
+              "pgCode": {
+                "description": "Код группы продуктов",
                 "type": "string"
               }
             }
           },
           "type": "array"
         },
-        "signerPEPHistoryState": {
-          "description": "История статусов",
+        "rcrschemearas": {
+          "description": "Дополнительные услуги",
           "items": {
             "type": "object",
             "properties": {
+              "code": {
+                "description": "Код услуги",
+                "type": "string"
+              },
+              "name": {
+                "description": "Наименование услуги",
+                "type": "string"
+              },
+              "guidDoc": {
+                "description": "ГУИД документа",
+                "type": "string"
+              },
               "state": {
                 "description": "Статус",
                 "type": "string"
-              },
-              "stateDate": {
-                "description": "Дата назначения статуса",
-                "type": "number"
-              },
-              "duration": {
-                "description": "Продолжительность работ, дн.",
-                "type": "integer"
-              },
-              "executorFIO": {
-                "description": "Исполнитель",
-                "type": "string"
               }
             }
           },
           "type": "array"
-        },
-        "eMail": {
-          "description": "ЭлПочта",
-          "type": "string"
-        },
-        "eMailUpper": {
-          "description": "ЭлПочтаВерхийРегистр",
-          "type": "string"
         }
       }
     }
