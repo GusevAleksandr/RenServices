@@ -15,11 +15,11 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class ChangePasswordRequest (
-  /* старый пароль пользователя в открытом виде */
-  oldPassword: String,
-  /* новый пароль пользователя в открытом виде */
-  newPassword: String
+case class OrderElement2 (
+  /* наименование поля для сортировки. Обязательный параметр */
+  fieldName: String,
+  /* направление сортировки по возрастанию. По умолчанию true */
+  ascending: Option[Boolean] = None
 ) extends ApiModel
 
 

@@ -1,6 +1,6 @@
 /**
- * rest сервисы ренессанс
- * rest сервисы ренессанс
+ * rest сервисы УФОС
+ * rest сервисы ядра УФОС
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -17,26 +17,7 @@ import scala.reflect.ClassTag
 
 object EnumsSerializers {
 
-  def all: Seq[Serializer[_]] = Seq[Serializer[_]]() :+
-    new EnumNameSerializer(ContractBasicDocDopEnums.Value) :+
-    new EnumNameSerializer(ContractDocTypeEnums.Value) :+
-    new EnumNameSerializer(ContractHowFillDateEnums.Value) :+
-    new EnumNameSerializer(ContractIspepEnums.Value) :+
-    new EnumNameSerializer(ContractPartiesAgreedEnums.Value) :+
-    new EnumNameSerializer(ContractPartnerTypeEnums.Value) :+
-    new EnumNameSerializer(ContractRegInfoTTModeEnums.Value) :+
-    new EnumNameSerializer(ContractSubjectEnums.Value) :+
-    new EnumNameSerializer(ContractTtModeEnums.Value) :+
-    new EnumNameSerializer(ContractUnitEnums.Value) :+
-    new EnumNameSerializer(PartnerPartnerTypeEnums.Value) :+
-    new EnumNameSerializer(PartnerUnitEnums.Value) :+
-    new EnumNameSerializer(RewardBasicInfoPDSubjectEnums.Value) :+
-    new EnumNameSerializer(TradingPointAddInfoReceiveCanalEnums.Value) :+
-    new EnumNameSerializer(TradingPointAddInfoSendCanalEnums.Value) :+
-    new EnumNameSerializer(TradingPointAgreementRoleEnums.Value) :+
-    new EnumNameSerializer(TradingPointInteractionSchemeBusinessGroupEnums.Value) :+
-    new EnumNameSerializer(TradingPointInteractionSchemeTTModeEnums.Value) :+
-    new EnumNameSerializer(TradingPointPurposeEnums.Value)
+  def all: Seq[Serializer[_]] = Seq[Serializer[_]]()
 
   private class EnumNameSerializer[E <: Enumeration: ClassTag](enum: E)
     extends Serializer[E#Value] {
