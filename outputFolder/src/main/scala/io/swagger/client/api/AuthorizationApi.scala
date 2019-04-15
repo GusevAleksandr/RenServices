@@ -15,7 +15,7 @@ import io.swagger.client.model.AuthenticationRequest
 import io.swagger.client.model.ChangePasswordAndAuthorizationRequest
 import io.swagger.client.model.ChangePasswordRequest
 import io.swagger.client.model.ResetPasswordRequest
-import io.swagger.client.model.UserDetails2
+import io.swagger.client.model.UserDetails
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -48,7 +48,7 @@ object AuthorizationApi {
    * получение информации о текущем пользователе
    * 
    * Expected answers:
-   *   code 200 : UserDetails2 (если сброс пароля прошел успешно, возвращается ответ с 200м кодом)
+   *   code 200 : UserDetails (если сброс пароля прошел успешно, возвращается ответ с 200м кодом)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
    *   code 500 :  (Internal Server Error)
@@ -56,10 +56,10 @@ object AuthorizationApi {
    * Available security schemes:
    *   Bearer (apiKey)
    */
-  def authorizationPasswordDetails()(implicit apiKey: ApiKeyValue): ApiRequest[UserDetails2] =
-    ApiRequest[UserDetails2](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/details", "application/json")
+  def authorizationPasswordDetails()(implicit apiKey: ApiKeyValue): ApiRequest[UserDetails] =
+    ApiRequest[UserDetails](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/details", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withSuccessResponse[UserDetails2](200)
+      .withSuccessResponse[UserDetails](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
       .withErrorResponse[Unit](500)
