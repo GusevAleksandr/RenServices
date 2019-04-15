@@ -1,6 +1,6 @@
 /**
- * rest сервисы УФОС
- * rest сервисы ядра УФОС
+ * rest сервисы ренессанс
+ * rest сервисы ренессанс
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -19,7 +19,7 @@ case class DocListRequest (
   filter: Option[CommonLogic] = None,
   additionalFilter: Option[DocListRequestAdditionalFilter] = None,
   fields: Option[Seq[String]] = None,
-  orders: Option[Seq[OrderElement2]] = None,
+  orders: Option[Seq[OrderElement]] = None,
   /* флаг, указывающий необходимость загрузки только заголовочных полей документа. Под заголовочными понимаются поля первого уровня, не являющиеся таблицами (множественные элементы). Является необязательным, значение по умолчанию - true. */
   onlyHeaderFields: Option[Boolean] = None,
   /* количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20. */
