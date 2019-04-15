@@ -15,14 +15,7 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class UserDetails (
-  /* логин текущего пользователя */
-  userName: String,
-  /* фио текущего пользователя */
-  fullUserName: String,
-  roles: UserDetailRoles2,
-  /* адрес электронной почты текущего пользователя */
-  email: String
+case class UserDetailRoles2 (
 ) extends ApiModel
 
 

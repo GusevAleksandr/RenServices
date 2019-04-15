@@ -212,6 +212,8 @@ Class | Method | HTTP request | Description
  - [TradingPointTtkmhistory](TradingPointTtkmhistory.md)
  - [TradingPointTttmHistory](TradingPointTttmHistory.md)
  - [TypesCLSchema](TypesCLSchema.md)
+ - [UserDetailRoles](UserDetailRoles.md)
+ - [UserDetailRoles2](UserDetailRoles2.md)
  - [UserDetails](UserDetails.md)
  - [ValueCLSchema](ValueCLSchema.md)
  - [ValueCLSchemaConstant](ValueCLSchemaConstant.md)
