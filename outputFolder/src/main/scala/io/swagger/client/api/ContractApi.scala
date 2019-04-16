@@ -22,7 +22,7 @@ object ContractApi {
    * получение одного договора
    * 
    * Expected answers:
-   *   code 200 : Contract (найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
+   *   code 200 : Contract (найденный документ)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
    *   code 404 :  (договор не найден)

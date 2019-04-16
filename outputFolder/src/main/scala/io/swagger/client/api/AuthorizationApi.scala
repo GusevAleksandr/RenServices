@@ -14,7 +14,6 @@ package io.swagger.client.api
 import io.swagger.client.model.AuthenticationRequest
 import io.swagger.client.model.ChangePasswordAndAuthorizationRequest
 import io.swagger.client.model.ChangePasswordRequest
-import io.swagger.client.model.ResetPasswordRequest
 import io.swagger.client.model.UserDetails
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
@@ -33,13 +32,10 @@ object AuthorizationApi {
    * 
    * Available security schemes:
    *   Bearer (apiKey)
-   * 
-   * @param body логин пользователя
    */
-  def authorizationPasswordDelete(body: ResetPasswordRequest)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def authorizationPasswordDelete()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.DELETE, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/password", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withBody(body)
       .withSuccessResponse[Unit](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)

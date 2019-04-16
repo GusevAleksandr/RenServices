@@ -30,13 +30,13 @@ object ContractListSimpleApi {
    * Available security schemes:
    *   Bearer (apiKey)
    * 
-   * @param filter дополнительные условия фильтрации в формате простых запросов. Используются логические выражения (&#x3D;, !&#x3D;, &gt;, &gt;&#x3D;, &lt;, &lt;&#x3D;), операции коньюнкции (AND), коньюнкции (OR), отрицания (NOT) ключевые слова like
+   * @param filter дополнительные условия фильтрации в формате простых запросов. Используются логические выражения (&#x3D;, !&#x3D;, &gt;, &gt;&#x3D;, &lt;, &lt;&#x3D;), операции коньюнкции (AND), дизъюнкции (OR), отрицания (NOT) ключевые слова like
    * @param fields список возвращаемых полей. Если параметр не задан, и установлен флаг onlyHeaderFields, выгружаются только заголовочные поля, без вложенных таблиц.
    * @param onlyHeaderFields флаг, указывающий необходимость загрузки только заголовочных полей документа. Является необязательным, значение по умолчанию - true.
    * @param ordersAsc список полей для сортировки по возрастанию
    * @param ordersDesc список полей для сортировки по убыванию
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
-   * @param pageSize количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.
+   * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
    */
   def simpleContractsList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Contract]] =
     ApiRequest[Seq[Contract]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/simple/list/contract", "application/json")

@@ -23,7 +23,7 @@ object TradingPointListApi {
    * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/tradingPoint
    * 
    * Expected answers:
-   *   code 200 : Seq[TradingPoint] (массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
+   *   code 200 : Seq[TradingPoint] (массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
    *   code 404 :  (запрос с переданным идентификатором не найден)
@@ -34,7 +34,7 @@ object TradingPointListApi {
    * 
    * @param id идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
-   * @param pageSize количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.
+   * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
    */
   def getTradingPointList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[TradingPoint]] =
     ApiRequest[Seq[TradingPoint]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/tradingPoint/{id}", "application/json")

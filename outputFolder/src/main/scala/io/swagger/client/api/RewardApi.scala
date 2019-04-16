@@ -19,19 +19,19 @@ import io.swagger.client.core.ApiKeyLocations._
 object RewardApi {
 
   /**
-   * получение одной схемы вознаграждения
+   * получение одного акта о вознаграждении партнера/агента
    * 
    * Expected answers:
-   *   code 200 : Reward (найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
+   *   code 200 : Reward (найденный документ)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
-   *   code 404 :  (псхема не найдена)
+   *   code 404 :  (акт не найдена)
    *   code 500 :  (Internal Server Error)
    * 
    * Available security schemes:
    *   Bearer (apiKey)
    * 
-   * @param id гуид схемы
+   * @param id гуид акта
    */
   def rewardGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[Reward] =
     ApiRequest[Reward](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/reward/{id}", "application/json")

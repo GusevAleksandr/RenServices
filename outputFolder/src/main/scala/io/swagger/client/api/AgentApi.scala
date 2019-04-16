@@ -19,10 +19,10 @@ import io.swagger.client.core.ApiKeyLocations._
 object AgentApi {
 
   /**
-   * получение одного Партнера (ИП/ЮЛ) Банка по гуиду
+   * получение одного Агента Банка по гуиду
    * 
    * Expected answers:
-   *   code 200 : Agent (найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
+   *   code 200 : Agent (найденный документ)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
    *   code 404 :  (партнер не найден)

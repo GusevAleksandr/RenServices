@@ -97,7 +97,7 @@ Class | Method | HTTP request | Description
 *RewardApi* | **rewardGet** | **GET** /rest-api/reward/{id} | получение документа по гуиду
 *RewardListApi* | **getRewardList** | **GET** /rest-api/list/reward/{id} | получение списка документов
 *RewardListApi* | **postRewardsList** | **POST** /rest-api/list/reward | сохранение параметров фильтрации
-*RewardListSimpleApi* | **simpleRewardsList** | **GET** /rest-api/simple/list/reward | получение списка схем вознаграждения
+*RewardListSimpleApi* | **simpleRewardsList** | **GET** /rest-api/simple/list/reward | получение списка актов о вознаграждении партнера/агента
 *TradingPointApi* | **tradingPointGet** | **GET** /rest-api/tradingPoint/{id} | получение документа по гуиду
 *TradingPointListApi* | **getTradingPointList** | **GET** /rest-api/list/tradingPoint/{id} | получение списка документов
 *TradingPointListApi* | **postTradingPointsList** | **POST** /rest-api/list/tradingPoint | сохранение параметров фильтрации
@@ -179,7 +179,6 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategories](PartnerTtCategories.md)
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
- - [ResetPasswordRequest](ResetPasswordRequest.md)
  - [Reward](Reward.md)
  - [RewardBasicInfoPDSubject](RewardBasicInfoPDSubject.md)
  - [RewardCredits](RewardCredits.md)
