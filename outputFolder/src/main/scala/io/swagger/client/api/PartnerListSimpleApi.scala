@@ -39,7 +39,7 @@ object PartnerListSimpleApi {
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
    */
   def simplePartnersList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Partner]] =
-    ApiRequest[Seq[Partner]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/simple/list/partner", "application/json")
+    ApiRequest[Seq[Partner]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/simple/list/partner", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter", filter)
       .withQueryParam("fields", ArrayValues(fields, MULTI))

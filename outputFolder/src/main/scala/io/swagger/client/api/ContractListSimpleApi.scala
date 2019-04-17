@@ -39,7 +39,7 @@ object ContractListSimpleApi {
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
    */
   def simpleContractsList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Contract]] =
-    ApiRequest[Seq[Contract]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/simple/list/contract", "application/json")
+    ApiRequest[Seq[Contract]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/simple/list/contract", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter", filter)
       .withQueryParam("fields", ArrayValues(fields, MULTI))

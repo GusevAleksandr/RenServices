@@ -20,7 +20,7 @@ import io.swagger.client.core.ApiKeyLocations._
 object AgentSchemeListApi {
 
   /**
-   * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/agentScheme
+   * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/agentScheme
    * 
    * Expected answers:
    *   code 200 : Seq[AgentScheme] (массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
@@ -37,7 +37,7 @@ object AgentSchemeListApi {
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
    */
   def getAgentSchemeList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[AgentScheme]] =
-    ApiRequest[Seq[AgentScheme]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/agentScheme/{id}", "application/json")
+    ApiRequest[Seq[AgentScheme]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/agentScheme/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
@@ -62,7 +62,7 @@ object AgentSchemeListApi {
    * @param postBody параметры запроса
    */
   def postAgentSchemesList(postBody: DocListRequest)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
-    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/agentScheme", "application/json")
+    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/agentScheme", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(postBody)
       .withSuccessResponse[String](200)

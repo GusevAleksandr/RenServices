@@ -34,7 +34,7 @@ object AgentApi {
    * @param id гуид партнера
    */
   def agentGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[Agent] =
-    ApiRequest[Agent](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/agents/{id}", "application/json")
+    ApiRequest[Agent](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/agents/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
       .withSuccessResponse[Agent](200)

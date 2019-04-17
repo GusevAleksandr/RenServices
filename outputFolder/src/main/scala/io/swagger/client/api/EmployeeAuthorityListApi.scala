@@ -20,7 +20,7 @@ import io.swagger.client.core.ApiKeyLocations._
 object EmployeeAuthorityListApi {
 
   /**
-   * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/employeeAuthority
+   * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/employeeAuthority
    * 
    * Expected answers:
    *   code 200 : Seq[EmployeeAuthority] (массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
@@ -37,7 +37,7 @@ object EmployeeAuthorityListApi {
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
    */
   def getEmployeeAuthorityList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[EmployeeAuthority]] =
-    ApiRequest[Seq[EmployeeAuthority]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/employeeAuthority/{id}", "application/json")
+    ApiRequest[Seq[EmployeeAuthority]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/employeeAuthority/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
@@ -62,7 +62,7 @@ object EmployeeAuthorityListApi {
    * @param postBody параметры запроса
    */
   def postEmployeeAuthoritysList(postBody: DocListRequest)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
-    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/employeeAuthority", "application/json")
+    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/employeeAuthority", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(postBody)
       .withSuccessResponse[String](200)

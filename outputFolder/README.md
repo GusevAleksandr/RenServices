@@ -65,43 +65,43 @@ All URIs are relative to *https://virtserver.swaggerhub.com/renessansBankService
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AgentApi* | **agentGet** | **GET** /rest-api/agents/{id} | получение документа по гуиду
-*AgentListApi* | **getAgentList** | **GET** /rest-api/list/agent/{id} | получение списка документов
-*AgentListApi* | **postAgentsList** | **POST** /rest-api/list/agent | сохранение параметров фильтрации
-*AgentListSimpleApi* | **simpleAgentsList** | **GET** /rest-api/simple/list/agent | получение списка агентов
-*AgentSchemeApi* | **agentSchemeGet** | **GET** /rest-api/agentSchemes/{id} | получение документа по гуиду
-*AgentSchemeListApi* | **getAgentSchemeList** | **GET** /rest-api/list/agentScheme/{id} | получение списка документов
-*AgentSchemeListApi* | **postAgentSchemesList** | **POST** /rest-api/list/agentScheme | сохранение параметров фильтрации
-*AgentSchemeListSimpleApi* | **simpleAgentSchemesList** | **GET** /rest-api/simple/list/agentScheme | получение списка агентских схем
-*AuthorizationApi* | **authorizationPasswordDelete** | **DELETE** /rest-api/auth/user/password | сброс пароля авторизованного пользователя
-*AuthorizationApi* | **authorizationPasswordDetails** | **GET** /rest-api/auth/user/details | получение информации о текущем пользователе
-*AuthorizationApi* | **authorizationPasswordNew** | **POST** /rest-api/auth/user/authorization/password/new | авторизация и смена пароля
-*AuthorizationApi* | **passwordNew** | **POST** /rest-api/auth/user/password/new | смена пароля
-*AuthorizationApi* | **userAuthorization** | **POST** /rest-api/auth/authorization | авторизация пользователя в системе
-*ContractApi* | **contractGet** | **GET** /rest-api/contract/{id} | получение документа по гуиду
-*ContractListApi* | **getContractList** | **GET** /rest-api/list/contract/{id} | получение списка документов
-*ContractListApi* | **postContractsList** | **POST** /rest-api/list/contract | сохранение параметров фильтрации
-*ContractListSimpleApi* | **simpleContractsList** | **GET** /rest-api/simple/list/contract | получение списка договоров
-*EmployeeAuthorityApi* | **employeeAuthorityGet** | **GET** /rest-api/employeeAuthority/{id} | получение документа по гуиду
-*EmployeeAuthorityListApi* | **getEmployeeAuthorityList** | **GET** /rest-api/list/employeeAuthority/{id} | получение списка документов
-*EmployeeAuthorityListApi* | **postEmployeeAuthoritysList** | **POST** /rest-api/list/employeeAuthority | сохранение параметров фильтрации
-*EmployeeAuthorityListSimpleApi* | **simpleEmployeeAuthoritysList** | **GET** /rest-api/simple/list/employeeAuthority | получение списка полномичий сотрудника
-*PartnerApi* | **partnerGet** | **GET** /rest-api/partners/{id} | получение документа по гуиду
-*PartnerEmployeeApi* | **partnerEmployeeGet** | **GET** /rest-api/partnerEmployees/{id} | получение документа по гуиду
-*PartnerEmployeeListApi* | **getPartnerEmployeeList** | **GET** /rest-api/list/partnerEmployee/{id} | получение списка документов
-*PartnerEmployeeListApi* | **postPartnerEmployeesList** | **POST** /rest-api/list/partnerEmployee | сохранение параметров фильтрации
-*PartnerEmployeeListSimpleApi* | **simplePartnerEmployeesList** | **GET** /rest-api/simple/list/partnerEmployee | получение списка сотрудников партнера
-*PartnerListApi* | **getPartnerList** | **GET** /rest-api/list/partner/{id} | получение списка документов
-*PartnerListApi* | **postPartnersList** | **POST** /rest-api/list/partner | сохранение параметров фильтрации
-*PartnerListSimpleApi* | **simplePartnersList** | **GET** /rest-api/simple/list/partner | получение списка партнеров
-*RewardApi* | **rewardGet** | **GET** /rest-api/reward/{id} | получение документа по гуиду
-*RewardListApi* | **getRewardList** | **GET** /rest-api/list/reward/{id} | получение списка документов
-*RewardListApi* | **postRewardsList** | **POST** /rest-api/list/reward | сохранение параметров фильтрации
-*RewardListSimpleApi* | **simpleRewardsList** | **GET** /rest-api/simple/list/reward | получение списка актов о вознаграждении партнера/агента
-*TradingPointApi* | **tradingPointGet** | **GET** /rest-api/tradingPoint/{id} | получение документа по гуиду
-*TradingPointListApi* | **getTradingPointList** | **GET** /rest-api/list/tradingPoint/{id} | получение списка документов
-*TradingPointListApi* | **postTradingPointsList** | **POST** /rest-api/list/tradingPoint | сохранение параметров фильтрации
-*TradingPointListSimpleApi* | **simpleTradingPointsList** | **GET** /rest-api/simple/list/tradingPoint | получение списка торговых точек
+*AgentApi* | **agentGet** | **GET** /services/rest-api/agents/{id} | получение документа по гуиду
+*AgentListApi* | **getAgentList** | **GET** /services/rest-api/list/agent/{id} | получение списка документов
+*AgentListApi* | **postAgentsList** | **POST** /services/rest-api/list/agent | сохранение параметров фильтрации
+*AgentListSimpleApi* | **simpleAgentsList** | **GET** /services/rest-api/simple/list/agent | получение списка агентов
+*AgentSchemeApi* | **agentSchemeGet** | **GET** /services/rest-api/agentSchemes/{id} | получение документа по гуиду
+*AgentSchemeListApi* | **getAgentSchemeList** | **GET** /services/rest-api/list/agentScheme/{id} | получение списка документов
+*AgentSchemeListApi* | **postAgentSchemesList** | **POST** /services/rest-api/list/agentScheme | сохранение параметров фильтрации
+*AgentSchemeListSimpleApi* | **simpleAgentSchemesList** | **GET** /services/rest-api/simple/list/agentScheme | получение списка агентских схем
+*AuthorizationApi* | **authorizationPasswordDelete** | **DELETE** /services/rest-api/auth/user/password | сброс пароля авторизованного пользователя
+*AuthorizationApi* | **authorizationPasswordDetails** | **GET** /services/rest-api/auth/user/details | получение информации о текущем пользователе
+*AuthorizationApi* | **authorizationPasswordNew** | **POST** /services/rest-api/auth/user/authorization/password/new | авторизация и смена пароля
+*AuthorizationApi* | **passwordNew** | **POST** /services/rest-api/auth/user/password/new | смена пароля
+*AuthorizationApi* | **userAuthorization** | **POST** /services/rest-api/auth/authorization | авторизация пользователя в системе
+*ContractApi* | **contractGet** | **GET** /services/rest-api/contract/{id} | получение документа по гуиду
+*ContractListApi* | **getContractList** | **GET** /services/rest-api/list/contract/{id} | получение списка документов
+*ContractListApi* | **postContractsList** | **POST** /services/rest-api/list/contract | сохранение параметров фильтрации
+*ContractListSimpleApi* | **simpleContractsList** | **GET** /services/rest-api/simple/list/contract | получение списка договоров
+*EmployeeAuthorityApi* | **employeeAuthorityGet** | **GET** /services/rest-api/employeeAuthority/{id} | получение документа по гуиду
+*EmployeeAuthorityListApi* | **getEmployeeAuthorityList** | **GET** /services/rest-api/list/employeeAuthority/{id} | получение списка документов
+*EmployeeAuthorityListApi* | **postEmployeeAuthoritysList** | **POST** /services/rest-api/list/employeeAuthority | сохранение параметров фильтрации
+*EmployeeAuthorityListSimpleApi* | **simpleEmployeeAuthoritysList** | **GET** /services/rest-api/simple/list/employeeAuthority | получение списка полномичий сотрудника
+*PartnerApi* | **partnerGet** | **GET** /services/rest-api/partners/{id} | получение документа по гуиду
+*PartnerEmployeeApi* | **partnerEmployeeGet** | **GET** /services/rest-api/partnerEmployees/{id} | получение документа по гуиду
+*PartnerEmployeeListApi* | **getPartnerEmployeeList** | **GET** /services/rest-api/list/partnerEmployee/{id} | получение списка документов
+*PartnerEmployeeListApi* | **postPartnerEmployeesList** | **POST** /services/rest-api/list/partnerEmployee | сохранение параметров фильтрации
+*PartnerEmployeeListSimpleApi* | **simplePartnerEmployeesList** | **GET** /services/rest-api/simple/list/partnerEmployee | получение списка сотрудников партнера
+*PartnerListApi* | **getPartnerList** | **GET** /services/rest-api/list/partner/{id} | получение списка документов
+*PartnerListApi* | **postPartnersList** | **POST** /services/rest-api/list/partner | сохранение параметров фильтрации
+*PartnerListSimpleApi* | **simplePartnersList** | **GET** /services/rest-api/simple/list/partner | получение списка партнеров
+*RewardApi* | **rewardGet** | **GET** /services/rest-api/reward/{id} | получение документа по гуиду
+*RewardListApi* | **getRewardList** | **GET** /services/rest-api/list/reward/{id} | получение списка документов
+*RewardListApi* | **postRewardsList** | **POST** /services/rest-api/list/reward | сохранение параметров фильтрации
+*RewardListSimpleApi* | **simpleRewardsList** | **GET** /services/rest-api/simple/list/reward | получение списка актов о вознаграждении партнера/агента
+*TradingPointApi* | **tradingPointGet** | **GET** /services/rest-api/tradingPoint/{id} | получение документа по гуиду
+*TradingPointListApi* | **getTradingPointList** | **GET** /services/rest-api/list/tradingPoint/{id} | получение списка документов
+*TradingPointListApi* | **postTradingPointsList** | **POST** /services/rest-api/list/tradingPoint | сохранение параметров фильтрации
+*TradingPointListSimpleApi* | **simpleTradingPointsList** | **GET** /services/rest-api/simple/list/tradingPoint | получение списка торговых точек
 
 
 ## Documentation for Models

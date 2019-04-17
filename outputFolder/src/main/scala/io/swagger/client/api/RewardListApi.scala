@@ -20,7 +20,7 @@ import io.swagger.client.core.ApiKeyLocations._
 object RewardListApi {
 
   /**
-   * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/reward
+   * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/reward
    * 
    * Expected answers:
    *   code 200 : Seq[Reward] (массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
@@ -37,7 +37,7 @@ object RewardListApi {
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
    */
   def getRewardList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Reward]] =
-    ApiRequest[Seq[Reward]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/reward/{id}", "application/json")
+    ApiRequest[Seq[Reward]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/reward/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
@@ -62,7 +62,7 @@ object RewardListApi {
    * @param postBody параметры запроса
    */
   def postRewardsList(postBody: DocListRequest)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
-    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/list/reward", "application/json")
+    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/reward", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(postBody)
       .withSuccessResponse[String](200)

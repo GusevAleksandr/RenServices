@@ -34,7 +34,7 @@ object PartnerApi {
    * @param id гуид партнера
    */
   def partnerGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[Partner] =
-    ApiRequest[Partner](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/partners/{id}", "application/json")
+    ApiRequest[Partner](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/partners/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
       .withSuccessResponse[Partner](200)

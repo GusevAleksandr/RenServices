@@ -34,7 +34,7 @@ object ContractApi {
    * @param id гуид договора
    */
   def contractGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[Contract] =
-    ApiRequest[Contract](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/contract/{id}", "application/json")
+    ApiRequest[Contract](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/contract/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
       .withSuccessResponse[Contract](200)

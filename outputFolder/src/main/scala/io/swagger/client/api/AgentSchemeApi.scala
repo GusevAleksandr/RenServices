@@ -34,7 +34,7 @@ object AgentSchemeApi {
    * @param id гуид схемы
    */
   def agentSchemeGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[AgentScheme] =
-    ApiRequest[AgentScheme](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/agentSchemes/{id}", "application/json")
+    ApiRequest[AgentScheme](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/agentSchemes/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
       .withSuccessResponse[AgentScheme](200)

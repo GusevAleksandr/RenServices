@@ -39,7 +39,7 @@ object EmployeeAuthorityListSimpleApi {
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
    */
   def simpleEmployeeAuthoritysList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[EmployeeAuthority]] =
-    ApiRequest[Seq[EmployeeAuthority]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/simple/list/employeeAuthority", "application/json")
+    ApiRequest[Seq[EmployeeAuthority]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/simple/list/employeeAuthority", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter", filter)
       .withQueryParam("fields", ArrayValues(fields, MULTI))

@@ -34,7 +34,7 @@ object EmployeeAuthorityApi {
    * @param id гуид
    */
   def employeeAuthorityGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[EmployeeAuthority] =
-    ApiRequest[EmployeeAuthority](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/employeeAuthority/{id}", "application/json")
+    ApiRequest[EmployeeAuthority](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/employeeAuthority/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
       .withSuccessResponse[EmployeeAuthority](200)

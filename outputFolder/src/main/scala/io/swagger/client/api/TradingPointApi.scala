@@ -34,7 +34,7 @@ object TradingPointApi {
    * @param id гуид документа торговой точки
    */
   def tradingPointGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[TradingPoint] =
-    ApiRequest[TradingPoint](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/tradingPoint/{id}", "application/json")
+    ApiRequest[TradingPoint](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/tradingPoint/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
       .withSuccessResponse[TradingPoint](200)

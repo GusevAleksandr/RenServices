@@ -34,7 +34,7 @@ object RewardApi {
    * @param id гуид акта
    */
   def rewardGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[Reward] =
-    ApiRequest[Reward](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/reward/{id}", "application/json")
+    ApiRequest[Reward](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/reward/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
       .withSuccessResponse[Reward](200)

@@ -34,7 +34,7 @@ object AuthorizationApi {
    *   Bearer (apiKey)
    */
   def authorizationPasswordDelete()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.DELETE, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/password", "application/json")
+    ApiRequest[Unit](ApiMethods.DELETE, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/auth/user/password", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withSuccessResponse[Unit](200)
       .withErrorResponse[Unit](400)
@@ -53,7 +53,7 @@ object AuthorizationApi {
    *   Bearer (apiKey)
    */
   def authorizationPasswordDetails()(implicit apiKey: ApiKeyValue): ApiRequest[UserDetails] =
-    ApiRequest[UserDetails](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/details", "application/json")
+    ApiRequest[UserDetails](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/auth/user/details", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withSuccessResponse[UserDetails](200)
       .withErrorResponse[Unit](400)
@@ -70,7 +70,7 @@ object AuthorizationApi {
    * @param body логин пользователя
    */
   def authorizationPasswordNew(body: ChangePasswordAndAuthorizationRequest): ApiRequest[String] =
-    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/authorization/password/new", "application/json")
+    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/auth/user/authorization/password/new", "application/json")
       .withBody(body)
       .withSuccessResponse[String](200)
       .withErrorResponse[Unit](400)
@@ -90,7 +90,7 @@ object AuthorizationApi {
    * @param body логин пользователя
    */
   def passwordNew(body: ChangePasswordRequest)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/password/new", "application/json")
+    ApiRequest[Unit](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/auth/user/password/new", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(body)
       .withSuccessResponse[Unit](200)
@@ -109,7 +109,7 @@ object AuthorizationApi {
    * @param body логин пользователя
    */
   def userAuthorization(body: AuthenticationRequest): ApiRequest[String] =
-    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/authorization", "application/json")
+    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/auth/authorization", "application/json")
       .withBody(body)
       .withSuccessResponse[String](200)
       .withErrorResponse[Unit](400)
