@@ -179,7 +179,6 @@ Class | Method | HTTP request | Description
  - [PartnerTtCategories](PartnerTtCategories.md)
  - [PartnerTtCategoriesRewardPercent](PartnerTtCategoriesRewardPercent.md)
  - [PartnerUnit](PartnerUnit.md)
- - [ResetPasswordRequest](ResetPasswordRequest.md)
  - [Reward](Reward.md)
  - [RewardBasicInfoPDSubject](RewardBasicInfoPDSubject.md)
  - [RewardCredits](RewardCredits.md)

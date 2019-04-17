@@ -14,7 +14,6 @@ package io.swagger.client.api
 import io.swagger.client.model.AuthenticationRequest
 import io.swagger.client.model.ChangePasswordAndAuthorizationRequest
 import io.swagger.client.model.ChangePasswordRequest
-import io.swagger.client.model.ResetPasswordRequest
 import io.swagger.client.model.UserDetails
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
@@ -26,20 +25,17 @@ object AuthorizationApi {
    * сброс пароля авторизованного в системе пользователя
    * 
    * Expected answers:
-   *   code 200 :  (если сброс пароля прошел успешно, возвращается ответ с 200м кодом)
+   *   code 200 :  (если сброс пароля прошел успешно, возвращается ответ с 200м кодом. В ответе будет содержаться сгенерированный пароль)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
    *   code 500 :  (Internal Server Error)
    * 
    * Available security schemes:
    *   Bearer (apiKey)
-   * 
-   * @param body логин пользователя
    */
-  def authorizationPasswordDelete(body: ResetPasswordRequest)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def authorizationPasswordDelete()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.DELETE, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/password", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withBody(body)
       .withSuccessResponse[Unit](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
@@ -67,16 +63,16 @@ object AuthorizationApi {
    * авторизация пользователя в системе и смена пароля
    * 
    * Expected answers:
-   *   code 200 :  (если смена пароля прошла успешно, возвращается ответ с 200м кодом)
+   *   code 200 : String (если смена пароля прошла успешно, возвращается ответ с 200м кодом. В ответе возвращается JWt-токен авторизации)
    *   code 400 :  (bad input parameter)
    *   code 500 :  (Internal Server Error)
    * 
    * @param body логин пользователя
    */
-  def authorizationPasswordNew(body: ChangePasswordAndAuthorizationRequest): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/authorization/password/new", "application/json")
+  def authorizationPasswordNew(body: ChangePasswordAndAuthorizationRequest): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/rest-api/auth/user/authorization/password/new", "application/json")
       .withBody(body)
-      .withSuccessResponse[Unit](200)
+      .withSuccessResponse[String](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](500)
         /**
