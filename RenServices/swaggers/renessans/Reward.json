@@ -1,17 +1,17 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "rest сервисы для работы со схемами вознаграждений",
+    "description": "rest сервисы для работы c актами о вознаграждении партнера/агента",
     "version": "1.0.0",
-    "title": "rest сервисы для работы со схемами вознаграждений"
+    "title": "rest сервисы для работы c актами о вознаграждении партнера/агента"
   },
   "paths": {
-    "/rest-api/simple/list/reward": {
+    "/services/rest-api/simple/list/reward": {
       "get": {
         "tags": [
           "rewardListSimple"
         ],
-        "summary": "получение списка схем вознаграждения",
+        "summary": "получение списка актов о вознаграждении партнера/агента",
         "operationId": "simple_rewards_list",
         "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
         "security": [
@@ -64,7 +64,7 @@
         }
       }
     },
-    "/rest-api/list/reward": {
+    "/services/rest-api/list/reward": {
       "post": {
         "tags": [
           "rewardList"
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/rest-api/list/reward/{id}": {
+    "/services/rest-api/list/reward/{id}": {
       "get": {
         "tags": [
           "rewardList"
         ],
         "summary": "получение списка документов",
         "operationId": "get_reward_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/reward",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/reward",
         "security": [
           {
             "Bearer": []
@@ -127,7 +127,7 @@
         ],
         "responses": {
           "200": {
-            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "description": "массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
             "schema": {
               "type": "array",
               "items": {
@@ -150,14 +150,14 @@
         }
       }
     },
-    "/rest-api/rewards/{id}": {
+    "/services/rest-api/rewards/{id}": {
       "get": {
         "tags": [
           "reward"
         ],
         "summary": "получение документа по гуиду",
         "operationId": "reward_get",
-        "description": "получение одной схемы вознаграждения",
+        "description": "получение одного акта о вознаграждении партнера/агента",
         "security": [
           {
             "Bearer": []
@@ -167,14 +167,14 @@
           {
             "in": "path",
             "name": "id",
-            "description": "гуид схемы",
+            "description": "гуид акта",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "description": "найденный документ",
             "schema": {
               "type": "object",
               "$ref": "#/definitions/Reward"
@@ -187,7 +187,7 @@
             "description": "Unauthorized"
           },
           "404": {
-            "description": "псхема не найдена"
+            "description": "акт не найдена"
           },
           "500": {
             "description": "Internal Server Error"

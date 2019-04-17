@@ -6,7 +6,7 @@
     "title": "rest сервисы для работы с агентом банка"
   },
   "paths": {
-    "/rest-api/simple/list/agent": {
+    "/services/rest-api/simple/list/agent": {
       "get": {
         "tags": [
           "agentListSimple"
@@ -64,7 +64,7 @@
         }
       }
     },
-    "/rest-api/list/agent": {
+    "/services/rest-api/list/agent": {
       "post": {
         "tags": [
           "agentList"
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/rest-api/list/agent/{id}": {
+    "/services/rest-api/list/agent/{id}": {
       "get": {
         "tags": [
           "agentList"
         ],
         "summary": "получение списка документов",
         "operationId": "get_agent_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/agent",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/agent",
         "security": [
           {
             "Bearer": []
@@ -127,7 +127,7 @@
         ],
         "responses": {
           "200": {
-            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "description": "массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
             "schema": {
               "type": "array",
               "items": {
@@ -150,14 +150,14 @@
         }
       }
     },
-    "/rest-api/agents/{id}": {
+    "/services/rest-api/agents/{id}": {
       "get": {
         "tags": [
           "agent"
         ],
         "summary": "получение документа по гуиду",
         "operationId": "agent_get",
-        "description": "получение одного Партнера (ИП/ЮЛ) Банка по гуиду",
+        "description": "получение одного Агента Банка по гуиду",
         "security": [
           {
             "Bearer": []
@@ -174,7 +174,7 @@
         ],
         "responses": {
           "200": {
-            "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "description": "найденный документ",
             "schema": {
               "type": "object",
               "$ref": "#/definitions/Agent"

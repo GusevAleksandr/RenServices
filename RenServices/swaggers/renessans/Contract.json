@@ -6,7 +6,7 @@
     "title": "rest сервисы для работы с договорами/дс"
   },
   "paths": {
-    "/rest-api/simple/list/contract": {
+    "/services/rest-api/simple/list/contract": {
       "get": {
         "tags": [
           "contractListSimple"
@@ -64,7 +64,7 @@
         }
       }
     },
-    "/rest-api/list/contract": {
+    "/services/rest-api/list/contract": {
       "post": {
         "tags": [
           "contractList"
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/rest-api/list/contract/{id}": {
+    "/services/rest-api/list/contract/{id}": {
       "get": {
         "tags": [
           "contractList"
         ],
         "summary": "получение списка документов",
         "operationId": "get_contract_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/contract",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/contract",
         "security": [
           {
             "Bearer": []
@@ -127,7 +127,7 @@
         ],
         "responses": {
           "200": {
-            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "description": "массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
             "schema": {
               "type": "array",
               "items": {
@@ -150,7 +150,7 @@
         }
       }
     },
-    "/rest-api/contracts/{id}": {
+    "/services/rest-api/contracts/{id}": {
       "get": {
         "tags": [
           "contract"
@@ -174,7 +174,7 @@
         ],
         "responses": {
           "200": {
-            "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "description": "найденный документ",
             "schema": {
               "type": "object",
               "$ref": "#/definitions/Contract"

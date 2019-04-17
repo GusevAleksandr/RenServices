@@ -28,7 +28,7 @@
     }
   },
   "paths": {
-    "/rest-api/core/v1/docs/simple/list/{typeId}": {
+    "/services/rest-api/core/v1/docs/simple/list/{typeId}": {
       "get": {
         "tags": [
           "docList"
@@ -95,7 +95,7 @@
         }
       }
     },
-    "/rest-api/core/v1/docs/list/{id}": {
+    "/services/rest-api/core/v1/docs/list/{id}": {
       "post": {
         "tags": [
           "docList"
@@ -182,7 +182,7 @@
         }
       }
     },
-    "/rest-api/core/v1/document/get/{docType}/{guid}": {
+    "/services/rest-api/core/v1/document/get/{docType}/{guid}": {
       "get": {
         "tags": [
           "document"
@@ -236,7 +236,7 @@
         }
       }
     },
-    "/rest-api/auth/authorization": {
+    "/services/rest-api/auth/authorization": {
       "post": {
         "tags": [
           "authorization"
@@ -280,7 +280,7 @@
         }
       }
     },
-    "/rest-api/auth/user/password/new": {
+    "/services/rest-api/auth/user/password/new": {
       "post": {
         "tags": [
           "authorization"
@@ -326,7 +326,7 @@
         }
       }
     },
-    "/rest-api/auth/user/authorization/password/new": {
+    "/services/rest-api/auth/user/authorization/password/new": {
       "post": {
         "tags": [
           "authorization"
@@ -353,7 +353,10 @@
         ],
         "responses": {
           "200": {
-            "description": "если смена пароля прошла успешно, возвращается ответ с 200м кодом"
+            "description": "если смена пароля прошла успешно, возвращается ответ с 200м кодом. В ответе возвращается JWt-токен авторизации",
+            "schema": {
+              "type": "string"
+            }
           },
           "400": {
             "description": "bad input parameter"
@@ -364,7 +367,7 @@
         }
       }
     },
-    "/rest-api/auth/user/password": {
+    "/services/rest-api/auth/user/password": {
       "delete": {
         "tags": [
           "authorization"
@@ -383,20 +386,9 @@
             "Bearer": []
           }
         ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "логин пользователя",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ResetPasswordRequest"
-            }
-          }
-        ],
         "responses": {
           "200": {
-            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом"
+            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом. В ответе будет содержаться сгенерированный пароль"
           },
           "400": {
             "description": "bad input parameter"
@@ -410,7 +402,7 @@
         }
       }
     },
-    "/rest-api/auth/user/details": {
+    "/services/rest-api/auth/user/details": {
       "get": {
         "tags": [
           "authorization"
@@ -529,6 +521,13 @@
         }
       }
     },
+    "UserDetailRoles": {
+      "type" : "array",
+      "description" : "роли пользователя",
+      "items" : {
+        "type" : "string"
+      }
+    },
     "UserDetails": {
       "type": "object",
       "required": [
@@ -547,11 +546,7 @@
           "description": "фио текущего пользователя"
         },
         "roles": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "роли пользователя"
+          "$ref": "#/definitions/UserDetailRoles"
         },
         "email": {
           "type": "string",
@@ -588,7 +583,7 @@
     "filter": {
       "in": "query",
       "name": "filter",
-      "description": "дополнительные условия фильтрации в формате простых запросов. Используются логические выражения (=, !=, >, >=, <, <=), операции коньюнкции (AND), коньюнкции (OR), отрицания (NOT) ключевые слова like",
+      "description": "дополнительные условия фильтрации в формате простых запросов. Используются логические выражения (=, !=, >, >=, <, <=), операции коньюнкции (AND), дизъюнкции (OR), отрицания (NOT) ключевые слова like",
       "required": false,
       "type": "string"
     },
@@ -643,7 +638,7 @@
     "pageSize": {
       "in": "query",
       "name": "pageSize",
-      "description": "количество элементов на странице. Если не задан - используется значиние по умолчанию, равное 20.",
+      "description": "количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.",
       "required": false,
       "type": "integer"
     },

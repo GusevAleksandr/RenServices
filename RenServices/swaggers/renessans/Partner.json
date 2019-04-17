@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "rest сервисы для работы с партнером банка",
+    "description": "rest сервисы для работы с партнером банка. Сервис так же используется для получения схем вознаграждений партнера",
     "version": "1.0.0",
     "title": "rest сервисы для работы с партнером банка"
   },
   "paths": {
-    "/rest-api/simple/list/partner": {
+    "/services/rest-api/simple/list/partner": {
       "get": {
         "tags": [
           "partnerListSimple"
@@ -64,7 +64,7 @@
         }
       }
     },
-    "/rest-api/list/partner": {
+    "/services/rest-api/list/partner": {
       "post": {
         "tags": [
           "partnerList"
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/rest-api/list/partner/{id}": {
+    "/services/rest-api/list/partner/{id}": {
       "get": {
         "tags": [
           "partnerList"
         ],
         "summary": "получение списка документов",
         "operationId": "get_partner_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /rest-api/list/partner",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/partner",
         "security": [
           {
             "Bearer": []
@@ -127,7 +127,7 @@
         ],
         "responses": {
           "200": {
-            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "description": "массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
             "schema": {
               "type": "array",
               "items": {
@@ -150,7 +150,7 @@
         }
       }
     },
-    "/rest-api/partners/{id}": {
+    "/services/rest-api/partners/{id}": {
       "get": {
         "tags": [
           "partner"
@@ -174,7 +174,7 @@
         ],
         "responses": {
           "200": {
-            "description": "найденный документ. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "description": "найденный документ",
             "schema": {
               "type": "object",
               "$ref": "#/definitions/Partner"

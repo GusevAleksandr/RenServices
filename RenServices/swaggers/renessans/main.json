@@ -8,11 +8,11 @@
   "tags": [
     {
       "name": "partnerListSimple",
-      "description": "Получение списка Партнеров (ИП/ЮЛ) Банка. Выполняется один вызов GET-запроса"
+      "description": "Получение списка Партнеров (ИП/ЮЛ) Банка. Выполняется один вызов GET-запроса. Сервис так же используется для получения схем вознаграждений партнера"
     },
     {
       "name": "partnerList",
-      "description": "Получение списка Партнеров (ИП/ЮЛ) Банка. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+      "description": "Получение списка Партнеров (ИП/ЮЛ) Банка. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку). Сервис так же используется для получения схем вознаграждений партнера"
     },
     {
       "name": "partner",
@@ -29,7 +29,7 @@
     },
     {
       "name": "agent",
-      "description": "Получение одного Агентов Банка по гуиду"
+      "description": "Получение одного Агента Банка по гуиду"
     },
 
     {
@@ -43,6 +43,71 @@
     {
       "name": "partnerEmployee",
       "description": "Получение одного Представителей/Сотрудников заданного Партнера по гуиду"
+    },
+
+    {
+      "name": "agentSchemeListSimple",
+      "description": "Получение списка Агентских схем. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "agentSchemeList",
+      "description": "Получение списка Агентских схем. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "agentScheme",
+      "description": "Получение одной Агентской схемы по гуиду"
+    },
+
+    {
+      "name": "contractListSimple",
+      "description": "Получение списка Договоров/ДС. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "contractList",
+      "description": "Получение списка Договоров/ДС. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "contract",
+      "description": "Получение одного Договора/ДС по гуиду"
+    },
+
+    {
+      "name": "employeeAuthorityListSimple",
+      "description": "Получение списка Полномочий сотрудника. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "employeeAuthorityList",
+      "description": "Получение списка Полномочий сотрудника. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "employeeAuthority",
+      "description": "Получение одного Полномочия сотрудника по гуиду"
+    },
+
+    {
+      "name": "rewardListSimple",
+      "description": "Получение списка Актов о вознаграждении партнера/агента. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "rewardList",
+      "description": "Получение списка Актов о вознаграждении партнера/агента. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "reward",
+      "description": "Получение одного Акта о вознаграждении партнера/агента"
+    },
+
+    {
+      "name": "tradingPointListSimple",
+      "description": "Получение списка Торговых точек. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "tradingPointList",
+      "description": "Получение списка Торговых точек. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "tradingPoint",
+      "description": "Получение одной Торговой точки по гуиду"
     },
 
 
@@ -60,131 +125,196 @@
     }
   },
   "paths": {
-    "/rest-api/simple/list/partner": {
-      "$ref": "./Partner.json#/paths/~1rest-api~1simple~1list~1partner"
+    "/services/rest-api/simple/list/partner": {
+      "$ref": "./Partner.json#/paths/~1services~1rest-api~1simple~1list~1partner"
     },
-    "/rest-api/list/partner": {
-      "$ref": "./Partner.json#/paths/~1rest-api~1list~1partner"
+    "/services/rest-api/list/partner": {
+      "$ref": "./Partner.json#/paths/~1services~1rest-api~1list~1partner"
     },
-    "/rest-api/list/partner/{id}": {
-      "$ref": "./Partner.json#/paths/~1rest-api~1list~1partner~1{id}"
+    "/services/rest-api/list/partner/{id}": {
+      "$ref": "./Partner.json#/paths/~1services~1rest-api~1list~1partner~1{id}"
     },
-    "/rest-api/partners/{id}": {
-      "$ref": "./Partner.json#/paths/~1rest-api~1partners~1{id}"
-    },
-
-    "/rest-api/simple/list/agent": {
-      "$ref": "./Agent.json#/paths/~1rest-api~1simple~1list~1agent"
-    },
-    "/rest-api/list/agent": {
-      "$ref": "./Agent.json#/paths/~1rest-api~1list~1agent"
-    },
-    "/rest-api/list/agent/{id}": {
-      "$ref": "./Agent.json#/paths/~1rest-api~1list~1agent~1{id}"
-    },
-    "/rest-api/agents/{id}": {
-      "$ref": "./Agent.json#/paths/~1rest-api~1agents~1{id}"
+    "/services/rest-api/partners/{id}": {
+      "$ref": "./Partner.json#/paths/~1services~1rest-api~1partners~1{id}"
     },
 
-    "/rest-api/simple/list/partnerEmployee": {
-      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1simple~1list~1partnerEmployee"
+    "/services/rest-api/simple/list/agent": {
+      "$ref": "./Agent.json#/paths/~1services~1rest-api~1simple~1list~1agent"
     },
-    "/rest-api/list/partnerEmployee": {
-      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1list~1partnerEmployee"
+    "/services/rest-api/list/agent": {
+      "$ref": "./Agent.json#/paths/~1services~1rest-api~1list~1agent"
     },
-    "/rest-api/list/partnerEmployee/{id}": {
-      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1list~1partnerEmployee~1{id}"
+    "/services/rest-api/list/agent/{id}": {
+      "$ref": "./Agent.json#/paths/~1services~1rest-api~1list~1agent~1{id}"
     },
-    "/rest-api/partnerEmployees/{id}": {
-      "$ref": "./PartnerEmployee.json#/paths/~1rest-api~1partnerEmployees~1{id}"
-    },
-
-
-    "/rest-api/simple/list/tradingPoint": {
-      "$ref": "./TradingPoint.json#/paths/~1rest-api~1simple~1list~1tradingPoint"
-    },
-    "/rest-api/list/tradingPoint": {
-      "$ref": "./TradingPoint.json#/paths/~1rest-api~1list~1tradingPoint"
-    },
-    "/rest-api/list/tradingPoint/{id}": {
-      "$ref": "./TradingPoint.json#/paths/~1rest-api~1list~1tradingPoint~1{id}"
-    },
-    "/rest-api/tradingPoint/{id}": {
-      "$ref": "./TradingPoint.json#/paths/~1rest-api~1tradingPoints~1{id}"
+    "/services/rest-api/agents/{id}": {
+      "$ref": "./Agent.json#/paths/~1services~1rest-api~1agents~1{id}"
     },
 
-    "/rest-api/simple/list/contract": {
-      "$ref": "./Contract.json#/paths/~1rest-api~1simple~1list~1contract"
+    "/services/rest-api/simple/list/partnerEmployee": {
+      "$ref": "./PartnerEmployee.json#/paths/~1services~1rest-api~1simple~1list~1partnerEmployee"
     },
-    "/rest-api/list/contract": {
-      "$ref": "./Contract.json#/paths/~1rest-api~1list~1contract"
+    "/services/rest-api/list/partnerEmployee": {
+      "$ref": "./PartnerEmployee.json#/paths/~1services~1rest-api~1list~1partnerEmployee"
     },
-    "/rest-api/list/contract/{id}": {
-      "$ref": "./Contract.json#/paths/~1rest-api~1list~1contract~1{id}"
+    "/services/rest-api/list/partnerEmployee/{id}": {
+      "$ref": "./PartnerEmployee.json#/paths/~1services~1rest-api~1list~1partnerEmployee~1{id}"
     },
-    "/rest-api/contract/{id}": {
-      "$ref": "./Contract.json#/paths/~1rest-api~1contracts~1{id}"
-    },
-
-    "/rest-api/simple/list/reward": {
-      "$ref": "./Reward.json#/paths/~1rest-api~1simple~1list~1reward"
-    },
-    "/rest-api/list/reward": {
-      "$ref": "./Reward.json#/paths/~1rest-api~1list~1reward"
-    },
-    "/rest-api/list/reward/{id}": {
-      "$ref": "./Reward.json#/paths/~1rest-api~1list~1reward~1{id}"
-    },
-    "/rest-api/reward/{id}": {
-      "$ref": "./Reward.json#/paths/~1rest-api~1rewards~1{id}"
-    },
-
-    "/rest-api/simple/list/employeeAuthority": {
-      "$ref": "./EmployeeAuthority.json#/paths/~1rest-api~1simple~1list~1employeeAuthority"
-    },
-    "/rest-api/list/employeeAuthority": {
-      "$ref": "./EmployeeAuthority.json#/paths/~1rest-api~1list~1employeeAuthority"
-    },
-    "/rest-api/list/employeeAuthority/{id}": {
-      "$ref": "./EmployeeAuthority.json#/paths/~1rest-api~1list~1employeeAuthority~1{id}"
-    },
-    "/rest-api/employeeAuthority/{id}": {
-      "$ref": "./EmployeeAuthority.json#/paths/~1rest-api~1employeeAuthoritys~1{id}"
-    },
-
-    "/rest-api/simple/list/agentScheme": {
-      "$ref": "./AgentSchemes.json#/paths/~1rest-api~1simple~1list~1agentScheme"
-    },
-    "/rest-api/list/agentScheme": {
-      "$ref": "./AgentSchemes.json#/paths/~1rest-api~1list~1agentScheme"
-    },
-    "/rest-api/list/agentScheme/{id}": {
-      "$ref": "./AgentSchemes.json#/paths/~1rest-api~1list~1agentScheme~1{id}"
-    },
-    "/rest-api/agentSchemes/{id}": {
-      "$ref": "./AgentSchemes.json#/paths/~1rest-api~1agentSchemes~1{id}"
+    "/services/rest-api/partnerEmployees/{id}": {
+      "$ref": "./PartnerEmployee.json#/paths/~1services~1rest-api~1partnerEmployees~1{id}"
     },
 
 
-    "/rest-api/auth/authorization": {
-      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1authorization"
+    "/services/rest-api/simple/list/tradingPoint": {
+      "$ref": "./TradingPoint.json#/paths/~1services~1rest-api~1simple~1list~1tradingPoint"
     },
-    "/rest-api/auth/user/password/new": {
-      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1password~1new"
+    "/services/rest-api/list/tradingPoint": {
+      "$ref": "./TradingPoint.json#/paths/~1services~1rest-api~1list~1tradingPoint"
     },
-    "/rest-api/auth/user/authorization/password/new": {
-      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1authorization~1password~1new"
+    "/services/rest-api/list/tradingPoint/{id}": {
+      "$ref": "./TradingPoint.json#/paths/~1services~1rest-api~1list~1tradingPoint~1{id}"
     },
-    "/rest-api/auth/user/password": {
-      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1password"
+    "/services/rest-api/tradingPoint/{id}": {
+      "$ref": "./TradingPoint.json#/paths/~1services~1rest-api~1tradingPoints~1{id}"
     },
-    "/rest-api/auth/user/details": {
-      "$ref": "../core/main.json#/paths/~1rest-api~1auth~1user~1details"
+
+    "/services/rest-api/simple/list/contract": {
+      "$ref": "./Contract.json#/paths/~1services~1rest-api~1simple~1list~1contract"
+    },
+    "/services/rest-api/list/contract": {
+      "$ref": "./Contract.json#/paths/~1services~1rest-api~1list~1contract"
+    },
+    "/services/rest-api/list/contract/{id}": {
+      "$ref": "./Contract.json#/paths/~1services~1rest-api~1list~1contract~1{id}"
+    },
+    "/services/rest-api/contract/{id}": {
+      "$ref": "./Contract.json#/paths/~1services~1rest-api~1contracts~1{id}"
+    },
+
+    "/services/rest-api/simple/list/reward": {
+      "$ref": "./Reward.json#/paths/~1services~1rest-api~1simple~1list~1reward"
+    },
+    "/services/rest-api/list/reward": {
+      "$ref": "./Reward.json#/paths/~1services~1rest-api~1list~1reward"
+    },
+    "/services/rest-api/list/reward/{id}": {
+      "$ref": "./Reward.json#/paths/~1services~1rest-api~1list~1reward~1{id}"
+    },
+    "/services/rest-api/reward/{id}": {
+      "$ref": "./Reward.json#/paths/~1services~1rest-api~1rewards~1{id}"
+    },
+
+    "/services/rest-api/simple/list/employeeAuthority": {
+      "$ref": "./EmployeeAuthority.json#/paths/~1services~1rest-api~1simple~1list~1employeeAuthority"
+    },
+    "/services/rest-api/list/employeeAuthority": {
+      "$ref": "./EmployeeAuthority.json#/paths/~1services~1rest-api~1list~1employeeAuthority"
+    },
+    "/services/rest-api/list/employeeAuthority/{id}": {
+      "$ref": "./EmployeeAuthority.json#/paths/~1services~1rest-api~1list~1employeeAuthority~1{id}"
+    },
+    "/services/rest-api/employeeAuthority/{id}": {
+      "$ref": "./EmployeeAuthority.json#/paths/~1services~1rest-api~1employeeAuthoritys~1{id}"
+    },
+
+    "/services/rest-api/simple/list/agentScheme": {
+      "$ref": "./AgentSchemes.json#/paths/~1services~1rest-api~1simple~1list~1agentScheme"
+    },
+    "/services/rest-api/list/agentScheme": {
+      "$ref": "./AgentSchemes.json#/paths/~1services~1rest-api~1list~1agentScheme"
+    },
+    "/services/rest-api/list/agentScheme/{id}": {
+      "$ref": "./AgentSchemes.json#/paths/~1services~1rest-api~1list~1agentScheme~1{id}"
+    },
+    "/services/rest-api/agentSchemes/{id}": {
+      "$ref": "./AgentSchemes.json#/paths/~1services~1rest-api~1agentSchemes~1{id}"
+    },
+
+
+    "/services/rest-api/auth/authorization": {
+      "$ref": "../core/main.json#/paths/~1services~1rest-api~1auth~1authorization"
+    },
+    "/services/rest-api/auth/user/password/new": {
+      "$ref": "../core/main.json#/paths/~1services~1rest-api~1auth~1user~1password~1new"
+    },
+    "/services/rest-api/auth/user/authorization/password/new": {
+      "$ref": "../core/main.json#/paths/~1services~1rest-api~1auth~1user~1authorization~1password~1new"
+    },
+    "/services/rest-api/auth/user/password": {
+      "$ref": "../core/main.json#/paths/~1services~1rest-api~1auth~1user~1password"
+    },
+    "/services/rest-api/auth/user/details": {
+      "get": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "получение информации о текущем пользователе",
+        "operationId": "authorization_password_details",
+        "description": "получение информации о текущем пользователе",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом",
+            "schema": {
+              "$ref": "#/definitions/UserDetails"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "definitions": {
     "DocListRequest": {
       "$ref": "../core/definitions.json#/definitions/DocListRequest"
+    },
+    "UserDetailRoles": {
+      "type" : "array",
+      "description" : "роли пользователя. Partner - партнер. Agent - агент",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "UserDetails": {
+      "type": "object",
+      "required": [
+        "userName",
+        "fullUserName",
+        "roles",
+        "email"
+      ],
+      "properties": {
+        "userName": {
+          "type": "string",
+          "description": "логин текущего пользователя"
+        },
+        "fullUserName": {
+          "type": "string",
+          "description": "фио текущего пользователя"
+        },
+        "roles": {
+          "$ref": "#/definitions/UserDetailRoles"
+        },
+        "email": {
+          "type": "string",
+          "description": "адрес электронной почты текущего пользователя"
+        }
+      }
     }
   }
 }
