@@ -86,6 +86,10 @@ Class | Method | HTTP request | Description
 *EmployeeAuthorityListApi* | **getEmployeeAuthorityList** | **GET** /services/rest-api/list/employeeAuthority/{id} | получение списка документов
 *EmployeeAuthorityListApi* | **postEmployeeAuthoritysList** | **POST** /services/rest-api/list/employeeAuthority | сохранение параметров фильтрации
 *EmployeeAuthorityListSimpleApi* | **simpleEmployeeAuthoritysList** | **GET** /services/rest-api/simple/list/employeeAuthority | получение списка полномичий сотрудника
+*LoanProductApi* | **loanProductGet** | **GET** /services/rest-api/loanProducts/{id} | получение документа по гуиду
+*LoanProductListApi* | **getLoanProductList** | **GET** /services/rest-api/list/loanProduct/{id} | получение списка документов
+*LoanProductListApi* | **postLoanProductsList** | **POST** /services/rest-api/list/loanProduct | сохранение параметров фильтрации
+*LoanProductListSimpleApi* | **simpleLoanProductsList** | **GET** /services/rest-api/simple/list/loanProduct | получение списка кредитных продуктов
 *PartnerApi* | **partnerGet** | **GET** /services/rest-api/partners/{id} | получение документа по гуиду
 *PartnerEmployeeApi* | **partnerEmployeeGet** | **GET** /services/rest-api/partnerEmployees/{id} | получение документа по гуиду
 *PartnerEmployeeListApi* | **getPartnerEmployeeList** | **GET** /services/rest-api/list/partnerEmployee/{id} | получение списка документов
@@ -102,6 +106,10 @@ Class | Method | HTTP request | Description
 *TradingPointListApi* | **getTradingPointList** | **GET** /services/rest-api/list/tradingPoint/{id} | получение списка документов
 *TradingPointListApi* | **postTradingPointsList** | **POST** /services/rest-api/list/tradingPoint | сохранение параметров фильтрации
 *TradingPointListSimpleApi* | **simpleTradingPointsList** | **GET** /services/rest-api/simple/list/tradingPoint | получение списка торговых точек
+*UserApi* | **userGet** | **GET** /services/rest-api/users/{id} | получение документа по гуиду
+*UserListApi* | **getUserList** | **GET** /services/rest-api/list/user/{id} | получение списка документов
+*UserListApi* | **postUsersList** | **POST** /services/rest-api/list/user | сохранение параметров фильтрации
+*UserListSimpleApi* | **simpleUsersList** | **GET** /services/rest-api/simple/list/user | получение данных справочника пользователей
 
 
 ## Documentation for Models
@@ -155,6 +163,7 @@ Class | Method | HTTP request | Description
  - [FieldCLSchema](FieldCLSchema.md)
  - [FieldCLSchemaField](FieldCLSchemaField.md)
  - [LeftRightCLSchema](LeftRightCLSchema.md)
+ - [LoanProduct](LoanProduct.md)
  - [NestedConditionCLSchema](NestedConditionCLSchema.md)
  - [OrderElement](OrderElement.md)
  - [Partner](Partner.md)
@@ -211,6 +220,7 @@ Class | Method | HTTP request | Description
  - [TradingPointTtkmhistory](TradingPointTtkmhistory.md)
  - [TradingPointTttmHistory](TradingPointTttmHistory.md)
  - [TypesCLSchema](TypesCLSchema.md)
+ - [User](User.md)
  - [UserDetailRoles](UserDetailRoles.md)
  - [UserDetails](UserDetails.md)
  - [ValueCLSchema](ValueCLSchema.md)
