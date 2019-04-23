@@ -16,50 +16,93 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class User (
+  /* Заблокирован */
   isBlocked: Option[Boolean] = None,
+  /* Описание */
   description: Option[String] = None,
+  /* Учетная запись */
   login: Option[String] = None,
+  /* Системный идентификатор учетной записи  */
   userInfoID: Option[Int] = None,
+  /* Тип пользователя */
   typeUser: Option[String] = None,
+  /* Телефон */
   phone: Option[String] = None,
+  /* ИНН */
   inn: Option[String] = None,
+  /* ГУИД документа */
   guidDoc: Option[String] = None,
+  /* Все регионы */
   isAllRegion: Option[Boolean] = None,
+  /* Наименование роли */
   roleName: Option[String] = None,
+  /* Системное имя роли */
   roleSysName: Option[String] = None,
+  /* Системная организация (наименование) */
   sysOrgName: Option[String] = None,
+  /* Системная организация (код) */
   sysOrgSystemName: Option[String] = None,
+  /* ГуидАгетаПартнера */
   guidAgentPartner: Option[String] = None,
+  /* ИД */
   agentID: Option[String] = None,
+  /* ФИО в рп */
   fiorp: Option[String] = None,
+  /* Должность в ип */
   post: Option[String] = None,
+  /* Должность в рп */
   postRP: Option[String] = None,
+  /* Серия паспорта */
   passportSeries: Option[String] = None,
+  /* Номер паспорта */
   passportNumber: Option[String] = None,
+  /* Моб Телефон для ПЭП */
   phonePEP: Option[String] = None,
+  /* Флаг Подписант банка */
   signerBank: Option[Boolean] = None,
+  /* Дата и время отправки смс о предоставлении доступа в ЛК */
   dateSendSMS: Option[Double] = None,
+  /* Документы (вложенные файлы) */
   userdocs: Option[Seq[UserUserdocs]] = None,
+  /* Статус */
   cState: Option[String] = None,
+  /* Дата назначения статуса */
   cStateDate: Option[Double] = None,
+  /* Фамилия */
   fioLastname: Option[String] = None,
+  /* Имя */
   fioFirstname: Option[String] = None,
+  /* Отчество */
   fioMiddleName: Option[String] = None,
+  /* ЭлПочта */
   eMail: Option[String] = None,
+  /* ЭлПочтаВерхийРегистр */
   eMailUpper: Option[String] = None,
+  /* Признак ТМ */
   tmAttribute: Option[Boolean] = None,
   tmState: Option[UserTmState] = None,
+  /* Дата назначения статуса ТМ */
   tmStateDate: Option[Double] = None,
+  /* Регион */
   tmRegion: Option[String] = None,
+  /* Дивизион */
   tmDivision: Option[String] = None,
+  /* Фантомный ТМ */
   tmPhantom: Option[Boolean] = None,
+  /* Должность в ип */
   tmPost: Option[String] = None,
+  /* Должность в рп */
   tmPostRP: Option[String] = None,
+  /* Субдивизион */
   tmSubdivision: Option[String] = None,
+  /* Табельный номер */
   tmTabnumber: Option[String] = None,
   tmType: Option[UserTmType] = None,
+  /* ФамилияВерхийРегистр */
   fioUpperLastnameUpper: Option[String] = None,
+  /* ИмяВерхийРегистр */
   fioUpperFirstnameUpper: Option[String] = None,
+  /* ОтчествоВерхийРегистр */
   fioUpperMiddleNameUpper: Option[String] = None
 ) extends ApiModel
 

@@ -18,6 +18,7 @@ import java.util.UUID
 case class LoanProductGroupProduct (
   content: Option[String] = None,
   code: Option[String] = None,
+  /* ZeroOne - 01, ZeroTwo - 02, ZeroThree - 03, OneThree -  13 */
   value: Option[LoanProductGroupProductEnums.Value] = None
 ) extends ApiModel
 

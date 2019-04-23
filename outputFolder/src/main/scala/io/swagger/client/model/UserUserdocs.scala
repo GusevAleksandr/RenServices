@@ -16,11 +16,17 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class UserUserdocs (
+  /* Тип документа */
   docType: Option[String] = None,
+  /* Описание */
   descript: Option[String] = None,
+  /* Файл */
   attachment: Option[String] = None,
+  /* Дата представления */
   uploadDate: Option[Double] = None,
+  /* Флаг удаления */
   docsDelFlag: Option[String] = None,
+  /* Ссылка на файл */
   attachlink: Option[String] = None
 ) extends ApiModel
 

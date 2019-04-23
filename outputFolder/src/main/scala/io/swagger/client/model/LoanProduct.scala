@@ -16,22 +16,37 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class LoanProduct (
+  /* Наименование */
   name: Option[String] = None,
+  /* ФПН */
   fpn: Option[String] = None,
+  /* Код продукта */
   code: Option[String] = None,
   groupProduct: Option[LoanProductGroupProduct] = None,
+  /* Годовая ставка */
   apr: Option[String] = None,
+  /* Возможный срок, мес.: от */
   loanTermMin: Option[Int] = None,
+  /* Возможный срок, мес.: до */
   loanTermMax: Option[Int] = None,
+  /* Первоначальный взнос */
   downPayments: Option[String] = None,
+  /* Скидка */
   discount: Option[Double] = None,
+  /* ПСК */
   irr: Option[Double] = None,
+  /* Минимальная сумма кредита, руб. */
   limitMin: Option[Double] = None,
+  /* Максимальная сумма кредита, руб. */
   limitMax: Option[Double] = None,
+  /* Группа продуктов */
   productGroup: Option[String] = None,
+  /* ГУИД документа */
   guidDoc: Option[String] = None,
+  /* Подключение требует согласования */
   isAgreement: Option[Boolean] = None,
   agreementRole: Option[LoanProductAgreementRole] = None,
+  /* Статус */
   state: Option[String] = None
 ) extends ApiModel
 

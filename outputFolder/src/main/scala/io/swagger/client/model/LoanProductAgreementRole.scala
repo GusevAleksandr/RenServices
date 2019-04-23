@@ -18,6 +18,7 @@ import java.util.UUID
 case class LoanProductAgreementRole (
   content: Option[String] = None,
   code: Option[String] = None,
+  /* Manager - Управляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется */
   value: Option[LoanProductAgreementRoleEnums.Value] = None
 ) extends ApiModel
 

@@ -18,6 +18,7 @@ import java.util.UUID
 case class UserTmState (
   content: Option[String] = None,
   code: Option[String] = None,
+  /* New - Новый, Active - Активный ТМ, NotWork - Не действует */
   value: Option[UserTmStateEnums.Value] = None
 ) extends ApiModel
 
