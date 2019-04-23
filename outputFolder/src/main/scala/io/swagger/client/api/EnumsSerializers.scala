@@ -28,6 +28,8 @@ object EnumsSerializers {
     new EnumNameSerializer(ContractSubjectEnums.Value) :+
     new EnumNameSerializer(ContractTtModeEnums.Value) :+
     new EnumNameSerializer(ContractUnitEnums.Value) :+
+    new EnumNameSerializer(LoanProductAgreementRoleEnums.Value) :+
+    new EnumNameSerializer(LoanProductGroupProductEnums.Value) :+
     new EnumNameSerializer(PartnerPartnerTypeEnums.Value) :+
     new EnumNameSerializer(PartnerUnitEnums.Value) :+
     new EnumNameSerializer(RewardBasicInfoPDSubjectEnums.Value) :+
@@ -36,7 +38,9 @@ object EnumsSerializers {
     new EnumNameSerializer(TradingPointAgreementRoleEnums.Value) :+
     new EnumNameSerializer(TradingPointInteractionSchemeBusinessGroupEnums.Value) :+
     new EnumNameSerializer(TradingPointInteractionSchemeTTModeEnums.Value) :+
-    new EnumNameSerializer(TradingPointPurposeEnums.Value)
+    new EnumNameSerializer(TradingPointPurposeEnums.Value) :+
+    new EnumNameSerializer(UserTmStateEnums.Value) :+
+    new EnumNameSerializer(UserTmTypeEnums.Value)
 
   private class EnumNameSerializer[E <: Enumeration: ClassTag](enum: E)
     extends Serializer[E#Value] {

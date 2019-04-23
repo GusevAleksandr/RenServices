@@ -16,6 +16,23 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class LoanProduct (
+  name: Option[String] = None,
+  fpn: Option[String] = None,
+  code: Option[String] = None,
+  groupProduct: Option[LoanProductGroupProduct] = None,
+  apr: Option[String] = None,
+  loanTermMin: Option[Int] = None,
+  loanTermMax: Option[Int] = None,
+  downPayments: Option[String] = None,
+  discount: Option[Double] = None,
+  irr: Option[Double] = None,
+  limitMin: Option[Double] = None,
+  limitMax: Option[Double] = None,
+  productGroup: Option[String] = None,
+  guidDoc: Option[String] = None,
+  isAgreement: Option[Boolean] = None,
+  agreementRole: Option[LoanProductAgreementRole] = None,
+  state: Option[String] = None
 ) extends ApiModel
 
 
