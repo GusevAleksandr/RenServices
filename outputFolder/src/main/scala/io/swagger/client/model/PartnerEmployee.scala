@@ -19,7 +19,7 @@ case class PartnerEmployee (
   /* ГУИД документа */
   guidDoc: Option[String] = None,
   /* Статус */
-  state: Option[String] = None,
+  state: Option[PartnerEmployeeEnums.State] = None,
   /* Дата назначения статуса */
   stateDate: Option[Double] = None,
   /* Гуид партнера */
@@ -96,4 +96,17 @@ case class PartnerEmployee (
   eMailUpper: Option[String] = None
 ) extends ApiModel
 
+object PartnerEmployeeEnums {
+
+  type State = State.Value
+  object State extends Enumeration {
+    val `_` = Value("Ожидает автоактивации")
+    val `_` = Value("Срок полномочий истек")
+    val `` = Value("Новый")
+    val `` = Value("Активен")
+    val `` = Value("Заблокирован")
+    val `_` = Value("Готов к активации")
+  }
+
+}
 

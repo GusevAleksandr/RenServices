@@ -47,7 +47,18 @@ case class LoanProduct (
   isAgreement: Option[Boolean] = None,
   agreementRole: Option[LoanProductAgreementRole] = None,
   /* Статус */
-  state: Option[String] = None
+  state: Option[LoanProductEnums.State] = None
 ) extends ApiModel
 
+object LoanProductEnums {
+
+  type State = State.Value
+  object State extends Enumeration {
+    val `_` = Value("Не действует")
+    val `` = Value("Закрыта")
+    val `` = Value("Черновик")
+    val `` = Value("Активна")
+  }
+
+}
 
