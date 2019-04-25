@@ -15,7 +15,21 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class User (
+case class UsersTmState (
+  content: Option[String] = None,
+  code: Option[String] = None,
+  /* New - Новый, Active - Активный ТМ, NotWork - Не действует */
+  value: Option[UsersTmStateEnums.Value] = None
 ) extends ApiModel
 
+object UsersTmStateEnums {
+
+  type Value = Value.Value
+  object Value extends Enumeration {
+    val `New` = Value("New")
+    val Active = Value("Active")
+    val NotWork = Value("NotWork")
+  }
+
+}
 

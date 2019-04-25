@@ -15,7 +15,21 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class User (
+case class UsersTmType (
+  content: Option[String] = None,
+  code: Option[String] = None,
+  value: Option[UsersTmTypeEnums.Value] = None
 ) extends ApiModel
 
+object UsersTmTypeEnums {
+
+  type Value = Value.Value
+  object Value extends Enumeration {
+    val TM = Value("TM")
+    val KM = Value("KM")
+    val KAM = Value("KAM")
+    val RPP = Value("RPP")
+  }
+
+}
 

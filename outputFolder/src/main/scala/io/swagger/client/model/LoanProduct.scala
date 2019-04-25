@@ -16,49 +16,6 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class LoanProduct (
-  /* Наименование */
-  name: Option[String] = None,
-  /* ФПН */
-  fpn: Option[String] = None,
-  /* Код продукта */
-  code: Option[String] = None,
-  groupProduct: Option[LoanProductGroupProduct] = None,
-  /* Годовая ставка */
-  apr: Option[String] = None,
-  /* Возможный срок, мес.: от */
-  loanTermMin: Option[Int] = None,
-  /* Возможный срок, мес.: до */
-  loanTermMax: Option[Int] = None,
-  /* Первоначальный взнос */
-  downPayments: Option[String] = None,
-  /* Скидка */
-  discount: Option[Double] = None,
-  /* ПСК */
-  irr: Option[Double] = None,
-  /* Минимальная сумма кредита, руб. */
-  limitMin: Option[Double] = None,
-  /* Максимальная сумма кредита, руб. */
-  limitMax: Option[Double] = None,
-  /* Группа продуктов */
-  productGroup: Option[String] = None,
-  /* ГУИД документа */
-  guidDoc: Option[String] = None,
-  /* Подключение требует согласования */
-  isAgreement: Option[Boolean] = None,
-  agreementRole: Option[LoanProductAgreementRole] = None,
-  /* Статус */
-  state: Option[LoanProductEnums.State] = None
 ) extends ApiModel
 
-object LoanProductEnums {
-
-  type State = State.Value
-  object State extends Enumeration {
-    val `_` = Value("Не действует")
-    val `` = Value("Закрыта")
-    val `` = Value("Черновик")
-    val `` = Value("Активна")
-  }
-
-}
 
