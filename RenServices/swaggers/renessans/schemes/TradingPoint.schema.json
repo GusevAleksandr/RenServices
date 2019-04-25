@@ -1,0 +1,790 @@
+{
+  "type": "object",
+  "properties": {
+    "guidDoc": {
+      "description": "ГУИД документа",
+      "type": "string"
+    },
+    "insurerlist": {
+      "description": "Страховые компании",
+      "type": "string"
+    },
+    "basicInfoCState": {
+      "description": "Статус",
+      "type": "string"
+    },
+    "basicInfoCStateDate": {
+      "description": "Дата назначения статуса",
+      "type": "number"
+    },
+    "currentContractPartner": {
+      "description": "Предприятие торговли",
+      "type": "string"
+    },
+    "currentContractPartnerGUID": {
+      "description": "Гуид Партнера",
+      "type": "string"
+    },
+    "currentContractPartnerINN": {
+      "description": "ИНН Партнера",
+      "type": "string"
+    },
+    "currentContractRetailer": {
+      "description": "Торговая сеть",
+      "type": "string"
+    },
+    "currentContractRetailerCode": {
+      "description": "Код сети",
+      "type": "string"
+    },
+    "currentContractAccount": {
+      "description": "Расчетный счет",
+      "type": "string"
+    },
+    "currentContractBankName": {
+      "description": "Наименование банка",
+      "type": "string"
+    },
+    "currentContractBankBIK": {
+      "description": "БИК",
+      "type": "string"
+    },
+    "currentContractCorrAccount": {
+      "description": "Корреспондентский счет",
+      "type": "string"
+    },
+    "registerInfoCode": {
+      "description": "Код",
+      "type": "string"
+    },
+    "registerInfoName": {
+      "description": "Наименование",
+      "type": "string"
+    },
+    "registerInfoPhone": {
+      "description": "Телефон",
+      "type": "string"
+    },
+    "registerInfoEMail": {
+      "description": "Адрес электронной почты",
+      "type": "string"
+    },
+    "registerInfoSite": {
+      "description": "Сайт",
+      "type": "string"
+    },
+    "registerInfoNote": {
+      "description": "Комментарии",
+      "type": "string"
+    },
+    "registerInfoIsOwnAccount": {
+      "description": "Использование собственных реквизитов",
+      "type": "boolean"
+    },
+    "ownBankAccountBank": {
+      "description": "Банк",
+      "type": "string"
+    },
+    "ownBankAccountBIK": {
+      "description": "БИК",
+      "type": "string"
+    },
+    "ownBankAccountOKPO": {
+      "description": "ОКПО",
+      "type": "string"
+    },
+    "ownBankAccountCheckAccount": {
+      "description": "Расчетный счет",
+      "type": "string"
+    },
+    "ownBankAccountCorrAccount": {
+      "description": "Корреспондентский счет",
+      "type": "string"
+    },
+    "addressIndexAdd": {
+      "description": "Индекс",
+      "type": "string"
+    },
+    "addressRegion": {
+      "description": "Регион",
+      "type": "string"
+    },
+    "addressCity": {
+      "description": "Населенный пункт",
+      "type": "string"
+    },
+    "addressStreet": {
+      "description": "Улица",
+      "type": "string"
+    },
+    "addressHouse": {
+      "description": "Дом",
+      "type": "string"
+    },
+    "addressCorp": {
+      "description": "Корпус",
+      "type": "string"
+    },
+    "addressBuilding": {
+      "description": "Строение",
+      "type": "string"
+    },
+    "addressOffice": {
+      "description": "Офис",
+      "type": "string"
+    },
+    "addressFullAddress": {
+      "description": "Полный адрес",
+      "type": "string"
+    },
+    "interactionSchemeTTMode": {
+      "description": "Режим работы",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "description": "Lit1 - online, lit2 - offline",
+          "enum": [
+            "Lit1",
+            "lit2"
+          ]
+        }
+      }
+    },
+    "interactionSchemeTTCategory": {
+      "description": "Категория",
+      "type": "string"
+    },
+    "interactionSchemeTTCategoryCode": {
+      "description": "ТТкатегорияКод",
+      "type": "string"
+    },
+    "interactionSchemeDivision": {
+      "description": "Дивизион закрепления",
+      "type": "string"
+    },
+    "interactionSchemeRegionCentr": {
+      "description": "Регион закрепления",
+      "type": "string"
+    },
+    "interactionSchemeCurrentTM": {
+      "description": "Закрепленный ТМ",
+      "type": "string"
+    },
+    "interactionSchemeCTMDate": {
+      "description": "Дата закрепления ТМ",
+      "type": "number"
+    },
+    "interactionSchemeLastnameTM": {
+      "description": "ФамилияТМ",
+      "type": "string"
+    },
+    "interactionSchemeFirstnameTM": {
+      "description": "ИмяТМ",
+      "type": "string"
+    },
+    "interactionSchemeMiddleNameTM": {
+      "description": "ОтчествоТМ",
+      "type": "string"
+    },
+    "interactionSchemePointOfSale": {
+      "description": "Название ПОС в МСО",
+      "type": "string"
+    },
+    "interactionSchemeBusinessGroup": {
+      "description": "Бизнес группа IL",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "description": "lit1 - Electronics, lit2 - Non-Electronics, lit3 - Telecom",
+          "enum": [
+            "lit1",
+            "lit2",
+            "lit3"
+          ]
+        }
+      }
+    },
+    "interactionSchemePOSList": {
+      "description": "Список POS",
+      "type": "string"
+    },
+    "interactionSchemeIsInvolvedKV": {
+      "description": "Участвует в выплате КВ",
+      "type": "boolean"
+    },
+    "interactionSchemeDATEOFF": {
+      "description": "Дата открепленияТМ",
+      "type": "number"
+    },
+    "addInfoAssortment": {
+      "description": "Ассортимент",
+      "type": "string"
+    },
+    "addInfoContact": {
+      "description": "Контактное лицо",
+      "type": "string"
+    },
+    "addInfoPhoneOnTT": {
+      "description": "Телефон в ТТ",
+      "type": "string"
+    },
+    "addInfoProduct1": {
+      "description": "Приоритетный продукт 1",
+      "type": "string"
+    },
+    "addInfoProduct2": {
+      "description": "Приоритетный продукт 2",
+      "type": "string"
+    },
+    "addInfoProduct3": {
+      "description": "Приоритетный продукт 3",
+      "type": "string"
+    },
+    "addInfoHaveInsurance": {
+      "description": "Возможность оформления страховки",
+      "type": "boolean"
+    },
+    "addInfoHavaAgent": {
+      "description": "Наличие агента в ТТ",
+      "type": "boolean"
+    },
+    "addInfoScanLogin": {
+      "description": "Авторизация по сканам",
+      "type": "boolean"
+    },
+    "addInfoSendPaymentPlan": {
+      "description": "Онлайн ТТ",
+      "type": "boolean"
+    },
+    "addInfoStrategy": {
+      "description": "Стратегия",
+      "type": "string"
+    },
+    "addInfoReceiveCanal": {
+      "description": "Канал приема",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "description": "phone - телефон, email - e-mail, courier - курьер",
+          "enum": [
+            "phone",
+            "email",
+            "courier"
+          ]
+        }
+      }
+    },
+    "addInfoSendCanal": {
+      "description": "Канал отправки",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "description": "phone - телефон, email - e-mail, courier - курьер",
+          "enum": [
+            "phone",
+            "email",
+            "courier"
+          ]
+        }
+      }
+    },
+    "curContractGuid": {
+      "description": "ГУИД договора",
+      "type": "string"
+    },
+    "curContractNum": {
+      "description": "Номер",
+      "type": "string"
+    },
+    "curContractDateC": {
+      "description": "Дата договора",
+      "type": "number"
+    },
+    "curContractStateC": {
+      "description": "Статус",
+      "type": "string"
+    },
+    "curContractEndDate": {
+      "description": "Дата окончания действия",
+      "type": "number"
+    },
+    "brokerGuid": {
+      "description": "Ссылка на брокер",
+      "type": "string"
+    },
+    "brokerName": {
+      "description": "Наименование брокера",
+      "type": "string"
+    },
+    "brokerINN": {
+      "description": "ИНН брокера",
+      "type": "string"
+    },
+    "brokerTTDateOn": {
+      "description": "Дата подключения ТТ к брокеру",
+      "type": "number"
+    },
+    "brokerTTDateOff": {
+      "description": "Дата отключения ТТ от брокера",
+      "type": "number"
+    },
+    "brokerAuthorOn": {
+      "description": "Сотрудник подключивший брокера",
+      "type": "string"
+    },
+    "brokerDateOn": {
+      "description": "Дата и время подключения",
+      "type": "number"
+    },
+    "brokerAuthorOff": {
+      "description": "Сотрудник отключивший брокера",
+      "type": "string"
+    },
+    "brokerDateOff": {
+      "description": "Дата и время отключения",
+      "type": "number"
+    },
+    "kmfiofixed": {
+      "description": "Закрепленный КМ",
+      "type": "string"
+    },
+    "kmguidfixed": {
+      "description": "Гуид закрепленного КМ",
+      "type": "string"
+    },
+    "kmdateon": {
+      "description": "Дата закрепления КМ",
+      "type": "number"
+    },
+    "kmdateoff": {
+      "description": "Дата открепленияКМ",
+      "type": "number"
+    },
+    "kamfiofixed": {
+      "description": "Закрепленный КАМ",
+      "type": "string"
+    },
+    "kamguidfixed": {
+      "description": "Гуид закрепленного КАМ",
+      "type": "string"
+    },
+    "kamdateon": {
+      "description": "Дата закрепления КАМ",
+      "type": "number"
+    },
+    "kamdateoff": {
+      "description": "Дата открепленияКАМ",
+      "type": "number"
+    },
+    "ttkmhistory": {
+      "description": "История закрепления КМ",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fiofixedkm": {
+            "description": "Закрепленный КМ",
+            "type": "string"
+          },
+          "guidfixedkm": {
+            "description": "Гуид закрепленного КМ",
+            "type": "string"
+          },
+          "dateOn": {
+            "description": "Дата закрепления КМ",
+            "type": "number"
+          },
+          "dateOff": {
+            "description": "Дата открепленияКМ",
+            "type": "number"
+          },
+          "dateChanges": {
+            "description": "Дата изменения",
+            "type": "number"
+          },
+          "authorChanges": {
+            "description": "Автор изменения",
+            "type": "string"
+          },
+          "typeempl": {
+            "description": "Тип сотрудника",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "ttkamhistoryt": {
+      "description": "История закрепления КАМ Техниническая",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fiofixedkam": {
+            "description": "Закрепленный КАМ",
+            "type": "string"
+          },
+          "guidfixedkam": {
+            "description": "Гуид закрепленного КАМ",
+            "type": "string"
+          },
+          "dateOn": {
+            "description": "Дата закрепления КАМ",
+            "type": "number"
+          },
+          "dateOff": {
+            "description": "Дата открепления КАМ",
+            "type": "number"
+          },
+          "dateChanges": {
+            "description": "Дата изменения",
+            "type": "number"
+          },
+          "authorChanges": {
+            "description": "Автор изменения",
+            "type": "string"
+          },
+          "typeempl": {
+            "description": "Тип сотрудника",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "tmGuidDoc": {
+      "description": "ГУИД ТМ",
+      "type": "string"
+    },
+    "ttStateHistory": {
+      "description": "История статусов",
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "stateDate": {
+            "description": "Дата назначения",
+            "type": "number"
+          },
+          "duration": {
+            "description": "Продолжительность работ",
+            "type": "integer"
+          },
+          "executorFIO": {
+            "description": "Исполнитель",
+            "type": "string"
+          },
+          "executorRole": {
+            "description": "Роль исполнителя",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "ttInsurers": {
+      "description": "Список страховых компаний",
+      "items": {
+        "type": "object",
+        "properties": {
+          "insurer": {
+            "description": "Страховая компания",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "ttCreditProduct": {
+      "description": "Кредитные продукты",
+      "items": {
+        "type": "object",
+        "properties": {
+          "productGUID": {
+            "description": "ГУИД документа",
+            "type": "string"
+          },
+          "fpn": {
+            "description": "ФПН",
+            "type": "string"
+          },
+          "product": {
+            "description": "Кредитные продукты",
+            "type": "string"
+          },
+          "dateOn": {
+            "description": "Дата запуска",
+            "type": "number"
+          },
+          "dateOff": {
+            "description": "Дата отключения",
+            "type": "number"
+          },
+          "code": {
+            "description": "Код продукта",
+            "type": "string"
+          },
+          "agreementRole": {
+            "description": "Кого",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string",
+                "description": "Manager - правляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется",
+                "enum": [
+                  "Manager",
+                  "Coordinator",
+                  "WithoutAgree"
+                ]
+              }
+            }
+          },
+          "ttDiscount": {
+            "description": "ТТ Скидка",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "ttVisitTM": {
+      "description": "Сведения о посещениях",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dateVisit": {
+            "description": "Дата посещения",
+            "type": "number"
+          },
+          "purpose": {
+            "description": "Действие",
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string",
+                "description": "pulledFiles - забрал досье, connectedAgent - подключил агента, heldTalks - провел переговоры по подключению новых кредитных продуктов, trainedEmployees - провел обучение сотрудников, postedPOSM - разместил POSM, reanimation - реанимация, specTask - спецзадача",
+                "enum": [
+                  "pulledFiles",
+                  "connectedAgent",
+                  "heldTalks",
+                  "trainedEmployees",
+                  "postedPOSM",
+                  "reanimation",
+                  "specTask"
+                ]
+              }
+            }
+          },
+          "note": {
+            "description": "Комментарии",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "ttAgentDocs": {
+      "description": "Документы (вложенные файлы)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "docType": {
+            "description": "Тип документа",
+            "type": "string"
+          },
+          "descript": {
+            "description": "Описание",
+            "type": "string"
+          },
+          "attachment": {
+            "description": "Файл",
+            "type": "string"
+          },
+          "isActive": {
+            "description": "Признак актуальности",
+            "type": "boolean",
+            "required": true
+          },
+          "uploadDate": {
+            "description": "Дата представления",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "tttmHistory": {
+      "description": "История закрепления ТМ",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tm": {
+            "description": "ТМ",
+            "type": "string"
+          },
+          "authorChanges": {
+            "description": "Автор изменения",
+            "type": "string"
+          },
+          "dateChanges": {
+            "description": "Дата изменения",
+            "type": "number"
+          },
+          "guidfixedtm": {
+            "description": "Гуид закрепленного ТМ",
+            "type": "string"
+          },
+          "dateOff": {
+            "description": "Дата открепления ТМ",
+            "type": "number"
+          },
+          "typeempl": {
+            "description": "Тип сотрудника",
+            "type": "string"
+          },
+          "tmDate": {
+            "description": "Дата закрепления ТМ",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "ttPartnerScheme": {
+      "description": "Схемы КВ",
+      "items": {
+        "type": "object",
+        "properties": {
+          "partnerSchemeGUID": {
+            "description": "Гуид схемы КВ",
+            "type": "string"
+          },
+          "dateInclude": {
+            "description": "Дата подключения схемы КВ",
+            "type": "number"
+          },
+          "dateExclude": {
+            "description": "Дата отключения",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "ttBrokerHistory": {
+      "description": "История подключения к брокеру",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "description": "Ссылка на брокер",
+            "type": "string"
+          },
+          "name": {
+            "description": "Наименование брокера",
+            "type": "string"
+          },
+          "inn": {
+            "description": "ИНН брокера",
+            "type": "string"
+          },
+          "authorOn": {
+            "description": "Сотрудник подключивший брокера",
+            "type": "string"
+          },
+          "dateOn": {
+            "description": "Дата закрепления КАМ",
+            "type": "number"
+          },
+          "authorOff": {
+            "description": "Сотрудник отключивший брокера",
+            "type": "string"
+          },
+          "dateOff": {
+            "description": "Дата открепленияКАМ",
+            "type": "number"
+          },
+          "ttDateOn": {
+            "description": "Дата подключения ТТ к брокеру",
+            "type": "number"
+          },
+          "ttDateOff": {
+            "description": "Дата отключения ТТ от брокера",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "tTnested": {
+      "description": "Кустовые ТТ",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "description": "Гуид кустовой ТТ",
+            "type": "string"
+          },
+          "code": {
+            "description": "Код кустовой ТТ",
+            "type": "string"
+          },
+          "name": {
+            "description": "Наименование кустовой ТТ",
+            "type": "string"
+          },
+          "dateOn": {
+            "description": "Дата подключения кустовой ТТ",
+            "type": "number"
+          },
+          "dateOff": {
+            "description": "Дата отключения кустовой ТТ",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    }
+  }
+}

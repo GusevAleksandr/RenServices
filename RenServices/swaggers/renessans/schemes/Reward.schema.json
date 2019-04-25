@@ -1,0 +1,887 @@
+{
+  "type": "object",
+  "properties": {
+    "kpi": {
+      "description": "Предельное время обработки ",
+      "type": "integer"
+    },
+    "region": {
+      "description": "Регион закрепления",
+      "type": "string"
+    },
+    "division": {
+      "description": "Дивизион",
+      "type": "string"
+    },
+    "actNumber": {
+      "description": "Номер акта",
+      "type": "string"
+    },
+    "signWithPep": {
+      "description": "ПодписанПЭП",
+      "type": "boolean"
+    },
+    "contractCreatationDate": {
+      "description": "Дата создания договора",
+      "type": "number"
+    },
+    "fileName": {
+      "description": "Имя файла",
+      "type": "string"
+    },
+    "svflaginsurance": {
+      "description": "Учитывать повышающий коэффициент",
+      "type": "boolean"
+    },
+    "totalAmount": {
+      "description": "Общая сумма",
+      "type": "number"
+    },
+    "signWithPepWorker": {
+      "description": "Согласован ПЭП сотрудника банка",
+      "type": "boolean"
+    },
+    "partnerType": {
+      "description": "Тип Партнера",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "description": "Standard - Стандарт, Broker - Брокер, Federal - Федерал",
+          "type": "string",
+          "enum": [
+            "Standard",
+            "Broker",
+            "Federal"
+          ]
+        }
+      }
+    },
+    "guidpdfbankhash": {
+      "description": "ГУИД вложения с пдф-файлом для банка 1 ",
+      "type": "string"
+    },
+    "guidpdfbanksign": {
+      "description": "ГУИД вложения с пдф-файлом для банка 2",
+      "type": "string"
+    },
+    "guidpdfpartnerhash": {
+      "description": "ГУИД вложения с пдф-файлом для партнера 1 ",
+      "type": "string"
+    },
+    "guidpdfpartnersign": {
+      "description": "ГУИД вложения с пдф-файлом для партнера 2",
+      "type": "string"
+    },
+    "hashbank": {
+      "description": "Хэш1",
+      "type": "string"
+    },
+    "hashpartner": {
+      "description": "Хэш2",
+      "type": "string"
+    },
+    "smsbank": {
+      "description": "СМС код для банка",
+      "type": "string"
+    },
+    "smsbankdate": {
+      "description": "Дата и время доставки смсКода сотруднику банка",
+      "type": "number"
+    },
+    "telefonbank": {
+      "description": "Телефон сотрудника банка",
+      "type": "string"
+    },
+    "loginpartnersign": {
+      "description": "Логин партнера",
+      "type": "string"
+    },
+    "smspartner": {
+      "description": "СМС код для партнера",
+      "type": "string"
+    },
+    "smspartnerdate": {
+      "description": "Дата и время доставки смсКода партнеру",
+      "type": "number"
+    },
+    "telefonpartner": {
+      "description": "Телефон партнера",
+      "type": "string"
+    },
+    "guidpowerattorneybank": {
+      "description": "Гуид доверенности сотрудника банка",
+      "type": "string"
+    },
+    "guidsignerbank": {
+      "description": "ГУИД подписанта сотрудника банка",
+      "type": "string"
+    },
+    "guidpowerattorneypartner": {
+      "description": "Гуид доверенности сотрудника партнера",
+      "type": "string"
+    },
+    "loginbanksign": {
+      "description": "Логин сотрудника банка",
+      "type": "string"
+    },
+    "guidsignerpartner": {
+      "description": "Гуид сотрудника партнера подписанта партнера",
+      "type": "string"
+    },
+    "guidreportbank": {
+      "description": "Гуид вложения с отчетом банка",
+      "type": "string"
+    },
+    "guidreportpartner": {
+      "description": "Гуид вложения с отчетом партнера",
+      "type": "string"
+    },
+    "basicInfoCState": {
+      "description": "Статус",
+      "type": "string"
+    },
+    "basicInfoCStateDate": {
+      "description": "Дата назначения статуса",
+      "type": "number"
+    },
+    "basicInfoPDSubject": {
+      "description": "Тип контрагента",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "description": "Значение",
+          "type": "string",
+          "enum": [
+            "agents",
+            "partners"
+          ]
+        }
+      }
+    },
+    "basicInfoPDContractorGUID": {
+      "description": "Ссылка на карточку агента или партнера",
+      "type": "string"
+    },
+    "basicInfoPDPartnerINN": {
+      "description": "ИНН партнера",
+      "type": "string"
+    },
+    "basicInfoPDAgentID": {
+      "description": "Идентификатор агента",
+      "type": "string"
+    },
+    "basicInfoPDContractorName": {
+      "description": "Предприятие торговли /Консультант",
+      "type": "string"
+    },
+    "basicInfoPDDocDate": {
+      "description": "Дата акта",
+      "type": "number"
+    },
+    "basicInfoPDDateStart": {
+      "description": "Отчетный период начало",
+      "type": "number"
+    },
+    "basicInfoPDDateEnd": {
+      "description": "Отчетный период окончание",
+      "type": "number"
+    },
+    "basicInfoPDIsAutomatic": {
+      "description": "Типовой расчета",
+      "type": "boolean"
+    },
+    "basicInfoPDCodeSchemeKV": {
+      "description": "Код алгоритма вознаграждения партнера",
+      "type": "integer"
+    },
+    "basicInfoPDCodeAgentScheme": {
+      "description": "Код агентской схемы вознаграждения",
+      "type": "string"
+    },
+    "basicInfoPDAlgoritm": {
+      "description": "Алгоритм расчета",
+      "type": "string"
+    },
+    "basicInfoPDBasicDocName": {
+      "description": "Форма акта",
+      "type": "string"
+    },
+    "basicInfoPDIsTTGroup": {
+      "description": "Признак группировки кредитов по категориям ТТ",
+      "type": "boolean"
+    },
+    "basicInfoPDGuidScheme": {
+      "description": "Гуид схемы КВ партнера",
+      "type": "string"
+    },
+    "basicInfoPDIsNonBasicForm": {
+      "description": "Использовать нетиповую форму акта",
+      "type": "boolean"
+    },
+    "basicInfoPDFormAct": {
+      "description": "Форма Акта ",
+      "type": "string"
+    },
+    "basicInfoPDRegForm": {
+      "description": "Форма регистрации",
+      "type": "string"
+    },
+    "basicInfoPDOGRN": {
+      "description": "ОГРН",
+      "type": "string"
+    },
+    "basicInfoPDSignerIsPartner": {
+      "description": "Подписант совпадает с партнером",
+      "type": "string"
+    },
+    "signinInfoBankSign": {
+      "description": "Лицо от Банка, подтвердившее Акт",
+      "type": "string"
+    },
+    "signinInfoBankDate": {
+      "description": "Дата подтверждения Акта Банком",
+      "type": "number"
+    },
+    "signinInfoContractorSign": {
+      "description": "Партнер/Агент, подтвердивший Акт",
+      "type": "string"
+    },
+    "signinInfoContractorDate": {
+      "description": "Дата подтверждения Акта Партнером/Агентом",
+      "type": "number"
+    },
+    "signinInfoCONFIRMER": {
+      "description": "Лицо от Банка, подтвердившее Акт в р.п.",
+      "type": "string"
+    },
+    "signinInfoFOUNDATION": {
+      "description": "На основании",
+      "type": "string"
+    },
+    "signinInfoRegionContract": {
+      "description": "Регион",
+      "type": "string"
+    },
+    "signinInfoBankName": {
+      "description": "Наименование банка",
+      "type": "string"
+    },
+    "signinInfoBankAddress": {
+      "description": "Адрес банка",
+      "type": "string"
+    },
+    "signinInfoBasisPowers": {
+      "description": "Основание полномочий (родительный падеж)",
+      "type": "string"
+    },
+    "signinInfoPostRepresentRP": {
+      "description": "Представитель партнера. Должность р.п.",
+      "type": "string"
+    },
+    "signinInfoNameRepresentRP": {
+      "description": "ФИО представителя р.п.",
+      "type": "string"
+    },
+    "signinInfoLegalAddress": {
+      "description": "Юридический адрес",
+      "type": "string"
+    },
+    "signinInfoNameRepresent": {
+      "description": "ФИО представителя",
+      "type": "string"
+    },
+    "signinInfoPANUM": {
+      "description": "Номер доверенности сотрудника банка",
+      "type": "string"
+    },
+    "signinInfoPADATEON": {
+      "description": "Дата доверенности",
+      "type": "number"
+    },
+    "signinInfoBankFIORP": {
+      "description": "ФИО представителя банка в рп",
+      "type": "string"
+    },
+    "signinInfoBankPost": {
+      "description": "Должность представителя банка в ип",
+      "type": "string"
+    },
+    "signinInfoBankPostRP": {
+      "description": "Должность представителя банка в рп",
+      "type": "string"
+    },
+    "signinInfoIPChiefFIO": {
+      "description": "ФИО руководителя ИП",
+      "type": "string"
+    },
+    "addAgreementPrtnGUID": {
+      "description": "Гуид ДС",
+      "type": "string"
+    },
+    "addAgreementPrtnNum": {
+      "description": "ДС номер",
+      "type": "string"
+    },
+    "addAgreementPrtnDateDS": {
+      "description": "От дата ДС",
+      "type": "number"
+    },
+    "addAgreementPrtnBaseDoc": {
+      "description": "Форма ДС",
+      "type": "string"
+    },
+    "addAgreementPrtnTaxScheme": {
+      "description": "Схема налогообложения",
+      "type": "string"
+    },
+    "contractAgentGUID": {
+      "description": "Гуид договора ",
+      "type": "string"
+    },
+    "contractAgentNum": {
+      "description": "Договор номер",
+      "type": "string"
+    },
+    "contractAgentDateD": {
+      "description": "Дата",
+      "type": "number"
+    },
+    "contractPartnerNum": {
+      "description": "К договору номер ",
+      "type": "string"
+    },
+    "contractPartnerPCDate": {
+      "description": "от дата договора",
+      "type": "number"
+    },
+    "techPanelRoleNoAccess": {
+      "type": "string"
+    },
+    "rewStateHistory": {
+      "description": "История статусов",
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "stateDate": {
+            "description": "Дата назначения статуса",
+            "type": "number"
+          },
+          "duration": {
+            "description": "Продолжительность работ, дн.",
+            "type": "integer"
+          },
+          "executorFIO": {
+            "description": "Исполнитель",
+            "type": "string"
+          },
+          "executorRole": {
+            "description": "Роль исполнителя",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "rewDocSum": {
+      "description": "Итоговые суммы документа",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "Значение",
+            "type": "number"
+          },
+          "guidSumType": {
+            "description": "Гуид типа суммы",
+            "type": "string"
+          },
+          "name": {
+            "description": "Наименование",
+            "type": "string"
+          },
+          "nameRus": {
+            "description": "НаименованиеРус",
+            "type": "string"
+          },
+          "valueWords": {
+            "description": "Значение прописью",
+            "type": "string"
+          },
+          "dsCode": {
+            "description": "Код типа суммы",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "rewCategorOutlets": {
+      "description": "Категории торговых точек",
+      "items": {
+        "type": "object",
+        "properties": {
+          "linkRefBook": {
+            "description": "Ссылка на запись справочника",
+            "type": "string"
+          },
+          "name": {
+            "description": "Наименование",
+            "type": "string"
+          },
+          "code": {
+            "description": "Код",
+            "type": "string"
+          },
+          "groupSum": {
+            "description": "Итоговые суммы",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "description": "Значение",
+                  "type": "number"
+                },
+                "guidSumType": {
+                  "description": "Гуид типа суммы",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Наименование",
+                  "type": "string"
+                },
+                "nameRus": {
+                  "description": "НаименованиеРус",
+                  "type": "string"
+                },
+                "valueWords": {
+                  "description": "Значение прописью",
+                  "type": "string"
+                },
+                "ttCategory": {
+                  "description": "Код категории ТТ ",
+                  "type": "string"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "credits": {
+            "description": "Детальные сведения о выданных Банком кредитах",
+            "items": {
+              "type": "object",
+              "properties": {
+                "lineNum": {
+                  "type": "string"
+                },
+                "regionCentr": {
+                  "description": "Регион",
+                  "type": "string"
+                },
+                "consulter": {
+                  "description": "ФИО консультанта",
+                  "type": "string"
+                },
+                "client": {
+                  "description": "ФИО заемщика",
+                  "type": "string"
+                },
+                "numberDoc": {
+                  "description": "Номер кредит. договора",
+                  "type": "string"
+                },
+                "productFPN": {
+                  "description": "Фпн продукта",
+                  "type": "string"
+                },
+                "product": {
+                  "description": "Продукт",
+                  "type": "string"
+                },
+                "productType": {
+                  "description": "Группа кредитного продукта",
+                  "type": "string"
+                },
+                "prodGroup": {
+                  "description": "Группа продукта",
+                  "type": "string"
+                },
+                "issueDate": {
+                  "description": "Дата выдачи",
+                  "type": "number"
+                },
+                "totalAmount": {
+                  "description": "Общая сумма",
+                  "type": "number"
+                },
+                "goodsAmount": {
+                  "description": "Сумма на товар",
+                  "type": "number"
+                },
+                "insurances": {
+                  "description": "Количество страховок",
+                  "type": "integer"
+                },
+                "lifeInsAmount": {
+                  "description": "Страхование жизни",
+                  "type": "number"
+                },
+                "workInsAmount": {
+                  "description": "Потеря работы",
+                  "type": "number"
+                },
+                "iscl": {
+                  "description": "Признак продажи СП",
+                  "type": "boolean"
+                },
+                "rewCLAmount": {
+                  "description": "Комфорт-Лайт",
+                  "type": "number"
+                },
+                "rewPercent": {
+                  "description": "Вознаграждение баз",
+                  "type": "number"
+                },
+                "rewPercent2": {
+                  "description": "Вознаграждение изм",
+                  "type": "number"
+                },
+                "rewAmount": {
+                  "description": "Сумма вознаграждения",
+                  "type": "number"
+                },
+                "basicRewardAmount": {
+                  "description": "Основное вознаграждение",
+                  "type": "number"
+                },
+                "comfortLiteQuantity": {
+                  "description": "Колво пакетов Комфорт лайт",
+                  "type": "integer"
+                },
+                "division": {
+                  "description": "Дивизион",
+                  "type": "string"
+                },
+                "merchantName": {
+                  "description": "Наименование торговой точки",
+                  "type": "string"
+                },
+                "productInSchemeKV": {
+                  "description": "Кредитный продукт присутствует в схеме КВ",
+                  "type": "string"
+                },
+                "rewADDS": {
+                  "description": "Дополнительные услуги",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "addsCode": {
+                        "description": "Код дополнительной услуги",
+                        "type": "string"
+                      },
+                      "addsName": {
+                        "description": "Наименование дополнительной услуги",
+                        "type": "string"
+                      },
+                      "addsRewardOne": {
+                        "description": "Сумма вознаграждения за продажу дополнительной услуги",
+                        "type": "number"
+                      },
+                      "addsAmount": {
+                        "description": "Количество проданных услуг",
+                        "type": "integer"
+                      },
+                      "addsRate": {
+                        "description": "Размер вознаграждения за продажу одной дополнительной услуги",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "ttguid": {
+                  "type": "string"
+                },
+                "ttCode": {
+                  "description": "Код ТТ",
+                  "type": "string"
+                },
+                "ttCategory": {
+                  "description": "Код категории ТТ ",
+                  "type": "string"
+                },
+                "clAmount": {
+                  "description": "Сумма за пакет Комфорт лайт ",
+                  "type": "number"
+                },
+                "addsRewardTotal": {
+                  "description": "Итоговая сумма вознаграждения за Дополнительные услуги",
+                  "type": "number"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "creditsAggrReq": {
+            "description": "Агрегированные реквизиты кредитов",
+            "items": {
+              "type": "object",
+              "properties": {
+                "productFPN": {
+                  "description": "Фпн продукта",
+                  "type": "string"
+                },
+                "product": {
+                  "description": "Продукт",
+                  "type": "string"
+                },
+                "sumTotalAmount": {
+                  "description": "Общая сумма",
+                  "type": "number"
+                },
+                "sumGoodsAmountGr0": {
+                  "description": "Сумма на товар 00",
+                  "type": "number"
+                },
+                "maxRewardPercentGr0": {
+                  "description": "Вознаграждение баз 00",
+                  "type": "number"
+                },
+                "sumGoodsAmountEq0": {
+                  "description": "Сумма на товар 0",
+                  "type": "number"
+                },
+                "maxRewardPercentEq0": {
+                  "description": "Вознаграждение баз 0",
+                  "type": "number"
+                },
+                "sumTotalRewardAmount": {
+                  "description": "Сумма вознаграждения",
+                  "type": "number"
+                },
+                "sumGoodsAmount": {
+                  "description": "Сумма на товар",
+                  "type": "number"
+                },
+                "maxRewardPercent": {
+                  "description": "Вознаграждение баз",
+                  "type": "number"
+                },
+                "sumBasicRewardAmount": {
+                  "description": "Основное вознаграждение",
+                  "type": "number"
+                },
+                "sumComfortLiteQuantity": {
+                  "description": "Колво пакетов Комфорт лайт",
+                  "type": "integer"
+                },
+                "maxCLAmount": {
+                  "description": "Сумма за пакет Комфорт лайт ",
+                  "type": "number"
+                },
+                "sumComfortLiteRewAmount": {
+                  "description": "Комфорт-Лайт",
+                  "type": "number"
+                },
+                "groupSumAddService": {
+                  "description": "Общая сумма за продажу всех услуг сгруппированных по ФПН кредитного продукта",
+                  "type": "number"
+                },
+                "sumTotalRewardAmountGr0": {
+                  "description": "Сумма вознаграждения для кредитов с учетом страховки 00",
+                  "type": "number"
+                },
+                "sumTotalRewardAmountEq0": {
+                  "description": "Сумма вознаграждения для кредитов без учета страховки 00",
+                  "type": "number"
+                },
+                "groupAddService": {
+                  "description": "Группировка дополнительных услуг",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sumADDSAmount": {
+                        "description": "Количество проданных услуг",
+                        "type": "integer"
+                      },
+                      "sumADDSRewardOne": {
+                        "description": "Итоговая сумма вознаграждения за продажу дополнительной услуги",
+                        "type": "number"
+                      },
+                      "addsCode": {
+                        "description": "Код дополнительной услуги",
+                        "type": "string"
+                      },
+                      "addsName": {
+                        "description": "Наименование дополнительной услуги",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "groupSumAS": {
+            "description": "Итоговые суммы дополнительных услуг",
+            "items": {
+              "type": "object",
+              "properties": {
+                "maxADDSRate": {
+                  "description": "Цена одной услуги",
+                  "type": "number"
+                },
+                "sumADDSRewardOne": {
+                  "description": "Сумма вознаграждения за продажу одинаковых дополнительных услуг",
+                  "type": "number"
+                },
+                "sumADDSAmount": {
+                  "description": "Количество проданных одинаковых дополнительных услуг",
+                  "type": "integer"
+                },
+                "addsName": {
+                  "description": "Наименование дополнительной услуги",
+                  "type": "string"
+                }
+              }
+            },
+            "type": "array"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "rewErrorInfo": {
+      "description": "Сведения по ошибкам",
+      "items": {
+        "type": "object",
+        "properties": {
+          "errorType": {
+            "description": "Тип ошибки",
+            "type": "string"
+          },
+          "errorDescription": {
+            "description": "Описание",
+            "type": "string"
+          },
+          "errorAuthor": {
+            "description": "Автор",
+            "type": "string"
+          },
+          "errorDate": {
+            "description": "Дата",
+            "type": "number"
+          },
+          "state": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "errorDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "rewAgreeInfo": {
+      "description": "Сведения по отказам в согласовании",
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "note": {
+            "description": "Описание решения",
+            "type": "string"
+          },
+          "author": {
+            "description": "Автор",
+            "type": "string"
+          },
+          "dateT": {
+            "description": "Дата",
+            "type": "number"
+          },
+          "applDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "rewAgentDocs": {
+      "description": "Документы (вложенные файлы)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "docType": {
+            "description": "Тип документа",
+            "type": "string"
+          },
+          "descript": {
+            "description": "Описание",
+            "type": "string"
+          },
+          "attachment": {
+            "description": "Файл",
+            "type": "string"
+          },
+          "isActive": {
+            "description": "Признак актуальности",
+            "type": "boolean"
+          },
+          "uploadDate": {
+            "description": "Дата представления",
+            "type": "number"
+          },
+          "receiptDate": {
+            "description": "Дата поступления",
+            "type": "number"
+          },
+          "archivDate": {
+            "description": "Дата отправки в архив",
+            "type": "number"
+          },
+          "docsDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          },
+          "attachlink": {
+            "description": "ссылка на вложение",
+            "type": "string"
+          },
+          "mimetype": {
+            "description": "МимеТип",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "cLimitDate": {
+      "description": "Предельная дата обработки",
+      "type": "number"
+    }
+  }
+}

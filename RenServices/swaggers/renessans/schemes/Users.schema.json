@@ -1,0 +1,248 @@
+{
+  "type": "object",
+  "properties": {
+    "isBlocked": {
+      "description": "Заблокирован",
+      "type": "boolean"
+    },
+    "description": {
+      "description": "Описание",
+      "type": "string"
+    },
+    "login": {
+      "description": "Учетная запись",
+      "type": "string"
+    },
+    "userInfoID": {
+      "description": "Системный идентификатор учетной записи ",
+      "type": "integer"
+    },
+    "typeUser": {
+      "description": "Тип пользователя",
+      "type": "string"
+    },
+    "phone": {
+      "description": "Телефон",
+      "type": "string"
+    },
+    "inn": {
+      "description": "ИНН",
+      "type": "string"
+    },
+    "guidDoc": {
+      "description": "ГУИД документа",
+      "type": "string"
+    },
+    "isAllRegion": {
+      "description": "Все регионы",
+      "type": "boolean"
+    },
+    "roleName": {
+      "description": "Наименование роли",
+      "type": "string"
+    },
+    "roleSysName": {
+      "description": "Системное имя роли",
+      "type": "string"
+    },
+    "sysOrgName": {
+      "description": "Системная организация (наименование)",
+      "type": "string"
+    },
+    "sysOrgSystemName": {
+      "description": "Системная организация (код)",
+      "type": "string"
+    },
+    "guidAgentPartner": {
+      "description": "ГуидАгетаПартнера",
+      "type": "string"
+    },
+    "agentID": {
+      "description": "ИД",
+      "type": "string"
+    },
+    "fiorp": {
+      "description": "ФИО в рп",
+      "type": "string"
+    },
+    "post": {
+      "description": "Должность в ип",
+      "type": "string"
+    },
+    "postRP": {
+      "description": "Должность в рп",
+      "type": "string"
+    },
+    "passportSeries": {
+      "description": "Серия паспорта",
+      "type": "string"
+    },
+    "passportNumber": {
+      "description": "Номер паспорта",
+      "type": "string"
+    },
+    "phonePEP": {
+      "description": "Моб Телефон для ПЭП",
+      "type": "string"
+    },
+    "signerBank": {
+      "description": "Флаг Подписант банка",
+      "type": "boolean"
+    },
+    "dateSendSMS": {
+      "description": "Дата и время отправки смс о предоставлении доступа в ЛК",
+      "type": "number"
+    },
+    "userdocs": {
+      "description": "Документы (вложенные файлы)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "docType": {
+            "description": "Тип документа",
+            "type": "string"
+          },
+          "descript": {
+            "description": "Описание",
+            "type": "string"
+          },
+          "attachment": {
+            "description": "Файл",
+            "type": "string"
+          },
+          "uploadDate": {
+            "description": "Дата представления",
+            "type": "number"
+          },
+          "docsDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          },
+          "attachlink": {
+            "description": "Ссылка на файл",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "cState": {
+      "description": "Статус",
+      "type": "string"
+    },
+    "cStateDate": {
+      "description": "Дата назначения статуса",
+      "type": "number"
+    },
+    "fioLastname": {
+      "description": "Фамилия",
+      "type": "string"
+    },
+    "fioFirstname": {
+      "description": "Имя",
+      "type": "string"
+    },
+    "fioMiddleName": {
+      "description": "Отчество",
+      "type": "string"
+    },
+    "eMail": {
+      "description": "ЭлПочта",
+      "type": "string"
+    },
+    "eMailUpper": {
+      "description": "ЭлПочтаВерхийРегистр",
+      "type": "string"
+    },
+    "tmAttribute": {
+      "description": "Признак ТМ",
+      "type": "boolean"
+    },
+    "tmState": {
+      "description": "Статус ТМ",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "description": "New - Новый, Active - Активный ТМ, NotWork - Не действует",
+          "enum": [
+            "New",
+            "Active",
+            "NotWork"
+          ]
+        }
+      }
+    },
+    "tmStateDate": {
+      "description": "Дата назначения статуса ТМ",
+      "type": "number"
+    },
+    "tmRegion": {
+      "description": "Регион",
+      "type": "string"
+    },
+    "tmDivision": {
+      "description": "Дивизион",
+      "type": "string"
+    },
+    "tmPhantom": {
+      "description": "Фантомный ТМ",
+      "type": "boolean"
+    },
+    "tmPost": {
+      "description": "Должность в ип",
+      "type": "string"
+    },
+    "tmPostRP": {
+      "description": "Должность в рп",
+      "type": "string"
+    },
+    "tmSubdivision": {
+      "description": "Субдивизион",
+      "type": "string"
+    },
+    "tmTabnumber": {
+      "description": "Табельный номер",
+      "type": "string"
+    },
+    "tmType": {
+      "description": "Тип ТМ",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "enum": [
+            "TM",
+            "KM",
+            "KAM",
+            "RPP"
+          ]
+        }
+      }
+    },
+    "fioUpperLastnameUpper": {
+      "description": "ФамилияВерхийРегистр",
+      "type": "string"
+    },
+    "fioUpperFirstnameUpper": {
+      "description": "ИмяВерхийРегистр",
+      "type": "string"
+    },
+    "fioUpperMiddleNameUpper": {
+      "description": "ОтчествоВерхийРегистр",
+      "type": "string"
+    }
+  }
+}

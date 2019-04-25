@@ -1,0 +1,970 @@
+{
+  "type": "object",
+  "properties": {
+    "guidDoc": {
+      "description": "ГУИД документа",
+      "type": "string"
+    },
+    "parentPartner": {
+      "description": "Вышестоящий партнер",
+      "type": "string"
+    },
+    "parentPartnerGuid": {
+      "description": "Вышестоящий партнер ГУИД документа",
+      "type": "string"
+    },
+    "tm": {
+      "description": "ТМ Закрепленный",
+      "type": "string"
+    },
+    "tmdateoff": {
+      "description": "Дата открепления ТМ",
+      "type": "number"
+    },
+    "kpi": {
+      "description": "Предельное время обработки ",
+      "type": "integer"
+    },
+    "flagAtypicalConditions": {
+      "description": "Признак нетиповых условий вознаграждения",
+      "type": "string"
+    },
+    "partnerType": {
+      "description": "Тип Партнера",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "description": "Код услуги",
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "enum": [
+            "Standard",
+            "Broker",
+            "Federal"
+          ]
+        }
+      }
+    },
+    "dateTermination": {
+      "description": "Дата расторжения",
+      "type": "number"
+    },
+    "isEnablePEP": {
+      "description": "Разрешена ПЭП",
+      "type": "boolean"
+    },
+    "disableWorkSigner": {
+      "description": "Запретить работу с подписантами других партнеров",
+      "type": "boolean"
+    },
+    "forminfoinn": {
+      "description": "ИНН",
+      "type": "string"
+    },
+    "forminfokpp": {
+      "description": "КПП",
+      "type": "string"
+    },
+    "forminfoogrn": {
+      "description": "ОГРН",
+      "type": "string"
+    },
+    "bankdetailsokpo": {
+      "description": "ОКПО",
+      "type": "string"
+    },
+    "techPaymentKV": {
+      "description": "Участвует в выплате КВ",
+      "type": "boolean"
+    },
+    "kamfio": {
+      "description": "ФИО КАМ",
+      "type": "string"
+    },
+    "kamdateoff": {
+      "description": "Дата открепления КАМ",
+      "type": "number"
+    },
+    "listHistoryState": {
+      "description": "История статусов",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hsState": {
+            "description": "ИС Статус",
+            "type": "string"
+          },
+          "hsStateDate": {
+            "description": "ИС Дата назначения статуса",
+            "type": "number"
+          },
+          "hsDuration": {
+            "description": "ИС Продолжительность работ, дн.",
+            "type": "integer"
+          },
+          "hsExecutorFIO": {
+            "description": "ИС Исполнитель",
+            "type": "string"
+          },
+          "hsExecutorRole": {
+            "description": "ИС Роль исполнителя",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "listHistoryTM": {
+      "description": "История закрепления ТМ",
+      "items": {
+        "type": "object",
+        "properties": {
+          "authorChanges": {
+            "description": "Автор изменения",
+            "type": "string"
+          },
+          "dateChanges": {
+            "description": "Дата изменения",
+            "type": "number"
+          },
+          "dateoff": {
+            "description": "Дата открепления",
+            "type": "number"
+          },
+          "guidfixedtm": {
+            "description": "Гуид закрепленного ТМ",
+            "type": "string"
+          },
+          "tmDate": {
+            "description": "ТМ Дата закрепления",
+            "type": "number"
+          },
+          "tmManager": {
+            "description": "ТМ Территориальный менеджер",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "listFiles": {
+      "description": "Документы (вложенные файлы)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "adattachlink": {
+            "description": "ПФ Файл",
+            "type": "string"
+          },
+          "attachlink": {
+            "description": "ссылка на вложение",
+            "type": "string"
+          },
+          "mimetype": {
+            "description": "МимеТип",
+            "type": "string"
+          },
+          "adNotChenge": {
+            "description": "ПФ Запретить изменения",
+            "type": "boolean"
+          },
+          "adDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          },
+          "adDocType": {
+            "description": "ПФ Тип документа",
+            "type": "string"
+          },
+          "adDescript": {
+            "description": "ПФ Описание",
+            "type": "string"
+          },
+          "adIsActive": {
+            "description": "ПФ Признак актуальности",
+            "type": "boolean"
+          },
+          "adComment": {
+            "description": "ПФ Комментарии",
+            "type": "string"
+          },
+          "adDateCreate": {
+            "description": "ПФ Дата представления",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "listAttachedAggents": {
+      "description": "Прикрепленные агенты",
+      "items": {
+        "type": "object",
+        "properties": {
+          "agentTabelNum": {
+            "description": "ПАТабельный номер",
+            "type": "string"
+          },
+          "agentFIO": {
+            "description": "ПАФИО",
+            "type": "string"
+          },
+          "agentID": {
+            "description": "ПА ИД",
+            "type": "string"
+          },
+          "agentDateStart": {
+            "description": "ПА Дата начала сотрудничества ",
+            "type": "number"
+          },
+          "agentDivision": {
+            "description": "ПА Дивизион",
+            "type": "string"
+          },
+          "agentRegion": {
+            "description": "ПА Регион",
+            "type": "string"
+          },
+          "agentShema": {
+            "description": "ПА Агентская схема",
+            "type": "string"
+          },
+          "agentAddress": {
+            "description": "ПА Адрес",
+            "type": "string"
+          },
+          "agentPhone": {
+            "description": "ПАТелефон",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "listErrors": {
+      "description": "Сведения по ошибкам",
+      "items": {
+        "type": "object",
+        "properties": {
+          "errorState": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "errorType": {
+            "description": "Тип ошибки",
+            "type": "string"
+          },
+          "errorDescription": {
+            "description": "Описание",
+            "type": "string"
+          },
+          "errorAuthor": {
+            "description": "Автор",
+            "type": "string"
+          },
+          "errorDate": {
+            "description": "Дата",
+            "type": "number"
+          },
+          "errorDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "listRejects": {
+      "description": "Сведения по отказам в согласовании",
+      "items": {
+        "type": "object",
+        "properties": {
+          "applState": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "applNote": {
+            "description": "Описание решения",
+            "type": "string"
+          },
+          "applAuthor": {
+            "description": "Автор",
+            "type": "string"
+          },
+          "applDate": {
+            "description": "Дата",
+            "type": "number"
+          },
+          "applDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "listRewardSchemes": {
+      "description": "Схемы вознаграждения",
+      "items": {
+        "type": "object",
+        "properties": {
+          "manualPayment": {
+            "description": "Ручная оплата",
+            "type": "boolean"
+          },
+          "exportDWH": {
+            "description": "Схема экспортирована в ДВХ",
+            "type": "boolean"
+          },
+          "rewardPercent": {
+            "description": "Проценты вознаграждений",
+            "items": {
+              "type": "object",
+              "properties": {
+                "irfpn": {
+                  "description": "ПВ ФПН",
+                  "type": "string"
+                },
+                "irGuidDoc": {
+                  "description": "ПВ ГУИД КП",
+                  "type": "string"
+                },
+                "irCode": {
+                  "description": "ПВ Код продукта",
+                  "type": "string"
+                },
+                "irNameKP": {
+                  "description": "ПВ Наименование КП",
+                  "type": "string"
+                },
+                "irOutInsurance": {
+                  "description": "ПВ Без страховки",
+                  "type": "number"
+                },
+                "irInsurance1": {
+                  "description": "ПВ Страховка 1",
+                  "type": "number"
+                },
+                "irInsurance2": {
+                  "description": "ПВ Страховка 2",
+                  "type": "number"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "rewardScope": {
+            "description": "Границы вознаграждений",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rewardScopePercent": {
+                  "description": "Проценты вознаграждения",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "brlfpn": {
+                        "description": "ПВС ФПН",
+                        "type": "string"
+                      },
+                      "brlGuidDoc": {
+                        "description": "ПВС ГУИД КП",
+                        "type": "string"
+                      },
+                      "brlCode": {
+                        "description": "ПВС Код продукта",
+                        "type": "string"
+                      },
+                      "brlNameKP": {
+                        "description": "ПВС Наименование КП",
+                        "type": "string"
+                      },
+                      "brlOutInsurance": {
+                        "description": "ПВС Без страховки",
+                        "type": "number"
+                      },
+                      "brlInsurance1": {
+                        "description": "ПВС Страховка 1",
+                        "type": "number"
+                      },
+                      "brlInsurance2": {
+                        "description": "ПВС Страховка 2",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "brBorderDown": {
+                  "description": "ГВ Нижняя граница",
+                  "type": "number"
+                },
+                "brBorderUpper": {
+                  "description": "ГВ Верхняя граница",
+                  "type": "number"
+                },
+                "brBorderNon": {
+                  "description": "ГВ Флаг ограничений",
+                  "type": "boolean"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "additionalRewardScope": {
+            "description": "Границы вознаграждений дополнительное вознаграждение",
+            "items": {
+              "type": "object",
+              "properties": {
+                "brdBorderDown": {
+                  "description": "ГВД Нижняя граница",
+                  "type": "number"
+                },
+                "brdBorderUpper": {
+                  "description": "ГВД Верхняя граница",
+                  "type": "number"
+                },
+                "brdBorderNon": {
+                  "description": "ГВД Флаг ограничений",
+                  "type": "boolean"
+                },
+                "brdPercentRewards": {
+                  "description": "ГВД Процент вознаграждения",
+                  "type": "number"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "ttCategories": {
+            "description": "Категории ТТ",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ttCategoriesRewardPercent": {
+                  "description": "Проценты вознаграждений",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ttlfpn": {
+                        "description": "ПВТ ФПН",
+                        "type": "string"
+                      },
+                      "ttlGuidDoc": {
+                        "description": "ПВТ ГУИД КП",
+                        "type": "string"
+                      },
+                      "ttlCode": {
+                        "description": "ПВТ Код продукта",
+                        "type": "string"
+                      },
+                      "ttlNameKP": {
+                        "description": "ПВТ Наименование КП",
+                        "type": "string"
+                      },
+                      "ttlOutInsurance": {
+                        "description": "ПВТ Без страховки",
+                        "type": "number"
+                      },
+                      "ttlInsurance1": {
+                        "description": "ПВТ Страховка 1",
+                        "type": "number"
+                      },
+                      "ttlInsurance2": {
+                        "description": "ПВТ Страховка 2",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "type": "array"
+                },
+                "ttCategoryCode": {
+                  "description": "ТТ Код категории",
+                  "type": "string"
+                },
+                "ttCategoryName": {
+                  "description": "ТТ Наименование категории",
+                  "type": "string"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "additionalServices": {
+            "description": "Дополнительные услуги",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "description": "Код услуги",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Наименование услуги",
+                  "type": "string"
+                },
+                "guidDoc": {
+                  "description": "ГУИД документа",
+                  "type": "string"
+                },
+                "servicesRange": {
+                  "description": "Периоды действия услуг для партнеров",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "dateOn": {
+                        "description": "Дата начала действия",
+                        "type": "number"
+                      },
+                      "dateOnDefault": {
+                        "description": "Дата начала действия (по умолчанию)",
+                        "type": "number"
+                      },
+                      "rewardOne": {
+                        "description": "Размер вознаграждения",
+                        "type": "number"
+                      },
+                      "rewardOneDefault": {
+                        "description": "Размер вознаграждения (по умолчанию)",
+                        "type": "number"
+                      },
+                      "unit": {
+                        "description": "Единица измерения",
+                        "type": "object",
+                        "properties": {
+                          "content": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "description": "Код услуги",
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string",
+                            "enum": [
+                              "ruble",
+                              "percent"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "type": "array"
+          },
+          "svGuid": {
+            "description": "СВ ГУИД схемы",
+            "type": "string"
+          },
+          "svVersionBO": {
+            "description": "СВ Версия бизнес-объекта",
+            "type": "integer"
+          },
+          "svacName": {
+            "description": "СВ Алгорим расчета Наименование",
+            "type": "string"
+          },
+          "svacCode": {
+            "description": "СВ Алгорим расчета Код",
+            "type": "integer"
+          },
+          "svDateOn": {
+            "description": "СВ Дата подключения",
+            "type": "number"
+          },
+          "svDateOff": {
+            "description": "СВ Дата отключения",
+            "type": "number"
+          },
+          "svPeriodOn": {
+            "description": "СВ Начало отчетного периода",
+            "type": "integer"
+          },
+          "svPeriodOff": {
+            "description": "СВ Окончание отчетного периода",
+            "type": "integer"
+          },
+          "svPeriodRange": {
+            "description": "СВ Длительность отчетного периода",
+            "type": "integer"
+          },
+          "svFlagNDS": {
+            "description": "СВ Учитывать НДС",
+            "type": "boolean"
+          },
+          "svFlagInsurance": {
+            "description": "СВ Учитывать страховку",
+            "type": "boolean"
+          },
+          "svAmountSP": {
+            "description": "СВ Сумма за реализацию сервис пакетов Комфорт Лайт",
+            "type": "number"
+          },
+          "svGuaranAmount": {
+            "description": "СВ Гарантированное вознаграждение",
+            "type": "number"
+          },
+          "svStateLine": {
+            "description": "СВ Владелец строки",
+            "type": "string"
+          },
+          "thsvPeriodOn": {
+            "description": "СВ Начало отчетного периода",
+            "type": "string"
+          },
+          "thsvPeriodOff": {
+            "description": "СВ Окончание отчетного периода",
+            "type": "string"
+          },
+          "thsvPeriodRange": {
+            "description": "СВ Длительность отчетного периода",
+            "type": "string"
+          },
+          "thsvAmountSP": {
+            "description": "СВ Сумма за реализацию сервис пакетов Комфорт Лайт",
+            "type": "string"
+          },
+          "mpComment": {
+            "description": "Ручная оплата. Комментарий",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "partnerkamhistory": {
+      "description": "История закрепления КАМ",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kamfio": {
+            "description": "ФИО КАМ",
+            "type": "string"
+          },
+          "authorChanges": {
+            "description": "Автор изменения",
+            "type": "string"
+          },
+          "dateChanges": {
+            "description": "Дата изменения",
+            "type": "number"
+          },
+          "guidfixedkam": {
+            "description": "Гуид записи из справочника Пользователи",
+            "type": "string"
+          },
+          "dateoff": {
+            "description": "Дата открепления",
+            "type": "number"
+          },
+          "typeempl": {
+            "description": "Тип сотрудника",
+            "type": "string"
+          },
+          "kamDate": {
+            "description": "Дата закрепления КАМ",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "tmDate": {
+      "description": "ТМ Дата закрепления",
+      "type": "number"
+    },
+    "cState": {
+      "description": "Статус",
+      "type": "string"
+    },
+    "cStateDate": {
+      "description": "Дата назначения статуса",
+      "type": "number"
+    },
+    "cLimitDate": {
+      "description": "Предельная дата обработки",
+      "type": "number"
+    },
+    "tmGuidDoc": {
+      "description": "ТМ ГУИД документа",
+      "type": "string"
+    },
+    "kamDateKAM": {
+      "description": "Дата Закрепления КАМ",
+      "type": "number"
+    },
+    "kamLastname": {
+      "description": "Фамилия КАМ",
+      "type": "string"
+    },
+    "kamFirstname": {
+      "description": "Имя КАМ",
+      "type": "string"
+    },
+    "kamMiddleName": {
+      "description": "Отчество КАМ",
+      "type": "string"
+    },
+    "kamGuidDoc": {
+      "description": "ГУИД КАМ",
+      "type": "string"
+    },
+    "bankdetailsBankName": {
+      "description": "Наименование банка",
+      "type": "string"
+    },
+    "bankdetailsBankBIK": {
+      "description": "БИК",
+      "type": "string"
+    },
+    "bankdetailsAccount": {
+      "description": "Расчетный счет",
+      "type": "string"
+    },
+    "bankdetailsCorrAccount": {
+      "description": "Корреспондентский счет",
+      "type": "string"
+    },
+    "tmSurname": {
+      "description": "ТМ Фамилия",
+      "type": "string"
+    },
+    "tmName": {
+      "description": "ТМ Имя",
+      "type": "string"
+    },
+    "tmMiddle": {
+      "description": "ТМ Отчество",
+      "type": "string"
+    },
+    "fioBossRP": {
+      "description": "ФИО руководителя в рп",
+      "type": "string"
+    },
+    "forminfoRegForm": {
+      "description": "Форма регистрации",
+      "type": "string"
+    },
+    "forminfoPartnerName": {
+      "description": "Наименование ЮЛ ИП",
+      "type": "string"
+    },
+    "forminfoRegDate": {
+      "description": "Дата регистрации",
+      "type": "number"
+    },
+    "forminfoPhoneHome": {
+      "description": "Телефон",
+      "type": "string"
+    },
+    "forminfoeMail": {
+      "description": "ЭлПочта",
+      "type": "string"
+    },
+    "forminfoSite": {
+      "description": "Сайт",
+      "type": "string"
+    },
+    "forminfoipSurname": {
+      "description": "Фамилия",
+      "type": "string"
+    },
+    "forminfoipName": {
+      "description": "Имя",
+      "type": "string"
+    },
+    "forminfoipMiddleName": {
+      "description": "Отчество",
+      "type": "string"
+    },
+    "forminfoipCountry": {
+      "description": "Страна гражданства",
+      "type": "string"
+    },
+    "forminfoipDateOfBirth": {
+      "description": "Дата рождения",
+      "type": "number"
+    },
+    "forminfoipTownOfBirth": {
+      "description": "Место рождения",
+      "type": "string"
+    },
+    "forminfoipPassSeria": {
+      "description": "Серия паспорта",
+      "type": "string"
+    },
+    "forminfoipRassNum": {
+      "description": "Номер паспорта",
+      "type": "string"
+    },
+    "forminfoipDatePassDeliv": {
+      "description": "Дата выдачи",
+      "type": "number"
+    },
+    "forminfoipOrgPassDeliv": {
+      "description": "Кем выдан",
+      "type": "string"
+    },
+    "forminfoulChiefFIO": {
+      "description": "ФИО руководителя",
+      "type": "string"
+    },
+    "forminfoFax": {
+      "description": "Факс",
+      "type": "string"
+    },
+    "forminfoCodeSubdivision": {
+      "description": "Код подразделения",
+      "type": "string"
+    },
+    "legeladdressipRegIndex": {
+      "description": "ЮА Индекс",
+      "type": "string"
+    },
+    "legeladdressipRegRegion": {
+      "description": "ЮА Регион",
+      "type": "string"
+    },
+    "legeladdressipRegTown": {
+      "description": "ЮА Населенный пункт",
+      "type": "string"
+    },
+    "legeladdressipRegStreet": {
+      "description": "ЮА Улица",
+      "type": "string"
+    },
+    "legeladdressipRegDom": {
+      "description": "ЮА Дом",
+      "type": "string"
+    },
+    "legeladdressipRegKorpus": {
+      "description": "ЮА Корпус",
+      "type": "string"
+    },
+    "legeladdressipRegStroenie": {
+      "description": "ЮА Строение",
+      "type": "string"
+    },
+    "legeladdressipRegFlat": {
+      "description": "ЮА Офис (кв.)",
+      "type": "string"
+    },
+    "legeladdressipRegAddress": {
+      "description": "ЮА Полный Юридический адрес Адрес регистрации",
+      "type": "string"
+    },
+    "postaddressipHebIndex": {
+      "description": "ПА Индекс",
+      "type": "string"
+    },
+    "postaddressipHebRegion": {
+      "description": "ПА Регион",
+      "type": "string"
+    },
+    "postaddressipHebTown": {
+      "description": "ПА Населенный пункт",
+      "type": "string"
+    },
+    "postaddressipHebStreet": {
+      "description": "ПА Улица",
+      "type": "string"
+    },
+    "postaddressipHebDom": {
+      "description": "ПА Дом",
+      "type": "string"
+    },
+    "postaddressipHebKorpus": {
+      "description": "ПА Корпус",
+      "type": "string"
+    },
+    "postaddressipHebStroenie": {
+      "description": "ПА Строение",
+      "type": "string"
+    },
+    "postaddressipHebOffice": {
+      "description": "ПА Офис (кв.)",
+      "type": "string"
+    },
+    "postaddressipHebAddress": {
+      "description": "ПА Полный Почтовый адрес Адрес проживания",
+      "type": "string"
+    },
+    "postaddressipHebAdressFlag": {
+      "description": "Флаг почтового адресса",
+      "type": "boolean"
+    },
+    "schemeinteractionDivision": {
+      "description": "Дивизион закрепления",
+      "type": "string"
+    },
+    "schemeinteractionRegion": {
+      "description": "Регион закрепления",
+      "type": "string"
+    },
+    "schemeinteractionttScheme": {
+      "description": "Схема работы с ТТ",
+      "type": "string"
+    },
+    "schemeinteractionIsKey": {
+      "description": "Ключевой партнер",
+      "type": "boolean"
+    },
+    "schemeinteractionNetwork": {
+      "description": "Код сети",
+      "type": "string"
+    },
+    "schemeinteractionNetName": {
+      "description": "Название сети",
+      "type": "string"
+    },
+    "schemeinteractionTradeSegment": {
+      "description": "Сегмент торговли",
+      "type": "string"
+    },
+    "schemeinteractionPartnerRepresent": {
+      "description": "Представитель партнера (подписант)",
+      "type": "string"
+    },
+    "schemeinteractionPartnerRepresentRP": {
+      "description": "Представитель партнера (подписант) р.п.",
+      "type": "string"
+    },
+    "schemeinteractionActBase": {
+      "description": "Основание полномочий (родительный падеж)",
+      "type": "string"
+    },
+    "schemeinteractionPartnerRepresentPost": {
+      "description": "Представитель партнера. Должность и.п.",
+      "type": "string"
+    },
+    "schemeinteractionPartnerRepresentPostRP": {
+      "description": "Представитель партнера. Должность р.п.",
+      "type": "string"
+    },
+    "schemeinteractionPartnerReprName": {
+      "description": "Представитель партнера (подписант) Имя",
+      "type": "string"
+    },
+    "schemeinteractionPartnerReprFamily": {
+      "description": "Представитель партнера (подписант) Фамилия",
+      "type": "string"
+    },
+    "schemeinteractionPartnerReprMName": {
+      "description": "Представитель партнера (подписант) Отчество",
+      "type": "string"
+    },
+    "schemeinteractionSignerIsPartner": {
+      "description": "Подписант совпадает с партнером",
+      "type": "string"
+    }
+  }
+}

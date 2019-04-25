@@ -1,18 +1,18 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "rest сервисы для работы с сотрудниками банка",
+    "description": "rest сервисы для работы с кредитными продуктами",
     "version": "1.0.0",
-    "title": "rest сервисы для работы с сотрудниками банка"
+    "title": "rest сервисы для работы с кредитными продуктами"
   },
   "paths": {
-    "/services/rest-api/simple/list/partnerEmployee": {
+    "/services/rest-api/simple/list/loanProduct": {
       "get": {
         "tags": [
-          "partnerEmployeeListSimple"
+          "loanProductListSimple"
         ],
-        "summary": "получение списка сотрудников партнера",
-        "operationId": "simple_partnerEmployees_list",
+        "summary": "получение списка кредитных продуктов",
+        "operationId": "simple_loanProducts_list",
         "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
         "security": [
           {
@@ -48,7 +48,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/PartnerEmployee"
+                "$ref": "#/definitions/LoanProduct"
               }
             }
           },
@@ -64,13 +64,13 @@
         }
       }
     },
-    "/services/rest-api/list/partnerEmployee": {
+    "/services/rest-api/list/loanProduct": {
       "post": {
         "tags": [
-          "partnerEmployeeList"
+          "loanProductList"
         ],
         "summary": "сохранение параметров фильтрации",
-        "operationId": "post_partnerEmployees_list",
+        "operationId": "post_loanProducts_list",
         "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
         "security": [
           {
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/services/rest-api/list/partnerEmployee/{id}": {
+    "/services/rest-api/list/loanProduct/{id}": {
       "get": {
         "tags": [
-          "partnerEmployeeList"
+          "loanProductList"
         ],
         "summary": "получение списка документов",
-        "operationId": "get_partnerEmployee_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/partnerEmployee",
+        "operationId": "get_loanProduct_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/loanProduct",
         "security": [
           {
             "Bearer": []
@@ -131,7 +131,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/PartnerEmployee"
+                "$ref": "#/definitions/LoanProduct"
               }
             }
           },
@@ -150,14 +150,14 @@
         }
       }
     },
-    "/services/rest-api/partnerEmployees/{id}": {
+    "/services/rest-api/loanProducts/{id}": {
       "get": {
         "tags": [
-          "partnerEmployee"
+          "loanProduct"
         ],
         "summary": "получение документа по гуиду",
-        "operationId": "partnerEmployee_get",
-        "description": "получение одного Представителя/Сотрудника заданного Партнера",
+        "operationId": "loanProduct_get",
+        "description": "получение одного Кредитного продукта по гуиду",
         "security": [
           {
             "Bearer": []
@@ -167,7 +167,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "гуид представителя/сотрудника",
+            "description": "гуид партнера",
             "required": true,
             "type": "string"
           }
@@ -177,7 +177,7 @@
             "description": "найденный документ",
             "schema": {
               "type": "object",
-              "$ref": "#/definitions/PartnerEmployee"
+              "$ref": "#/definitions/LoanProduct"
             }
           },
           "400": {
@@ -187,7 +187,7 @@
             "description": "Unauthorized"
           },
           "404": {
-            "description": "представитель/сотрудник не найден"
+            "description": "партнер не найден"
           },
           "500": {
             "description": "Internal Server Error"
@@ -197,8 +197,8 @@
     }
   },
   "definitions": {
-    "PartnerEmployee": {
-      "$ref": "./schemes/PartnerEmployee.schema.json"
+    "LoanProduct": {
+      "$ref": "./schemes/LoanProducts.schema.json"
     }
   }
 }

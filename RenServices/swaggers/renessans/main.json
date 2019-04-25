@@ -110,6 +110,32 @@
       "description": "Получение одной Торговой точки по гуиду"
     },
 
+    {
+      "name": "userListSimple",
+      "description": "Получение списка записей справочника Пользователей. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "userList",
+      "description": "Получение списка записей справочника Пользователей. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "user",
+      "description": "Получение одной записи справочника Пользователей"
+    },
+
+    {
+      "name": "loanProductListSimple",
+      "description": "Получение списка Кредитных продуктов. Выполняется один вызов GET-запроса"
+    },
+    {
+      "name": "loanProductList",
+      "description": "Получение списка Кредитных продуктов. Фильтрация через двойной вызов - POST(создает запрос на выборку) и GET(по переданному id запроса делает выборку)"
+    },
+    {
+      "name": "loanProduct",
+      "description": "Получение одной записи Кредитного продукта по гуиду"
+    },
+
 
     {
       "name": "authorization",
@@ -228,6 +254,32 @@
     },
     "/services/rest-api/agentSchemes/{id}": {
       "$ref": "./AgentSchemes.json#/paths/~1services~1rest-api~1agentSchemes~1{id}"
+    },
+
+    "/services/rest-api/simple/list/user": {
+      "$ref": "./Users.json#/paths/~1services~1rest-api~1simple~1list~1user"
+    },
+    "/services/rest-api/list/user": {
+      "$ref": "./Users.json#/paths/~1services~1rest-api~1list~1user"
+    },
+    "/services/rest-api/list/user/{id}": {
+      "$ref": "./Users.json#/paths/~1services~1rest-api~1list~1user~1{id}"
+    },
+    "/services/rest-api/users/{id}": {
+      "$ref": "./Users.json#/paths/~1services~1rest-api~1users~1{id}"
+    },
+
+    "/services/rest-api/simple/list/loanProduct": {
+      "$ref": "./LoanProducts.json#/paths/~1services~1rest-api~1simple~1list~1loanProduct"
+    },
+    "/services/rest-api/list/loanProduct": {
+      "$ref": "./LoanProducts.json#/paths/~1services~1rest-api~1list~1loanProduct"
+    },
+    "/services/rest-api/list/loanProduct/{id}": {
+      "$ref": "./LoanProducts.json#/paths/~1services~1rest-api~1list~1loanProduct~1{id}"
+    },
+    "/services/rest-api/loanProducts/{id}": {
+      "$ref": "./LoanProducts.json#/paths/~1services~1rest-api~1loanProducts~1{id}"
     },
 
 

@@ -1,0 +1,529 @@
+{
+  "type": "object",
+  "properties": {
+    "guidDoc": {
+      "description": "ГУИД документа",
+      "type": "string"
+    },
+    "endDate": {
+      "description": "Дата окончания действия",
+      "type": "integer"
+    },
+    "regInfoAgentID": {
+      "description": "ИД",
+      "type": "string"
+    },
+    "regInfoTabNumber": {
+      "description": "Табельный номер",
+      "type": "string"
+    },
+    "regInfoINN": {
+      "description": "ИНН",
+      "type": "string"
+    },
+    "regInfoSNILS": {
+      "description": "СНИЛС",
+      "type": "string"
+    },
+    "regInfoDateOfBirth": {
+      "description": "Дата рождения",
+      "type": "number"
+    },
+    "regInfoPlaceOfBirth": {
+      "description": "Место рождения",
+      "type": "string"
+    },
+    "regInfoCitizenship": {
+      "description": "Гражданство",
+      "type": "string"
+    },
+    "regInfoPassSeria": {
+      "description": "Серия паспорта",
+      "type": "string"
+    },
+    "regInfoPassNumber": {
+      "description": "Номер паспорта",
+      "type": "string"
+    },
+    "regInfoPassIssueDate": {
+      "description": "Дата выдачи",
+      "type": "number"
+    },
+    "regInfoPassIssuer": {
+      "description": "Кем выдан",
+      "type": "string"
+    },
+    "regInfoPhoneHome": {
+      "description": "Телефон (дом)",
+      "type": "string"
+    },
+    "regInfoPhoneMob": {
+      "description": "Телефон (моб)",
+      "type": "string"
+    },
+    "regInfoEMail": {
+      "description": "ЭлПочта",
+      "type": "string"
+    },
+    "regInfoFullname": {
+      "description": "ФИО Агента",
+      "type": "string"
+    },
+    "regInfoFIOLastname": {
+      "description": "Фамилия",
+      "type": "string"
+    },
+    "regInfoFIOFirstname": {
+      "description": "Имя",
+      "type": "string"
+    },
+    "regInfoFIOMiddleName": {
+      "description": "Отчество",
+      "type": "string"
+    },
+    "regAddressRAIndex": {
+      "description": "Индекс",
+      "type": "string"
+    },
+    "regAddressRARegion": {
+      "description": "Регион",
+      "type": "string"
+    },
+    "regAddressRACity": {
+      "description": "Населенный пункт",
+      "type": "string"
+    },
+    "regAddressRAStreet": {
+      "description": "Улица",
+      "type": "string"
+    },
+    "regAddressRAHouse": {
+      "description": "Дом",
+      "type": "string"
+    },
+    "regAddressRACorp": {
+      "description": "Корпус",
+      "type": "string"
+    },
+    "regAddressRABuilding": {
+      "description": "Строение",
+      "type": "string"
+    },
+    "regAddressRAOffice": {
+      "description": "Офис (кв.)",
+      "type": "string"
+    },
+    "regAddressRegAddress": {
+      "description": "Полный адрес регистрации",
+      "type": "string"
+    },
+    "factAddressFAIndex": {
+      "description": "Индекс",
+      "type": "string"
+    },
+    "factAddressFARegion": {
+      "description": "Регион",
+      "type": "string"
+    },
+    "factAddressFACity": {
+      "description": "Населенный пункт",
+      "type": "string"
+    },
+    "factAddressFAStreet": {
+      "description": "Улица",
+      "type": "string"
+    },
+    "factAddressFAHouse": {
+      "description": "Дом",
+      "type": "string"
+    },
+    "factAddressFACorp": {
+      "description": "Корпус",
+      "type": "string"
+    },
+    "factAddressFABuilding": {
+      "description": "Строение",
+      "type": "string"
+    },
+    "factAddressFAOffice": {
+      "description": "Офис (кв.)",
+      "type": "string"
+    },
+    "factAddressIsEqualRA": {
+      "description": "Совпадает с адресом регистрации",
+      "type": "boolean"
+    },
+    "factAddressFactAddress": {
+      "description": "Полный адрес проживания",
+      "type": "string"
+    },
+    "interactionSchemeDivision": {
+      "description": "Дивизион закрепления",
+      "type": "string"
+    },
+    "interactionSchemeRegionCentr": {
+      "description": "Регион закрепления",
+      "type": "string"
+    },
+    "interactionSchemeManualPayment": {
+      "description": "Ручная оплата",
+      "type": "boolean"
+    },
+    "interactionSchemeMPComment": {
+      "description": "Ручная оплата. Комментарий",
+      "type": "string"
+    },
+    "currentSignerCSigner": {
+      "description": "Представитель Банка (подписант)",
+      "type": "string"
+    },
+    "currentSignerCSignerDate": {
+      "description": "Дата закрепления подписанта",
+      "type": "number"
+    },
+    "currentSignerCSignerBasis": {
+      "description": "Действует на основании",
+      "type": "string"
+    },
+    "currentSignerLastnameSigner": {
+      "description": "ФамилияПодписант",
+      "type": "string"
+    },
+    "currentSignerFirstnameSigner": {
+      "description": "ИмяПодписант",
+      "type": "string"
+    },
+    "currentSignerMiddleNameSigner": {
+      "description": "ОтчествоПодписант",
+      "type": "string"
+    },
+    "currentSignerGuidSigner": {
+      "description": "ГУИД подписанта",
+      "type": "string"
+    },
+    "currentTMCTM": {
+      "description": "Закрепленный ТМ",
+      "type": "string"
+    },
+    "currentTMCTMDate": {
+      "description": "Дата закрепления ТМ",
+      "type": "number"
+    },
+    "currentTMLastnameTM": {
+      "description": "ФамилияТМ",
+      "type": "string"
+    },
+    "currentTMFirstnameTM": {
+      "description": "ИмяТМ",
+      "type": "string"
+    },
+    "currentTMMiddleNameTM": {
+      "description": "ОтчествоТМ",
+      "type": "string"
+    },
+    "currentContractCContractNum": {
+      "description": "Номер",
+      "type": "string"
+    },
+    "currentContractCContractDate": {
+      "description": "Дата",
+      "type": "number"
+    },
+    "currentContractCContractState": {
+      "description": "Статус",
+      "type": "string"
+    },
+    "currentContractCContractEndDate": {
+      "description": "Окончание",
+      "type": "number"
+    },
+    "currentContractCContractGuidDoc": {
+      "description": "ГУИД Договора",
+      "type": "string"
+    },
+    "kamfio": {
+      "description": "ФИО КАМ",
+      "type": "string"
+    },
+    "stateHistory": {
+      "description": "История статусов",
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "stateDate": {
+            "description": "Дата назначения статуса",
+            "type": "number"
+          },
+          "duration": {
+            "description": "Продолжительность работ, дн.",
+            "type": "integer"
+          },
+          "executorFIO": {
+            "description": "Исполнитель",
+            "type": "string"
+          },
+          "executorRole": {
+            "description": "Роль исполнителя",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "signerHistory": {
+      "description": "История закрепления представителей Банка",
+      "items": {
+        "type": "object",
+        "properties": {
+          "signer": {
+            "description": "Представитель Банка (подписант)",
+            "type": "string"
+          },
+          "signerDate": {
+            "description": "Дата закрепления подписанта",
+            "type": "number"
+          },
+          "signerBasis": {
+            "description": "Основание",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "agentDocs": {
+      "description": "Документы (вложенные файлы)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "docType": {
+            "description": "Тип документа",
+            "type": "string"
+          },
+          "descript": {
+            "description": "Описание",
+            "type": "string"
+          },
+          "attachment": {
+            "description": "Файл",
+            "type": "string"
+          },
+          "isActive": {
+            "description": "Признак актуальности",
+            "type": "boolean"
+          },
+          "uploadDate": {
+            "description": "Дата представления",
+            "type": "number"
+          },
+          "docsDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          },
+          "attachlink": {
+            "description": "ссылка на вложение",
+            "type": "string"
+          },
+          "mimetype": {
+            "description": "МимеТип",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "errors": {
+      "description": "Сведения по ошибкам",
+      "items": {
+        "type": "object",
+        "properties": {
+          "errorType": {
+            "description": "Тип ошибки",
+            "type": "string"
+          },
+          "errorDescription": {
+            "description": "Описание",
+            "type": "string"
+          },
+          "errorAuthor": {
+            "description": "Автор",
+            "type": "string"
+          },
+          "errorDate": {
+            "description": "Дата",
+            "type": "number"
+          },
+          "errorDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          },
+          "errorState": {
+            "description": "СтатусОшибки",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "agentNonAgree": {
+      "description": "Сведения по отказам в согласовании",
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "note": {
+            "description": "Описание решения",
+            "type": "string"
+          },
+          "author": {
+            "description": "Автор",
+            "type": "string"
+          },
+          "dateT": {
+            "description": "Дата",
+            "type": "number"
+          },
+          "applDelFlag": {
+            "description": "Флаг удаления",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "agentPartnerTT": {
+      "description": "Таблица Партнеры",
+      "items": {
+        "type": "object",
+        "properties": {
+          "partner": {
+            "description": "Партнер",
+            "type": "string"
+          },
+          "partnerGuid": {
+            "description": "ГуидПартнер",
+            "type": "string"
+          },
+          "tt": {
+            "description": "Торговая точка",
+            "type": "string"
+          },
+          "regionCentr": {
+            "description": "Регион закрепления",
+            "type": "string"
+          },
+          "num": {
+            "description": "Договор",
+            "type": "string"
+          },
+          "state": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "dateContract": {
+            "description": "Дата договора",
+            "type": "number"
+          },
+          "endDate": {
+            "description": "Дата окончания действия",
+            "type": "number"
+          },
+          "ttGuid": {
+            "description": "Гуид ТТ",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "agentkamhistory": {
+      "description": "История закрепления КАМ",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kamfio": {
+            "description": "ФИО КАМ",
+            "type": "string"
+          },
+          "authorChanges": {
+            "description": "Автор изменения",
+            "type": "string"
+          },
+          "dateChanges": {
+            "description": "Дата изменения",
+            "type": "number"
+          },
+          "kamDate": {
+            "description": "Дата закрепления КАМ",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "cState": {
+      "description": "Статус",
+      "type": "string"
+    },
+    "cStateDate": {
+      "description": "Дата назначения статуса",
+      "type": "number"
+    },
+    "tmGuidDoc": {
+      "description": "ГУИД ТМ",
+      "type": "string"
+    },
+    "kamDateKAM": {
+      "description": "Дата Закрепления КАМ",
+      "type": "number"
+    },
+    "kamLastname": {
+      "description": "Фамилия КАМ",
+      "type": "string"
+    },
+    "kamFirstname": {
+      "description": "Имя КАМ",
+      "type": "string"
+    },
+    "kamMiddleName": {
+      "description": "Отчество КАМ",
+      "type": "string"
+    },
+    "kamGuidDoc": {
+      "description": "ГУИД КАМ",
+      "type": "string"
+    },
+    "tmHistory": {
+      "description": "История закрепления ТМ",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tm": {
+            "description": "ТМ",
+            "type": "string"
+          },
+          "authorChanges": {
+            "description": "Автор изменения",
+            "type": "string"
+          },
+          "dateChanges": {
+            "description": "Дата изменения",
+            "type": "number"
+          },
+          "tmDate": {
+            "description": "Дата закрепления ТМ",
+            "type": "number"
+          }
+        }
+      },
+      "type": "array"
+    }
+  }
+}

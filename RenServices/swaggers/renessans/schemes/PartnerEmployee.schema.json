@@ -1,0 +1,215 @@
+{
+  "type": "object",
+  "properties": {
+    "guidDoc": {
+      "description": "ГУИД документа",
+      "type": "string"
+    },
+    "state": {
+      "description": "Статус",
+      "type": "string",
+      "enum": [
+        "Ожидает автоактивации",
+        "Срок полномочий истек",
+        "Новый",
+        "Активен",
+        "Заблокирован",
+        "Готов к активации"
+      ]
+    },
+    "stateDate": {
+      "description": "Дата назначения статуса",
+      "type": "number"
+    },
+    "partnerGUID": {
+      "description": "Гуид партнера",
+      "type": "string"
+    },
+    "partnerName": {
+      "description": "Название партнера",
+      "type": "string"
+    },
+    "partnerINN": {
+      "description": "Партнер ИНН",
+      "type": "string"
+    },
+    "partnerRegion": {
+      "description": "Регион закрепления партнера",
+      "type": "string"
+    },
+    "boss": {
+      "description": "Руководитель",
+      "type": "boolean"
+    },
+    "surname": {
+      "description": "Фамилия",
+      "type": "string"
+    },
+    "name": {
+      "description": "Имя",
+      "type": "string"
+    },
+    "middleName": {
+      "description": "Отчество",
+      "type": "string"
+    },
+    "fiorp": {
+      "description": "ФИО в р.п.",
+      "type": "string"
+    },
+    "post": {
+      "description": "Должность",
+      "type": "string"
+    },
+    "postRP": {
+      "description": "Должность в р.п.",
+      "type": "string"
+    },
+    "phone": {
+      "description": "Телефон",
+      "type": "string"
+    },
+    "passSeries": {
+      "description": "Серия паспорта",
+      "type": "string"
+    },
+    "passNumber": {
+      "description": "Номер паспорта",
+      "type": "string"
+    },
+    "issuedBy": {
+      "description": "Кем выдан",
+      "type": "string"
+    },
+    "issuedDate": {
+      "description": "Дата выдачи",
+      "type": "number"
+    },
+    "codeSubdivision": {
+      "description": "Код подразделения",
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "description": "Дата рождения",
+      "type": "number"
+    },
+    "login": {
+      "description": "Логин подписанта",
+      "type": "string"
+    },
+    "userGUID": {
+      "description": "Гуид пользователя",
+      "type": "string"
+    },
+    "blockReason": {
+      "description": "Причина блокировки",
+      "type": "string"
+    },
+    "blockDescription": {
+      "description": "Описание причины блокировки",
+      "type": "string"
+    },
+    "blockExecutor": {
+      "description": "Исполнитель",
+      "type": "string"
+    },
+    "blockDate": {
+      "description": "Дата блокировки",
+      "type": "number"
+    },
+    "isEnablePEP": {
+      "description": "Доступ на ПЭП",
+      "type": "boolean"
+    },
+    "isEnableView": {
+      "description": "Доступ на просмотр",
+      "type": "boolean"
+    },
+    "fiofull": {
+      "description": "ФИОип",
+      "type": "string"
+    },
+    "address": {
+      "description": "Адрес регистрации",
+      "type": "string"
+    },
+    "surnameUpper": {
+      "description": "ФамилияВерхийРегистр",
+      "type": "string"
+    },
+    "nameUpper": {
+      "description": "ИмяВерхийРегистр",
+      "type": "string"
+    },
+    "middleNameUpper": {
+      "description": "ОтчествоВерхийРегистр",
+      "type": "string"
+    },
+    "tradeEnterpriseSignerIsPartner": {
+      "description": "Подписант совпадает с партнером",
+      "type": "string"
+    },
+    "signerPEPDocs": {
+      "description": "Файлы документов",
+      "items": {
+        "type": "object",
+        "properties": {
+          "docType": {
+            "description": "Тип документа",
+            "type": "string"
+          },
+          "descript": {
+            "description": "Описание",
+            "type": "string"
+          },
+          "attachment": {
+            "description": "Файл",
+            "type": "string"
+          },
+          "uploadDate": {
+            "description": "Дата представления",
+            "type": "number"
+          },
+          "attachlink": {
+            "description": "ссылка на вложение",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "signerPEPHistoryState": {
+      "description": "История статусов",
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "description": "Статус",
+            "type": "string"
+          },
+          "stateDate": {
+            "description": "Дата назначения статуса",
+            "type": "number"
+          },
+          "duration": {
+            "description": "Продолжительность работ, дн.",
+            "type": "integer"
+          },
+          "executorFIO": {
+            "description": "Исполнитель",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "eMail": {
+      "description": "ЭлПочта",
+      "type": "string"
+    },
+    "eMailUpper": {
+      "description": "ЭлПочтаВерхийРегистр",
+      "type": "string"
+    }
+  }
+}

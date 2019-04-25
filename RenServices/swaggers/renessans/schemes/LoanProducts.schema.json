@@ -1,0 +1,114 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Наименование",
+      "type": "string"
+    },
+    "fpn": {
+      "description": "ФПН",
+      "type": "string"
+    },
+    "code": {
+      "description": "Код продукта",
+      "type": "string"
+    },
+    "groupProduct": {
+      "description": "Группа продукта",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "description": "ZeroOne - 01, ZeroTwo - 02, ZeroThree - 03, OneThree -  13",
+          "type": "string",
+          "enum": [
+            "ZeroOne",
+            "ZeroTwo",
+            "ZeroThree",
+            "OneThree"
+          ]
+        }
+      }
+    },
+    "apr": {
+      "description": "Годовая ставка",
+      "type": "string"
+    },
+    "loanTermMin": {
+      "description": "Возможный срок, мес.: от",
+      "type": "integer"
+    },
+    "loanTermMax": {
+      "description": "Возможный срок, мес.: до",
+      "type": "integer"
+    },
+    "downPayments": {
+      "description": "Первоначальный взнос",
+      "type": "string"
+    },
+    "discount": {
+      "description": "Скидка",
+      "type": "number"
+    },
+    "irr": {
+      "description": "ПСК",
+      "type": "number"
+    },
+    "limitMin": {
+      "description": "Минимальная сумма кредита, руб.",
+      "type": "number"
+    },
+    "limitMax": {
+      "description": "Максимальная сумма кредита, руб.",
+      "type": "number"
+    },
+    "productGroup": {
+      "description": "Группа продуктов",
+      "type": "string"
+    },
+    "guidDoc": {
+      "description": "ГУИД документа",
+      "type": "string"
+    },
+    "isAgreement": {
+      "description": "Подключение требует согласования",
+      "type": "boolean"
+    },
+    "agreementRole": {
+      "description": "Кого",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "description": "Manager - Управляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется",
+          "enum": [
+            "Manager",
+            "Coordinator",
+            "WithoutAgree"
+          ]
+        }
+      }
+    },
+    "state": {
+      "description": "Статус",
+      "type": "string",
+      "enum": [
+        "Не действует",
+        "Закрыта",
+        "Черновик",
+        "Активна"
+      ]
+    }
+  }
+}
