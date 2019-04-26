@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
 *AgentSchemeListApi* | **getAgentSchemeList** | **GET** /services/rest-api/list/agentScheme/{id} | получение списка документов
 *AgentSchemeListApi* | **postAgentSchemesList** | **POST** /services/rest-api/list/agentScheme | сохранение параметров фильтрации
 *AgentSchemeListSimpleApi* | **simpleAgentSchemesList** | **GET** /services/rest-api/simple/list/agentScheme | получение списка агентских схем
+*AuthCorrectnessApi* | **authCorrectness** | **POST** /services/rest-api/auth/authorization/actuality | проверка jwt-токена
 *AuthorizationApi* | **authorizationPasswordDelete** | **DELETE** /services/rest-api/auth/user/password | сброс пароля авторизованного пользователя
 *AuthorizationApi* | **authorizationPasswordDetails** | **GET** /services/rest-api/auth/user/details | получение информации о текущем пользователе
 *AuthorizationApi* | **authorizationPasswordNew** | **POST** /services/rest-api/auth/user/authorization/password/new | авторизация и смена пароля
