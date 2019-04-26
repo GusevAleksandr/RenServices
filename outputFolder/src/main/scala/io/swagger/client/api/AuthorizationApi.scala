@@ -22,6 +22,21 @@ import io.swagger.client.core.ApiKeyLocations._
 object AuthorizationApi {
 
   /**
+   * проверка jwt-токена, полученного ранее от сервиса авторизации
+   * 
+   * Expected answers:
+   *   code 200 :  (возвращается в том случае, если токен валиден)
+   *   code 401 :  (Unauthorized)
+   * 
+   * Available security schemes:
+   *   Bearer (apiKey)
+   */
+  def authCorrectness()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+    ApiRequest[Unit](ApiMethods.POST, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/auth/authorization/actuality", "application/json")
+      .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[Unit](200)
+      .withErrorResponse[Unit](401)
+        /**
    * сброс пароля авторизованного в системе пользователя
    * 
    * Expected answers:
