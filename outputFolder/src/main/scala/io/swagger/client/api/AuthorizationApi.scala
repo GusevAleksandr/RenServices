@@ -22,7 +22,7 @@ import io.swagger.client.core.ApiKeyLocations._
 object AuthorizationApi {
 
   /**
-   * проверка jwt-токена, полученного ранее от сервиса авторизации
+   * проверка jwt-токена, полученного ранее от сервиса. Токен передается в хедере Authorization
    * 
    * Expected answers:
    *   code 200 :  (возвращается в том случае, если токен валиден)
