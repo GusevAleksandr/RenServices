@@ -71,6 +71,12 @@
           },
           {
             "$ref": "#/parameters/pageSize"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
           }
         ],
         "responses": {
@@ -155,6 +161,12 @@
           },
           {
             "$ref": "#/parameters/pageSize"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
           }
         ],
         "responses": {
@@ -276,6 +288,32 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/auth/authorization/actuality": {
+      "post": {
+        "tags": [
+          "authorization"
+        ],
+        "summary": "проверка jwt-токена",
+        "operationId": "auth_correctness",
+        "description": "проверка jwt-токена, полученного ранее от сервиса. Токен передается в хедере Authorization",
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "возвращается в том случае, если токен валиден"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -628,6 +666,22 @@
         "type": "string"
       }
     },
+
+    "offset": {
+      "in": "query",
+      "name": "offset",
+      "description": "сдвиг выводимого результата относительно начальной записи. Нумерация начинается с 1",
+      "required": false,
+      "type": "integer"
+    },
+    "limit": {
+      "in": "query",
+      "name": "limit",
+      "description": "количество элементов на странице",
+      "required": false,
+      "type": "integer"
+    },
+
     "page": {
       "in": "query",
       "name": "page",

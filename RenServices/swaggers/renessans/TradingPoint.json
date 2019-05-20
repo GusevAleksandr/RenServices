@@ -40,6 +40,12 @@
           },
           {
             "$ref": "../core/main.json#/parameters/pageSize"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/offset"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/limit"
           }
         ],
         "responses": {
@@ -123,6 +129,12 @@
           },
           {
             "$ref": "../core/main.json#/parameters/pageSize"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/offset"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/limit"
           }
         ],
         "responses": {

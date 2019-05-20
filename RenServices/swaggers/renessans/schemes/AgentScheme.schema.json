@@ -18,13 +18,8 @@
       "type": "integer"
     },
     "state": {
-      "description": "Статус",
-      "type": "string",
-      "enum": [
-        "Черновик",
-        "Закрыта",
-        "Активна"
-      ]
+      "description": "Статус. Принимет значения  \"Черновик\", \"Закрыта\", \"Активна\"",
+      "type": "string"
     },
     "statusDate": {
       "description": "null",
