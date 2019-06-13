@@ -149,11 +149,7 @@
         },
         "value": {
           "type": "string",
-          "description": "Lit1 - online, lit2 - offline",
-          "enum": [
-            "Lit1",
-            "lit2"
-          ]
+          "description": "Lit1 - online, lit2 - offline. Возможные значения: \"Lit1\", \"lit2\""
         }
       }
     },
@@ -209,12 +205,7 @@
         },
         "value": {
           "type": "string",
-          "description": "lit1 - Electronics, lit2 - Non-Electronics, lit3 - Telecom",
-          "enum": [
-            "lit1",
-            "lit2",
-            "lit3"
-          ]
+          "description": "lit1 - Electronics, lit2 - Non-Electronics, lit3 - Telecom. Возможные значения: \"lit1\", \"lit2\", \"lit3\""
         }
       }
     },
@@ -286,12 +277,7 @@
         },
         "value": {
           "type": "string",
-          "description": "phone - телефон, email - e-mail, courier - курьер",
-          "enum": [
-            "phone",
-            "email",
-            "courier"
-          ]
+          "description": "phone - телефон, email - e-mail, courier - курьер. Возможные значения: \"phone\", \"email\", \"courier\""
         }
       }
     },
@@ -307,12 +293,7 @@
         },
         "value": {
           "type": "string",
-          "description": "phone - телефон, email - e-mail, courier - курьер",
-          "enum": [
-            "phone",
-            "email",
-            "courier"
-          ]
+          "description": "phone - телефон, email - e-mail, courier - курьер. Возможные значения: \"phone\", \"email\", \"courier\""
         }
       }
     },
@@ -565,12 +546,7 @@
               },
               "value": {
                 "type": "string",
-                "description": "Manager - правляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется",
-                "enum": [
-                  "Manager",
-                  "Coordinator",
-                  "WithoutAgree"
-                ]
+                "description": "Manager - правляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется. Возможные значения:    \"Manager\", \"Coordinator\", \"WithoutAgree\""
               }
             }
           },
@@ -603,16 +579,7 @@
               },
               "value": {
                 "type": "string",
-                "description": "pulledFiles - забрал досье, connectedAgent - подключил агента, heldTalks - провел переговоры по подключению новых кредитных продуктов, trainedEmployees - провел обучение сотрудников, postedPOSM - разместил POSM, reanimation - реанимация, specTask - спецзадача",
-                "enum": [
-                  "pulledFiles",
-                  "connectedAgent",
-                  "heldTalks",
-                  "trainedEmployees",
-                  "postedPOSM",
-                  "reanimation",
-                  "specTask"
-                ]
+                "description": "pulledFiles - забрал досье, connectedAgent - подключил агента, heldTalks - провел переговоры по подключению новых кредитных продуктов, trainedEmployees - провел обучение сотрудников, postedPOSM - разместил POSM, reanimation - реанимация, specTask - спецзадача. Возможные значения  \"pulledFiles\", \"connectedAgent\", \"heldTalks\", \"trainedEmployees\", \"postedPOSM\", \"reanimation\", \"specTask\""
               }
             }
           },

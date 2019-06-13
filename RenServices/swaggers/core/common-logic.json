@@ -1,21 +1,12 @@
 {
   "definitions": {
     "TypesCLSchema": {
-      "type": "string",
-      "enum": [
-        "INTEGER",
-        "LONG",
-        "DOUBLE",
-        "STRING",
-        "DATE",
-        "BOOLEAN"
-      ]
+      "descriptions": "Возможные значения: \"INTEGER\", \"LONG\", \"DOUBLE\", \"STRING\", \"DATE\", \"BOOLEAN\"",
+      "type": "string"
     },
     "SecurityPropertiesCLSchema": {
-      "type": "string",
-      "enum": [
-        "login"
-      ]
+      "descriptions": "Возможные значения: login",
+      "type": "string"
     },
     "FieldCLSchema": {
       "type": "object",

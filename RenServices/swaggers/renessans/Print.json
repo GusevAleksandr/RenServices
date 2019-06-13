@@ -1,0 +1,51 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Получение pdf-файла для заданного документа",
+    "version": "1.0.0",
+    "title": "Получение pdf-файла для заданного документа"
+  },
+  "paths": {
+    "/services/func/rest-api/print/{documentGuid}": {
+      "get": {
+        "tags": [
+          "printService"
+        ],
+        "summary": "получение pdf-файла для заданного документа",
+        "operationId": "printService",
+        "description": "получение pdf-файла для заданного документа",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "documentGuid",
+            "description": "гуид Договора/ДС или акта",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "сформированный или полученный pdf-файл",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "404": {
+            "description": "документ не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+ }
+}

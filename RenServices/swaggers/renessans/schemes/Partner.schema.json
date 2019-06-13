@@ -41,12 +41,8 @@
           "type": "string"
         },
         "value": {
-          "type": "string",
-          "enum": [
-            "Standard",
-            "Broker",
-            "Federal"
-          ]
+          "description": "Возможные значения: \"Standard\", \"Broker\", \"Federal\"",
+          "type": "string"
         }
       }
     },
@@ -545,11 +541,8 @@
                             "type": "string"
                           },
                           "value": {
-                            "type": "string",
-                            "enum": [
-                              "ruble",
-                              "percent"
-                            ]
+                            "description": "Возможные значения: \"ruble\", \"percent\"",
+                            "type": "string"
                           }
                         }
                       }

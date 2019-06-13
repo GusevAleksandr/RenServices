@@ -24,14 +24,8 @@
           "type": "string"
         },
         "value": {
-          "description": "ZeroOne - 01, ZeroTwo - 02, ZeroThree - 03, OneThree -  13",
-          "type": "string",
-          "enum": [
-            "ZeroOne",
-            "ZeroTwo",
-            "ZeroThree",
-            "OneThree"
-          ]
+          "description": "ZeroOne - 01, ZeroTwo - 02, ZeroThree - 03, OneThree -  13. Возможные значения: \"ZeroOne\", \"ZeroTwo\", \"ZeroThree\", \"OneThree\"",
+          "type": "string"
         }
       }
     },
@@ -91,24 +85,13 @@
         },
         "value": {
           "type": "string",
-          "description": "Manager - Управляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется",
-          "enum": [
-            "Manager",
-            "Coordinator",
-            "WithoutAgree"
-          ]
+          "description": "Manager - Управляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется. Возможные значения: \"Manager\", \"Coordinator\", \"WithoutAgree\""
         }
       }
     },
     "state": {
-      "description": "Статус",
-      "type": "string",
-      "enum": [
-        "Не действует",
-        "Закрыта",
-        "Черновик",
-        "Активна"
-      ]
+      "description": "Статус. Возможные значения: \"Не действует\", \"Закрыта\", \"Черновик\", \"Активна\"",
+      "type": "string"
     }
   }
 }

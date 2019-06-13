@@ -140,6 +140,11 @@
     {
       "name": "authorization",
       "description": "сервис аутентификации и работы с пользовательскими настройками"
+    },
+
+    {
+      "name": "printService",
+      "description": "сервис получения pdf-файла для заданного документа"
     }
   ],
   "securityDefinitions": {
@@ -297,6 +302,9 @@
     },
     "/services/rest-api/auth/user/password": {
       "$ref": "../core/main.json#/paths/~1services~1rest-api~1auth~1user~1password"
+    },
+    "/services/func/rest-api/print/{documentGuid}": {
+      "$ref": "./Print.json#/paths/~1services~1func~1rest-api~1print~1{documentGuid}"
     },
     "/services/rest-api/auth/user/details": {
       "get": {

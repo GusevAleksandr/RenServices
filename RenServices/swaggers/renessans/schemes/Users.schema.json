@@ -170,12 +170,7 @@
         },
         "value": {
           "type": "string",
-          "description": "New - Новый, Active - Активный ТМ, NotWork - Не действует",
-          "enum": [
-            "New",
-            "Active",
-            "NotWork"
-          ]
+          "description": "New - Новый, Active - Активный ТМ, NotWork - Не действует. Возвращаемые значения: \"New\", \"Active\", \"NotWork\""
         }
       }
     },
@@ -223,12 +218,7 @@
         },
         "value": {
           "type": "string",
-          "enum": [
-            "TM",
-            "KM",
-            "KAM",
-            "RPP"
-          ]
+          "description": "Возможные значения:  \"TM\", \"KM\", \"KAM\", \"RPP\""
         }
       }
     },

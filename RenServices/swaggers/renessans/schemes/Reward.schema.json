@@ -52,13 +52,8 @@
           "type": "string"
         },
         "value": {
-          "description": "Standard - Стандарт, Broker - Брокер, Federal - Федерал",
-          "type": "string",
-          "enum": [
-            "Standard",
-            "Broker",
-            "Federal"
-          ]
+          "description": "Standard - Стандарт, Broker - Брокер, Federal - Федерал. Возможные значения: \"Standard\", \"Broker\", \"Federal\"",
+          "type": "string"
         }
       }
     },
@@ -161,12 +156,8 @@
           "type": "string"
         },
         "value": {
-          "description": "Значение",
-          "type": "string",
-          "enum": [
-            "agents",
-            "partners"
-          ]
+          "description": "Значение. Возможные значения: \"agents\", \"partners\"",
+          "type": "string"
         }
       }
     },

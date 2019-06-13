@@ -16,13 +16,7 @@
       },
       "value": {
         "type": "string",
-        "description": "actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП",
-        "enum": [
-          "actAward",
-          "contract",
-          "additionalAgreement",
-          "contractPEP"
-        ]
+        "description": "actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП. Возможные значения: \"actAward\", \"contract\", \"additionalAgreement\", \"contractPEP\""
       }
     },
     "subject": {
@@ -36,11 +30,8 @@
           "type": "string"
         },
         "value": {
-          "type": "string",
-          "enum": [
-            "agents",
-            "partners"
-          ]
+          "description": "Возможные значения: \"agents\", \"partners\"",
+          "type": "string"
         }
       }
     },
@@ -60,13 +51,7 @@
         },
         "value": {
           "type": "string",
-          "description": "actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП",
-          "enum": [
-            "actAward",
-            "contract",
-            "additionalAgreement",
-            "contractPEP"
-          ]
+          "description": "actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП. Возможные значения: \"actAward\", \"contract\", \"additionalAgreement\", \"contractPEP\""
         }
       }
     },
@@ -86,11 +71,7 @@
         },
         "value": {
           "type": "string",
-          "description": "New- Новый, OnReplace - На замену",
-          "enum": [
-            "New",
-            "OnReplace"
-          ]
+          "description": "New- Новый, OnReplace - На замену. Возможные значения: \"New\", \"OnReplace\""
         }
       }
     },
@@ -141,11 +122,7 @@
         },
         "value": {
           "type": "string",
-          "description": "lit1 - дополнить Договор Приложением № 2 и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению, lit2 - изменить Приложение № 2 к Договору и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению",
-          "enum": [
-            "lit1",
-            "lit2"
-          ]
+          "description": "lit1 - дополнить Договор Приложением № 2 и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению, lit2 - изменить Приложение № 2 к Договору и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению. Возможные значения: \"lit1\", \"lit2\""
         }
       }
     },
@@ -177,12 +154,7 @@
         },
         "value": {
           "type": "string",
-          "description": "Standard - Стандарт, Broker - Брокер, Federal - Федерал",
-          "enum": [
-            "Standard",
-            "Broker",
-            "Federal"
-          ]
+          "description": "Standard - Стандарт, Broker - Брокер, Federal - Федерал. Возможные значения: \"Standard\", \"Broker\", \"Federal\""
         }
       }
     },
@@ -202,12 +174,7 @@
         },
         "value": {
           "type": "string",
-          "description": "Yes - ПЭП, No - Бумажный, Nothing - Не определено",
-          "enum": [
-            "Yes",
-            "No",
-            "Nothing"
-          ]
+          "description": "Yes - ПЭП, No - Бумажный, Nothing - Не определено. Возможные значения: \"Yes\", \"No\", \"Nothing\""
         }
       }
     },
@@ -324,12 +291,7 @@
         },
         "value": {
           "type": "string",
-          "description": "Undefined - Не определено, Fixed - дата введенная пользователем будет использована в качестве даты вступления в силу договора/ДС, DateSign - дата подписи партнера будет использована в качестве даты вступления в силу договора/ДС",
-          "enum": [
-            "Undefined",
-            "Fixed",
-            "DateSign"
-          ]
+          "description": "Undefined - Не определено, Fixed - дата введенная пользователем будет использована в качестве даты вступления в силу договора/ДС, DateSign - дата подписи партнера будет использована в качестве даты вступления в силу договора/ДС. Возможные значения: \"Undefined\", \"Fixed\", \"DateSign\""
         }
       }
     },
@@ -362,11 +324,7 @@
         },
         "value": {
           "type": "string",
-          "description": "Lit1 - online, lit2 - offline",
-          "enum": [
-            "Lit1",
-            "lit2"
-          ]
+          "description": "Lit1 - online, lit2 - offline. Возможные значения: \"Lit1\", \"lit2\""
         }
       }
     },
@@ -786,11 +744,7 @@
               },
               "value": {
                 "type": "string",
-                "description": "Lit1 - online, lit2 - offline",
-                "enum": [
-                  "Lit1",
-                  "lit2"
-                ]
+                "description": "Lit1 - online, lit2 - offline. Возможные значения: \"Lit1\", \"lit2\""
               }
             }
           }
@@ -1257,11 +1211,7 @@
                     },
                     "value": {
                       "type": "string",
-                      "description": "ruble - рубль, percent - процент",
-                      "enum": [
-                        "ruble",
-                        "percent"
-                      ]
+                      "description": "ruble - рубль, percent - процент. Возможные значения:  \"ruble\", \"percent\""
                     }
                   }
                 }

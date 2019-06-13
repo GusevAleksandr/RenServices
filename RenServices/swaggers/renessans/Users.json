@@ -54,7 +54,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/User"
+                "$ref": "./schemes/Users.schema.json"
               }
             }
           },
@@ -143,7 +143,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/User"
+                "$ref": "./schemes/Users.schema.json"
               }
             }
           },
@@ -189,7 +189,7 @@
             "description": "найденный документ",
             "schema": {
               "type": "object",
-              "$ref": "#/definitions/User"
+              "$ref": "./schemes/Users.schema.json"
             }
           },
           "400": {
