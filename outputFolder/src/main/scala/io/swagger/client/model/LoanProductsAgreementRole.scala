@@ -16,20 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class LoanProductsAgreementRole (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* Manager - Управляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется */
-  value: Option[LoanProductsAgreementRoleEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* Manager - Управляющий Сектора, Coordinator - Центральный офис, WithoutAgree - Согласование не требуется. Возможные значения: \"Manager\", \"Coordinator\", \"WithoutAgree\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object LoanProductsAgreementRoleEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Manager = Value("Manager")
-    val Coordinator = Value("Coordinator")
-    val WithoutAgree = Value("WithoutAgree")
-  }
-
-}
 

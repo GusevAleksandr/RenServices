@@ -37,8 +37,10 @@ object EmployeeAuthorityListSimpleApi {
    * @param ordersDesc список полей для сортировки по убыванию
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
+   * @param offset сдвиг выводимого результата относительно начала списка. Нумерация начинается с 1
+   * @param limit количество элементов на странице
    */
-  def simpleEmployeeAuthoritysList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[EmployeeAuthority]] =
+  def simpleEmployeeAuthoritysList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None, offset: Option[Int] = None, limit: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[EmployeeAuthority]] =
     ApiRequest[Seq[EmployeeAuthority]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/simple/list/employeeAuthority", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter", filter)
@@ -48,6 +50,8 @@ object EmployeeAuthorityListSimpleApi {
       .withQueryParam("ordersDesc", ArrayValues(ordersDesc, MULTI))
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
+      .withQueryParam("offset", offset)
+      .withQueryParam("limit", limit)
       .withSuccessResponse[Seq[EmployeeAuthority]](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)

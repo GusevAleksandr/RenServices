@@ -20,8 +20,8 @@ case class EmployeeAuthority (
   guidDoc: Option[String] = None,
   /* ГУИД карточки подписанта */
   signerPepGUID: Option[String] = None,
-  /* Статус */
-  state: Option[EmployeeAuthorityEnums.State] = None,
+  /* Статус. Возможные значения: \"Активно\",\"Новый\", \"Отозвано\", \"Не действует\", \"Актуально\" */
+  state: Option[String] = None,
   /* Дата назначения статуса */
   stateDate: Option[Double] = None,
   /* Гуид партнера */
@@ -90,16 +90,4 @@ case class EmployeeAuthority (
   fioFull: Option[String] = None
 ) extends ApiModel
 
-object EmployeeAuthorityEnums {
-
-  type State = State.Value
-  object State extends Enumeration {
-    val `` = Value("Активно")
-    val `` = Value("Новый")
-    val `` = Value("Отозвано")
-    val `_` = Value("Не действует")
-    val `` = Value("Актуально")
-  }
-
-}
 

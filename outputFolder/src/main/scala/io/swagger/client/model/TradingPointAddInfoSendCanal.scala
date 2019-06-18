@@ -16,20 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointAddInfoSendCanal (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* phone - телефон, email - e-mail, courier - курьер */
-  value: Option[TradingPointAddInfoSendCanalEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* phone - телефон, email - e-mail, courier - курьер. Возможные значения: \"phone\", \"email\", \"courier\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object TradingPointAddInfoSendCanalEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Phone = Value("phone")
-    val Email = Value("email")
-    val Courier = Value("courier")
-  }
-
-}
 

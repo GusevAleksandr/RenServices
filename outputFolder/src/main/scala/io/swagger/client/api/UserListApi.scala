@@ -12,7 +12,7 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.DocListRequest
-import io.swagger.client.model.User
+import io.swagger.client.model.Users
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -23,7 +23,7 @@ object UserListApi {
    * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/user
    * 
    * Expected answers:
-   *   code 200 : Seq[User] (массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
+   *   code 200 : Seq[Users] (массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
    *   code 404 :  (запрос с переданным идентификатором не найден)
@@ -35,14 +35,18 @@ object UserListApi {
    * @param id идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
+   * @param offset сдвиг выводимого результата относительно начала списка. Нумерация начинается с 1
+   * @param limit количество элементов на странице
    */
-  def getUserList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[User]] =
-    ApiRequest[Seq[User]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/user/{id}", "application/json")
+  def getUserList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None, offset: Option[Int] = None, limit: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Users]] =
+    ApiRequest[Seq[Users]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/user/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
+      .withQueryParam("offset", offset)
+      .withQueryParam("limit", limit)
       .withPathParam("id", id)
-      .withSuccessResponse[Seq[User]](200)
+      .withSuccessResponse[Seq[Users]](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
       .withErrorResponse[Unit](404)

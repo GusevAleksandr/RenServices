@@ -16,20 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class PartnerPartnerType (
-  content: Option[String] = None,
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
   /* Код услуги */
-  code: Option[String] = None,
-  value: Option[PartnerPartnerTypeEnums.Value] = None
+  description: Option[String] = None,
+  /* Возможные значения: \"Standard\", \"Broker\", \"Federal\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object PartnerPartnerTypeEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Standard = Value("Standard")
-    val Broker = Value("Broker")
-    val Federal = Value("Federal")
-  }
-
-}
 

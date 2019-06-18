@@ -16,8 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ContractBasicDoc (
-  content: Option[String] = None,
-  `type`: Option[ERRORUNKNOWN] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП. Возможные значения: \"actAward\", \"contract\", \"additionalAgreement\", \"contractPEP\" */
+  value: Option[String] = None
 ) extends ApiModel
 
 

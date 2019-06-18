@@ -11,35 +11,33 @@
  */
 package io.swagger.client.api
 
-import io.swagger.client.model.Users
+import java.io.File
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
 
-object UserApi {
+object PrintServiceApi {
 
   /**
-   * получение одной записи пользователя по гуиду
+   * получение pdf-файла для заданного документа
    * 
    * Expected answers:
-   *   code 200 : Users (найденный документ)
+   *   code 200 : File (сформированный или полученный pdf-файл)
    *   code 400 :  (bad input parameter)
-   *   code 401 :  (Unauthorized)
-   *   code 404 :  (партнер не найден)
+   *   code 404 :  (документ не найден)
    *   code 500 :  (Internal Server Error)
    * 
    * Available security schemes:
    *   Bearer (apiKey)
    * 
-   * @param id гуид партнера
+   * @param documentGuid гуид Договора/ДС или акта
    */
-  def userGet(id: String)(implicit apiKey: ApiKeyValue): ApiRequest[Users] =
-    ApiRequest[Users](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/users/{id}", "application/json")
+  def printService(documentGuid: String)(implicit apiKey: ApiKeyValue): ApiRequest[File] =
+    ApiRequest[File](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/func/rest-api/print/{documentGuid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withPathParam("id", id)
-      .withSuccessResponse[Users](200)
+      .withPathParam("documentGuid", documentGuid)
+      .withSuccessResponse[File](200)
       .withErrorResponse[Unit](400)
-      .withErrorResponse[Unit](401)
       .withErrorResponse[Unit](404)
       .withErrorResponse[Unit](500)
       

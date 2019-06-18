@@ -11,7 +11,7 @@
  */
 package io.swagger.client.api
 
-import io.swagger.client.model.User
+import io.swagger.client.model.Users
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -22,7 +22,7 @@ object UserListSimpleApi {
    * получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки
    * 
    * Expected answers:
-   *   code 200 : Seq[User] (массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
+   *   code 200 : Seq[Users] (массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
    *   code 500 :  (Internal Server Error)
@@ -37,9 +37,11 @@ object UserListSimpleApi {
    * @param ordersDesc список полей для сортировки по убыванию
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
+   * @param offset сдвиг выводимого результата относительно начала списка. Нумерация начинается с 1
+   * @param limit количество элементов на странице
    */
-  def simpleUsersList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[User]] =
-    ApiRequest[Seq[User]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/simple/list/user", "application/json")
+  def simpleUsersList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None, offset: Option[Int] = None, limit: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Users]] =
+    ApiRequest[Seq[Users]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/simple/list/user", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter", filter)
       .withQueryParam("fields", ArrayValues(fields, MULTI))
@@ -48,7 +50,9 @@ object UserListSimpleApi {
       .withQueryParam("ordersDesc", ArrayValues(ordersDesc, MULTI))
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
-      .withSuccessResponse[Seq[User]](200)
+      .withQueryParam("offset", offset)
+      .withQueryParam("limit", limit)
+      .withSuccessResponse[Seq[Users]](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
       .withErrorResponse[Unit](500)

@@ -16,21 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ContractHowFillDate (
-  content: Option[String] = None,
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
   /* Код */
-  code: Option[String] = None,
-  /* Undefined - Не определено, Fixed - дата введенная пользователем будет использована в качестве даты вступления в силу договора/ДС, DateSign - дата подписи партнера будет использована в качестве даты вступления в силу договора/ДС */
-  value: Option[ContractHowFillDateEnums.Value] = None
+  description: Option[String] = None,
+  /* Undefined - Не определено, Fixed - дата введенная пользователем будет использована в качестве даты вступления в силу договора/ДС, DateSign - дата подписи партнера будет использована в качестве даты вступления в силу договора/ДС. Возможные значения: \"Undefined\", \"Fixed\", \"DateSign\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object ContractHowFillDateEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Undefined = Value("Undefined")
-    val Fixed = Value("Fixed")
-    val DateSign = Value("DateSign")
-  }
-
-}
 

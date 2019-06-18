@@ -16,18 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ContractSubject (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  value: Option[ContractSubjectEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* Возможные значения: \"agents\", \"partners\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object ContractSubjectEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Agents = Value("agents")
-    val Partners = Value("partners")
-  }
-
-}
 

@@ -12,7 +12,7 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.DocListRequest
-import io.swagger.client.model.LoanProduct
+import io.swagger.client.model.LoanProducts
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -23,7 +23,7 @@ object LoanProductListApi {
    * получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/loanProduct
    * 
    * Expected answers:
-   *   code 200 : Seq[LoanProduct] (массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
+   *   code 200 : Seq[LoanProducts] (массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ&#x3D;значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа)
    *   code 400 :  (bad input parameter)
    *   code 401 :  (Unauthorized)
    *   code 404 :  (запрос с переданным идентификатором не найден)
@@ -35,14 +35,18 @@ object LoanProductListApi {
    * @param id идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
+   * @param offset сдвиг выводимого результата относительно начала списка. Нумерация начинается с 1
+   * @param limit количество элементов на странице
    */
-  def getLoanProductList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[LoanProduct]] =
-    ApiRequest[Seq[LoanProduct]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/loanProduct/{id}", "application/json")
+  def getLoanProductList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None, offset: Option[Int] = None, limit: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[LoanProducts]] =
+    ApiRequest[Seq[LoanProducts]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/loanProduct/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
+      .withQueryParam("offset", offset)
+      .withQueryParam("limit", limit)
       .withPathParam("id", id)
-      .withSuccessResponse[Seq[LoanProduct]](200)
+      .withSuccessResponse[Seq[LoanProducts]](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)
       .withErrorResponse[Unit](404)

@@ -16,21 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ContractBasicDocDop (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП */
-  value: Option[ContractBasicDocDopEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП. Возможные значения: \"actAward\", \"contract\", \"additionalAgreement\", \"contractPEP\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object ContractBasicDocDopEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val ActAward = Value("actAward")
-    val Contract = Value("contract")
-    val AdditionalAgreement = Value("additionalAgreement")
-    val ContractPEP = Value("contractPEP")
-  }
-
-}
 

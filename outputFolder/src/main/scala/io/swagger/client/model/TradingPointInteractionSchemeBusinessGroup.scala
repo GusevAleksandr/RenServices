@@ -16,20 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointInteractionSchemeBusinessGroup (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* lit1 - Electronics, lit2 - Non-Electronics, lit3 - Telecom */
-  value: Option[TradingPointInteractionSchemeBusinessGroupEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* lit1 - Electronics, lit2 - Non-Electronics, lit3 - Telecom. Возможные значения: \"lit1\", \"lit2\", \"lit3\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object TradingPointInteractionSchemeBusinessGroupEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Lit1 = Value("lit1")
-    val Lit2 = Value("lit2")
-    val Lit3 = Value("lit3")
-  }
-
-}
 

@@ -37,8 +37,10 @@ object RewardListSimpleApi {
    * @param ordersDesc список полей для сортировки по убыванию
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
+   * @param offset сдвиг выводимого результата относительно начала списка. Нумерация начинается с 1
+   * @param limit количество элементов на странице
    */
-  def simpleRewardsList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Reward]] =
+  def simpleRewardsList(filter: Option[String] = None, fields: Seq[String], onlyHeaderFields: Option[Boolean] = None, ordersAsc: Seq[String], ordersDesc: Seq[String], page: Option[Int] = None, pageSize: Option[Int] = None, offset: Option[Int] = None, limit: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Reward]] =
     ApiRequest[Seq[Reward]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/simple/list/reward", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("filter", filter)
@@ -48,6 +50,8 @@ object RewardListSimpleApi {
       .withQueryParam("ordersDesc", ArrayValues(ordersDesc, MULTI))
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
+      .withQueryParam("offset", offset)
+      .withQueryParam("limit", limit)
       .withSuccessResponse[Seq[Reward]](200)
       .withErrorResponse[Unit](400)
       .withErrorResponse[Unit](401)

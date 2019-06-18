@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *PartnerListApi* | **getPartnerList** | **GET** /services/rest-api/list/partner/{id} | получение списка документов
 *PartnerListApi* | **postPartnersList** | **POST** /services/rest-api/list/partner | сохранение параметров фильтрации
 *PartnerListSimpleApi* | **simplePartnersList** | **GET** /services/rest-api/simple/list/partner | получение списка партнеров
+*PrintServiceApi* | **printService** | **GET** /services/func/rest-api/print/{documentGuid} | получение pdf-файла для заданного документа
 *RewardApi* | **rewardGet** | **GET** /services/rest-api/reward/{id} | получение документа по гуиду
 *RewardListApi* | **getRewardList** | **GET** /services/rest-api/list/reward/{id} | получение списка документов
 *RewardListApi* | **postRewardsList** | **POST** /services/rest-api/list/reward | сохранение параметров фильтрации
@@ -164,7 +165,6 @@ Class | Method | HTTP request | Description
  - [FieldCLSchema](FieldCLSchema.md)
  - [FieldCLSchemaField](FieldCLSchemaField.md)
  - [LeftRightCLSchema](LeftRightCLSchema.md)
- - [LoanProduct](LoanProduct.md)
  - [LoanProducts](LoanProducts.md)
  - [LoanProductsAgreementRole](LoanProductsAgreementRole.md)
  - [LoanProductsGroupProduct](LoanProductsGroupProduct.md)
@@ -224,7 +224,6 @@ Class | Method | HTTP request | Description
  - [TradingPointTtkmhistory](TradingPointTtkmhistory.md)
  - [TradingPointTttmHistory](TradingPointTttmHistory.md)
  - [TypesCLSchema](TypesCLSchema.md)
- - [User](User.md)
  - [UserDetailRoles](UserDetailRoles.md)
  - [UserDetails](UserDetails.md)
  - [Users](Users.md)

@@ -16,20 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ContractIspep (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* Yes - ПЭП, No - Бумажный, Nothing - Не определено */
-  value: Option[ContractIspepEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* Yes - ПЭП, No - Бумажный, Nothing - Не определено. Возможные значения: \"Yes\", \"No\", \"Nothing\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object ContractIspepEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Yes = Value("Yes")
-    val No = Value("No")
-    val Nothing = Value("Nothing")
-  }
-
-}
 

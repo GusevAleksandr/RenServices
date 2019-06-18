@@ -35,12 +35,16 @@ object AgentListApi {
    * @param id идентификатор сохраненных параметров запроса не сервере приложений, возвращенных ранее при вызове метода post
    * @param page номер требуемой страницы. Нумерация начинается с 1. Если параметр не задан, используется значение по умолчанию, равное 1.
    * @param pageSize количество элементов на странице. Если не задан - используется значение по умолчанию, равное 20.
+   * @param offset сдвиг выводимого результата относительно начала списка. Нумерация начинается с 1
+   * @param limit количество элементов на странице
    */
-  def getAgentList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Agent]] =
+  def getAgentList(id: String, page: Option[Int] = None, pageSize: Option[Int] = None, offset: Option[Int] = None, limit: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Seq[Agent]] =
     ApiRequest[Seq[Agent]](ApiMethods.GET, "https://virtserver.swaggerhub.com/renessansBankService/restServices/1.0.0", "/services/rest-api/list/agent/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("page", page)
       .withQueryParam("pageSize", pageSize)
+      .withQueryParam("offset", offset)
+      .withQueryParam("limit", limit)
       .withPathParam("id", id)
       .withSuccessResponse[Seq[Agent]](200)
       .withErrorResponse[Unit](400)

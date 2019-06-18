@@ -16,19 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ContractPartiesAgreed (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* lit1 - дополнить Договор Приложением № 2 и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению, lit2 - изменить Приложение № 2 к Договору и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению */
-  value: Option[ContractPartiesAgreedEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* lit1 - дополнить Договор Приложением № 2 и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению, lit2 - изменить Приложение № 2 к Договору и изложить его в редакции Приложения № 1 к настоящему Дополнительному соглашению. Возможные значения: \"lit1\", \"lit2\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object ContractPartiesAgreedEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Lit1 = Value("lit1")
-    val Lit2 = Value("lit2")
-  }
-
-}
 

@@ -16,21 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class LoanProductsGroupProduct (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* ZeroOne - 01, ZeroTwo - 02, ZeroThree - 03, OneThree -  13 */
-  value: Option[LoanProductsGroupProductEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* ZeroOne - 01, ZeroTwo - 02, ZeroThree - 03, OneThree -  13. Возможные значения: \"ZeroOne\", \"ZeroTwo\", \"ZeroThree\", \"OneThree\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object LoanProductsGroupProductEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val ZeroOne = Value("ZeroOne")
-    val ZeroTwo = Value("ZeroTwo")
-    val ZeroThree = Value("ZeroThree")
-    val OneThree = Value("OneThree")
-  }
-
-}
 

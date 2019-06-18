@@ -16,19 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class PartnerUnit (
-  content: Option[String] = None,
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
   /* Код услуги */
-  code: Option[String] = None,
-  value: Option[PartnerUnitEnums.Value] = None
+  description: Option[String] = None,
+  /* Возможные значения: \"ruble\", \"percent\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object PartnerUnitEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Ruble = Value("ruble")
-    val Percent = Value("percent")
-  }
-
-}
 

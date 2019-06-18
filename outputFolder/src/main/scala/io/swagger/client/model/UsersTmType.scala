@@ -16,20 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class UsersTmType (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  value: Option[UsersTmTypeEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* Возможные значения:  \"TM\", \"KM\", \"KAM\", \"RPP\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object UsersTmTypeEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val TM = Value("TM")
-    val KM = Value("KM")
-    val KAM = Value("KAM")
-    val RPP = Value("RPP")
-  }
-
-}
 

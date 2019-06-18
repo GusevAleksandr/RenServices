@@ -24,8 +24,8 @@ case class AgentScheme (
   name: Option[String] = None,
   /* null */
   versionbo: Option[Int] = None,
-  /* Статус */
-  state: Option[AgentSchemeEnums.State] = None,
+  /* Статус. Принимет значения  \"Черновик\", \"Закрыта\", \"Активна\" */
+  state: Option[String] = None,
   /* null */
   statusDate: Option[Double] = None,
   /* Размер вознаграждений */
@@ -34,14 +34,4 @@ case class AgentScheme (
   rcrschemearas: Option[Seq[AgentSchemeRcrschemearas]] = None
 ) extends ApiModel
 
-object AgentSchemeEnums {
-
-  type State = State.Value
-  object State extends Enumeration {
-    val `` = Value("Черновик")
-    val `` = Value("Закрыта")
-    val `` = Value("Активна")
-  }
-
-}
 

@@ -16,19 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ContractDocType (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* New- Новый, OnReplace - На замену */
-  value: Option[ContractDocTypeEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* New- Новый, OnReplace - На замену. Возможные значения: \"New\", \"OnReplace\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object ContractDocTypeEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val `New` = Value("New")
-    val OnReplace = Value("OnReplace")
-  }
-
-}
 

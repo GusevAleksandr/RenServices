@@ -16,20 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class ContractTtMode (
-  content: Option[String] = None,
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
   /* Код ТТ */
-  code: Option[String] = None,
-  /* Lit1 - online, lit2 - offline */
-  value: Option[ContractTtModeEnums.Value] = None
+  description: Option[String] = None,
+  /* Lit1 - online, lit2 - offline. Возможные значения: \"Lit1\", \"lit2\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object ContractTtModeEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Lit1 = Value("Lit1")
-    val Lit2 = Value("lit2")
-  }
-
-}
 

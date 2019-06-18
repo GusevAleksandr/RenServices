@@ -16,20 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class UsersTmState (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* New - Новый, Active - Активный ТМ, NotWork - Не действует */
-  value: Option[UsersTmStateEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* New - Новый, Active - Активный ТМ, NotWork - Не действует. Возвращаемые значения: \"New\", \"Active\", \"NotWork\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object UsersTmStateEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val `New` = Value("New")
-    val Active = Value("Active")
-    val NotWork = Value("NotWork")
-  }
-
-}
 

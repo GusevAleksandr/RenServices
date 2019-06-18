@@ -16,24 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class TradingPointPurpose (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* pulledFiles - забрал досье, connectedAgent - подключил агента, heldTalks - провел переговоры по подключению новых кредитных продуктов, trainedEmployees - провел обучение сотрудников, postedPOSM - разместил POSM, reanimation - реанимация, specTask - спецзадача */
-  value: Option[TradingPointPurposeEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* pulledFiles - забрал досье, connectedAgent - подключил агента, heldTalks - провел переговоры по подключению новых кредитных продуктов, trainedEmployees - провел обучение сотрудников, postedPOSM - разместил POSM, reanimation - реанимация, specTask - спецзадача. Возможные значения  \"pulledFiles\", \"connectedAgent\", \"heldTalks\", \"trainedEmployees\", \"postedPOSM\", \"reanimation\", \"specTask\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object TradingPointPurposeEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val PulledFiles = Value("pulledFiles")
-    val ConnectedAgent = Value("connectedAgent")
-    val HeldTalks = Value("heldTalks")
-    val TrainedEmployees = Value("trainedEmployees")
-    val PostedPOSM = Value("postedPOSM")
-    val Reanimation = Value("reanimation")
-    val SpecTask = Value("specTask")
-  }
-
-}
 

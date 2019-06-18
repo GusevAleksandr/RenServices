@@ -18,8 +18,8 @@ import java.util.UUID
 case class PartnerEmployee (
   /* ГУИД документа */
   guidDoc: Option[String] = None,
-  /* Статус */
-  state: Option[PartnerEmployeeEnums.State] = None,
+  /* Статус. Возможные значения: \"Ожидает автоактивации\", \"Срок полномочий истек\", \"Новый\", \"Активен\", \"Заблокирован\", \"Готов к активации\" */
+  state: Option[String] = None,
   /* Дата назначения статуса */
   stateDate: Option[Double] = None,
   /* Гуид партнера */
@@ -96,17 +96,4 @@ case class PartnerEmployee (
   eMailUpper: Option[String] = None
 ) extends ApiModel
 
-object PartnerEmployeeEnums {
-
-  type State = State.Value
-  object State extends Enumeration {
-    val `_` = Value("Ожидает автоактивации")
-    val `_` = Value("Срок полномочий истек")
-    val `` = Value("Новый")
-    val `` = Value("Активен")
-    val `` = Value("Заблокирован")
-    val `_` = Value("Готов к активации")
-  }
-
-}
 

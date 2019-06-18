@@ -16,19 +16,14 @@ import org.joda.time.DateTime
 import java.util.UUID
 
 case class RewardBasicInfoPDSubject (
-  content: Option[String] = None,
-  code: Option[String] = None,
-  /* Значение */
-  value: Option[RewardBasicInfoPDSubjectEnums.Value] = None
+  /* Отображаемое значение */
+  name: Option[String] = None,
+  /* Техническое поле */
+  enumType: Option[String] = None,
+  /* Отображаемое значение */
+  description: Option[String] = None,
+  /* Значение. Возможные значения: \"agents\", \"partners\" */
+  value: Option[String] = None
 ) extends ApiModel
 
-object RewardBasicInfoPDSubjectEnums {
-
-  type Value = Value.Value
-  object Value extends Enumeration {
-    val Agents = Value("agents")
-    val Partners = Value("partners")
-  }
-
-}
 
