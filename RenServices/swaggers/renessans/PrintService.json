@@ -1,0 +1,76 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "получение pdf –файла заданного документа (акта вознаграждения, договора)",
+    "version": "1.0.0",
+    "title": "получение pdf –файла заданного документа (акта вознаграждения, договора)"
+  },
+  "paths": {
+    "/services/func/rest-api/print/{documentGuid}": {
+      "get": {
+        "tags": [
+          "printService"
+        ],
+        "summary": "получение pdf–файла заданного документа (акта вознаграждения, договора)",
+        "operationId": "pdf_service",
+        "description": "сервис для печати pdf-файла договора/ДС/акта партнером или агентом",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "description": "гуид документа, который необходимо распечатать",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "полученный pdf-файл, кодированный в base64",
+            "schema": {
+              "type": "string",
+              "format": "byte"
+            }
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/error_scheme"
+            },
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "error_scheme": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Код ошибки. Принимает значения:\n 001 - Передан документ, который не может быть распечатан в pdf",
+          "type": "string"
+        },
+        "error": {
+          "description": "Текст ошибки",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

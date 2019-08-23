@@ -1,0 +1,76 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "получение отчета по выданным кредитам (xls) из заданного акта вознаграждения",
+    "version": "1.0.0",
+    "title": "получение отчета по выданным кредитам (xls) из заданного акта вознаграждения"
+  },
+  "paths": {
+    "/services/func/rest-api/export/{documentGuid}": {
+      "get": {
+        "tags": [
+          "exportService"
+        ],
+        "summary": "получение отчета по выданным кредитам (xls) из заданного акта вознаграждения",
+        "operationId": "pdf_service",
+        "description": "сервис для получения партнером или агентом отчета по выданным кредитам (xls) из заданного акта вознаграждения",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "description": "гуид акта, для которого необходимо получить отчет по выданным кредитам",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "полученный xls-файл, кодированный в base64",
+            "schema": {
+              "type": "string",
+              "format": "byte"
+            }
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/error_scheme"
+            },
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "error_scheme": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Код ошибки. Принимает значения:\n 001 - Для данного документа не получится выгрузить xls, т.к. у документа не указан Тип контрагента \n 002 - Для данного документа не найдено вариантов выгрузки в xls-файл",
+          "type": "string"
+        },
+        "error": {
+          "description": "Текст ошибки",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

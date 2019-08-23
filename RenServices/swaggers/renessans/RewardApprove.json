@@ -1,0 +1,184 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "подписание акта агентом путем ввода текущего пароля от Sixtinum",
+    "version": "1.0.0",
+    "title": "подписание акта агентом путем ввода текущего пароля от Sixtinum"
+  },
+  "paths": {
+    "/services/func/rest-api/sign/reward/start/{documentGuid}": {
+      "post": {
+        "tags": [
+          "rewardApprove"
+        ],
+        "summary": "Начать согласование акта агента",
+        "operationId": "reward_approve_start",
+        "description": "сервис \"Начать согласование акта агента\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "description": "гуид документа, который необходимо подписать",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена успешно. В ответе pdf-файл для отображения пользователю",
+            "schema": {
+              "type": "string",
+              "format": "byte"
+            }
+          },
+          "403": {
+            "description": "Операция не может быть выполнена",
+            "schema": {
+              "$ref": "#/definitions/forbiddenResponse"
+            }
+          },
+          "405": {
+            "description": "Операция не может быть выполнена под данным пользователем"
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "description": "Ошибка вызова сервиса",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 026 - Данный документ не находится на статусе \"На согласовании\", \n 027 - Данный пользователь не является агентом, \n 028 - В документе не заполнено поле \"Дата назначения статуса\" или \"Предельная дата подписания акта\", \n 029 - Срок согласования данного акта истек, \n 030 - В связи с истечением даты окончания расчетного периода, данный акт будет оплачен вместе с актом следующего отчетного периода (сообщение пользователю - Уважаемый пользователь! В связи с истечением даты окончания расчетного периода, данный акт будет оплачен вместе с актом следующего отчетного периода.), \n 031 - не пройдены проверки документа, \n 032 - Не удалось определить шаблон для печати документа с GUID, \n 033 - Не удалось найти или сформировать PDF-документ"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                },
+                "interval": {
+                  "type": "integer",
+                  "description": "Срок согласования акта. Заполняется только для 029 ошибки"
+                },
+                "endDate": {
+                  "type": "string",
+                  "description": "Дата истечения согласования акта. Заполняется только для 029 ошибки"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/func/rest-api/sign/reward/end/{documentGuid}": {
+      "post": {
+        "tags": [
+          "rewardApprove"
+        ],
+        "summary": "Закончить согласование акта агента",
+        "operationId": "reward_approve_end",
+        "description": "сервис \"Закончить согласование акта агента\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "description": "гуид документа, который необходимо подписать",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена успешно"
+          },
+          "403": {
+            "description": "Операция не может быть выполнена",
+            "schema": {
+              "$ref": "#/definitions/forbiddenResponse"
+            }
+          },
+          "405": {
+            "description": "Операция не может быть выполнена под данным пользователем"
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "description": "Ошибка вызова сервиса",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 019 - Ранее сохраненный документ не был загружен, \n 035 - Для данного документа не было начато согласование"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "error_scheme": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Код ошибки. Принимает значения:\n 001 - Передан документ, который не может быть распечатан в pdf",
+          "type": "string"
+        },
+        "error": {
+          "description": "Текст ошибки",
+          "type": "string"
+        }
+      }
+    },
+    "forbiddenResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Код ошибки. Возможные значения: \n 017 - Документ уже подписывается другим пользователем"
+        },
+        "error": {
+          "type": "string",
+          "description": "Текст ошибки"
+        },
+        "login": {
+          "type": "string",
+          "description": "Логин пользователя, который уже выполняет операцию"
+        }
+      }
+    }
+  }
+}

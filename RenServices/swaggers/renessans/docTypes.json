@@ -1,18 +1,18 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "rest сервисы для работы с кредитными продуктами",
+    "description": "rest сервисы для работы со справочником типов документов",
     "version": "1.0.0",
-    "title": "rest сервисы для работы с кредитными продуктами"
+    "title": "rest сервисы для работы со справочником типов документов"
   },
   "paths": {
-    "/services/rest-api/simple/list/loanProduct": {
+    "/services/rest-api/simple/list/docType": {
       "get": {
         "tags": [
-          "loanProductListSimple"
+          "signingPep"
         ],
-        "summary": "получение списка кредитных продуктов",
-        "operationId": "simple_loanProducts_list",
+        "summary": "получение списка типов документов",
+        "operationId": "simple_docType_list",
         "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
         "security": [
           {
@@ -54,7 +54,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "./schemes/LoanProducts.schema.json"
+                "$ref": "#/definitions/docType"
               }
             }
           },
@@ -73,13 +73,13 @@
         }
       }
     },
-    "/services/rest-api/list/loanProduct": {
+    "/services/rest-api/list/docType": {
       "post": {
         "tags": [
-          "loanProductList"
+          "signingPep"
         ],
         "summary": "сохранение параметров фильтрации",
-        "operationId": "post_loanProducts_list",
+        "operationId": "post_docTypes_list",
         "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
         "security": [
           {
@@ -113,14 +113,14 @@
         }
       }
     },
-    "/services/rest-api/list/loanProduct/{id}": {
+    "/services/rest-api/list/docType/{id}": {
       "get": {
         "tags": [
-          "loanProductList"
+          "signingPep"
         ],
         "summary": "получение списка документов",
-        "operationId": "get_loanProduct_list",
-        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/loanProduct",
+        "operationId": "get_docType_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/docType",
         "security": [
           {
             "Bearer": []
@@ -149,7 +149,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "./schemes/LoanProducts.schema.json"
+                "$ref": "#/definitions/docType"
               }
             }
           },
@@ -171,14 +171,14 @@
         }
       }
     },
-    "/services/rest-api/loanProducts/{id}": {
+    "/services/rest-api/docTypes/{id}": {
       "get": {
         "tags": [
-          "loanProduct"
+          "signingPep"
         ],
-        "summary": "получение документа по гуиду",
-        "operationId": "loanProduct_get",
-        "description": "получение одного Кредитного продукта по гуиду",
+        "summary": "получение одного типа документа по гуиду",
+        "operationId": "docType_get",
+        "description": "получение записи одного типа документов",
         "security": [
           {
             "Bearer": []
@@ -188,7 +188,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "гуид партнера",
+            "description": "гуид документа торговой точки",
             "required": true,
             "type": "string"
           }
@@ -198,7 +198,7 @@
             "description": "найденный документ",
             "schema": {
               "type": "object",
-              "$ref": "./schemes/LoanProducts.schema.json"
+              "$ref": "#/definitions/docType"
             }
           },
           "400": {
@@ -211,7 +211,7 @@
             }
           },
           "404": {
-            "description": "партнер не найден"
+            "description": "торговая точка не найдена"
           },
           "500": {
             "description": "Internal Server Error"
@@ -221,8 +221,8 @@
     }
   },
   "definitions": {
-    "LoanProduct": {
-      "$ref": "./schemes/LoanProducts.schema.json"
+    "docType": {
+      "$ref": "./schemes/DocType.schema.json"
     }
   }
 }

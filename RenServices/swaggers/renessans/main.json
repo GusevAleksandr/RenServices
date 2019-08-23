@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "title": "rest сервисы ренессанс"
   },
+  "host": "195.137.187.222",
   "tags": [
     {
       "name": "partnerListSimple",
@@ -145,6 +146,18 @@
     {
       "name": "printService",
       "description": "сервис получения pdf-файла для заданного документа"
+    },
+    {
+      "name": "exportService",
+      "description": "сервис получения отчета по выданным кредитам (xls) из заданного акта вознаграждения"
+    },
+    {
+      "name": "signingPep",
+      "description": "подписание договора/акта партнером с помощью новой ПЭП"
+    },
+    {
+      "name": "rewardApprove",
+      "description": "подписание акта агентом путем ввода текущего пароля от Sixtinum"
     }
   ],
   "securityDefinitions": {
@@ -287,6 +300,33 @@
       "$ref": "./LoanProducts.json#/paths/~1services~1rest-api~1loanProducts~1{id}"
     },
 
+    "/services/rest-api/simple/list/docType": {
+      "$ref": "./docTypes.json#/paths/~1services~1rest-api~1simple~1list~1docType"
+    },
+    "/services/rest-api/docTypes/{id}": {
+      "$ref": "./docTypes.json#/paths/~1services~1rest-api~1docTypes~1{id}"
+    },
+    "/services/func/rest-api/sign/new/start/{documentGuid}": {
+      "$ref": "./SigningPep.json#/paths/~1services~1func~1rest-api~1sign~1new~1start~1{documentGuid}"
+    },
+    "/services/func/rest-api/sign/new/main/{documentGuid}": {
+      "$ref": "./SigningPep.json#/paths/~1services~1func~1rest-api~1sign~1new~1main~1{documentGuid}"
+    },
+    "/services/func/rest-api/sign/new/approve/{documentGuid}": {
+      "$ref": "./SigningPep.json#/paths/~1services~1func~1rest-api~1sign~1new~1approve~1{documentGuid}"
+    },
+    "/services/func/rest-api/sign/new/attach": {
+      "$ref": "./SigningPep.json#/paths/~1services~1func~1rest-api~1sign~1new~1attach"
+    },
+    "/services/func/rest-api/sign/new/reject/{documentGuid}": {
+      "$ref": "./SigningPep.json#/paths/~1services~1func~1rest-api~1sign~1new~1reject~1{documentGuid}"
+    },
+    "/services/func/rest-api/sign/reward/start/{documentGuid}": {
+      "$ref": "./RewardApprove.json#/paths/~1services~1func~1rest-api~1sign~1reward~1start~1{documentGuid}"
+    },
+    "/services/func/rest-api/sign/reward/end/{documentGuid}": {
+      "$ref": "./RewardApprove.json#/paths/~1services~1func~1rest-api~1sign~1reward~1end~1{documentGuid}"
+    },
 
     "/services/rest-api/auth/authorization": {
       "$ref": "../core/main.json#/paths/~1services~1rest-api~1auth~1authorization"
@@ -302,9 +342,6 @@
     },
     "/services/rest-api/auth/user/password": {
       "$ref": "../core/main.json#/paths/~1services~1rest-api~1auth~1user~1password"
-    },
-    "/services/func/rest-api/print/{documentGuid}": {
-      "$ref": "./Print.json#/paths/~1services~1func~1rest-api~1print~1{documentGuid}"
     },
     "/services/rest-api/auth/user/details": {
       "get": {
@@ -333,16 +370,37 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
+    },
+    "/services/func/rest-api/export/{documentGuid}": {
+      "$ref": "ExportService.json#/paths/~1services~1func~1rest-api~1export~1{documentGuid}"
+    },
+    "/services/func/rest-api/print/{documentGuid}": {
+      "$ref": "PrintService.json#/paths/~1services~1func~1rest-api~1print~1{documentGuid}"
     }
   },
   "definitions": {
+    "unathorizedExceptionResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Код ошибки. Возможные значения: \n 001 - Секретный ключ jwt не удается загрузить \n 002 - Ошибка разбора jwt-токена \n 003 - Время жизни jwt-токена истекло \n 008 - Введены некоретные логин/пароль \n 009 - Пользователь был отключен \n 010 - Время действия пароля истекло \n 011 - Пользователь был заблокирован"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
     "DocListRequest": {
       "$ref": "../core/definitions.json#/definitions/DocListRequest"
     },

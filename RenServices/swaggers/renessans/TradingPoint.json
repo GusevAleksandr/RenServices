@@ -62,7 +62,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -99,7 +102,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -151,7 +157,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "404": {
             "description": "запрос с переданным идентификатором не найден"
@@ -196,7 +205,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "404": {
             "description": "торговая точка не найдена"

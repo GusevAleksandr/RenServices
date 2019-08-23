@@ -141,10 +141,16 @@
       "description": "Режим работы",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -197,10 +203,16 @@
       "description": "Бизнес группа IL",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -269,10 +281,16 @@
       "description": "Канал приема",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -285,10 +303,16 @@
       "description": "Канал отправки",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -538,10 +562,16 @@
             "description": "Кого",
             "type": "object",
             "properties": {
-              "content": {
-                "type": "string"
-              },
-              "code": {
+              "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
+        },
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
                 "type": "string"
               },
               "value": {
@@ -571,10 +601,16 @@
             "description": "Действие",
             "type": "object",
             "properties": {
-              "content": {
-                "type": "string"
-              },
-              "code": {
+              "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
+        },
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
                 "type": "string"
               },
               "value": {

@@ -17,6 +17,10 @@
     {
       "name": "authorization",
       "description": "сервис аутентификации и работы с пользовательскими настройками"
+    },
+    {
+      "name": "lifeCycle",
+      "description": "сервис вызова ЖЦ"
     }
   ],
   "securityDefinitions": {
@@ -93,7 +97,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -133,7 +140,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -183,7 +193,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "404": {
             "description": "запрос с переданным идентификатором не найден"
@@ -237,7 +250,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "404": {
             "description": "запрос с переданным идентификатором не найден"
@@ -260,7 +276,7 @@
           "application/json"
         ],
         "produces": [
-          "text/plain"
+          "*/*"
         ],
         "parameters": [
           {
@@ -284,7 +300,10 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -313,7 +332,10 @@
             "description": "возвращается в том случае, если токен валиден"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           }
         }
       }
@@ -353,10 +375,25 @@
             "description": "если смена пароля прошла успешно, возвращается ответ с 200м кодом"
           },
           "400": {
-            "description": "bad input parameter"
+            "description": "bad input parameter",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 006 - Не введен пароль"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -397,7 +434,19 @@
             }
           },
           "400": {
-            "description": "bad input parameter"
+            "description": "bad input parameter",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 006 - Не введен пароль"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -429,10 +478,25 @@
             "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом. В ответе будет содержаться сгенерированный пароль"
           },
           "400": {
-            "description": "bad input parameter"
+            "description": "bad input parameter",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 006 - Не введен пароль"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -467,7 +531,227 @@
             "description": "bad input parameter"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/core/v1/lifeCycle/{transitionName}": {
+      "post": {
+        "tags": [
+          "lifeCycle"
+        ],
+        "summary": "выполнение перехода ЖЦ",
+        "operationId": "lifeCycle_simple",
+        "description": "выполнение перехода ЖЦ",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "данные для вызова ЖЦ",
+            "required": true,
+            "schema": {
+              "$ref": "definitions.json#/definitions/lifeCycleRequest"
+            }
+          },
+          {
+            "in": "path",
+            "name": "transitionName",
+            "description": "название перехода ЖЦ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом",
+            "schema": {
+              "$ref": "definitions.json#/definitions/lifeCycleResponse"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/core/v1/lifeCycle/{documentGuid}/{transitionName}/feasibility": {
+      "post": {
+        "tags": [
+          "lifeCycle"
+        ],
+        "summary": "проверить возможность выполнения ЖЦ",
+        "operationId": "lifeCycle_feasibility",
+        "description": "проверить возможность выполнения ЖЦ",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "documentGuid",
+            "description": "гуид документа",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "transitionName",
+            "description": "название перехода ЖЦ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "данный ЖЦ для данного документа можно выполнить"
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "404": {
+            "description": "документ не найден"
+          },
+          "403": {
+            "description": "данный переход не доступен для документа"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/core/v1/lifeCycle/async/{id}": {
+      "post": {
+        "tags": [
+          "lifeCycle"
+        ],
+        "summary": "добавление задачи на выполнение перехода ЖЦ",
+        "operationId": "lifeCycle_async",
+        "description": "добавление задачи на выполнение перехода ЖЦ",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "данные для вызова ЖЦ",
+            "required": true,
+            "schema": {
+              "$ref": "definitions.json#/definitions/lifeCycleRequest"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "description": "название перехода ЖЦ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "возвращается идентификатор задания на выполнение ЖЦ",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "lifeCycle"
+        ],
+        "summary": "получение данных выполнения задачи на выполнение ЖЦ",
+        "operationId": "lifeCycle_async_get",
+        "description": "получение данных выполнения задачи на выполнение ЖЦ",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "идентификатор задания на выполнение ЖЦ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "задание завершило выполнение. Возвращается результат выполнения",
+            "schema": {
+              "$ref": "definitions.json#/definitions/lifeCycleResponse"
+            }
+          },
+          "202": {
+            "description": "выполнение задания не было завершено"
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -560,10 +844,10 @@
       }
     },
     "UserDetailRoles": {
-      "type" : "array",
-      "description" : "роли пользователя",
-      "items" : {
-        "type" : "string"
+      "type": "array",
+      "description": "роли пользователя",
+      "items": {
+        "type": "string"
       }
     },
     "UserDetails": {
@@ -593,7 +877,20 @@
       }
     },
     "DocListRequest": {
-      "$ref":  "./definitions.json#/definitions/DocListRequest"
+      "$ref": "./definitions.json#/definitions/DocListRequest"
+    },
+    "unathorizedExceptionResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Код ошибки. Возможные значения: \n 001 - Секретный ключ jwt не удается загрузить \n 002 - Ошибка разбора jwt-токена \n 003 - Время жизни jwt-токена истекло \n 008 - Введены некоретные логин/пароль \n 009 - Пользователь был отключен \n 010 - Время действия пароля истекло \n 011 - Пользователь был заблокирован"
+        },
+        "error": {
+          "type": "string",
+          "description": "Текст ошибки"
+        }
+      }
     }
   },
   "parameters": {
@@ -666,11 +963,10 @@
         "type": "string"
       }
     },
-
     "offset": {
       "in": "query",
       "name": "offset",
-      "description": "сдвиг выводимого результата относительно начала списка. Нумерация начинается с 1",
+      "description": "сдвиг выводимого результата относительно начала списка. Значение по умолчанию 0",
       "required": false,
       "type": "integer"
     },
@@ -681,7 +977,6 @@
       "required": false,
       "type": "integer"
     },
-
     "page": {
       "in": "query",
       "name": "page",

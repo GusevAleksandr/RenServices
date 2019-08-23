@@ -1,6 +1,10 @@
 {
   "type": "object",
   "properties": {
+    "guidDoc": {
+      "description": "ГУИД документа",
+      "type": "string"
+    },
     "kpi": {
       "description": "Предельное время обработки ",
       "type": "integer"
@@ -45,10 +49,16 @@
       "description": "Тип Партнера",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -149,10 +159,16 @@
       "description": "Тип контрагента",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {

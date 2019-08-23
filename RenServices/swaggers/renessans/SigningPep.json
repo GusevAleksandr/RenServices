@@ -1,0 +1,505 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "подписание договора/акта партнером с помощью новой ПЭП",
+    "version": "1.0.0",
+    "title": "подписание договора/акта партнером с помощью новой ПЭП"
+  },
+  "paths": {
+    "/services/func/rest-api/sign/new/start/{documentGuid}": {
+      "post": {
+        "tags": [
+          "signingPep"
+        ],
+        "summary": "Начать подписание/согласование",
+        "operationId": "signing_Pep_start",
+        "description": "сервис \"Начать подписание/согласование\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "description": "гуид документа, который необходимо подписать",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена успешно. В ответе pdf-файл для отображения пользователю",
+            "schema": {
+              "type": "string",
+              "format": "byte"
+            }
+          },
+          "403": {
+            "description": "Операция не может быть выполнена",
+            "schema": {
+              "$ref": "#/definitions/forbiddenResponse"
+            }
+          },
+          "405": {
+            "description": "Операция не может быть выполнена под данным пользователем"
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "description": "Ошибка вызова сервиса",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 012 - Метод может быть вызван только для актов или договоров \n, 013 - Выполнение операции запрещено со стороны сервера безопасности, \n 014 - Не найдена доверенность, \n 015 - Не удалось получить хэш PDF-документа, \n 016 - Не удалось сформировать PDF-документ для добавления во врожение,\n 018 - Не удалось определить шаблон для печати документа"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/func/rest-api/sign/new/main/{documentGuid}": {
+      "post": {
+        "tags": [
+          "signingPep"
+        ],
+        "summary": "Подписать/согласовать договор/ДС/акт",
+        "operationId": "signing_Pep_main",
+        "description": "сервис \"Подписать/согласовать договор/ДС/акт\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "description": "гуид документа, над которым необходимо выполнить операцию",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена успешно",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "hashCode": {
+                  "type": "string",
+                  "description": "сгенерированный хеш-код"
+                },
+                "timeoutInSeconds": {
+                  "type": "string",
+                  "description": "время, через которое можно запросить следующий смс-код"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Операция не может быть выполнена",
+            "schema": {
+              "$ref": "#/definitions/forbiddenResponse"
+            }
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "405": {
+            "description": "Для данного документа не было начато подписание"
+          },
+          "423": {
+            "description": "Выполнение операции временно заблокировано из-за неверного вода смс-кода",
+            "schema": {
+              "properties": {
+                "restTime": {
+                  "type": "string",
+                  "description": "время в мс, через которое можно будет выполнить повторный запрос"
+                },
+                "errorText": {
+                  "type": "string",
+                  "description": "полный текст ошибки"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка вызова сервиса",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 019 - Ранее сохраненный документ не был загружен"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/func/rest-api/sign/new/approve/{documentGuid}": {
+      "post": {
+        "tags": [
+          "signingPep"
+        ],
+        "summary": "Подтвердить подпись договора/ДС/акта",
+        "operationId": "signing_Pep_approve",
+        "description": "сервис \"Подтвердить подпись договора/ДС/акта\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "description": "гуид документа, над которым необходимо выполнить операцию",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена успешно"
+          },
+          "403": {
+            "description": "Операция не может быть выполнена",
+            "schema": {
+              "$ref": "#/definitions/forbiddenResponse"
+            }
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "405": {
+            "description": "Для данного документа не было начато подписание"
+          },
+          "423": {
+            "description": "Выполнение операции временно заблокировано из-за неверного вода смс-кода",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 022 - Срок действия смс-кода истек. Необходимо запросить новый код, \n 024 - Введен неверный код подтверждения"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "текст ошибки"
+                },
+                "attempts": {
+                  "type": "string",
+                  "description": "оставшееся количество попыток ввода смс"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка вызова сервиса",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 019 - Ранее сохраненный документ не был загружен, \n 020 - Некорректное значение даты отправки sms, \n 021 - Пользователь был временно заблокирован! Превышено кол-во попыток, \n 023 - Код подтверждения не введен, \n "
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/func/rest-api/sign/new/attach": {
+      "put": {
+        "tags": [
+          "signingPep"
+        ],
+        "summary": "Загрузить файл с документами",
+        "operationId": "signing_Pep_add_attach",
+        "description": "сервис \"Загрузить файл с документами\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "содержимое запроса на загрузку",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fileName": {
+                  "type": "string",
+                  "description": "название файла"
+                },
+                "documentType": {
+                  "type": "string",
+                  "description": "тип файла"
+                },
+                "fileDescription": {
+                  "type": "string",
+                  "description": "описание файла"
+                },
+                "content": {
+                  "type": "string",
+                  "format": "byte",
+                  "description": "загружаемый файл, представленный в виде base64"
+                },
+                "documentGuid": {
+                  "type": "string",
+                  "description": "гуид документа, в который необходимо загрузить файл"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена успешно"
+          },
+          "400": {
+            "description": "Ошибка вызова сервиса",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 025 - Документ для загрузки вложения не найден, \n 026 - Акт уже был подписан"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/func/rest-api/sign/new/reject/{documentGuid}": {
+      "post": {
+        "tags": [
+          "signingPep"
+        ],
+        "summary": "Отменить подписание договора/ДС/акта",
+        "operationId": "signing_Pep_reject",
+        "description": "сервис \"Отменить подписание договора/ДС/акта\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "documentGuid",
+            "in": "path",
+            "description": "гуид документа, над которым необходимо выполнить операцию",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Операция выполнена успешно"
+          },
+          "404": {
+            "description": "Документ не найден"
+          },
+          "405": {
+            "description": "Для данного документа не было начато подписание"
+          },
+          "400": {
+            "description": "Ошибка вызова сервиса",
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Код ошибки. Возможные значения: \n 025 - Для данного документа не была выполнена операция начала подписания"
+                },
+                "error": {
+                  "type": "string",
+                  "description": "Текст ошибки"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/func/rest-api/sign/reject/partner": {
+      "post": {
+        "tags": [
+          "signingPep"
+        ],
+        "summary": "Отклоненить договор/ДС партнером",
+        "operationId": "signing_pep_partner_reject",
+        "description": "сервис \"Отклонить договор/ДС\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/definitions.json#/definitions/lifeCycleRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом",
+            "schema": {
+              "$ref": "../core/definitions.json#/definitions/lifeCycleResponse"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/func/rest-api/sign/reject/agent": {
+      "post": {
+        "tags": [
+          "signingPep"
+        ],
+        "summary": "Отклоненить акта агентом",
+        "operationId": "signing_pep_partner_reject",
+        "description": "сервис \"Отклонить акт\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/definitions.json#/definitions/lifeCycleRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом",
+            "schema": {
+              "$ref": "../core/definitions.json#/definitions/lifeCycleResponse"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "error_scheme": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Код ошибки. Принимает значения:\n 001 - Передан документ, который не может быть распечатан в pdf",
+          "type": "string"
+        },
+        "error": {
+          "description": "Текст ошибки",
+          "type": "string"
+        }
+      }
+    },
+    "forbiddenResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Код ошибки. Возможные значения: \n 017 - Документ уже подписывается другим пользователем"
+        },
+        "error": {
+          "type": "string",
+          "description": "Текст ошибки"
+        },
+        "login": {
+          "type": "string",
+          "description": "Логин пользователя, который уже выполняет операцию"
+        }
+      }
+    }
+  }
+}

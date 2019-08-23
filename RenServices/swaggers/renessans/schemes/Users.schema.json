@@ -162,10 +162,16 @@
       "description": "Статус ТМ",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -210,10 +216,16 @@
       "description": "Тип ТМ",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {

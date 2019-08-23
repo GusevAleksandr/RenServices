@@ -17,10 +17,16 @@
       "description": "Группа продукта",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -77,10 +83,16 @@
       "description": "Кого",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {

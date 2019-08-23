@@ -9,24 +9,38 @@
       "description": "Документ",
       "type": "object",
       "properties": {
-        "content": {
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
+        },
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
-        "type": "string"
-      },
-      "value": {
-        "type": "string",
-        "description": "actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП. Возможные значения: \"actAward\", \"contract\", \"additionalAgreement\", \"contractPEP\""
+        "value": {
+          "type": "string",
+          "description": "actAward - акт по вознаграждению, contract - договор, additionalAgreement - дополнительное соглашение, contractPEP - Соглашение о ПЭП. Возможные значения: \"actAward\", \"contract\", \"additionalAgreement\", \"contractPEP\""
+        }
       }
     },
     "subject": {
       "description": "Тип контрагента",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -43,10 +57,16 @@
       "description": "Документ Доп",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -63,10 +83,16 @@
       "description": "Форма создания",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -114,10 +140,16 @@
       "description": "Стороны договорились",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -146,10 +178,16 @@
       "description": "Тип Партнера",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -166,10 +204,16 @@
       "description": "Использовать ПЭП",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "type": "string"
         },
         "value": {
@@ -282,10 +326,16 @@
       "description": "Способ заполнения даты",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "description": "Код",
           "type": "string"
         },
@@ -315,10 +365,16 @@
       "description": "Режим работы ТТ",
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string"
+        "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
         },
-        "code": {
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
           "description": "Код ТТ",
           "type": "string"
         },
@@ -735,10 +791,16 @@
             "description": "Режим работы",
             "type": "object",
             "properties": {
-              "content": {
-                "type": "string"
-              },
-              "code": {
+              "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
+        },
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
                 "description": "Код ТТ",
                 "type": "string"
               },
@@ -1202,10 +1264,16 @@
                   "description": "Единица измерения",
                   "type": "object",
                   "properties": {
-                    "content": {
-                      "type": "string"
-                    },
-                    "code": {
+                    "name": {
+          "type": "string",
+          "description": "Отображаемое значение"
+        },
+        "enumType": {
+          "type": "string",
+          "description": "Техническое поле"
+        },
+        "description": {
+          "description": "Отображаемое значение",
                       "description": "Код услуги",
                       "type": "string"
                     },

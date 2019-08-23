@@ -1,0 +1,316 @@
+{
+  "type": "object",
+  "properties": {
+    "signatures": {
+      "type": "array"
+    },
+    "metaType": {
+      "type": "string",
+      "enum": [
+        "FORMULAR",
+        "DICTIONARY",
+        "SERVICE"
+      ]
+    },
+    "extraData": {
+      "type": "array"
+    },
+    "name": {
+      "comment": "Наименование",
+      "type": "string"
+    },
+    "partnerIsKey": {
+      "comment": "Признак ключевого партнера",
+      "type": "boolean"
+    },
+    "signerPartner": {
+      "comment": "Подписанты партнеров",
+      "type": "boolean"
+    },
+    "signerBank": {
+      "comment": "Подписанты банка",
+      "type": "boolean"
+    },
+    "fileType": {
+      "comment": "Тип файла",
+      "type": "string"
+    },
+    "formularsIsAgent": {
+      "comment": "агенты",
+      "type": "boolean"
+    },
+    "formularsIsPartner": {
+      "comment": "Партнеры в форме ЮЛ",
+      "type": "boolean"
+    },
+    "formularsIsPartnerIP": {
+      "comment": "Партнеры в форме ИП",
+      "type": "boolean"
+    },
+    "formularsIsTT": {
+      "comment": "торговые точки",
+      "type": "boolean"
+    },
+    "formularsIsReward": {
+      "comment": "акты по вознаграждению",
+      "type": "boolean"
+    },
+    "formularsIsTask": {
+      "comment": "задания",
+      "type": "boolean"
+    },
+    "formularsIsContract": {
+      "comment": "договоры и ДС",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRCONNECTTT": {
+      "comment": "Привязка дополнительных ТТ",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRCONNECTCP": {
+      "comment": "Привязка дополнительных КП",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRDISABLECP": {
+      "comment": "Отключение КП",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRDISABLETT": {
+      "comment": "Отключение ТТ",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRNEWCONP": {
+      "comment": "Заключение нового договора",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRENDCONP": {
+      "comment": "Расторжение договора партнера",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRNEWAA": {
+      "comment": "Заключение ДС",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRNEWBANK": {
+      "comment": "Изменение реквизитов",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRNEWNAME": {
+      "comment": "Изменение наименования",
+      "type": "boolean"
+    },
+    "isTaskPartnerRCRCHANGESR": {
+      "comment": "Изменение схемы вознаграждения",
+      "type": "boolean"
+    },
+    "isTaskAgentsRCRNEWCONA": {
+      "comment": "Переподписание договора",
+      "type": "boolean"
+    },
+    "isTaskAgentsRCRNEWPASPORT": {
+      "comment": "Изменение паспортных данных",
+      "type": "boolean"
+    },
+    "isTaskAgentsRCRPROLONGA": {
+      "comment": "Пролонгация договора",
+      "type": "boolean"
+    },
+    "isTaskAgentsRCRENDCONA": {
+      "comment": "Расторжение договора агента",
+      "type": "boolean"
+    },
+    "techPanelTaskFiltr": {
+      "comment": "Задания Дополнительный фильтр",
+      "type": "string"
+    },
+    "agentState": {
+      "comment": "Агенты Статусы объекта привязки",
+      "items": {
+        "type": "object",
+        "properties": {
+          "docType": {
+            "comment": "ТипФормуляра",
+            "type": "string"
+          },
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "partnerState": {
+      "comment": "Партнеры ЮЛ Статусы объекта привязки",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          },
+          "docType": {
+            "comment": "ТипФормуляра",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "partnerIPState": {
+      "comment": "Партнеры ИП Статусы объекта привязки",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          },
+          "docType": {
+            "comment": "ТипФормуляра",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "rewardState": {
+      "comment": "Акты Статусы объекта привязки",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          },
+          "docType": {
+            "comment": "ТипФормуляра",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "taskState": {
+      "comment": "Задания Статусы объекта привязки",
+      "items": {
+        "type": "object",
+        "properties": {
+          "taskdoctype": {
+            "comment": "Тип формуляра задания",
+            "type": "string"
+          },
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "contractState": {
+      "comment": "Договоры Статусы объекта привязки",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          },
+          "docType": {
+            "comment": "ТипФормуляра",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "signerPartnerState": {
+      "comment": "Статусы для подписантов партнера",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          },
+          "docType": {
+            "comment": "ТипФормуляра",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "signerBankState": {
+      "comment": "Статусы для подписантов банка",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          },
+          "docType": {
+            "comment": "ТипФормуляра",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    },
+    "ttState": {
+      "comment": "ТТ Статусы объекта привязки",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stateName": {
+            "comment": "Статус",
+            "type": "string"
+          },
+          "stateSystemName": {
+            "comment": "Системный статус",
+            "type": "string"
+          },
+          "docType": {
+            "comment": "ТипФормуляра",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    }
+  }
+}

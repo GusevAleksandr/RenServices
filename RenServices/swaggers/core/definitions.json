@@ -62,6 +62,129 @@
           "default": 20
         }
       }
+    },
+    "lifeCycleRequest": {
+      "type": "object",
+      "properties": {
+        "documentGuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lifeCycleParams": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Название переменной"
+              },
+              "value": {
+                "type": "string",
+                "description": "Значение переменной"
+              },
+              "docFieldType": {
+                "type": "string",
+                "description": "Тип переменной. По умолчанию, если не заполнено, принимает значение STRING",
+                "enum": [
+                  "ENUM",
+                  "STRING",
+                  "TEXT",
+                  "ATTACH_LINK",
+                  "BOOLEAN",
+                  "BYTE",
+                  "SHORT",
+                  "INTEGER",
+                  "SPIN",
+                  "LONG",
+                  "DECIMAL",
+                  "MONEY",
+                  "CURRENCY",
+                  "DATE",
+                  "DATETIME",
+                  "UUID",
+                  "LIST",
+                  "ATTRIBUTE"
+                ]
+              }
+            }
+          }
+        },
+        "traceMode": {
+          "type": "boolean",
+          "description": "включение режима трасировки. В этом решиме будет выведена подробная информация о выполнении операции. По умолчанию false"
+        }
+      }
+    },
+    "lifeCycleResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hasError": {
+            "type": "boolean",
+            "description": "имеются ли ошибки выполнения"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "ошибки выполнения"
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "сообщения, полученные во время выполнения операции"
+          },
+          "executionHistory": {
+            "type": "string",
+            "description": "история выполнения операции"
+          },
+          "documentResultMap": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "guid": {
+                  "type": "string",
+                  "description": "гуид документа"
+                },
+                "value": {
+                  "type": "object",
+                  "description": "результат выполнения операции",
+                  "properties": {
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "SUCCESS",
+                        "ERROR",
+                        "ROLLBACK"
+                      ]
+                    },
+                    "outState": {
+                      "type": "string"
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "stackTrace": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
