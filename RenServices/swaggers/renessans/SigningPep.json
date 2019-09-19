@@ -183,6 +183,21 @@
         ],
         "parameters": [
           {
+            "in": "body",
+            "name": "body",
+            "description": "данные для вызова ЖЦ",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userCode": {
+                  "type": "string",
+                  "description": "смс-код, введенный пользователем для завершения подписания"
+                }
+              }
+            }
+          },
+          {
             "name": "documentGuid",
             "in": "path",
             "description": "гуид документа, над которым необходимо выполнить операцию",
@@ -394,7 +409,7 @@
         "tags": [
           "signingPep"
         ],
-        "summary": "Отклоненить договор/ДС партнером",
+        "summary": "Отклонить договор/ДС партнером",
         "operationId": "signing_pep_partner_reject",
         "description": "сервис \"Отклонить договор/ДС\"",
         "security": [
@@ -404,12 +419,18 @@
         ],
         "parameters": [
           {
-            "$ref": "../core/definitions.json#/definitions/lifeCycleRequest"
+            "in": "body",
+            "name": "body",
+            "description": "данные для вызова ЖЦ",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/partnerLifeCycleRequest"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом",
+            "description": "результат выполнения операции",
             "schema": {
               "$ref": "../core/definitions.json#/definitions/lifeCycleResponse"
             }
@@ -434,8 +455,8 @@
         "tags": [
           "signingPep"
         ],
-        "summary": "Отклоненить акта агентом",
-        "operationId": "signing_pep_partner_reject",
+        "summary": "Отклонить акт агентом",
+        "operationId": "signing_pep_agent_reject",
         "description": "сервис \"Отклонить акт\"",
         "security": [
           {
@@ -444,12 +465,64 @@
         ],
         "parameters": [
           {
-            "$ref": "../core/definitions.json#/definitions/lifeCycleRequest"
+            "in": "body",
+            "name": "body",
+            "description": "данные для вызова ЖЦ",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/agentLifeCycleRequest"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "если сброс пароля прошел успешно, возвращается ответ с 200м кодом",
+            "description": "результат выполнения операции",
+            "schema": {
+              "$ref": "../core/definitions.json#/definitions/lifeCycleResponse"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/func/rest-api/reward/change": {
+      "post": {
+        "tags": [
+          "signingPep"
+        ],
+        "summary": "Исправление счетов в акте",
+        "operationId": "change_act",
+        "description": "сервис \"Исправление счетов в акте\"",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "данные для вызова ЖЦ",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/changeActLifeCycleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "результат выполнения операции",
             "schema": {
               "$ref": "../core/definitions.json#/definitions/lifeCycleResponse"
             }
@@ -498,6 +571,159 @@
         "login": {
           "type": "string",
           "description": "Логин пользователя, который уже выполняет операцию"
+        }
+      }
+    },
+    "partnerLifeCycleRequest": {
+      "example": {
+        "documentGuids": [
+          "e6bc13de-24a4-45bf-9106-42183c6c7584"
+        ],
+        "lifeCycleParams": [
+          {
+            "name": "errorText",
+            "value": "Документ не заполнен"
+          },
+          {
+            "name": "errorType",
+            "value": "Документы заполнены не полностью"
+          }
+        ],
+        "traceMode": true
+      },
+      "type": "object",
+      "properties": {
+        "documentGuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lifeCycleParams": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Название переменной. Принимает значения errorText или errorType"
+              },
+              "value": {
+                "type": "string",
+                "description": "Значение переменной. В случае с errorText - текст, введеный пользователем. Для errorType задается значение из списка: \n -Тестовая ошибка\n-Документы не читаемы\n-Документы заполнены не полностью\n-Отсутствуют необходимые подписи или отметки\n-Отсутствуют необходимые согласования\n-Некорректно заполнена карточка партнера\n-Некомплект\n"
+              },
+              "docFieldType": {
+                "type": "string",
+                "description": "Тип переменной. По умолчанию, если не заполнено, принимает значение STRING",
+                "enum": [
+                  "STRING",
+                  "ENUM",
+                  "TEXT",
+                  "ATTACH_LINK",
+                  "BOOLEAN",
+                  "BYTE",
+                  "SHORT",
+                  "INTEGER",
+                  "SPIN",
+                  "LONG",
+                  "DECIMAL",
+                  "MONEY",
+                  "CURRENCY",
+                  "DATE",
+                  "DATETIME",
+                  "UUID",
+                  "LIST",
+                  "ATTRIBUTE"
+                ]
+              }
+            }
+          }
+        },
+        "traceMode": {
+          "type": "boolean",
+          "description": "включение режима трасировки. В этом решиме будет выведена подробная информация о выполнении операции. По умолчанию false"
+        }
+      }
+    },
+    "agentLifeCycleRequest": {
+      "example": {
+        "documentGuids": [
+          "e6bc13de-24a4-45bf-9106-42183c6c7584"
+        ],
+        "lifeCycleParams": [
+          {
+            "name": "nonAgreeText",
+            "value": "Документ не заполнен"
+          }
+        ],
+        "traceMode": true
+      },
+      "type": "object",
+      "properties": {
+        "documentGuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lifeCycleParams": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Название переменной. Принимает значение nonAgreeText"
+              },
+              "value": {
+                "type": "string",
+                "description": "Значение переменной. Указывается причина отклонения"
+              },
+              "docFieldType": {
+                "type": "string",
+                "description": "Тип переменной. По умолчанию, если не заполнено, принимает значение STRING",
+                "enum": [
+                  "STRING",
+                  "ENUM",
+                  "TEXT",
+                  "ATTACH_LINK",
+                  "BOOLEAN",
+                  "BYTE",
+                  "SHORT",
+                  "INTEGER",
+                  "SPIN",
+                  "LONG",
+                  "DECIMAL",
+                  "MONEY",
+                  "CURRENCY",
+                  "DATE",
+                  "DATETIME",
+                  "UUID",
+                  "LIST",
+                  "ATTRIBUTE"
+                ]
+              }
+            }
+          }
+        },
+        "traceMode": {
+          "type": "boolean",
+          "description": "включение режима трасировки. В этом решиме будет выведена подробная информация о выполнении операции. По умолчанию false"
+        }
+      }
+    },
+    "changeActLifeCycleRequest": {
+      "type": "object",
+      "properties": {
+        "documentGuids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "traceMode": {
+          "type": "boolean",
+          "description": "включение режима трасировки. В этом решиме будет выведена подробная информация о выполнении операции. По умолчанию false"
         }
       }
     }

@@ -328,6 +328,18 @@
       "$ref": "./RewardApprove.json#/paths/~1services~1func~1rest-api~1sign~1reward~1end~1{documentGuid}"
     },
 
+    "/services/func/rest-api/sign/reject/partner": {
+      "$ref": "./SigningPep.json#/paths/~1services~1func~1rest-api~1sign~1reject~1partner"
+    },
+
+    "/services/func/rest-api/sign/reject/agent": {
+      "$ref": "./SigningPep.json#/paths/~1services~1func~1rest-api~1sign~1reject~1agent"
+    },
+
+    "/services/func/rest-api/reward/change": {
+      "$ref": "./SigningPep.json#/paths/~1services~1func~1rest-api~1reward~1change"
+    },
+
     "/services/rest-api/auth/authorization": {
       "$ref": "../core/main.json#/paths/~1services~1rest-api~1auth~1authorization"
     },

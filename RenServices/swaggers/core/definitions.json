@@ -89,8 +89,8 @@
                 "type": "string",
                 "description": "Тип переменной. По умолчанию, если не заполнено, принимает значение STRING",
                 "enum": [
-                  "ENUM",
                   "STRING",
+                  "ENUM",
                   "TEXT",
                   "ATTACH_LINK",
                   "BOOLEAN",
