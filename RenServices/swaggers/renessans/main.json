@@ -158,6 +158,15 @@
     {
       "name": "rewardApprove",
       "description": "подписание акта агентом путем ввода текущего пароля от Sixtinum"
+    },
+
+    {
+      "name": "division",
+      "description": "сервисы по работе со справочником дивизионов-регионов закрепления"
+    },
+    {
+      "name": "region",
+      "description": "сервисы по работе со справочником субьектов РФ"
     }
   ],
   "securityDefinitions": {
@@ -298,6 +307,33 @@
     },
     "/services/rest-api/loanProducts/{id}": {
       "$ref": "./LoanProducts.json#/paths/~1services~1rest-api~1loanProducts~1{id}"
+    },
+
+
+    "/services/rest-api/simple/list/division": {
+      "$ref": "./Division.json#/paths/~1services~1rest-api~1simple~1list~1division"
+    },
+    "/services/rest-api/list/division": {
+      "$ref": "./Division.json#/paths/~1services~1rest-api~1list~1division"
+    },
+    "/services/rest-api/list/division/{id}": {
+      "$ref": "./Division.json#/paths/~1services~1rest-api~1list~1division~1{id}"
+    },
+    "/services/rest-api/divisions/{id}": {
+      "$ref": "./Division.json#/paths/~1services~1rest-api~1divisions~1{id}"
+    },
+
+    "/services/rest-api/simple/list/region": {
+      "$ref": "./Region.json#/paths/~1services~1rest-api~1simple~1list~1region"
+    },
+    "/services/rest-api/list/region": {
+      "$ref": "./Region.json#/paths/~1services~1rest-api~1list~1region"
+    },
+    "/services/rest-api/list/region/{id}": {
+      "$ref": "./Region.json#/paths/~1services~1rest-api~1list~1region~1{id}"
+    },
+    "/services/rest-api/regions/{id}": {
+      "$ref": "./Region.json#/paths/~1services~1rest-api~1regions~1{id}"
     },
 
     "/services/rest-api/simple/list/docType": {

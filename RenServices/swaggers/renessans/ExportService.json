@@ -12,7 +12,7 @@
           "exportService"
         ],
         "summary": "получение отчета по выданным кредитам (xls) из заданного акта вознаграждения",
-        "operationId": "pdf_service",
+        "operationId": "export_service",
         "description": "сервис для получения партнером или агентом отчета по выданным кредитам (xls) из заданного акта вознаграждения",
         "security": [
           {

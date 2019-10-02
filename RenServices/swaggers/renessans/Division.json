@@ -1,0 +1,228 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "rest сервисы для работы со справочником дивизионов-регионов закрепления",
+    "version": "1.0.0",
+    "title": "rest сервисы для работы со справочником дивизионов-регионов закрепления"
+  },
+  "paths": {
+    "/services/rest-api/simple/list/division": {
+      "get": {
+        "tags": [
+          "division"
+        ],
+        "summary": "получение списка дивизионов-регионов закрепления",
+        "operationId": "simple_division_list",
+        "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/filter"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/fields"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/onlyHeaderFields"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/ordersAsc"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/ordersDesc"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/page"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/pageSize"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/offset"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/division"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/list/division": {
+      "post": {
+        "tags": [
+          "division"
+        ],
+        "summary": "сохранение параметров фильтрации",
+        "operationId": "post_divisions_list",
+        "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/postBody"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "в качестве ответа возвращается уникальный идентификатор запроса по переданным параметрам, который в последствии должен быть передан через запрос get",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/list/division/{id}": {
+      "get": {
+        "tags": [
+          "division"
+        ],
+        "summary": "получение списка документов",
+        "operationId": "get_division_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/division",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/queryId"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/page"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/pageSize"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/offset"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/division"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "404": {
+            "description": "запрос с переданным идентификатором не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/divisions/{id}": {
+      "get": {
+        "tags": [
+          "division"
+        ],
+        "summary": "получение одного дивизиона-региона закрепления по гуиду",
+        "operationId": "division_get",
+        "description": "получение записи одного дивизиона-региона закрепления по гуиду",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "гуид документа торговой точки",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "найденный документ",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/division"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "404": {
+            "description": "торговая точка не найдена"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "division": {
+      "$ref": "./schemes/Division.schema.json"
+    }
+  }
+}

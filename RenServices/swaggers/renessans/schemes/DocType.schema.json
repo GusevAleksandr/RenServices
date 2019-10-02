@@ -1,20 +1,6 @@
 {
   "type": "object",
   "properties": {
-    "signatures": {
-      "type": "array"
-    },
-    "metaType": {
-      "type": "string",
-      "enum": [
-        "FORMULAR",
-        "DICTIONARY",
-        "SERVICE"
-      ]
-    },
-    "extraData": {
-      "type": "array"
-    },
     "name": {
       "comment": "Наименование",
       "type": "string"

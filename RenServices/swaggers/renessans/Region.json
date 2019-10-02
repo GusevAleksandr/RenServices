@@ -1,0 +1,228 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "rest сервисы для работы со справочником субьектов РФ",
+    "version": "1.0.0",
+    "title": "rest сервисы для работы со справочником субьектов РФ"
+  },
+  "paths": {
+    "/services/rest-api/simple/list/region": {
+      "get": {
+        "tags": [
+          "region"
+        ],
+        "summary": "получение списка субьектов РФ",
+        "operationId": "simple_region_list",
+        "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/filter"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/fields"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/onlyHeaderFields"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/ordersAsc"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/ordersDesc"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/page"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/pageSize"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/offset"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/region"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/list/region": {
+      "post": {
+        "tags": [
+          "region"
+        ],
+        "summary": "сохранение параметров фильтрации",
+        "operationId": "post_regions_list",
+        "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/postBody"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "в качестве ответа возвращается уникальный идентификатор запроса по переданным параметрам, который в последствии должен быть передан через запрос get",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/list/region/{id}": {
+      "get": {
+        "tags": [
+          "region"
+        ],
+        "summary": "получение списка документов",
+        "operationId": "get_region_list",
+        "description": "получение списка документов ранее переданными параметрами фильтрации. Параметры фильтрации передавались post-запросом на /services/rest-api/list/region",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/queryId"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/page"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/pageSize"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/offset"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если в post-запросе, сохранившем запрос на выборку, заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/region"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "404": {
+            "description": "запрос с переданным идентификатором не найден"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/regions/{id}": {
+      "get": {
+        "tags": [
+          "region"
+        ],
+        "summary": "получение одного субьекта РФ по гуиду",
+        "operationId": "region_get",
+        "description": "получение записи одного субьекта РФ",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "гуид документа торговой точки",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "найденный документ",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/region"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+             "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "404": {
+            "description": "торговая точка не найдена"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "region": {
+      "$ref": "./schemes/Region.schema.json"
+    }
+  }
+}

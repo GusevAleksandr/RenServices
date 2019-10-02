@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "division": {
+      "description": "Дивизион",
+      "type": "string"
+    },
+    "regionCentr": {
+      "description": "Регион",
+      "type": "string"
+    },
+    "guidDoc": {
+      "description": "ГУИД документа",
+      "type": "string"
+    },
+    "sysOrgName": {
+      "description": "Системная организация (наименование)",
+      "type": "string"
+    },
+    "sysOrgSystemName": {
+      "description": "Системная организация (код)",
+      "type": "string"
+    }
+  }
+}

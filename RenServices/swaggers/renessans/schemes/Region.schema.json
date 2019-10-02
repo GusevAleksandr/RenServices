@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Наименование",
+      "type": "string"
+    },
+    "code": {
+      "description": "Код",
+      "type": "string"
+    },
+    "regionType": {
+      "description": "Вид территории",
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "code": {
+          "description": "Код",
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "description": "Принимает значения: \n-CityFederal\n -RegionRF\n -OtherAreas"
+        }
+      }
+    },
+    "regionrfregioncentr": {
+      "description": "Регионы закрепления",
+      "items": {
+        "type": "object",
+        "properties": {
+          "regionCentr": {
+            "description": "Регион",
+            "type": "string"
+          },
+          "guidDoc": {
+            "description": "ГУИД документа",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
+    }
+  }
+}
