@@ -250,6 +250,14 @@
     "/services/rest-api/list/reward": {
       "$ref": "./Reward.json#/paths/~1services~1rest-api~1list~1reward"
     },
+
+    "/services/rest-api/simple/list/reward/agent": {
+      "$ref": "./Reward.json#/paths/~1services~1rest-api~1simple~1list~1reward~1agent"
+    },
+    "/services/rest-api/list/reward/agent": {
+      "$ref": "./Reward.json#/paths/~1services~1rest-api~1list~1reward~1agent"
+    },
+
     "/services/rest-api/list/reward/{id}": {
       "$ref": "./Reward.json#/paths/~1services~1rest-api~1list~1reward~1{id}"
     },

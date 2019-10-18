@@ -11,7 +11,7 @@
         "tags": [
           "rewardListSimple"
         ],
-        "summary": "получение списка актов о вознаграждении партнера/агента",
+        "summary": "получение списка актов о вознаграждении партнера",
         "operationId": "simple_rewards_list",
         "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
         "security": [
@@ -78,7 +78,7 @@
         "tags": [
           "rewardList"
         ],
-        "summary": "сохранение параметров фильтрации",
+        "summary": "сохранение параметров фильтрации для выборки данных под партнером",
         "operationId": "post_rewards_list",
         "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
         "security": [
@@ -113,6 +113,117 @@
         }
       }
     },
+
+    "/services/rest-api/simple/list/reward/agent": {
+      "get": {
+        "tags": [
+          "rewardListSimple"
+        ],
+        "summary": "получение списка актов о вознаграждении агента",
+        "operationId": "simple_rewards_list_agent",
+        "description": "получение списка документов переданного типа с поддержкой простой фильтрации и сортировки. Возможно указание необходимых полей загрузки",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/filter"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/fields"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/onlyHeaderFields"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/ordersAsc"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/ordersDesc"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/page"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/pageSize"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/offset"
+          },
+          {
+            "$ref": "../core/main.json#/parameters/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "массив доступных пользователю документов. Если заданы поля, необходимые для загрузки, или флаг onlyHeaderFields не выставлен в значение false возвращается массив объектов в виде пар ключ=значение. Если параметр onlyHeaderFields выставлен в значение false, возвращается полное JSON представление документа",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Reward"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/services/rest-api/list/reward/agent": {
+      "post": {
+        "tags": [
+          "rewardList"
+        ],
+        "summary": "сохранение параметров фильтрации для выборки данных под агентом",
+        "operationId": "post_rewards_list_agent",
+        "description": "сохраниение параметров запроса на сервере приложений, для последующего использования в get запросе",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "../core/main.json#/parameters/postBody"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "в качестве ответа возвращается уникальный идентификатор запроса по переданным параметрам, который в последствии должен быть передан через запрос get",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "../core/main.json#/definitions/unathorizedExceptionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+
+
+
     "/services/rest-api/list/reward/{id}": {
       "get": {
         "tags": [
